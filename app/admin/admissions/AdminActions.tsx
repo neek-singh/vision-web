@@ -26,9 +26,9 @@ export default function AdminActions({ id, status, phone, studentName, courseTit
                     <button
                         disabled={pending}
                         onClick={() =>
-                            startTransition(() =>
-                                updateAdmissionStatus(id, "approved")
-                            )
+                            startTransition(async () => {
+                                await updateAdmissionStatus(id, "approved");
+                            })
                         }
                         className="bg-green-600 hover:bg-green-700 text-white text-xs font-bold px-3 py-2 rounded-xl transition-all disabled:opacity-50"
                     >
@@ -38,9 +38,9 @@ export default function AdminActions({ id, status, phone, studentName, courseTit
                     <button
                         disabled={pending}
                         onClick={() =>
-                            startTransition(() =>
-                                updateAdmissionStatus(id, "rejected")
-                            )
+                            startTransition(async () => {
+                                await updateAdmissionStatus(id, "rejected");
+                            })
                         }
                         className="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-2 rounded-xl transition-all disabled:opacity-50"
                     >
