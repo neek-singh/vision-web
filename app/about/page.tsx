@@ -22,7 +22,7 @@ export default function AboutPage() {
   const statsFilePath = path.join(process.cwd(), "data", "stats.json");
   let stats = {
     expert_mentors: "10+",
-    students_trained: "500+",
+    students_trained: "15+",
     practical_learning: "90%",
     courses_offered: "10+",
   };

@@ -1,5 +1,12 @@
 import CoursesList from "./CoursesList";
 import { createPublicSupabaseClient } from "@/lib/supabase-server";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Courses | Vision IT Computer Institute Pratappur",
+  description: "Browse our government-recognized computer courses: DCA, ADCA, PGDCA, Web Development, and basic computer training.",
+  keywords: "computer courses Pratappur, DCA course, PGDCA course, ADCA course, learn web development",
+};
 
 export const revalidate = 60;
 

@@ -1,6 +1,13 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import AdmissionForm from "./AdmissionForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Online Admission | Vision IT Computer Institute",
+  description: "Apply online for DCA, ADCA, PGDCA, and Web Development courses at Vision IT Computer Institute Pratappur.",
+  keywords: "computer admission Pratappur, apply online computer course, Vision IT admission",
+};
 import Link from "next/link";
 import { Suspense } from "react";
 import { GraduationCap, Sparkles, Clock, ShieldCheck } from "lucide-react";
