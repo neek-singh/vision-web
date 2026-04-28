@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "course": "Basic Computer Course",
+    "date": "April 15, 2026",
+    "time": "08:05 AM - 10:00 AM",
+    "type": "Morning Batch",
+    "seats": "Only 1 seats left"
+  },
+  {
+    "id": "2",
+    "course": "PGDCA",
+    "date": "April 15, 2026",
+    "time": "10:05 AM - 12:00 PM",
+    "type": "Morning Batch",
+    "seats": "Only 3 seats left"
+  },
+  {
+    "id": "3",
+    "course": "DCA",
+    "date": "May 02, 2026",
+    "time": "12:05 PM - 02:00 PM",
+    "type": "Afternoon Batch",
+    "seats": "Only 4 seats left"
+  },
+  {
+    "id": "4",
+    "course": "Programming",
+    "date": "May 02, 2026",
+    "time": "02:05 PM - 04:00 PM",
+    "type": "Evening Batch",
+    "seats": "Only 4 seats left"
+  },
+  {
+    "id": "5",
+    "course": "Basic Computer Course",
+    "date": "May 05, 2026",
+    "time": "04:05 PM - 06:00 PM",
+    "type": "Evening Batch",
+    "seats": "Only 4 seats left"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "title": "Modern Smart Lab",
+    "image_url": "/gallery/lab.png",
+    "created_at": "2026-04-27T10:00:00Z"
+  },
+  {
+    "id": "2",
+    "title": "Practical Coding Session",
+    "image_url": "/gallery/session.png",
+    "created_at": "2026-04-27T10:00:00Z"
+  }
+]

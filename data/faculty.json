@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "name": "Ishwar Singh",
+    "initials": "IS",
+    "role": "Senior Instructor",
+    "bio": "Skilled in modern web technologies including HTML, CSS, JavaScript, and backend basics. Focused on practical coding and real-world projects.",
+    "tags": [
+      "HTML/CSS",
+      "JavaScript",
+      "Web Dev"
+    ],
+    "linkedin": "#",
+    "color": "blue",
+    "image": "/faculty/ishwar.png"
+  },
+  {
+    "id": 2,
+    "name": "Miss Geeta",
+    "initials": "MG",
+    "role": "Programming Instructor",
+    "bio": "Specialized in C, C++ and Python with focus on practical learning and student-friendly teaching.",
+    "tags": [
+      "C/C++",
+      "Python"
+    ],
+    "linkedin": "#",
+    "color": "pink",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "Miss Mankuwar",
+    "initials": "MM",
+    "role": "Office & Tally Trainer",
+    "bio": "Expert in MS Office, Tally, and accounting software with hands-on training approach.",
+    "tags": [
+      "Tally",
+      "Accounting"
+    ],
+    "linkedin": "#",
+    "color": "purple",
+    "image": ""
+  }
+]
