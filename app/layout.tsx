@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -57,29 +57,8 @@ export default function RootLayout({
         </noscript>
         {/* End Google Tag Manager (noscript) */}
         <StructuredData />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-SNT7CK2VDP"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-SNT7CK2VDP');
-          `}
-        </Script>
-        {/* Google Tag Manager */}
-        <Script id="gtm" strategy="lazyOnload">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-KNH8M4KH');
-          `}
-        </Script>
+        <GoogleTagManager gtmId="GTM-KNH8M4KH" />
+        <GoogleAnalytics gaId="G-SNT7CK2VDP" />
         {/* End Google Tag Manager */}
         {/* Basic page structure with Flexbox to keep footer at bottom */}
         <div className="flex flex-col min-h-screen">
