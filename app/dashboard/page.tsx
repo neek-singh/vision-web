@@ -32,7 +32,8 @@ export default async function DashboardPage() {
     .order("created_at", { ascending: false });
 
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-900 px-4 py-10 md:py-16">
+    <main className="min-h-screen bg-gray-50 text-gray-900 px-4 pt-24 pb-10 md:pt-36 md:pb-16">
+
       <div className="max-w-5xl mx-auto space-y-8">
 
         {/* Header */}

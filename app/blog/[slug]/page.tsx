@@ -57,31 +57,41 @@ export default async function BlogPostPage(
 
 
 
+  const cleanContent = blog.content.replace(/^<h1>.*?<\/h1>\s*/i, "");
+
   return (
-    <main className="w-full bg-white pb-32 min-h-screen">
+    <main className="w-full bg-slate-50 pb-32 min-h-screen">
 
-      {/* Header */}
-      <section className="bg-blue-900 text-white pt-32 pb-24 px-6 text-center">
-        <div className="max-w-4xl mx-auto">
-
-          <span className="text-sm bg-blue-800 px-4 py-1 rounded-full">
+      {/* Premium Hero Section */}
+      <section className="relative bg-[#0a0f1d] text-white pt-40 pb-32 rounded-b-[3rem] sm:rounded-b-[4rem] overflow-hidden shadow-2xl shadow-blue-950/20">
+        {/* Soft Background Gradients & Grid */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+        
+        <div className="relative max-w-4xl mx-auto text-center px-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-8 animate-in fade-in duration-500">
+            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
             {blog.created_at
-              ? new Date(blog.created_at).toLocaleDateString()
-              : "Recent"}
-          </span>
+              ? new Date(blog.created_at).toLocaleDateString('en-IN', {
+                  day: 'numeric',
+                  month: 'short',
+                  year: 'numeric'
+                })
+              : "Recent Update"}
+          </div>
 
-          <h1 className="text-4xl md:text-6xl font-black mt-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-50 to-slate-300 animate-in slide-in-from-bottom-4 duration-700">
             {blog.title}
           </h1>
 
           {blog.excerpt && (
-            <p className="mt-6 text-blue-200 text-xl">
+            <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed animate-in slide-in-from-bottom-6 duration-700 delay-150">
               {blog.excerpt}
             </p>
           )}
-
         </div>
       </section>
+
 
       {blog.image_url && (
         <div className="max-w-4xl mx-auto px-6 mt-12">
@@ -103,7 +113,7 @@ export default async function BlogPostPage(
 
         <div 
           className="blog-html-content"
-          dangerouslySetInnerHTML={{ __html: blog.content }} 
+          dangerouslySetInnerHTML={{ __html: cleanContent }} 
         />
 
         {/* CTA */}

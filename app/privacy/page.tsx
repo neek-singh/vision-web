@@ -28,7 +28,8 @@ export default function PrivacyPage() {
       <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:32px_32px] opacity-30 [mask-image:linear-gradient(to_bottom,white,transparent_80%)]" />
 
       {/* CHANGED: Reduced pt-24 to pt-8 lg:pt-12 for much less top space */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-8 lg:pt-12 pb-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-28 md:pt-32 pb-32">
+
 
         {/* Header */}
         <div className="max-w-3xl mb-12">
