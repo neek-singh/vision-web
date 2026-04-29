@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { UserNav } from "./UserNav";
 
@@ -12,7 +12,8 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
 
   const handleClose = () => setIsOpen(false);
 
@@ -23,21 +24,29 @@ export default function Header() {
   useEffect(() => {
     if (hideNav) return;
 
-    const handleScroll = () => {
+    const updateScroll = () => {
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 10);
 
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
       }
-      setLastScrollY(currentScrollY);
+      lastScrollY.current = currentScrollY;
+      ticking.current = false;
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY, hideNav]);
+    const onScroll = () => {
+      if (!ticking.current) {
+        window.requestAnimationFrame(updateScroll);
+        ticking.current = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [hideNav]);
 
   if (hideNav) return null;
 

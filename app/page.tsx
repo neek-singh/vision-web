@@ -1,40 +1,17 @@
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import Link from "next/link";
-import { createPublicSupabaseClient } from "@/lib/supabase-server";
+import { Suspense } from "react";
 import Image from "next/image";
-import fs from "fs";
-import path from "path";
+import PopularCourses, { PopularCoursesSkeleton } from "@/components/PopularCourses";
+import UpcomingBatches, { UpcomingBatchesSkeleton } from "@/components/UpcomingBatches";
 
 export const revalidate = 60;
 
 export default async function Home() {
   const today = new Date().toISOString().split('T')[0];
 
-  const supabase = createPublicSupabaseClient();
-  const { data: courses, error } = await supabase
-    .from("courses")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .limit(3);
-
-  if (error) {
-    console.error("Error fetching courses for home:", error);
-  }
-
-  const displayCourses = courses || [];
-
-  const batchesFilePath = path.join(process.cwd(), "data", "batches.json");
-  let displayBatches: any[] = [];
-
-  try {
-    if (fs.existsSync(batchesFilePath)) {
-      const fileData = fs.readFileSync(batchesFilePath, "utf-8");
-      displayBatches = JSON.parse(fileData);
-    }
-  } catch (e) {
-    console.error("Home batches error:", e);
-  }
+  // Data fetching moved to separate components for Suspense
 
   return (
     <main className="flex-col w-full bg-gray-50 pb-20">
@@ -105,213 +82,13 @@ export default async function Home() {
 
 
       {/* 2. Popular Courses Section */}
-      <section className="container mx-auto px-6 lg:px-8 pt-24 relative z-10">
-
-        {/* Decorative Aurora Glow behind heading */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-blue-400/10 blur-[100px] rounded-full pointer-events-none"></div>
-
-        <div className="text-center mb-16 relative">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 mb-4 pb-1">
-            Popular Courses
-          </h2>
-          <p className="text-slate-600 text-lg max-w-2xl mx-auto font-medium">
-            Master the most in-demand tech skills with our 100% practical training programs.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {displayCourses.map((course) => (
-            <Card
-              key={course.id}
-              className="relative group overflow-hidden bg-white/70 backdrop-blur-xl border border-white/80 hover:border-blue-300/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.25)] transition-all duration-500 flex flex-col h-full rounded-[2rem]"
-            >
-              {course.image_url && (
-                <div className="relative w-full h-48 overflow-hidden">
-                  <Image
-                    src={course.image_url}
-                    alt={course.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-              )}
-              {/* Glossy Neon Top Highlight on Hover */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-indigo-500 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-              <CardHeader className="bg-gradient-to-b from-blue-50/40 to-transparent pt-8 pb-4 border-b border-slate-100/50">
-                <CardTitle className="text-2xl font-bold text-slate-800 group-hover:text-blue-700 transition-colors duration-300">
-                  {course.title}
-                </CardTitle>
-              </CardHeader>
-
-              <CardContent className="flex flex-col flex-grow pt-5">
-                <p className="text-slate-600 mb-6 flex-grow line-clamp-3 leading-relaxed">
-                  {course.description}
-                </p>
-
-                {/* Enhanced Course Meta Tags */}
-                <div className="flex flex-wrap gap-2.5 mb-8">
-                  <span className="font-bold text-blue-700 bg-blue-100/50 border border-blue-200/50 px-3 py-1.5 rounded-xl text-[11px] uppercase tracking-wide flex items-center gap-1.5">
-                    ⏱ {course.duration}
-                  </span>
-                  {course.discount_fee ? (
-                    <>
-                      <span className="font-bold text-emerald-700 bg-emerald-100/50 border border-emerald-200/50 px-3 py-1.5 rounded-xl text-[11px] uppercase tracking-wide flex items-center gap-1.5">
-                        ₹{course.discount_fee}
-                      </span>
-                      <span className="font-bold text-slate-400 line-through text-[11px] flex items-center">
-                        ₹{course.fee}
-                      </span>
-                    </>
-                  ) : course.fee ? (
-                    <span className="font-bold text-emerald-700 bg-emerald-100/50 border border-emerald-200/50 px-3 py-1.5 rounded-xl text-[11px] uppercase tracking-wide flex items-center gap-1.5">
-                      ₹{course.fee}
-                    </span>
-                  ) : null}
-                </div>
-
-                <div className="flex gap-3 mt-auto border-t border-slate-100/80 pt-6">
-                  <Button
-                    href={`/courses/${course.id}`}
-                    variant="outline"
-                    size="sm"
-                    className="rounded-2xl flex-1 font-semibold text-slate-700 border-slate-200 bg-white/50 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all duration-300"
-                  >
-                    Details
-                  </Button>
-                  <Button
-                    href={`/admissions?courseId=${course.id}`}
-                    variant="primary"
-                    size="sm"
-                    className="rounded-2xl flex-1 font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 border-none"
-                  >
-                    Enroll Now
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-
-          {/* Empty State Design Upgrade */}
-          {displayCourses.length === 0 && (
-            <div className="col-span-full flex flex-col items-center justify-center py-24 px-4 bg-white/40 backdrop-blur-md rounded-[2rem] border border-slate-200 border-dashed">
-              <div className="w-16 h-16 bg-blue-50 text-blue-400 rounded-full flex items-center justify-center mb-4 shadow-inner">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-              </div>
-              <p className="text-slate-500 text-lg font-medium text-center">
-                New batches forming soon. Please check back later.
-              </p>
-            </div>
-          )}
-        </div>
-
-        <div className="text-center mt-16">
-          <Button href="/courses" variant="ghost" className="font-semibold text-lg text-blue-700 hover:bg-blue-50/80 px-8 py-4 rounded-full transition-all duration-300 group flex items-center justify-center mx-auto w-max">
-            View All Courses
-            <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-          </Button>
-        </div>
-      </section>
+      <Suspense fallback={<PopularCoursesSkeleton />}>
+        <PopularCourses />
+      </Suspense>
       {/* Upcoming Batches Section */}
-      <section className="container mx-auto px-6 lg:px-8 py-24 max-w-7xl relative z-10">
-        {/* Optional: Subtle top radial gradient to separate sections */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-
-        {/* Header */}
-        <div className="text-center mb-16 relative">
-          <span className="inline-block py-1.5 px-4 rounded-full bg-blue-50 text-blue-600 text-xs font-bold tracking-widest uppercase mb-5 border border-blue-100">
-            Admissions Open
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-5">
-            Upcoming Batches
-          </h2>
-          <p className="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed">
-            Choose a schedule that fits your routine and start your career transformation today.
-          </p>
-        </div>
-
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {displayBatches.map((batch, idx) => (
-            <Card
-              key={idx}
-              className="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl border border-slate-200 hover:border-blue-200 transition-all duration-300 hover:-translate-y-1.5 flex flex-col overflow-hidden"
-            >
-              {/* Subtle hover background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-              {/* Top Header Row */}
-              <div className="relative flex justify-between items-center mb-6">
-                <span className="px-4 py-1.5 bg-slate-100 text-slate-700 font-bold rounded-lg text-xs uppercase tracking-wider group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
-                  {batch.type}
-                </span>
-                <span className="flex items-center gap-1.5 text-red-600 text-xs font-bold bg-red-50 border border-red-100 px-3 py-1.5 rounded-lg shadow-sm">
-                  <span className="relative flex h-2 w-2 mr-1">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-                  </span>
-                  {batch.seats} Left
-                </span>
-              </div>
-
-              {/* Course Title */}
-              <h3 className="relative text-2xl font-bold text-slate-900 mb-6 leading-snug">
-                {batch.course}
-              </h3>
-
-              {/* Details List */}
-              <div className="relative space-y-4 mb-10">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-50 text-blue-600 shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                      <line x1="16" y1="2" x2="16" y2="6" />
-                      <line x1="8" y1="2" x2="8" y2="6" />
-                      <line x1="3" y1="10" x2="21" y2="10" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mb-0.5">Starts</p>
-                    <p className="text-slate-900 font-bold">{batch.date}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mb-0.5">Time</p>
-                    <p className="text-slate-900 font-bold">{batch.time}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Button */}
-              <Button
-                href="/admissions"
-                className="relative mt-auto w-full rounded-2xl bg-slate-900 hover:bg-blue-600 text-white py-3.5 font-semibold transition-all duration-300 flex items-center justify-center gap-2 border-none group/btn"
-              >
-                Book Your Seat
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Button>
-            </Card>
-          ))}
-        </div>
-      </section>
+      <Suspense fallback={<UpcomingBatchesSkeleton />}>
+        <UpcomingBatches />
+      </Suspense>
       {/* 3. Student Success Stories Section */}
       {/* <section className="container mx-auto px-6 lg:px-8 pt-32 pb-24 relative z-10"> */}
 
