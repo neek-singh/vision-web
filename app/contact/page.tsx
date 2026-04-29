@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import ContactForm from "./ContactForm";
 import { Button } from "@/components/ui/Button";
+import ContactFormClientWrapper from "@/components/ContactFormClientWrapper";
 
 export const metadata: Metadata = {
   title: "Contact Us | Vision IT Computer Institute Pratappur",
@@ -158,7 +158,7 @@ export default function ContactPage() {
           <div className="lg:col-span-3 bg-white p-8 md:p-12 rounded-[2rem] shadow-xl shadow-slate-200/40 border border-slate-100">
             <h2 className="text-3xl font-bold text-slate-900 mb-3 tracking-tight">Send Us a Message</h2>
             <p className="text-slate-500 text-base mb-10">Fill out the form below and our team will get back to you within 24 hours.</p>
-            <ContactForm />
+            <ContactFormClientWrapper />
           </div>
         </div>
       </section>

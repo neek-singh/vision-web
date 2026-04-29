@@ -471,7 +471,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                     <div key={idx} className="bg-white rounded-[2.5rem] border border-gray-100 overflow-hidden shadow-sm group">
                       <div className="aspect-video bg-gray-100 overflow-hidden relative">
                         {project.image_url ? (
-                          <img src={project.image_url} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                          <Image src={project.image_url} alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 50vw" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-4xl bg-gradient-to-br from-blue-50 to-indigo-50">📁</div>
                         )}
@@ -594,7 +594,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                   {trainers.map((trainer: any, idx: number) => (
                     <div key={idx} className="flex items-center gap-6">
                       <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl overflow-hidden">
-                        {trainer.image_url ? <img src={trainer.image_url} alt={trainer.name} /> : '👤'}
+                        {trainer.image_url ? <Image src={trainer.image_url} alt={trainer.name} width={64} height={64} className="object-cover" /> : '👤'}
                       </div>
                       <div>
                         <p className="font-black text-blue-950">{trainer.name}</p>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Skeleton } from "boneyard-js/react";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
@@ -19,6 +20,12 @@ type Course = {
 
 export default function CoursesList({ initialCourses }: { initialCourses: Course[] }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Simple client-side filter
   const filteredCourses = initialCourses.filter((course) =>
@@ -62,7 +69,8 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
       </div>
 
       {/* Grid */}
-      {filteredCourses.length > 0 ? (
+      <Skeleton name="courses-list" loading={isLoading}>
+        {filteredCourses.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCourses.map((course, index) => (
             <Card
@@ -161,6 +169,7 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
           </Button>
         </div>
       )}
+      </Skeleton>
     </div>
   );
 }

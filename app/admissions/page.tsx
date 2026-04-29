@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
-import AdmissionForm from "./AdmissionForm";
 import { Metadata } from "next";
+import AdmissionFormClientWrapper from "@/components/AdmissionFormClientWrapper";
 
 export const metadata: Metadata = {
   title: "Online Admission | Vision IT Computer Institute",
@@ -124,7 +124,7 @@ export default async function AdmissionsPage({
             </h2>
 
             <Suspense fallback={<FormSkeleton />}>
-              <AdmissionForm
+              <AdmissionFormClientWrapper
                 courses={availableCourses || []}
                 user={user}
                 courseId={courseId}

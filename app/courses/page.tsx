@@ -1,6 +1,6 @@
-import CoursesList from "./CoursesList";
 import { createPublicSupabaseClient } from "@/lib/supabase-server";
 import { Metadata } from "next";
+import CoursesListClientWrapper from "@/components/CoursesListClientWrapper";
 
 export const metadata: Metadata = {
   title: "Our Courses | Vision IT Computer Institute Pratappur",
@@ -53,7 +53,7 @@ export default async function CoursesPage() {
 
       {/* Courses List Component */}
       <section className="relative container mx-auto px-6 lg:px-8 -mt-8 z-10 pb-24">
-        <CoursesList initialCourses={displayCourses} />
+        <CoursesListClientWrapper initialCourses={displayCourses} />
       </section>
 
       {/* Why Learn With Vision IT Section */}

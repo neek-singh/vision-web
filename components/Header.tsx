@@ -4,9 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { UserNav } from "./UserNav";
-
-export default function Header() {
+export default function Header({ userNav }: { userNav?: React.ReactNode }) {
   const pathname = usePathname();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -72,6 +70,7 @@ export default function Header() {
               width={40}
               height={40}
               className="object-contain rounded-lg"
+              priority
             />
             <div className="flex flex-col">
               <span className="text-xl md:text-2xl font-black text-slate-900 tracking-tight leading-none">
@@ -97,13 +96,13 @@ export default function Header() {
 
             {/* 👤 User */}
             <div className="pl-4 border-l border-slate-200">
-              <UserNav />
+              {userNav}
             </div>
           </div>
 
           {/* 📱 Mobile Right */}
           <div className="md:hidden flex items-center gap-3">
-            <UserNav />
+            {userNav}
 
             <button
               onClick={() => setIsOpen(!isOpen)}

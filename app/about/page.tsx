@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import fs from 'fs';
 import path from 'path';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'About Us | Vision IT Computer Institute in Pratappur',
@@ -495,7 +496,7 @@ export default function AboutPage() {
                     <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${colors.glow} blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-500`} />
                     <div className={`relative w-full h-full rounded-full bg-white border-2 border-slate-100 flex items-center justify-center text-3xl font-black ${colors.text} shadow-sm group-hover:scale-105 transition-all duration-300 overflow-hidden`}>
                       {member.image ? (
-                        <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                        <Image src={member.image} alt={member.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
                       ) : (
                         member.initials
                       )}

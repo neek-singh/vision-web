@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import GalleryGrid from "./GalleryGrid";
 import fs from "fs";
 import path from "path";
+import GalleryGridClientWrapper from "@/components/GalleryGridClientWrapper";
 
 export const metadata: Metadata = {
   title: "Gallery | Vision IT Computer Institute Pratappur",
@@ -71,7 +71,7 @@ export default async function GalleryPage() {
 
       {/* Gallery Grid Section */}
       <section className="container mx-auto px-6 lg:px-8 pt-12 lg:pt-16 relative z-10">
-        <GalleryGrid images={images} />
+        <GalleryGridClientWrapper images={images} />
       </section>
     </main>
   );
