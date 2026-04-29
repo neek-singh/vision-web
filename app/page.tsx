@@ -86,10 +86,10 @@ export default async function Home() {
           <div className="pt-8 border-t border-slate-200/60 max-w-lg mx-auto flex flex-col sm:flex-row items-center justify-center gap-5">
             <div className="flex -space-x-3">
               {/* Replace these URLs with actual avatar assets if you have them */}
-              <Image className="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover" src="/social proof/nita.jpg" alt="Student Nita" width={40} height={40} />
-              <Image className="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover" src="/social proof/ram.jpg" alt="Student Ram" width={40} height={40} />
-              <Image className="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover" src="/social proof/reeta.jpg" alt="Student Reeta" width={40} height={40} />
-              <Image className="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover" src="/social proof/sonu.jpg" alt="Student Sonu" width={40} height={40} />
+              <Image className="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover" src="/social proof/nita.jpg" alt="Student Nita" width={40} height={40} priority />
+              <Image className="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover" src="/social proof/ram.jpg" alt="Student Ram" width={40} height={40} priority />
+              <Image className="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover" src="/social proof/reeta.jpg" alt="Student Reeta" width={40} height={40} priority />
+              <Image className="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover" src="/social proof/sonu.jpg" alt="Student Sonu" width={40} height={40} priority />
               <div className="w-10 h-10 rounded-full border-2 border-white bg-blue-50 flex items-center justify-center text-xs font-bold text-blue-600 shadow-sm z-10">15+</div>
             </div>
             <div className="text-sm text-slate-600 font-medium text-center sm:text-left">
