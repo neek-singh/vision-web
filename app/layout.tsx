@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     "#StudentTrainingPratappur"
   ],
   openGraph: {
-    title: "Vision IT Computer Institute | Best Computer Classes in Pratappur",
+    title: "Vision IT Computer Institute Pratappur",
     description: "Vision IT Computer Institute in Pratappur offers premium computer courses like DCA, PGDCA, and Web Development. The best IT training center for students in Pratappur, Chhattisgarh.",
     url: "https://visionitinstitute.com",
     siteName: "Vision IT Computer Institute",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vision IT Computer Institute | Best Computer Classes in Pratappur",
+    title: "Vision IT Computer Institute in Pratappur",
     description: "Vision IT Computer Institute in Pratappur offers premium computer courses like DCA, PGDCA, and Web Development. The best IT training center for students in Pratappur, Chhattisgarh.",
   },
   icons: {
