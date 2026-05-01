@@ -21,6 +21,7 @@ export async function submitAdmission(formData: any) {
         email,
         phone,
         course_id,
+        status: "pending",
         message: message || null,
       })
       .select();

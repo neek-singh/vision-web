@@ -27,7 +27,7 @@ export default function StructuredData() {
         "@id": "https://visionitinstitute.com/#website",
         "url": "https://visionitinstitute.com",
         "name": "Vision IT Computer Institute",
-        "description": "Empowering students with cutting-edge technology education.",
+        "description": "Vision IT Computer Institute in Pratappur offers premium computer courses like DCA, PGDCA, and Web Development. The best IT training center for students in Pratappur, Chhattisgarh.",
         "publisher": {
           "@id": "https://visionitinstitute.com/#organization"
         },
