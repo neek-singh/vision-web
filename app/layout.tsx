@@ -71,9 +71,16 @@ export const metadata: Metadata = {
     description: "Vision IT Computer Institute in Pratappur offers premium computer courses like DCA, PGDCA, and Web Development. The best IT training center for students in Pratappur, Chhattisgarh.",
   },
   icons: {
-    icon: "/logo.png",
+    icon: [
+      { url: "/logo.png" },
+      { url: "/logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo.png", sizes: "16x16", type: "image/png" },
+    ],
     shortcut: "/logo.png",
-    apple: "/logo.png",
+    apple: [
+      { url: "/logo.png" },
+      { url: "/logo.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   verification: {
     google: "yulDXmESZbXN7tJFF0YVLKf8r3kuN6v9dZRctox7EC0",

@@ -67,8 +67,8 @@ export default function Header({ userNav }: { userNav?: React.ReactNode }) {
             <Image
               src="/logo.png"
               alt="Vision IT Logo"
-              width={40}
-              height={40}
+              width={44}
+              height={44}
               className="object-contain rounded-lg"
               priority
             />
