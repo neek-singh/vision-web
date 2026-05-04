@@ -39,7 +39,7 @@ export default function Footer() {
             >
               <div className="relative p-1 bg-white rounded-xl shadow-sm border border-gray-100">
                 <Image
-                  src="/logo.png"
+                  src="https://res.cloudinary.com/ddiooxxks/image/upload/f_auto,q_auto/logo_unnut8.png"
                   alt="Vision IT Logo"
                   width={40}
                   height={40}

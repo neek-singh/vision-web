@@ -65,7 +65,7 @@ export default function Header({ userNav }: { userNav?: React.ReactNode }) {
             className="flex items-center gap-2 transition-transform hover:scale-[1.02] active:scale-[0.98]"
           >
             <Image
-              src="/logo.png"
+              src="https://res.cloudinary.com/ddiooxxks/image/upload/f_auto,q_auto/logo_unnut8.png"
               alt="Vision IT Logo"
               width={44}
               height={44}

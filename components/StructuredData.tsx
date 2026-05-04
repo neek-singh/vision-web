@@ -9,7 +9,7 @@ export default function StructuredData() {
         "@id": "https://visionitinstitute.com/#organization",
         "name": "Vision IT Computer Institute",
         "url": "https://visionitinstitute.com",
-        "logo": "https://visionitinstitute.com/logo.png",
+        "logo": "https://res.cloudinary.com/ddiooxxks/image/upload/f_auto,q_auto/logo_unnut8.png",
         "sameAs": [
           "https://www.facebook.com/visionitinstitute",
           "https://www.instagram.com/visionitinstitute"

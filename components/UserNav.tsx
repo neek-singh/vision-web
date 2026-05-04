@@ -2,37 +2,55 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { createClient } from "@/lib/supabase-browser";
+import { supabase } from "@/lib/supabase";
 import { UserNavClient } from "./UserNavClient";
+import type { User, AuthChangeEvent, Session } from "@supabase/supabase-js";
 
 export function UserNav() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const supabase = createClient();
 
   useEffect(() => {
-    const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
+    let isMounted = true;
+    let fetching = false;
 
-      if (user) {
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select("role, full_name")
-          .eq("id", user.id)
-          .single();
-        setProfile(profile);
-      } else {
-        setProfile(null);
+    const getUser = async () => {
+      if (fetching) return;
+      fetching = true;
+
+      try {
+        const { data: { user }, error } = await supabase.auth.getUser();
+        if (isMounted) {
+          if (error) {
+            console.error("Error fetching user:", error);
+            setUser(null);
+          } else {
+            setUser(user);
+            if (user) {
+              const { data: profile } = await supabase
+                .from("profiles")
+                .select("role, full_name")
+                .eq("id", user.id)
+                .single();
+              if (isMounted) setProfile(profile);
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Unexpected error in getUser:", err);
+      } finally {
+        if (isMounted) setLoading(false);
+        fetching = false;
       }
-      setLoading(false);
     };
 
     getUser();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+      async (event: AuthChangeEvent, session: Session | null) => {
+        if (!isMounted) return;
+
         if (session?.user) {
           setUser(session.user);
           const { data: profile } = await supabase
@@ -40,16 +58,20 @@ export function UserNav() {
             .select("role, full_name")
             .eq("id", session.user.id)
             .single();
-          setProfile(profile);
+          if (isMounted) {
+            setProfile(profile);
+            setLoading(false);
+          }
         } else {
           setUser(null);
           setProfile(null);
+          setLoading(false);
         }
-        setLoading(false);
       }
     );
 
     return () => {
+      isMounted = false;
       subscription.unsubscribe();
     };
   }, []);

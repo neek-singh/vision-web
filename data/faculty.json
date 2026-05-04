@@ -12,7 +12,7 @@
     ],
     "linkedin": "#",
     "color": "blue",
-    "image": "/faculty/ishwar.png"
+    "image": "https://res.cloudinary.com/ddiooxxks/image/upload/f_auto,q_auto/v1777769651/ishwar_cdiam4.jpg"
   },
   {
     "id": 2,
@@ -26,20 +26,6 @@
     ],
     "linkedin": "#",
     "color": "pink",
-    "image": ""
-  },
-  {
-    "id": 3,
-    "name": "Miss Mankuwar",
-    "initials": "MM",
-    "role": "Office & Tally Trainer",
-    "bio": "Expert in MS Office, Tally, and accounting software with hands-on training approach.",
-    "tags": [
-      "Tally",
-      "Accounting"
-    ],
-    "linkedin": "#",
-    "color": "purple",
     "image": ""
   }
 ]

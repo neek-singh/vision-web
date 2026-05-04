@@ -16,6 +16,7 @@ type Course = {
   learning_format?: string;
   rating?: number;
   image_url?: string;
+  enrollments?: { count: number }[];
 };
 
 export default function CoursesList({ initialCourses }: { initialCourses: Course[] }) {
@@ -71,104 +72,112 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
       {/* Grid */}
       <Skeleton name="courses-list" loading={isLoading}>
         {filteredCourses.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredCourses.map((course, index) => (
-            <Card
-              key={course.id}
-              className="flex flex-col h-full animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
-              style={{ animationDelay: `${index * 75}ms` }}
-            >
-              {course.image_url && (
-                <div className="relative w-full h-48 border-b border-slate-100 overflow-hidden">
-                  <Image
-                    src={course.image_url}
-                    alt={course.title}
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-              )}
-              <CardHeader className="bg-gradient-to-br from-slate-50 to-blue-50/30 border-b border-slate-100/50 pb-4">
-                <CardTitle className="line-clamp-2 leading-snug">{course.title}</CardTitle>
-              </CardHeader>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredCourses.map((course, index) => (
+              <Card
+                key={course.id}
+                className="flex flex-col h-full animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
+                style={{ animationDelay: `${index * 75}ms` }}
+              >
+                {course.image_url && (
+                  <div className="relative w-full h-48 border-b border-slate-100 overflow-hidden">
+                    <Image
+                      src={course.image_url}
+                      alt={course.title}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                )}
+                <CardHeader className="bg-gradient-to-br from-slate-50 to-blue-50/30 border-b border-slate-100/50 pb-4">
+                  <CardTitle className="line-clamp-2 leading-snug">{course.title}</CardTitle>
+                </CardHeader>
 
-              <CardContent className="flex flex-col flex-grow pt-5">
-                <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
-                  {course.description}
-                </p>
+                <CardContent className="flex flex-col flex-grow pt-5">
+                  <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
+                    {course.description}
+                  </p>
 
-                {/* Course Metadata Tags */}
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {/* Duration Tag */}
-                  <span className="inline-flex items-center gap-1.5 font-medium text-slate-700 bg-slate-100/80 px-2.5 py-1 rounded-md text-xs border border-slate-200/60">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-500"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
-                    {course.duration || 'Flexible'}
-                  </span>
+                  {/* Course Metadata Tags */}
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {/* Duration Tag */}
+                    <span className="inline-flex items-center gap-1.5 font-medium text-slate-700 bg-slate-100/80 px-2.5 py-1 rounded-md text-xs border border-slate-200/60">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-500"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                      {course.duration || 'Flexible'}
+                    </span>
 
-                  {/* Format Tag */}
-                  <span className="inline-flex items-center gap-1.5 font-medium text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-md text-xs border border-indigo-100/60">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-500"><rect width="20" height="14" x="2" y="3" rx="2" /><line x1="8" x2="16" y1="21" y2="21" /><line x1="12" x2="12" y1="17" y2="21" /></svg>
-                    {course.learning_format || 'Offline'}
-                  </span>
+                    {/* Format Tag */}
+                    <span className="inline-flex items-center gap-1.5 font-medium text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-md text-xs border border-indigo-100/60">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-500"><rect width="20" height="14" x="2" y="3" rx="2" /><line x1="8" x2="16" y1="21" y2="21" /><line x1="12" x2="12" y1="17" y2="21" /></svg>
+                      {course.learning_format || 'Offline'}
+                    </span>
 
-                  {/* Pricing Tag */}
-                  {course.discount_fee && course.discount_fee > 0 ? (
-                    <div className="inline-flex items-center gap-1.5 font-medium text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md text-xs border border-emerald-100/60">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-500"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
-                      <span>₹{course.discount_fee.toLocaleString()}</span>
-                      <span className="text-emerald-700/50 line-through text-[10px] ml-0.5">
-                        ₹{course.fee?.toLocaleString()}
-                      </span>
+                    {/* Pricing Tag */}
+                    {course.discount_fee && course.discount_fee > 0 ? (
+                      <div className="inline-flex items-center gap-1.5 font-medium text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md text-xs border border-emerald-100/60">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-500"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+                        <span>₹{course.discount_fee.toLocaleString()}</span>
+                        <span className="text-emerald-700/50 line-through text-[10px] ml-0.5">
+                          ₹{course.fee?.toLocaleString()}
+                        </span>
+                      </div>
+                    ) : (
+                      course.fee && (
+                        <span className="inline-flex items-center gap-1.5 font-medium text-slate-700 bg-slate-100/80 px-2.5 py-1 rounded-md text-xs border border-slate-200/60">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-500"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+                          ₹{course.fee.toLocaleString()}
+                        </span>
+                      )
+                    )}
+                  </div>
+
+                  {/* Enrollment Badge (Added) */}
+                  <div className="mt-4 flex items-center gap-2">
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 text-slate-700 rounded-lg text-xs font-bold shadow-sm">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-indigo-500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                      {course.enrollments?.[0]?.count || 0}+ Students
                     </div>
-                  ) : (
-                    course.fee && (
-                      <span className="inline-flex items-center gap-1.5 font-medium text-slate-700 bg-slate-100/80 px-2.5 py-1 rounded-md text-xs border border-slate-200/60">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-500"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
-                        ₹{course.fee.toLocaleString()}
-                      </span>
-                    )
-                  )}
-                </div>
-              </CardContent>
+                  </div>
+                </CardContent>
 
-              {/* Action Buttons */}
-              <CardFooter className="flex gap-3 border-t border-slate-100 pt-5">
-                <Button
-                  href={`/courses/${course.id}`}
-                  variant="outline"
-                  className="flex-1 w-full"
-                >
-                  View Details
-                </Button>
-                <Button
-                  href={`/admissions?courseId=${course.id}`}
-                  variant="primary"
-                  className="flex-1 w-full"
-                >
-                  Enroll Now
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      ) : (
-        /* Enhanced Empty State */
-        <div className="text-center py-24 px-6 bg-white/50 backdrop-blur-sm rounded-3xl border border-slate-200/60 shadow-sm">
-          <div className="w-16 h-16 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /><line x1="11" x2="11" y1="8" y2="14" /><line x1="8" x2="14" y1="11" y2="11" />
-            </svg>
+                {/* Action Buttons */}
+                <CardFooter className="flex gap-3 border-t border-slate-100 pt-5">
+                  <Button
+                    href={`/courses/${course.id}`}
+                    variant="outline"
+                    className="flex-1 w-full"
+                  >
+                    View Details
+                  </Button>
+                  <Button
+                    href={`/admissions?courseId=${course.id}`}
+                    variant="primary"
+                    className="flex-1 w-full"
+                  >
+                    Enroll Now
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
           </div>
-          <h3 className="text-xl font-semibold text-slate-900 mb-2">No courses found</h3>
-          <p className="text-slate-500 mb-6 max-w-sm mx-auto">
-            We couldn't find any courses matching "<span className="text-slate-900 font-medium">{searchTerm}</span>". Try adjusting your search terms.
-          </p>
-          <Button variant="secondary" onClick={() => setSearchTerm("")}>
-            Clear Search
-          </Button>
-        </div>
-      )}
+        ) : (
+          /* Enhanced Empty State */
+          <div className="text-center py-24 px-6 bg-white/50 backdrop-blur-sm rounded-3xl border border-slate-200/60 shadow-sm">
+            <div className="w-16 h-16 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /><line x1="11" x2="11" y1="8" y2="14" /><line x1="8" x2="14" y1="11" y2="11" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-slate-900 mb-2">No courses found</h3>
+            <p className="text-slate-500 mb-6 max-w-sm mx-auto">
+              We couldn't find any courses matching "<span className="text-slate-900 font-medium">{searchTerm}</span>". Try adjusting your search terms.
+            </p>
+            <Button variant="secondary" onClick={() => setSearchTerm("")}>
+              Clear Search
+            </Button>
+          </div>
+        )}
       </Skeleton>
     </div>
   );

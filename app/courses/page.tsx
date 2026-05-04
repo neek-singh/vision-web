@@ -14,7 +14,10 @@ export default async function CoursesPage() {
   const supabase = createPublicSupabaseClient();
   const { data: courses, error } = await supabase
     .from("courses")
-    .select("*")
+    .select(`
+      *,
+      enrollments:enrollments(count)
+    `)
     .order("created_at", { ascending: false });
 
   if (error) {

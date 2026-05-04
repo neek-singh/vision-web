@@ -12,7 +12,10 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
   const supabase = createPublicSupabaseClient();
   const { data: course, error } = await supabase
     .from("courses")
-    .select("*")
+    .select(`
+      *,
+      enrollments:enrollments(count)
+    `)
     .eq("id", id)
     .single();
 
@@ -65,7 +68,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                 </span>
                 <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 text-slate-700 rounded-lg text-xs font-bold shadow-sm">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-indigo-500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                  {course.enrolled_count || '120'}+ Students
+                  {course.enrollments?.[0]?.count || 0}+ Students
                 </span>
               </div>
 
@@ -248,7 +251,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
               Level
             </p>
             <p className="text-lg md:text-xl font-black text-slate-900 leading-tight">
-              Beginner <span className="text-slate-400 font-medium mx-0.5">→</span> Pro
+              {course.course_level || 'Beginner'}
             </p>
           </div>
 
@@ -434,12 +437,18 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                       <div className="absolute inset-0 bg-gradient-to-b from-sky-50/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
 
                       {/* Icon */}
-                      <div
-                        className="w-12 h-12 flex items-center justify-center text-slate-600 group-hover:scale-110 group-hover:text-sky-600 transition-all duration-300 relative z-10 [&>svg]:w-10 [&>svg]:h-10"
-                        dangerouslySetInnerHTML={{
-                          __html: tool.icon_svg || `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`
-                        }}
-                      />
+                      <div className="w-12 h-12 flex items-center justify-center text-slate-600 group-hover:scale-110 group-hover:text-sky-600 transition-all duration-300 relative z-10">
+                        {tool.image_url ? (
+                          <img src={tool.image_url} alt={tool.name} className="w-10 h-10 object-contain" />
+                        ) : (
+                          <div 
+                            className="[&>svg]:w-10 [&>svg]:h-10"
+                            dangerouslySetInnerHTML={{
+                              __html: tool.icon_svg || `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`
+                            }}
+                          />
+                        )}
+                      </div>
 
                       {/* Tool Name */}
                       <span className="font-semibold text-slate-700 text-sm group-hover:text-slate-900 relative z-10 text-center">
@@ -486,7 +495,27 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
               </div>
             )}
 
-            {/* 5. FAQs */}
+            {/* 5. Hiring Partners */}
+            {course.hiring_companies && course.hiring_companies.length > 0 && (
+              <div className="py-12 border-t border-slate-100">
+                <h2 className="text-2xl font-black text-slate-900 mb-10 text-center uppercase tracking-widest opacity-40">
+                  Our Students Work At
+                </h2>
+                <div className="flex flex-wrap justify-center gap-10 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+                  {course.hiring_companies.map((company: any, idx: number) => (
+                    <div key={idx} className="h-8 md:h-10 flex items-center">
+                      {company.logo_url ? (
+                        <img src={company.logo_url} alt={company.name} className="h-full object-contain max-w-[120px]" />
+                      ) : (
+                        <span className="font-bold text-slate-400">{company.name}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 6. FAQs */}
             {faqs.length > 0 && (
               <div className="py-8">
                 <div className="text-center mb-10">
