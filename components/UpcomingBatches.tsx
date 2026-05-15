@@ -44,13 +44,7 @@ export default async function UpcomingBatches() {
               <span className="px-4 py-1.5 bg-slate-100 text-slate-700 font-bold rounded-lg text-xs uppercase tracking-wider group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
                 {batch.type}
               </span>
-              <span className="flex items-center gap-1.5 text-red-600 text-xs font-bold bg-red-50 border border-red-100 px-3 py-1.5 rounded-lg shadow-sm">
-                <span className="relative flex h-2 w-2 mr-1">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-                </span>
-                {batch.seats} Left
-              </span>
+
             </div>
 
             <h3 className="relative text-2xl font-bold text-slate-900 mb-6 leading-snug">
@@ -73,18 +67,7 @@ export default async function UpcomingBatches() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mb-0.5">Time</p>
-                  <p className="text-slate-900 font-bold">{batch.time}</p>
-                </div>
-              </div>
+
             </div>
 
             <Button

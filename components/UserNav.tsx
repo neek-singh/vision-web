@@ -13,59 +13,52 @@ export function UserNav() {
 
   useEffect(() => {
     let isMounted = true;
-    let fetching = false;
 
-    const getUser = async () => {
-      if (fetching) return;
-      fetching = true;
-
+    const fetchUserAndProfile = async (sessionUser?: User | null) => {
       try {
-        const { data: { user }, error } = await supabase.auth.getUser();
-        if (isMounted) {
-          if (error) {
-            console.error("Error fetching user:", error);
-            setUser(null);
-          } else {
-            setUser(user);
-            if (user) {
-              const { data: profile } = await supabase
-                .from("profiles")
-                .select("role, full_name")
-                .eq("id", user.id)
-                .single();
-              if (isMounted) setProfile(profile);
-            }
-          }
+        let currentUser: User | null = null;
+        
+        // If no user provided from session, fetch it
+        if (sessionUser === undefined) {
+          const { data: { user } } = await supabase.auth.getUser();
+          currentUser = user;
+        } else {
+          currentUser = sessionUser;
+        }
+
+        if (isMounted) setUser(currentUser);
+
+        if (currentUser) {
+          const { data: profile } = await supabase
+            .from("profiles")
+            .select("role, full_name, avatar_url")
+            .eq("id", currentUser.id)
+            .single();
+          
+          if (isMounted) setProfile(profile);
+        } else {
+          if (isMounted) setProfile(null);
         }
       } catch (err) {
-        console.error("Unexpected error in getUser:", err);
+        console.error("UserNav fetch error:", err);
       } finally {
         if (isMounted) setLoading(false);
-        fetching = false;
       }
     };
 
-    getUser();
+    // Initial fetch
+    fetchUserAndProfile();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event: AuthChangeEvent, session: Session | null) => {
-        if (!isMounted) return;
-
-        if (session?.user) {
-          setUser(session.user);
-          const { data: profile } = await supabase
-            .from("profiles")
-            .select("role, full_name")
-            .eq("id", session.user.id)
-            .single();
-          if (isMounted) {
-            setProfile(profile);
+        if (isMounted) {
+          if (event === 'SIGNED_IN' || event === 'USER_UPDATED' || event === 'INITIAL_SESSION') {
+            fetchUserAndProfile(session?.user);
+          } else if (event === 'SIGNED_OUT') {
+            setUser(null);
+            setProfile(null);
             setLoading(false);
           }
-        } else {
-          setUser(null);
-          setProfile(null);
-          setLoading(false);
         }
       }
     );

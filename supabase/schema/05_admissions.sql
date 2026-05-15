@@ -18,8 +18,8 @@ END $$;
 CREATE TABLE IF NOT EXISTS public.admissions (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
-    -- 🔐 User (Required)
-    user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+    -- 🔐 User (Optional to allow public submissions)
+    user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
 
     student_name TEXT NOT NULL,
     email TEXT NOT NULL,
@@ -51,10 +51,6 @@ ON public.admissions(status);
 CREATE INDEX IF NOT EXISTS idx_admissions_created_at 
 ON public.admissions(created_at DESC);
 
--- ✅ Prevent duplicate applications
-CREATE UNIQUE INDEX IF NOT EXISTS unique_user_course
-ON public.admissions(user_id, course_id);
-
 -- ==========================================
 -- ✅ DATA VALIDATION (INDIA READY)
 -- ==========================================
@@ -74,7 +70,7 @@ RETURNS trigger AS $$
 BEGIN
   NEW.updated_at = now();
   RETURN NEW;
-END;
+  END;
 $$ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS trg_admissions_updated_at ON public.admissions;
@@ -84,33 +80,11 @@ BEFORE UPDATE ON public.admissions
 FOR EACH ROW EXECUTE FUNCTION public.set_admission_updated_at();
 
 -- ==========================================
--- 🔐 RLS ENABLE
+-- 🔐 RLS DISABLE
 -- ==========================================
-ALTER TABLE public.admissions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.admissions DISABLE ROW LEVEL SECURITY;
 
--- ==========================================
--- 👤 USER POLICIES
--- ==========================================
-
--- User can view own admissions
-CREATE POLICY "Users can view own admissions"
-ON public.admissions
-FOR SELECT
-USING (auth.uid() = user_id);
-
--- User can insert only their own data
-CREATE POLICY "Users can insert own admission"
-ON public.admissions
-FOR INSERT
-WITH CHECK (auth.uid() = user_id);
-
--- ==========================================
--- 👑 ADMIN POLICY
--- ==========================================
-
--- Requires public.is_admin() function
-CREATE POLICY "Admins manage admissions"
-ON public.admissions
-FOR ALL
-USING (public.is_admin())
-WITH CHECK (public.is_admin());
+-- Note: Policies are removed because RLS is disabled.
+DROP POLICY IF EXISTS "Users can view own admissions" ON public.admissions;
+DROP POLICY IF EXISTS "Users can insert own admission" ON public.admissions;
+DROP POLICY IF EXISTS "Admins manage admissions" ON public.admissions;

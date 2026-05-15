@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 import Link from "next/link";
 import { Suspense } from "react";
-import { GraduationCap, Sparkles, Clock, ShieldCheck } from "lucide-react";
+import { GraduationCap, Sparkles, Clock, ShieldCheck, ArrowLeft } from "lucide-react";
 
 export const revalidate = 0;
 
@@ -64,6 +64,17 @@ export default async function AdmissionsPage({
 
       {/* 🌌 Hero */}
       <section className="relative bg-[#0a0f1d] text-white pt-32 pb-56 rounded-b-[3rem] sm:rounded-b-[5rem] overflow-hidden">
+        {/* 🔙 Back Button */}
+        <Link 
+          href="/" 
+          className="absolute top-10 left-6 sm:left-10 z-20 flex items-center gap-2 text-slate-400 hover:text-white transition-colors group"
+        >
+          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-300">
+            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+          </div>
+          <span className="font-bold text-xs uppercase tracking-[0.2em] hidden sm:block">Go Back</span>
+        </Link>
+
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-600/15 rounded-full blur-[120px]" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
@@ -101,37 +112,19 @@ export default async function AdmissionsPage({
       {/* 📄 Form Section */}
       <section className="relative max-w-5xl mx-auto px-4 -mt-36">
 
-        {!user ? (
-          <div className="bg-white rounded-[2rem] p-12 shadow-xl border border-slate-100 text-center max-w-2xl mx-auto animate-in fade-in duration-500">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-50 text-blue-600 rounded-full mb-6 text-4xl shadow-inner">
-              🔐
-            </div>
-            <h2 className="text-3xl font-black text-slate-900 mb-4">Login Required</h2>
-            <p className="text-slate-600 text-lg mb-8 max-w-md mx-auto">
-              Please sign in to your account to apply for our courses. It takes less than a minute!
-            </p>
-            <Link 
-              href={`/login?redirect=${encodeURIComponent(`/admissions${courseId ? `?courseId=${courseId}` : ''}`)}`} 
-              className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold px-10 py-4 rounded-2xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 text-lg"
-            >
-              Login to Apply
-            </Link>
-          </div>
-        ) : (
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100">
-            <h2 className="text-2xl font-black text-slate-900 mb-8 flex items-center gap-2">
-              <span>📄</span> Application Form
-            </h2>
+        <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100">
+          <h2 className="text-2xl font-black text-slate-900 mb-8 flex items-center gap-2">
+            <span>📄</span> Application Form
+          </h2>
 
-            <Suspense fallback={<FormSkeleton />}>
-              <AdmissionFormClientWrapper
-                courses={availableCourses || []}
-                user={user}
-                courseId={courseId}
-              />
-            </Suspense>
-          </div>
-        )}
+          <Suspense fallback={<FormSkeleton />}>
+            <AdmissionFormClientWrapper
+              courses={availableCourses || []}
+              user={user}
+              courseId={courseId}
+            />
+          </Suspense>
+        </div>
 
       </section>
     </main>

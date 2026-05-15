@@ -3,10 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
+import { User, LogOut, LayoutDashboard, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 
 type Profile = {
   full_name: string | null;
   role: string;
+  avatar_url?: string | null;
 };
 
 export function UserNavClient({ user, profile }: { user: any; profile: Profile | null }) {
@@ -22,11 +25,20 @@ export function UserNavClient({ user, profile }: { user: any; profile: Profile |
       {/* Avatar Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-10 h-10 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 shadow-sm flex items-center justify-center text-white font-semibold text-sm transition-all duration-300 hover:shadow-md hover:shadow-blue-500/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 select-none"
+        className="relative w-10 h-10 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 shadow-sm flex items-center justify-center text-white font-semibold text-sm transition-all duration-300 hover:shadow-md hover:shadow-blue-500/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 select-none overflow-hidden"
       >
-        {profile?.full_name?.[0]?.toUpperCase() ||
-          user.email?.[0]?.toUpperCase() ||
-          "U"}
+        {profile?.avatar_url ? (
+          <Image 
+            src={profile.avatar_url} 
+            alt={profile.full_name || "User"} 
+            fill 
+            className="object-cover"
+          />
+        ) : profile?.full_name ? (
+          profile.full_name[0].toUpperCase()
+        ) : (
+          <User className="w-5 h-5" />
+        )}
       </button>
 
       {/* Dropdown */}
@@ -64,9 +76,7 @@ export function UserNavClient({ user, profile }: { user: any; profile: Profile |
                   onClick={() => setIsOpen(false)}
                   className="flex items-center gap-2.5 w-full px-3 py-2 text-sm font-medium text-slate-700 rounded-lg transition-colors hover:bg-slate-100 hover:text-slate-900 focus:bg-slate-100 focus:outline-none"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-70">
-                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><line x1="3" x2="21" y1="9" y2="9" /><path d="m9 16 3-3 3 3" />
-                  </svg>
+                  <ShieldCheck className="w-4 h-4 opacity-70" />
                   Admin Panel
                 </Link>
               ) : (
@@ -75,9 +85,7 @@ export function UserNavClient({ user, profile }: { user: any; profile: Profile |
                   onClick={() => setIsOpen(false)}
                   className="flex items-center gap-2.5 w-full px-3 py-2 text-sm font-medium text-slate-700 rounded-lg transition-colors hover:bg-slate-100 hover:text-slate-900 focus:bg-slate-100 focus:outline-none"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-70">
-                    <rect width="7" height="9" x="3" y="3" rx="1" /><rect width="7" height="5" x="14" y="3" rx="1" /><rect width="7" height="9" x="14" y="12" rx="1" /><rect width="7" height="5" x="3" y="16" rx="1" />
-                  </svg>
+                  <LayoutDashboard className="w-4 h-4 opacity-70" />
                   My Dashboard
                 </Link>
               )}
@@ -87,9 +95,7 @@ export function UserNavClient({ user, profile }: { user: any; profile: Profile |
                 onClick={handleLogout}
                 className="flex items-center gap-2.5 w-full px-3 py-2 text-sm font-medium text-red-600 rounded-lg transition-colors hover:bg-red-50 hover:text-red-700 focus:bg-red-50 focus:outline-none"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-70">
-                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" x2="9" y1="12" y2="12" />
-                </svg>
+                <LogOut className="w-4 h-4 opacity-70" />
                 Logout
               </button>
             </div>

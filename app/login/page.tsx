@@ -11,7 +11,8 @@ import {
   EyeOff,
   Loader2,
   AlertCircle,
-  ShieldCheck
+  ShieldCheck,
+  ArrowLeft
 } from "lucide-react";
 
 function LoginForm() {
@@ -193,6 +194,17 @@ function LoginForm() {
 export default function LoginPage() {
   return (
     <main className="min-h-screen flex items-center justify-center px-4 bg-[#0a0f1d] relative overflow-hidden">
+      {/* Back Button */}
+      <Link
+        href="/"
+        className="absolute top-8 left-8 flex items-center gap-3 text-gray-400 hover:text-white transition-colors group z-20"
+      >
+        <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all">
+          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
+        </div>
+        <span className="font-medium hidden sm:block">Back to Home</span>
+      </Link>
+
       {/* Background glowing orbs */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[300px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none" />

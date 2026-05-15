@@ -114,7 +114,13 @@ export default function AdmissionForm({
         <div className="pt-4">
           <a
             href={`https://wa.me/918103170595?text=${encodeURIComponent(
-              `Hello, I have applied for a course.`
+              `*New Admission Inquiry* 🎓\n` +
+              `--------------------------\n` +
+              `*Name:* ${formData.student_name}\n` +
+              `*Course:* ${courses.find((c) => c.id === formData.course_id)?.title || "Selected Course"}\n` +
+              `*Email:* ${formData.email}\n` +
+              `*Phone:* ${formData.phone}\n\n` +
+              `Hello, I just submitted my application on the website. Please let me know the next steps.`
             )}`}
             target="_blank"
             rel="noopener noreferrer"
