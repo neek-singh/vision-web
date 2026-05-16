@@ -55,7 +55,7 @@ export function UserNavClient({ user, profile }: { user: any; profile: Profile |
             {/* User Info */}
             <div className="px-3 py-2.5 mb-1 border-b border-slate-100">
               <p className="text-sm font-semibold text-slate-900 truncate">
-                {profile?.full_name || "User"}
+                {profile?.full_name || user?.user_metadata?.full_name || "Student"}
               </p>
               <p className="text-xs text-slate-500 truncate mt-0.5">
                 {user.email}

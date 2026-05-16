@@ -4,21 +4,29 @@ import Link from "next/link";
 import fs from "fs";
 import path from "path";
 import Image from "next/image";
+import { unstable_cache } from "next/cache";
 
 export const revalidate = 3600;
 
-export default async function BlogListingPage() {
-  const blogsFilePath = path.join(process.cwd(), "data", "blogs.json");
-  let blogsList: any[] = [];
-
-  try {
-    if (fs.existsSync(blogsFilePath)) {
-      const fileData = fs.readFileSync(blogsFilePath, "utf-8");
-      blogsList = JSON.parse(fileData);
+const getBlogs = unstable_cache(
+  async () => {
+    const blogsFilePath = path.join(process.cwd(), "data", "blogs.json");
+    try {
+      if (fs.existsSync(blogsFilePath)) {
+        const fileData = fs.readFileSync(blogsFilePath, "utf-8");
+        return JSON.parse(fileData);
+      }
+    } catch (e) {
+      console.error("Error loading blogs from JSON:", e);
     }
-  } catch (e) {
-    console.error("Error loading blogs from JSON:", e);
-  }
+    return [];
+  },
+  ["blogs-list"],
+  { revalidate: 3600, tags: ["blogs"] }
+);
+
+export default async function BlogListingPage() {
+  const blogsList = await getBlogs();
 
   return (
     <main className="w-full bg-gray-50 pb-32 min-h-screen">
@@ -58,7 +66,7 @@ export default async function BlogListingPage() {
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-            {blogsList.map((blog) => (
+            {blogsList.map((blog: any) => (
               <Link href={`/blog/${blog.slug}`} key={blog.id} className="block group">
                 <Card className="hover:-translate-y-3 hover:shadow-xl border border-slate-100 transition-all duration-300 flex flex-col overflow-hidden rounded-[1rem] h-full bg-white">
                   {blog.image_url && (

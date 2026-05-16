@@ -2,21 +2,32 @@ import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import Link from "next/link";
 import { createPublicSupabaseClient } from "@/lib/supabase-server";
+import { unstable_cache } from "next/cache";
 import Image from "next/image";
 
-export default async function PopularCourses() {
-  const supabase = createPublicSupabaseClient();
-  const { data: courses, error } = await supabase
-    .from("courses")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .limit(3);
+const getPopularCourses = unstable_cache(
+  async () => {
+    const supabase = createPublicSupabaseClient();
+    const { data, error } = await supabase
+      .from("courses")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(3);
+    
+    if (error) throw error;
+    return data || [];
+  },
+  ["popular-courses"],
+  { revalidate: 3600, tags: ["courses"] }
+);
 
-  if (error) {
+export default async function PopularCourses() {
+  let displayCourses = [];
+  try {
+    displayCourses = await getPopularCourses();
+  } catch (error) {
     console.error("Error fetching courses for home:", error);
   }
-
-  const displayCourses = courses || [];
 
   return (
     <section className="container mx-auto px-6 lg:px-8 pt-24 relative z-10">
@@ -33,7 +44,7 @@ export default async function PopularCourses() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        {displayCourses.map((course) => (
+        {displayCourses.map((course: any) => (
           <Card
             key={course.id}
             className="relative group overflow-hidden bg-white/70 backdrop-blur-xl border border-white/80 hover:border-blue-300/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.25)] transition-all duration-500 flex flex-col h-full rounded-[2rem]"
@@ -45,7 +56,8 @@ export default async function PopularCourses() {
                   alt={course.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={true}
                 />
               </div>
             )}
@@ -68,7 +80,7 @@ export default async function PopularCourses() {
                 </span>
                 {course.discount_fee ? (
                   <>
-                    <span className="font-bold text-emerald-700 bg-emerald-100/50 border border-emerald-200/50 px-3 py-1.5 rounded-xl text-[11px] uppercase tracking-wide flex items-center gap-1.5">
+                    <span className="font-bold text-emerald-700 bg-emerald-100/50 border border-emerald-200/50 px-3 py-1.5 rounded-xl text-[11px] uppercase tracking-wide">
                       ₹{course.discount_fee}
                     </span>
                     <span className="font-bold text-slate-400 line-through text-[11px] flex items-center">
@@ -76,7 +88,7 @@ export default async function PopularCourses() {
                     </span>
                   </>
                 ) : course.fee ? (
-                  <span className="font-bold text-emerald-700 bg-emerald-100/50 border border-emerald-200/50 px-3 py-1.5 rounded-xl text-[11px] uppercase tracking-wide flex items-center gap-1.5">
+                  <span className="font-bold text-emerald-700 bg-emerald-100/50 border border-emerald-200/50 px-3 py-1.5 rounded-xl text-[11px] uppercase tracking-wide">
                     ₹{course.fee}
                   </span>
                 ) : null}

@@ -2,24 +2,36 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { createPublicSupabaseClient } from "@/lib/supabase-server";
+import { unstable_cache } from "next/cache";
 import Image from "next/image";
 
-export const revalidate = 60;
+export const revalidate = 3600;
+
+const getCourse = unstable_cache(
+  async (id: string) => {
+    const supabase = createPublicSupabaseClient();
+    const { data, error } = await supabase
+      .from("courses")
+      .select(`
+        *,
+        enrollments:enrollments(count)
+      `)
+      .eq("id", id)
+      .single();
+    
+    if (error) throw error;
+    return data;
+  },
+  ["course-detail"],
+  { revalidate: 3600, tags: ["courses"] }
+);
 
 export default async function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-
-  const supabase = createPublicSupabaseClient();
-  const { data: course, error } = await supabase
-    .from("courses")
-    .select(`
-      *,
-      enrollments:enrollments(count)
-    `)
-    .eq("id", id)
-    .single();
-
-  if (error || !course) {
+  let course;
+  try {
+    course = await getCourse(id);
+  } catch (error) {
     console.error("Error fetching course detail from DB:", error);
     return notFound();
   }
@@ -36,8 +48,8 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
 
   return (
     <main className="min-h-screen bg-[#F8FAFC] pb-20">
-      {/* Optimized Single-Screen Course Hero Section */}
-      <section className="relative bg-white min-h-[100dvh] flex flex-col justify-center pt-20 pb-32 overflow-hidden border-b border-slate-100">
+      {/* Optimized Compact Course Hero Section */}
+      <section className="relative bg-white min-h-[60vh] flex flex-col justify-center pt-28 pb-20 overflow-hidden border-b border-slate-100">
 
         {/* Modern Tech Background Effects */}
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
@@ -134,31 +146,17 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
 
                 {/* Action Section */}
                 <div className="w-full sm:w-auto flex-grow flex sm:justify-end">
-                  {course.admission_closes && new Date(course.admission_closes) < new Date(new Date().setHours(0, 0, 0, 0)) ? (
-                    <div className="flex items-center gap-3 w-full sm:w-auto bg-red-50 text-red-700 p-3 rounded-2xl border border-red-100">
-                      <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-red-500"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
-                      </div>
-                      <div>
-                        <p className="font-bold text-base leading-tight">Admissions Closed</p>
-                        <p className="text-xs opacity-90 mt-0.5">
-                          Last date: {new Date(course.admission_closes).toLocaleDateString()}
-                        </p>
-                      </div>
-                    </div>
-                  ) : (
-                    <Button
-                      href={`/admissions?courseId=${course.id}`}
-                      size="lg"
-                      className="w-full sm:w-auto bg-blue-600 hover:bg-slate-900 text-white h-14 px-8 rounded-2xl text-base font-bold shadow-xl shadow-blue-500/20 hover:shadow-slate-900/20 transition-all duration-300 group flex items-center justify-center gap-2"
-                    >
-                      Enroll Now
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </Button>
-                  )}
+                  <Button
+                    href={`/admissions?courseId=${course.id}`}
+                    size="lg"
+                    className="w-full sm:w-auto bg-blue-600 hover:bg-slate-900 text-white h-14 px-8 rounded-2xl text-base font-bold shadow-xl shadow-blue-500/20 hover:shadow-slate-900/20 transition-all duration-300 group flex items-center justify-center gap-2"
+                  >
+                    Enroll Now
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </Button>
                 </div>
 
               </div>
@@ -190,7 +188,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
       <div className="container mx-auto px-6 lg:px-8 -mt-16 relative z-20 max-w-5xl">
 
         {/* Glassmorphic Card Wrapper */}
-        <div className="bg-white/80 backdrop-blur-2xl rounded-[2rem] p-6 md:p-8 shadow-2xl shadow-slate-200/50 border border-white/60 grid grid-cols-2 md:grid-cols-4 gap-y-8 md:gap-y-0 divide-x-0 md:divide-x divide-slate-100">
+        <div className="bg-white/80 backdrop-blur-2xl rounded-[2rem] p-6 md:p-8 shadow-2xl shadow-slate-200/50 border border-white/60 grid grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-0 divide-x-0 md:divide-x divide-slate-100">
 
           {/* Duration */}
           <div className="group text-center px-2 md:px-4">
@@ -218,29 +216,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
             </p>
           </div>
 
-          {/* Batch Closes */}
-          <div className="group text-center px-2 md:px-4 flex flex-col items-center">
-            <div className="w-12 h-12 mx-auto mb-4 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white group-hover:-rotate-3 transition-all duration-300 shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.5"></path><polyline points="16 2 16 6 22 6"></polyline><path d="M12 14v-4"></path><path d="M12 18h.01"></path></svg>
-            </div>
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">
-              Batch Closes
-            </p>
-            <p className="text-lg md:text-xl font-black text-slate-900 leading-tight">
-              {course.admission_closes
-                ? new Date(course.admission_closes).toLocaleDateString('en-IN', {
-                  day: 'numeric',
-                  month: 'short',
-                })
-                : 'Closing Soon'}
-            </p>
-            <div className="mt-1.5 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-50 border border-red-100">
-              <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
-              <span className="text-[10px] text-red-600 font-bold uppercase tracking-wider">
-                Limited Seats
-              </span>
-            </div>
-          </div>
+
 
           {/* Level */}
           <div className="group text-center px-2 md:px-4">
@@ -258,10 +234,8 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
         </div>
       </div>
 
-      <section className="container mx-auto px-6 lg:px-8 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          {/* Main Content */}
-          <div className="lg:col-span-8 space-y-20">
+      <section className="container mx-auto px-6 lg:px-8 py-16">
+        <div className="max-w-4xl mx-auto space-y-16">
 
             {/* 1. Key Features */}
             <div className="relative">
@@ -310,100 +284,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
 
             </div>
 
-            {/* 2. Enhanced Curriculum */}
-            {curriculum && curriculum.length > 0 && (
-              <div className="relative">
 
-                {/* Heading */}
-                <div className="flex items-center gap-4 mb-10">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
-                    </svg>
-                  </div>
-                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
-                    Course Curriculum
-                  </h2>
-                </div>
-
-                {/* Modules Accordion */}
-                <div className="space-y-4">
-                  {curriculum.map((module: any, idx: number) => (
-                    <details
-                      key={idx}
-                      className="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-200 transition-all duration-300 overflow-hidden"
-                      // Adding 'open' to the first item by default is often good UX for course pages
-                      open={idx === 0}
-                    >
-
-                      {/* Module Header */}
-                      {/* Note: [&::-webkit-details-marker]:hidden removes the ugly default browser arrow */}
-                      <summary className="cursor-pointer list-none p-6 flex justify-between items-center bg-white group-open:bg-slate-50/50 transition-colors select-none [&::-webkit-details-marker]:hidden">
-
-                        <div className="flex items-center gap-5">
-                          {/* Refined Step Number */}
-                          <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 border border-indigo-100 flex items-center justify-center font-black text-lg group-open:bg-indigo-600 group-open:text-white transition-colors duration-300 shadow-sm flex-shrink-0">
-                            {idx + 1}
-                          </div>
-
-                          <div>
-                            <h3 className="text-lg font-bold text-slate-900 group-open:text-indigo-600 transition-colors">
-                              {module.module_title}
-                            </h3>
-                            <p className="text-sm font-medium text-slate-500 mt-0.5">
-                              {module.topics?.length || 0} Topics Included
-                            </p>
-                          </div>
-                        </div>
-
-                        {/* Custom Animated Chevron */}
-                        <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center group-open:rotate-180 group-open:bg-indigo-100 group-open:text-indigo-600 transition-all duration-300 flex-shrink-0">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                          </svg>
-                        </div>
-
-                      </summary>
-
-                      {/* Topics Grid */}
-                      <div className="p-6 pt-2 bg-slate-50/50 border-t border-slate-100">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {(module.topics || []).map((topic: string, tidx: number) => (
-                            <div
-                              key={tidx}
-                              className="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-300 hover:shadow-md transition-all group/topic cursor-default"
-                            >
-                              {/* Subtle checkmark bullet */}
-                              <div className="mt-0.5 w-5 h-5 rounded-full bg-indigo-50 text-indigo-500 flex items-center justify-center flex-shrink-0 group-hover/topic:bg-indigo-500 group-hover/topic:text-white transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                                  <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                              </div>
-                              <span className="text-slate-700 text-sm font-medium leading-relaxed group-hover/topic:text-slate-900 transition-colors">
-                                {topic}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                    </details>
-                  ))}
-                </div>
-
-                {/* Standardized Bottom Trust Badge */}
-                <div className="mt-8 inline-flex items-center gap-3 px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl shadow-sm">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-600"></span>
-                  </span>
-                  <span className="text-sm text-slate-700 font-medium">
-                    Step-by-step curriculum designed to take you from beginner to job-ready
-                  </span>
-                </div>
-
-              </div>
-            )}
 
             {/* 3. Enhanced Tools Covered */}
             {tools && tools.length > 0 && (
@@ -495,20 +376,20 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
               </div>
             )}
 
-            {/* 5. Hiring Partners */}
-            {course.hiring_companies && course.hiring_companies.length > 0 && (
-              <div className="py-12 border-t border-slate-100">
-                <h2 className="text-2xl font-black text-slate-900 mb-10 text-center uppercase tracking-widest opacity-40">
-                  Our Students Work At
-                </h2>
-                <div className="flex flex-wrap justify-center gap-10 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
-                  {course.hiring_companies.map((company: any, idx: number) => (
-                    <div key={idx} className="h-8 md:h-10 flex items-center">
-                      {company.logo_url ? (
-                        <img src={company.logo_url} alt={company.name} className="h-full object-contain max-w-[120px]" />
-                      ) : (
-                        <span className="font-bold text-slate-400">{company.name}</span>
-                      )}
+            {/* 5. Program Trainers (Moved) */}
+            {trainers.length > 0 && (
+              <div className="bg-white p-8 md:p-10 rounded-[3rem] border border-gray-100 shadow-sm">
+                <h3 className="text-2xl font-black text-blue-950 mb-8">Program Trainers</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  {trainers.map((trainer: any, idx: number) => (
+                    <div key={idx} className="flex items-center gap-6">
+                      <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl overflow-hidden shadow-inner">
+                        {trainer.image_url ? <Image src={trainer.image_url} alt={trainer.name} width={64} height={64} className="object-cover" /> : '👤'}
+                      </div>
+                      <div>
+                        <p className="font-black text-blue-950">{trainer.name}</p>
+                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{trainer.role}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -575,81 +456,6 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                 </div>
               </div>
             )}
-
-          </div>
-
-          {/* Sidebar */}
-          <div className="lg:col-span-4 space-y-10">
-            {/* Career Ops */}
-            <div className="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100 relative overflow-hidden">
-              {/* Subtle Decorative Glow for light mode */}
-              <div className="absolute -right-10 -top-10 w-40 h-40 bg-blue-500 rounded-full blur-3xl opacity-10"></div>
-
-              <h3 className="text-2xl font-black text-blue-950 mb-8 relative z-10">
-                Career Outcomes
-              </h3>
-
-              <div className="space-y-6 relative z-10">
-                {(course.career_opportunities || []).map((op: string, idx: number) => (
-                  <div key={idx} className="flex items-center gap-4 group cursor-default">
-                    {/* Web Icon Container with Hover Effect */}
-                    <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-md group-hover:-translate-y-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.8}
-                        stroke="currentColor"
-                        className="w-6 h-6"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-                      </svg>
-                    </div>
-
-                    {/* Outcome Text */}
-                    <span className="font-bold text-gray-700 transition-colors duration-300 group-hover:text-blue-900">
-                      {op}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Trainers */}
-            {trainers.length > 0 && (
-              <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm">
-                <h3 className="text-2xl font-black text-blue-950 mb-8">Program Trainers</h3>
-                <div className="space-y-8">
-                  {trainers.map((trainer: any, idx: number) => (
-                    <div key={idx} className="flex items-center gap-6">
-                      <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl overflow-hidden">
-                        {trainer.image_url ? <Image src={trainer.image_url} alt={trainer.name} width={64} height={64} className="object-cover" /> : '👤'}
-                      </div>
-                      <div>
-                        <p className="font-black text-blue-950">{trainer.name}</p>
-                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{trainer.role}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Who is this for */}
-            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-10 rounded-[3rem] border border-indigo-100">
-              <h3 className="text-xl font-black text-blue-950 mb-4">Who is this for?</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                {course.target_audience || 'Anyone looking to start their career in technology or upgrade their existing skills.'}
-              </p>
-              <div className="space-y-3">
-                {(course.skills_developed || []).slice(0, 4).map((skill: string, idx: number) => (
-                  <div key={idx} className="flex items-center gap-2 text-xs font-bold text-blue-800">
-                    <span className="text-blue-500">✨</span> {skill}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 

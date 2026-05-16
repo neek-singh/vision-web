@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import fs from "fs";
 import path from "path";
 
@@ -27,11 +27,12 @@ export async function saveBlog(formData: any) {
 
     fs.writeFileSync(blogsFilePath, JSON.stringify(blogs, null, 2), "utf-8");
 
-    revalidatePath("/blog");
+    revalidatePath("/blog", "page");
     if (formData.slug) {
-      revalidatePath(`/blog/${formData.slug}`);
+      revalidatePath(`/blog/${formData.slug}`, "page");
     }
-    revalidatePath("/admin/blogs");
+    revalidatePath("/admin/blogs", "page");
+    revalidateTag("blogs", "max");
     return { success: true };
   } catch (e: any) {
     console.error("Failed to save blog to JSON:", e);
@@ -49,8 +50,9 @@ export async function deleteBlog(id: string) {
     const updatedBlogs = blogs.filter((b: any) => b.id !== id);
     fs.writeFileSync(blogsFilePath, JSON.stringify(updatedBlogs, null, 2), "utf-8");
 
-    revalidatePath("/blog");
-    revalidatePath("/admin/blogs");
+    revalidatePath("/blog", "page");
+    revalidatePath("/admin/blogs", "page");
+    revalidateTag("blogs", "max");
     return { success: true };
   } catch (e: any) {
     console.error("Failed to delete blog from JSON:", e);

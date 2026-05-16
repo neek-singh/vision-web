@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import fs from "fs";
 import path from "path";
 
@@ -52,8 +52,9 @@ export async function uploadImage(formData: FormData) {
     gallery.unshift(newImage);
     fs.writeFileSync(galleryFilePath, JSON.stringify(gallery, null, 2), "utf-8");
 
-    revalidatePath("/gallery");
-    revalidatePath("/admin/gallery");
+    revalidatePath("/gallery", "page");
+    revalidatePath("/admin/gallery", "page");
+    revalidateTag("gallery", "max");
     return { success: true };
   } catch (error: any) {
     console.error("Failed to upload image to JSON:", error);
@@ -82,8 +83,9 @@ export async function deleteImage(id: string, imageUrl: string) {
       }
     }
 
-    revalidatePath("/gallery");
-    revalidatePath("/admin/gallery");
+    revalidatePath("/gallery", "page");
+    revalidatePath("/admin/gallery", "page");
+    revalidateTag("gallery", "max");
     return { success: true };
   } catch (error: any) {
     console.error("Failed to delete image from JSON:", error);

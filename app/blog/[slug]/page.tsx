@@ -4,25 +4,33 @@ import { Button } from "@/components/ui/Button";
 import fs from "fs";
 import path from "path";
 import Image from "next/image";
+import { unstable_cache } from "next/cache";
 
 export const revalidate = 3600;
+
+const getBlogBySlug = unstable_cache(
+  async (slug: string) => {
+    const blogsFilePath = path.join(process.cwd(), "data", "blogs.json");
+    try {
+      if (fs.existsSync(blogsFilePath)) {
+        const fileData = fs.readFileSync(blogsFilePath, "utf-8");
+        const blogs = JSON.parse(fileData);
+        return blogs.find((b: any) => b.slug === slug);
+      }
+    } catch (e) {
+      console.error("Error loading blog by slug:", e);
+    }
+    return null;
+  },
+  ["blog-detail"],
+  { revalidate: 3600, tags: ["blogs"] }
+);
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
   const { slug } = await params;
-  const blogsFilePath = path.join(process.cwd(), "data", "blogs.json");
-  
-  let blog: any = null;
-  try {
-    if (fs.existsSync(blogsFilePath)) {
-      const fileData = fs.readFileSync(blogsFilePath, "utf-8");
-      const blogs = JSON.parse(fileData);
-      blog = blogs.find((b: any) => b.slug === slug);
-    }
-  } catch (e) {
-    console.error("Error loading blog metadata:", e);
-  }
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     return { title: "Blog Not Found" };
@@ -38,18 +46,7 @@ export default async function BlogPostPage(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
-  const blogsFilePath = path.join(process.cwd(), "data", "blogs.json");
-  
-  let blog: any = null;
-  try {
-    if (fs.existsSync(blogsFilePath)) {
-      const fileData = fs.readFileSync(blogsFilePath, "utf-8");
-      const blogs = JSON.parse(fileData);
-      blog = blogs.find((b: any) => b.slug === slug);
-    }
-  } catch (e) {
-    console.error("Error loading blog post:", e);
-  }
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     return notFound();

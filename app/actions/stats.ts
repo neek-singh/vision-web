@@ -2,7 +2,7 @@
 
 import fs from "fs";
 import path from "path";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 const statsFilePath = path.join(process.cwd(), "data", "stats.json");
 
@@ -23,8 +23,9 @@ export async function updateStats(formData: FormData) {
     // Write to file
     fs.writeFileSync(statsFilePath, JSON.stringify(newStats, null, 2), "utf-8");
 
-    revalidatePath("/about");
-    revalidatePath("/admin/stats");
+    revalidatePath("/about", "page");
+    revalidatePath("/admin/stats", "page");
+    revalidateTag("stats", "max");
 
     return;
   } catch (error: any) {

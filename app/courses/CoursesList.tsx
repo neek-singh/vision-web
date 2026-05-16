@@ -21,11 +21,10 @@ type Course = {
 
 export default function CoursesList({ initialCourses }: { initialCourses: Course[] }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1000);
-    return () => clearTimeout(timer);
+    // Component mounted
   }, []);
 
   // Simple client-side filter
@@ -86,7 +85,8 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
                       alt={course.title}
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-300"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={index < 3}
                     />
                   </div>
                 )}
@@ -115,8 +115,7 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
 
                     {/* Pricing Tag */}
                     {course.discount_fee && course.discount_fee > 0 ? (
-                      <div className="inline-flex items-center gap-1.5 font-medium text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md text-xs border border-emerald-100/60">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-500"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+                      <div className="inline-flex items-center font-medium text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md text-xs border border-emerald-100/60">
                         <span>₹{course.discount_fee.toLocaleString()}</span>
                         <span className="text-emerald-700/50 line-through text-[10px] ml-0.5">
                           ₹{course.fee?.toLocaleString()}
@@ -124,8 +123,7 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
                       </div>
                     ) : (
                       course.fee && (
-                        <span className="inline-flex items-center gap-1.5 font-medium text-slate-700 bg-slate-100/80 px-2.5 py-1 rounded-md text-xs border border-slate-200/60">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-500"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+                        <span className="inline-flex items-center font-medium text-slate-700 bg-slate-100/80 px-2.5 py-1 rounded-md text-xs border border-slate-200/60">
                           ₹{course.fee.toLocaleString()}
                         </span>
                       )

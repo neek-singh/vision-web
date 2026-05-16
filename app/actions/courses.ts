@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { createServerSupabaseClient } from "@/lib/supabase-server";
 
 export async function saveCourse(formData: any) {
@@ -61,11 +61,12 @@ export async function saveCourse(formData: any) {
       throw new Error(result.error.message);
     }
 
-    revalidatePath("/courses");
+    revalidatePath("/courses", "page");
     if (formData.id) {
-      revalidatePath(`/courses/${formData.id}`);
+      revalidatePath(`/courses/${formData.id}`, "page");
     }
-    revalidatePath("/admin/courses");
+    revalidatePath("/admin/courses", "page");
+    revalidateTag("courses", "max");
     return { success: true };
   } catch (e: any) {
     console.error("Failed to save course to DB:", e);
@@ -84,8 +85,9 @@ export async function deleteCourse(id: string) {
 
     if (error) throw error;
 
-    revalidatePath("/courses");
-    revalidatePath("/admin/courses");
+    revalidatePath("/courses", "page");
+    revalidatePath("/admin/courses", "page");
+    revalidateTag("courses", "max");
     return { success: true };
   } catch (e: any) {
     console.error("Failed to delete course from DB:", e);

@@ -2,19 +2,27 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import fs from "fs";
 import path from "path";
+import { unstable_cache } from "next/cache";
+
+const getBatches = unstable_cache(
+  async () => {
+    const batchesFilePath = path.join(process.cwd(), "data", "batches.json");
+    try {
+      if (fs.existsSync(batchesFilePath)) {
+        const fileData = fs.readFileSync(batchesFilePath, "utf-8");
+        return JSON.parse(fileData);
+      }
+    } catch (e) {
+      console.error("Home batches fetch error:", e);
+    }
+    return [];
+  },
+  ["upcoming-batches"],
+  { revalidate: 3600, tags: ["batches"] }
+);
 
 export default async function UpcomingBatches() {
-  const batchesFilePath = path.join(process.cwd(), "data", "batches.json");
-  let displayBatches: any[] = [];
-
-  try {
-    if (fs.existsSync(batchesFilePath)) {
-      const fileData = fs.readFileSync(batchesFilePath, "utf-8");
-      displayBatches = JSON.parse(fileData);
-    }
-  } catch (e) {
-    console.error("Home batches error:", e);
-  }
+  const displayBatches = await getBatches();
 
   return (
     <section className="container mx-auto px-6 lg:px-8 py-24 max-w-7xl relative z-10">
@@ -33,7 +41,7 @@ export default async function UpcomingBatches() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {displayBatches.map((batch, idx) => (
+        {displayBatches.map((batch: any, idx: number) => (
           <Card
             key={idx}
             className="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl border border-slate-200 hover:border-blue-200 transition-all duration-300 hover:-translate-y-1.5 flex flex-col overflow-hidden"

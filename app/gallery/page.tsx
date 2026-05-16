@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import fs from "fs";
 import path from "path";
+import { unstable_cache } from "next/cache";
 import GalleryGridClientWrapper from "@/components/GalleryGridClientWrapper";
 
 export const metadata: Metadata = {
@@ -15,18 +16,25 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
-export default async function GalleryPage() {
-  const galleryFilePath = path.join(process.cwd(), "data", "gallery.json");
-  let images: any[] = [];
-
-  try {
-    if (fs.existsSync(galleryFilePath)) {
-      const fileData = fs.readFileSync(galleryFilePath, "utf-8");
-      images = JSON.parse(fileData);
+const getGalleryImages = unstable_cache(
+  async () => {
+    const galleryFilePath = path.join(process.cwd(), "data", "gallery.json");
+    try {
+      if (fs.existsSync(galleryFilePath)) {
+        const fileData = fs.readFileSync(galleryFilePath, "utf-8");
+        return JSON.parse(fileData);
+      }
+    } catch (e) {
+      console.error("Error loading gallery from JSON:", e);
     }
-  } catch (e) {
-    console.error("Error loading gallery from JSON:", e);
-  }
+    return [];
+  },
+  ["gallery-images"],
+  { revalidate: 3600, tags: ["gallery"] }
+);
+
+export default async function GalleryPage() {
+  const images = await getGalleryImages();
 
   return (
     <main className="flex-col w-full bg-slate-50 pb-24 md:pb-32 min-h-screen">

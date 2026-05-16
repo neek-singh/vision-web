@@ -29,13 +29,19 @@ export function UserNav() {
         if (isMounted) setUser(currentUser);
 
         if (currentUser) {
-          const { data: profile } = await supabase
+          const { data: profileData } = await supabase
             .from("profiles")
             .select("role, full_name, avatar_url")
             .eq("id", currentUser.id)
             .single();
           
-          if (isMounted) setProfile(profile);
+          if (isMounted) {
+            setProfile({
+              role: profileData?.role || 'student',
+              full_name: profileData?.full_name || currentUser.user_metadata?.full_name || currentUser.user_metadata?.name || "Student",
+              avatar_url: profileData?.avatar_url || currentUser.user_metadata?.avatar_url || null
+            });
+          }
         } else {
           if (isMounted) setProfile(null);
         }
@@ -46,14 +52,13 @@ export function UserNav() {
       }
     };
 
-    // Initial fetch
-    fetchUserAndProfile();
+    // onAuthStateChange handles initial session and updates
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event: AuthChangeEvent, session: Session | null) => {
         if (isMounted) {
           if (event === 'SIGNED_IN' || event === 'USER_UPDATED' || event === 'INITIAL_SESSION') {
-            fetchUserAndProfile(session?.user);
+            fetchUserAndProfile(session?.user ?? null);
           } else if (event === 'SIGNED_OUT') {
             setUser(null);
             setProfile(null);

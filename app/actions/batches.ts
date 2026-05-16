@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import fs from "fs";
 import path from "path";
 
@@ -25,8 +25,9 @@ export async function saveBatch(formData: any) {
 
     fs.writeFileSync(batchesFilePath, JSON.stringify(batches, null, 2), "utf-8");
 
-    revalidatePath("/");
-    revalidatePath("/admin/batches");
+    revalidatePath("/", "page");
+    revalidatePath("/admin/batches", "page");
+    revalidateTag("batches", "max");
     return { success: true };
   } catch (e: any) {
     console.error("Failed to save batch to JSON:", e);
@@ -44,8 +45,9 @@ export async function deleteBatch(id: string) {
     const updatedBatches = batches.filter((b: any) => b.id !== id);
     fs.writeFileSync(batchesFilePath, JSON.stringify(updatedBatches, null, 2), "utf-8");
 
-    revalidatePath("/");
-    revalidatePath("/admin/batches");
+    revalidatePath("/", "page");
+    revalidatePath("/admin/batches", "page");
+    revalidateTag("batches", "max");
     return { success: true };
   } catch (e: any) {
     console.error("Failed to delete batch from JSON:", e);
