@@ -21,7 +21,7 @@ const getCourses = unstable_cache(
         enrollments:enrollments(count)
       `)
       .order("created_at", { ascending: false });
-    
+
     if (error) throw error;
     return data || [];
   },
@@ -43,23 +43,23 @@ export default async function CoursesPage() {
       {/* Hero Section (Enhanced Gradient & Spacing) */}
       <section className="relative overflow-hidden bg-white border-b border-slate-200 py-20 lg:py-32">
         {/* Subtle Background Elements */}
-        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-blue-50 to-white pointer-events-none" />
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-32 -left-24 w-72 h-72 bg-indigo-100/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-blue-100/60 to-white pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-300/60 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-32 -left-24 w-72 h-72 bg-indigo-300/60 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative container mx-auto px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-blue-50 text-blue-700 font-semibold rounded-full text-sm border border-blue-200/60 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <div className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 bg-blue-50 text-blue-700 font-semibold rounded-full text-xs border border-blue-200/60 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" />
             </svg>
             Programs For All Skill Levels
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700">
+          <h1 className="text-2xl md:text-3xl font-semibold text-slate-900 tracking-tight mb-3 animate-in fade-in slide-in-from-bottom-6 duration-700">
             Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Courses</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150">
+          <p className="text-xs md:text-sm text-slate-900 max-w-xl mx-auto leading-relaxed font-medium animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150">
             Find the perfect program to launch or advance your career in tech. All our courses include hands-on projects, expert mentorship, and career placement support.
           </p>
         </div>
@@ -74,18 +74,18 @@ export default async function CoursesPage() {
       <section className="relative py-24 md:py-32 bg-slate-50/50 border-t border-slate-100 overflow-hidden z-10">
 
         {/* Ambient Background Elements */}
-        <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-blue-100/40 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-indigo-100/40 rounded-full blur-[100px] pointer-events-none translate-y-1/3 -translate-x-1/4"></div>
+        <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-blue-300/60 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-indigo-300/60 rounded-full blur-[100px] pointer-events-none translate-y-1/3 -translate-x-1/4"></div>
 
         <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 md:mb-20">
             <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 bg-blue-50 text-blue-700 font-bold rounded-full text-sm border border-blue-100 shadow-sm uppercase tracking-wider">
               The Vision IT Advantage
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">
               Why Learn With <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Vision IT?</span>
             </h2>
-            <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto font-medium leading-relaxed">
               We go beyond traditional textbook teaching to ensure you are truly industry-ready from day one.
             </p>
           </div>
@@ -157,10 +157,10 @@ export default async function CoursesPage() {
                 <div className={`w-14 h-14 ${feature.bg} ${feature.text} rounded-2xl flex items-center justify-center mb-6 ${feature.groupHoverBg} group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm`}>
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
+                <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
                   {feature.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed font-medium">
+                <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium">
                   {feature.desc}
                 </p>
               </div>
@@ -173,12 +173,12 @@ export default async function CoursesPage() {
       <section className="relative py-16 lg:py-20 bg-white overflow-hidden z-10 border-t border-slate-100">
 
         {/* Subtle Top Glow (Reduced size so it doesn't stretch the page) */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-48 bg-blue-50/80 blur-[80px] pointer-events-none rounded-full"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-48 bg-blue-200/80 blur-[80px] pointer-events-none rounded-full"></div>
 
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative z-10">
 
           <div className="text-center mb-10 relative">
-            <h2 className="text-3xl md:text-4xl font-black mb-3 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 pb-1">
+            <h2 className="text-2xl md:text-3xl font-extrabold mb-3 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 pb-1">
               Frequently Asked Questions
             </h2>
             <p className="text-slate-500 text-base md:text-lg font-medium">
@@ -219,7 +219,7 @@ export default async function CoursesPage() {
                 // Reduced padding to p-5 md:p-6 for a tighter layout
                 className="group bg-white open:bg-slate-50/50 p-5 md:p-6 rounded-[1.5rem] border border-slate-200 hover:border-blue-200 open:border-blue-300 open:shadow-[0_4px_20px_-5px_rgba(59,130,246,0.1)] transition-all duration-300 cursor-pointer"
               >
-                <summary className="flex justify-between items-center font-bold list-none text-slate-800 text-base md:text-lg outline-none">
+                <summary className="flex justify-between items-center font-bold list-none text-slate-800 text-base outline-none">
                   <span className="group-hover:text-blue-600 group-open:text-blue-700 transition-colors pr-6 tracking-wide">
                     {faq.q}
                   </span>

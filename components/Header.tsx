@@ -92,6 +92,21 @@ export default function Header({ userNav }: { userNav?: React.ReactNode }) {
               <NavLink href="/blog">Blog</NavLink>
               <NavLink href="/gallery">Gallery</NavLink>
               <NavLink href="/contact">Contact</NavLink>
+
+              {/* More Dropdown */}
+              <div className="relative group">
+                <button className="group relative flex items-center gap-1 text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors py-2">
+                  More
+                  <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 rounded-full transition-all duration-300 ease-out group-hover:w-full" />
+                </button>
+                <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-slate-100 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 flex flex-col overflow-hidden py-2 z-50">
+                  <Link href="/learn" className="px-5 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors flex items-center justify-between">
+                    Vision Learn
+                    <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
+                  </Link>
+                </div>
+              </div>
             </div>
 
             {/* 👤 User */}
@@ -134,6 +149,8 @@ export default function Header({ userNav }: { userNav?: React.ReactNode }) {
             <MobileLink href="/blog" onClick={handleClose}>Blog</MobileLink>
             <MobileLink href="/gallery" onClick={handleClose}>Gallery</MobileLink>
             <MobileLink href="/contact" onClick={handleClose}>Contact</MobileLink>
+            <div className="my-2 border-t border-slate-200/60"></div>
+            <MobileLink href="/learn" onClick={handleClose}>Vision Learn</MobileLink>
           </div>
         </div>
       )}

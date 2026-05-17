@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto, Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import "../bones/registry";
@@ -9,7 +9,19 @@ import { UserNav } from "@/components/UserNav";
 import StructuredData from "@/components/StructuredData";
 import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const roboto = Roboto({
+  weight: ['300', '400', '500', '700', '900'],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto",
+});
+
+const poppins = Poppins({
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-poppins",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://visionitinstitute.com"),
@@ -94,8 +106,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning className={`${roboto.variable} ${poppins.variable} font-sans`}>
         <GoogleTagManager gtmId="GTM-KNH8M4KH" />
         <GoogleAnalytics gaId="G-SNT7CK2VDP" />
         <StructuredData />
