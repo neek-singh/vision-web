@@ -290,7 +290,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>
                 </div>
                 <h2 className="text-base md:text-lg font-bold text-slate-900 tracking-tight">
-                  Tools You'll Master
+                  Tools
                 </h2>
               </div>
 
@@ -391,46 +391,46 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
           {/* 6. FAQs */}
           {faqs.length > 0 && (
             <div className="py-6">
-              <div className="text-center mb-8">
-                <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight">
+              <div className="text-center mb-6">
+                <h2 className="text-base md:text-lg font-semibold text-slate-900 tracking-tight">
                   Frequently Asked Questions
                 </h2>
               </div>
 
-              <div className="space-y-3.5 max-w-4xl mx-auto">
+              <div className="space-y-3 max-w-3xl mx-auto">
                 {faqs.map((faq: any, idx: number) => (
                   <details
                     key={idx}
                     className="group bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-100 transition-all duration-300 overflow-hidden cursor-pointer"
                   >
                     {/* Question Header */}
-                    <summary className="flex items-center justify-between p-4 font-bold text-blue-900 list-none [&::-webkit-details-marker]:hidden select-none">
-                      <div className="flex items-center gap-3">
-                        <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-black text-xs">
+                    <summary className="flex items-center justify-between p-3.5 font-bold text-blue-900 list-none [&::-webkit-details-marker]:hidden select-none">
+                      <div className="flex items-center gap-2.5">
+                        <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-md bg-blue-50 text-blue-600 font-bold text-[10px]">
                           Q
                         </span>
-                        <span className="text-sm md:text-base">{faq.question}</span>
+                        <span className="text-xs md:text-sm font-semibold text-slate-900">{faq.question}</span>
                       </div>
 
                       {/* Animated Plus / Minus Icon */}
-                      <div className="relative flex-shrink-0 ml-3 w-5 h-5 text-blue-500">
+                      <div className="relative flex-shrink-0 ml-3 w-4 h-4 text-blue-500">
                         {/* Plus Icon (Visible when closed) */}
                         <svg
-                          className="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity duration-200"
+                          className="absolute inset-0 w-4 h-4 opacity-100 group-open:opacity-0 transition-opacity duration-200"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          strokeWidth="2"
+                          strokeWidth="2.5"
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
                         </svg>
                         {/* Minus Icon (Visible when open) */}
                         <svg
-                          className="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity duration-200"
+                          className="absolute inset-0 w-4 h-4 opacity-0 group-open:opacity-100 transition-opacity duration-200"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          strokeWidth="2"
+                          strokeWidth="2.5"
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" />
                         </svg>
@@ -438,7 +438,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                     </summary>
 
                     {/* Answer Content */}
-                    <div className="px-4 pb-4 pt-1 text-slate-800 text-xs md:text-sm leading-relaxed sm:pl-14">
+                    <div className="px-3.5 pb-3.5 pt-1 text-slate-800 text-[11px] md:text-xs leading-relaxed sm:pl-12">
                       <div className="border-l-2 border-blue-100 pl-3 font-medium">
                         {faq.answer}
                       </div>
@@ -452,7 +452,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
       </section>
 
       <section className="text-center py-12">
-        <h2 className="text-xl md:text-2xl font-black text-slate-900 mb-2">
+        <h2 className="text-base md:text-lg font-semibold text-black mb-2">
           Ready to Start Your Career?
         </h2>
 
