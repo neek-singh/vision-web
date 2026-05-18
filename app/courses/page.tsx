@@ -43,17 +43,11 @@ export default async function CoursesPage() {
       {/* Hero Section (Enhanced Gradient & Spacing) */}
       <section className="relative overflow-hidden bg-white border-b border-slate-200 py-20 lg:py-32">
         {/* Subtle Background Elements */}
-        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-blue-100/60 to-white pointer-events-none" />
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-300/60 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-32 -left-24 w-72 h-72 bg-indigo-300/60 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-blue-100/80 to-white pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-300/80 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-32 -left-24 w-72 h-72 bg-indigo-300/80 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative container mx-auto px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 bg-blue-50 text-blue-700 font-semibold rounded-full text-xs border border-blue-200/60 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" />
-            </svg>
-            Programs For All Skill Levels
-          </div>
 
           <h1 className="text-2xl md:text-3xl font-semibold text-slate-900 tracking-tight mb-3 animate-in fade-in slide-in-from-bottom-6 duration-700">
             Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Courses</span>
@@ -71,21 +65,18 @@ export default async function CoursesPage() {
       </section>
 
       {/* Why Learn With Vision IT Section */}
-      <section className="relative py-24 md:py-32 bg-slate-50/50 border-t border-slate-100 overflow-hidden z-10">
+      <section className="relative py-24 md:py-32 bg-slate-50/80 border-t border-slate-100 overflow-hidden z-10">
 
         {/* Ambient Background Elements */}
-        <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-blue-300/60 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-indigo-300/60 rounded-full blur-[100px] pointer-events-none translate-y-1/3 -translate-x-1/4"></div>
+        <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-blue-300/80 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-indigo-300/80 rounded-full blur-[100px] pointer-events-none translate-y-1/3 -translate-x-1/4"></div>
 
         <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 md:mb-20">
-            <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 bg-blue-50 text-blue-700 font-bold rounded-full text-sm border border-blue-100 shadow-sm uppercase tracking-wider">
-              The Vision IT Advantage
-            </div>
-            <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">
+            <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mb-6 tracking-tight">
               Why Learn With <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Vision IT?</span>
             </h2>
-            <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="text-black text-xs md:text-sm max-w-2xl mx-auto font-medium leading-relaxed">
               We go beyond traditional textbook teaching to ensure you are truly industry-ready from day one.
             </p>
           </div>
@@ -149,18 +140,20 @@ export default async function CoursesPage() {
             ].map((feature, i) => (
               <div
                 key={i}
-                className="group bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-2 hover:border-blue-100 transition-all duration-300 relative overflow-hidden"
+                className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 hover:border-blue-100 transition-all duration-300 relative overflow-hidden"
               >
                 {/* Subtle Hover Gradient Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
 
-                <div className={`w-14 h-14 ${feature.bg} ${feature.text} rounded-2xl flex items-center justify-center mb-6 ${feature.groupHoverBg} group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm`}>
-                  {feature.icon}
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`flex-shrink-0 ${feature.text} transition-transform duration-300 group-hover:scale-110 [&>svg]:w-6 [&>svg]:h-6`}>
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-base font-semibold text-slate-900 group-hover:text-blue-700 transition-colors duration-300 leading-tight">
+                    {feature.title}
+                  </h3>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium">
+                <p className="text-xs text-black leading-relaxed font-medium">
                   {feature.desc}
                 </p>
               </div>
@@ -178,16 +171,15 @@ export default async function CoursesPage() {
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative z-10">
 
           <div className="text-center mb-10 relative">
-            <h2 className="text-2xl md:text-3xl font-extrabold mb-3 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 pb-1">
+            <h2 className="text-xl md:text-2xl font-semibold mb-3 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 pb-1">
               Frequently Asked Questions
             </h2>
-            <p className="text-slate-500 text-base md:text-lg font-medium">
+            <p className="text-black text-sm md:text-base ">
               Everything you need to know about our courses, admissions, and campus.
             </p>
           </div>
 
-          {/* Reduced gap between questions using space-y-3 */}
-          <div className="space-y-3 max-w-3xl mx-auto">
+          <div className="space-y-2 max-w-3xl mx-auto">
             {[
               {
                 q: "What courses do you specialize in?",
@@ -216,10 +208,9 @@ export default async function CoursesPage() {
             ].map((faq, index) => (
               <details
                 key={index}
-                // Reduced padding to p-5 md:p-6 for a tighter layout
-                className="group bg-white open:bg-slate-50/50 p-5 md:p-6 rounded-[1.5rem] border border-slate-200 hover:border-blue-200 open:border-blue-300 open:shadow-[0_4px_20px_-5px_rgba(59,130,246,0.1)] transition-all duration-300 cursor-pointer"
+                className="group bg-white open:bg-slate-50/80 p-4 md:p-5 rounded-2xl border border-slate-200 hover:border-blue-200 open:border-blue-300 open:shadow-[0_4px_20px_-5px_rgba(59,130,246,0.1)] transition-all duration-300 cursor-pointer"
               >
-                <summary className="flex justify-between items-center font-bold list-none text-slate-800 text-base outline-none">
+                <summary className="flex justify-between items-center list-none text-black text-base outline-none">
                   <span className="group-hover:text-blue-600 group-open:text-blue-700 transition-colors pr-6 tracking-wide">
                     {faq.q}
                   </span>
@@ -233,7 +224,7 @@ export default async function CoursesPage() {
                 </summary>
 
                 <div className="mt-4 pt-4 border-t border-slate-100 overflow-hidden">
-                  <p className="text-slate-600 leading-relaxed font-medium transform transition-all duration-500 origin-top animate-in fade-in slide-in-from-top-2">
+                  <p className="text-sm text-black leading-relaxed  transform transition-all duration-500 origin-top animate-in fade-in slide-in-from-top-2">
                     {faq.a}
                   </p>
                 </div>
@@ -243,7 +234,7 @@ export default async function CoursesPage() {
 
           {/* Bottom CTA with tighter top margin */}
           <div className="text-center mt-8">
-            <a href="tel:+918103170595" className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 font-medium transition-colors duration-300">
+            <a href="tel:+918103170595" className="inline-flex items-center gap-2 text-sm text-black hover:text-blue-600 font-medium transition-colors duration-300">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
               Call +91 8103170595 for quick answers
             </a>

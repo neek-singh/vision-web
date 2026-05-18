@@ -65,44 +65,39 @@ export default async function AdmissionsPage({
       {/* 🌌 Hero */}
       <section className="relative bg-[#0a0f1d] text-white pt-32 pb-56 rounded-b-[3rem] sm:rounded-b-[5rem] overflow-hidden">
         {/* 🔙 Back Button */}
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="absolute top-10 left-6 sm:left-10 z-20 flex items-center gap-2 text-slate-400 hover:text-white transition-colors group"
         >
-          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-300">
+          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/20 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-300">
             <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
           </div>
           <span className="font-bold text-xs uppercase tracking-[0.2em] hidden sm:block">Go Back</span>
         </Link>
 
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-600/15 rounded-full blur-[120px]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-600/40 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808030_1px,transparent_1px),linear-gradient(to_bottom,#80808030_1px,transparent_1px)] bg-[size:24px_24px]" />
 
         <div className="relative max-w-4xl mx-auto text-center px-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm mb-6">
-            <Sparkles className="w-4 h-4" />
-            Admissions Open 2026
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl font-extrabold mb-6">
-            Secure Your Future
+          <h1 className="text-2xl sm:text-4xl font-semibold mb-6">
+            Secure Your Future with Vision IT
           </h1>
 
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
+          <p className="text-lg text-white max-w-2xl mx-auto mb-10">
             Join Vision IT and start your tech journey today.
           </p>
 
-          <div className="flex justify-center gap-6 text-sm text-slate-300">
+          <div className="flex justify-center gap-6 text-sm text-white">
             <div className="flex items-center gap-2">
-              <GraduationCap className="w-5 h-5 text-blue-400" />
+              <GraduationCap className="w-5 h-5 text-white" />
               Expert Trainers
             </div>
             <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5 text-blue-400" />
+              <Clock className="w-5 h-5 text-white" />
               Flexible Timing
             </div>
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-blue-400" />
+              <ShieldCheck className="w-5 h-5 text-white" />
               Placement Support
             </div>
           </div>
@@ -110,10 +105,10 @@ export default async function AdmissionsPage({
       </section>
 
       {/* 📄 Form Section */}
-      <section className="relative max-w-5xl mx-auto px-4 -mt-36">
+      <section className="relative max-w-2xl mx-auto px-4 -mt-36">
 
-        <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 flex items-center gap-2">
+        <div className="bg-white rounded-3xl p-6 md:p-8 shadow-xl border border-slate-100">
+          <h2 className="text-lg text-slate-900 mb-5 flex items-center gap-2">
             <span>📄</span> Application Form
           </h2>
 

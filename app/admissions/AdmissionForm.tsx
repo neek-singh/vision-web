@@ -102,7 +102,7 @@ export default function AdmissionForm({
         </div>
 
         <div className="space-y-2">
-          <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">
+          <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 tracking-tight">
             Application Submitted
           </h3>
           <p className="text-gray-500 font-medium">
@@ -176,8 +176,8 @@ export default function AdmissionForm({
           readOnly={!!user?.email}
           placeholder="Email Address"
           className={`w-full px-4 py-3.5 text-gray-900 border border-gray-200 rounded-xl placeholder:text-gray-400 focus:outline-none transition-all duration-200 ${user?.email
-              ? "bg-gray-100 text-gray-500 cursor-not-allowed focus:ring-0"
-              : "bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            ? "bg-gray-100 text-gray-500 cursor-not-allowed focus:ring-0"
+            : "bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             }`}
         />
       </div>
