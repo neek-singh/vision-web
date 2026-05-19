@@ -59,31 +59,38 @@ export default async function PopularCourses() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority={true}
                 />
+                {/* Floating Course Level Badge */}
+                <span className="absolute top-2.5 left-2.5 bg-emerald-100/90 backdrop-blur-md text-emerald-800 text-[10px] font-bold px-2.5 py-0.5 rounded shadow-sm border border-emerald-200/50 uppercase tracking-wide">
+                  {course.course_level || 'Beginner'}
+                </span>
               </div>
             )}
 
             <CardHeader className="bg-gradient-to-b from-blue-50/40 to-transparent pt-5 pb-3 border-b border-slate-100/50">
-              <CardTitle className="text-sm font-semibold text-slate-900 group-hover:text-blue-700 transition-colors duration-300">
+              <CardTitle className="text-sm md:text-base font-semibold text-black group-hover:text-blue-700 transition-colors duration-300">
                 {course.title}
               </CardTitle>
             </CardHeader>
 
             <CardContent className="flex flex-col flex-grow pt-4">
-              <div className="flex flex-wrap gap-2.5 mb-4">
-                <span className="font-bold text-blue-700 bg-blue-100/50 border border-blue-200/50 px-2.5 py-1 rounded-lg text-[10px] uppercase tracking-wide flex items-center gap-1.5">
+              <div className="flex flex-wrap items-center gap-3.5 mb-4">
+                {/* Duration Tag */}
+                <span className="font-semibold text-slate-600 text-[11px] uppercase tracking-wide flex items-center gap-1">
                   ⏱ {course.duration}
                 </span>
+
+                {/* Pricing Tag */}
                 {course.discount_fee ? (
-                  <>
-                    <span className="font-bold text-emerald-700 bg-emerald-100/50 border border-emerald-200/50 px-2.5 py-1 rounded-lg text-[10px] uppercase tracking-wide">
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-emerald-600 text-[11px] uppercase tracking-wide">
                       ₹{course.discount_fee}
                     </span>
-                    <span className="font-bold text-red-500 line-through text-[10px] flex items-center">
+                    <span className="font-semibold text-slate-400 line-through text-[10px]">
                       ₹{course.fee}
                     </span>
-                  </>
+                  </div>
                 ) : course.fee ? (
-                  <span className="font-bold text-emerald-700 bg-emerald-100/50 border border-emerald-200/50 px-2.5 py-1 rounded-lg text-[10px] uppercase tracking-wide">
+                  <span className="font-bold text-emerald-600 text-[11px] uppercase tracking-wide">
                     ₹{course.fee}
                   </span>
                 ) : null}
@@ -136,15 +143,52 @@ export default async function PopularCourses() {
 export function PopularCoursesSkeleton() {
   return (
     <section className="container mx-auto px-6 lg:px-8 pt-24 relative z-10">
-      <div className="text-center mb-16">
-        <div className="h-12 bg-slate-200 rounded-full w-64 mx-auto mb-4 animate-pulse"></div>
-        <div className="h-6 bg-slate-200 rounded-full w-96 mx-auto animate-pulse"></div>
+      {/* Decorative Aurora Glow behind heading */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-blue-400/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+      <div className="text-center mb-16 relative">
+        <div className="h-8 bg-slate-200 rounded-full w-48 mx-auto mb-4 animate-pulse"></div>
+        <div className="h-4 bg-slate-200 rounded-full w-80 mx-auto animate-pulse"></div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="h-96 bg-slate-100 rounded-[2rem] animate-pulse"></div>
+          <div
+            key={i}
+            className="bg-white/70 backdrop-blur-xl border border-slate-200 flex flex-col overflow-hidden animate-pulse shadow-sm h-[324px] rounded-2xl"
+          >
+            {/* Image Placeholder */}
+            <div className="w-full h-36 bg-slate-200 relative">
+              {/* Level Badge Placeholder */}
+              <div className="absolute top-2.5 left-2.5 bg-slate-300/80 w-16 h-4 rounded shadow-sm"></div>
+            </div>
+
+            {/* Header Placeholder */}
+            <div className="pt-5 pb-3 px-4 border-b border-slate-100 bg-gradient-to-b from-blue-50/20 to-transparent">
+              <div className="h-4 bg-slate-200 rounded w-3/4 mb-1.5"></div>
+              <div className="h-3 bg-slate-200 rounded w-1/2"></div>
+            </div>
+
+            {/* Content Placeholder */}
+            <div className="flex flex-col flex-grow p-4">
+              {/* Metadata Tags Placeholder */}
+              <div className="flex flex-wrap items-center gap-3.5 mb-4">
+                {/* Duration Tag Placeholder */}
+                <div className="h-3.5 bg-slate-200 rounded-full w-14"></div>
+                {/* Fee Tag Placeholder */}
+                <div className="h-3.5 bg-slate-200 rounded-full w-12"></div>
+              </div>
+
+              {/* Buttons Placeholder */}
+              <div className="flex gap-2.5 mt-auto border-t border-slate-100/80 pt-3">
+                <div className="h-8 bg-slate-200 rounded-lg flex-1"></div>
+                <div className="h-8 bg-slate-200 rounded-lg flex-1"></div>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </section>
   );
 }
+
