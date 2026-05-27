@@ -17,6 +17,7 @@ type Course = {
   rating?: number;
   image_url?: string;
   enrollments?: { count: number }[];
+  course_level?: string;
 };
 
 export default function CoursesList({ initialCourses }: { initialCourses: Course[] }) {
@@ -48,7 +49,7 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
           <input
             type="text"
             placeholder="Search for courses by name or description..."
-            className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-200/80 bg-white/80 backdrop-blur-sm shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:bg-white text-slate-800 text-xs md:text-sm transition-all duration-300 placeholder:text-slate-400"
+            className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-300 bg-white/80 backdrop-blur-sm shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:bg-white text-slate-800 text-xs md:text-sm transition-all duration-300 placeholder:text-slate-400"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -88,34 +89,38 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority={index < 3}
                     />
+                    {/* Floating Course Level Badge */}
+                    <span className="absolute top-2.5 left-2.5 bg-emerald-100/90 backdrop-blur-md text-emerald-800 text-[10px] font-bold px-2.5 py-0.5 rounded shadow-sm border border-emerald-200/50 uppercase tracking-wide">
+                      {course.course_level || 'Beginner'}
+                    </span>
                   </div>
                 )}
                 <CardHeader className="bg-gradient-to-b from-blue-50/40 to-transparent pt-5 pb-3 border-b border-slate-100/50">
-                  <CardTitle className="text-sm font-semibold text-slate-900 group-hover:text-blue-700 transition-colors duration-300">
+                  <CardTitle className="text-sm md:text-base font-semibold text-black group-hover:text-blue-700 transition-colors duration-300">
                     {course.title}
                   </CardTitle>
                 </CardHeader>
 
                 <CardContent className="flex flex-col flex-grow pt-4">
                   {/* Course Metadata Tags */}
-                  <div className="flex flex-wrap gap-2.5 mb-4">
+                  <div className="flex flex-wrap items-center gap-3.5 mb-4">
                     {/* Duration Tag */}
-                    <span className="font-bold text-blue-700 bg-blue-100/50 border border-blue-200/50 px-2.5 py-1 rounded-lg text-[10px] uppercase tracking-wide flex items-center gap-1.5">
+                    <span className="font-semibold text-slate-600 text-[11px] uppercase tracking-wide flex items-center gap-1">
                       ⏱ {course.duration || 'Flexible'}
                     </span>
 
                     {/* Pricing Tag */}
                     {course.discount_fee && course.discount_fee > 0 ? (
-                      <>
-                        <span className="font-bold text-emerald-700 bg-emerald-100/50 border border-emerald-200/50 px-2.5 py-1 rounded-lg text-[10px] uppercase tracking-wide">
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-emerald-600 text-[11px] uppercase tracking-wide">
                           ₹{course.discount_fee}
                         </span>
-                        <span className="font-bold text-red-500 line-through text-[10px] flex items-center">
+                        <span className="font-semibold text-slate-400 line-through text-[10px]">
                           ₹{course.fee}
                         </span>
-                      </>
+                      </div>
                     ) : course.fee ? (
-                      <span className="font-bold text-emerald-700 bg-emerald-100/50 border border-emerald-200/50 px-2.5 py-1 rounded-lg text-[10px] uppercase tracking-wide">
+                      <span className="font-bold text-emerald-600 text-[11px] uppercase tracking-wide">
                         ₹{course.fee}
                       </span>
                     ) : null}

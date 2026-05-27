@@ -71,21 +71,39 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
 
               {/* Enhanced Tags (Glassmorphic) */}
               <div className="flex flex-wrap items-center gap-2.5 mb-4">
-                <span className="px-2.5 py-1 bg-blue-50 border border-blue-100 text-blue-700 rounded-md text-[10px] font-bold uppercase tracking-wider shadow-sm">
-                  {course.learning_format || 'Offline Training'}
-                </span>
-                <span className="flex items-center gap-1 px-2.5 py-1 bg-white border border-slate-200 text-slate-700 rounded-md text-[10px] font-bold shadow-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                {/* Rating */}
+                <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-bold shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                   {course.rating || '4.8'} Rating
                 </span>
-                <span className="flex items-center gap-1 px-2.5 py-1 bg-white border border-slate-200 text-slate-700 rounded-md text-[10px] font-bold shadow-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-indigo-500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                  {course.enrollments?.[0]?.count || 0}+ Students
+
+                {/* Duration */}
+                <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-bold shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-blue-500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  {course.duration || '3 Months'}
+                </span>
+
+                {/* Level */}
+                <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-bold shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-emerald-500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+                  {course.course_level || 'Beginner'}
+                </span>
+
+                {/* Mode (Offline / Online) */}
+                <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-bold shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-violet-500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  {course.learning_format || 'Offline / Online'}
+                </span>
+
+                {/* Students */}
+                <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-bold shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-indigo-500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  {course.enrollments?.[0]?.count || 0}  already enrolled
                 </span>
               </div>
 
               {/* Title - Reduced size and margin */}
-              <h1 className="text-lg md:text-xl lg:text-2xl font-semibold text-slate-900 mb-2 leading-tight tracking-tight">
+              <h1 className="text-sm md:text-base lg:text-lg font-semibold text-slate-900 mb-2 leading-tight tracking-tight">
                 {course.title}
               </h1>
 
@@ -119,7 +137,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
 
                 {/* Pricing Section */}
                 <div className="flex flex-col min-w-[140px]">
-                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-0.5">Course Fee</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Course Fee</span>
                   {course.discount_fee ? (
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl font-black text-slate-900">
@@ -135,7 +153,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                     </span>
                   )}
                   {course.discount_fee && (
-                    <span className="text-[10px] font-bold text-emerald-600 mt-1 bg-emerald-50 inline-block px-1.5 py-0.5 rounded w-max">
+                    <span className="text-[9px] font-bold text-emerald-600 mt-1 bg-emerald-50 inline-block px-1.5 py-0.5 rounded w-max">
                       Limited Time Offer
                     </span>
                   )}
@@ -183,55 +201,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
         </div>
       </section>
 
-      {/* Stats Bar (Overlaps Hero Section) */}
-      <div className="container mx-auto px-6 lg:px-8 -mt-8 relative z-20 max-w-2xl">
 
-        {/* Glassmorphic Card Wrapper */}
-        <div className="bg-white/80 backdrop-blur-2xl rounded-xl p-3 md:p-4 shadow-lg shadow-slate-200/30 border border-white/60 grid grid-cols-2 md:grid-cols-3 gap-y-4 md:gap-y-0 divide-x-0 md:divide-x divide-slate-100">
-
-          {/* Duration */}
-          <div className="group text-center px-2 md:px-4">
-            <div className="w-8 h-8 mx-auto mb-2 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:scale-105 group-hover:bg-blue-600 group-hover:text-white group-hover:-rotate-3 transition-all duration-300 shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            </div>
-            <p className="text-[8px] font-bold text-slate-500 uppercase tracking-widest mb-0.5">
-              Duration
-            </p>
-            <p className="text-xs md:text-sm font-bold text-slate-900 leading-tight">
-              {course.duration || '3 Months'}
-            </p>
-          </div>
-
-          {/* Format */}
-          <div className="group text-center px-2 md:px-4">
-            <div className="w-8 h-8 mx-auto mb-2 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:scale-105 group-hover:bg-indigo-600 group-hover:text-white group-hover:rotate-3 transition-all duration-300 shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-            </div>
-            <p className="text-[8px] font-bold text-slate-500 uppercase tracking-widest mb-0.5">
-              Format
-            </p>
-            <p className="text-xs md:text-sm font-bold text-slate-900 leading-tight">
-              {course.learning_format || 'Offline'}
-            </p>
-          </div>
-
-
-
-          {/* Level */}
-          <div className="group text-center px-2 md:px-4">
-            <div className="w-8 h-8 mx-auto mb-2 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white group-hover:rotate-3 transition-all duration-300 shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
-            </div>
-            <p className="text-[8px] font-bold text-slate-500 uppercase tracking-widest mb-0.5">
-              Level
-            </p>
-            <p className="text-xs md:text-sm font-bold text-slate-900 leading-tight">
-              {course.course_level || 'Beginner'}
-            </p>
-          </div>
-
-        </div>
-      </div>
 
       <section className="container mx-auto px-6 lg:px-8 py-12">
         <div className="max-w-4xl mx-auto space-y-12">
@@ -272,7 +242,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
             </div>
 
             {/* Bottom CTA Hint */}
-            <div className="mt-6 text-xs text-slate-500 font-medium">
+            <div className="mt-6 text-xs md:text-sm text-slate-500 font-medium">
               ✔ Designed to make you job-ready with real-world skills
             </div>
 
@@ -290,7 +260,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>
                 </div>
                 <h2 className="text-base md:text-lg font-bold text-slate-900 tracking-tight">
-                  Tools
+                  Tools you'll learn
                 </h2>
               </div>
 
@@ -333,7 +303,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
               </div>
 
               {/* Bottom Insight */}
-              <p className="mt-6 text-xs text-slate-500 font-medium">
+              <p className="mt-6 text-xs md:text-sm text-slate-500 font-medium">
                 ✔ Learn tools that are actually used in real-world jobs and projects
               </p>
 
@@ -406,10 +376,10 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                     {/* Question Header */}
                     <summary className="flex items-center justify-between p-3.5 font-bold text-blue-900 list-none [&::-webkit-details-marker]:hidden select-none">
                       <div className="flex items-center gap-2.5">
-                        <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-md bg-blue-50 text-blue-600 font-bold text-[10px]">
+                        <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-md bg-blue-50 text-blue-600 font-bold text-xs">
                           Q
                         </span>
-                        <span className="text-xs md:text-sm font-semibold text-slate-900">{faq.question}</span>
+                        <span className="text-sm md:text-base font-semibold text-slate-900">{faq.question}</span>
                       </div>
 
                       {/* Animated Plus / Minus Icon */}
@@ -438,8 +408,8 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                     </summary>
 
                     {/* Answer Content */}
-                    <div className="px-3.5 pb-3.5 pt-1 text-slate-800 text-[11px] md:text-xs leading-relaxed sm:pl-12">
-                      <div className="border-l-2 border-blue-100 pl-3 font-medium">
+                    <div className="px-3.5 pb-3.5 pt-1 text-slate-800 text-sm md:text-base leading-relaxed sm:pl-12">
+                      <div className="border-l-2 border-blue-100 pl-3 ">
                         {faq.answer}
                       </div>
                     </div>
