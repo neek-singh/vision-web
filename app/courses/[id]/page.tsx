@@ -74,7 +74,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                 {/* Rating */}
                 <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-bold shadow-sm">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                  {course.rating || '4.8'} Rating
+                  {course.rating ?? 0} Rating
                 </span>
 
                 {/* Duration */}
@@ -115,10 +115,10 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
               {/* Elevated Highlights - Reduced size and margin */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {[
-                  "100% Practical Training",
-                  "Recognized Certificate",
-                  "Job-Oriented Curriculum",
-                  "Beginner Friendly"
+                  "Practical Learning",
+                  "Verified Certificate",
+                  "Latest Curriculum",
+                  "Easy to Learn"
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-1.5 text-slate-800 font-semibold text-xs bg-white/60 backdrop-blur-sm px-2.5 py-1.5 rounded-lg border border-slate-200 shadow-sm cursor-default hover:border-blue-200 transition-colors">
                     <div className="w-3.5 h-3.5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
