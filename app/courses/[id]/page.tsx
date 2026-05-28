@@ -2,29 +2,23 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { createPublicSupabaseClient } from "@/lib/supabase-server";
-import { unstable_cache } from "next/cache";
 import Image from "next/image";
+export const dynamic = "force-dynamic";
 
-export const revalidate = 3600;
+async function getCourse(id: string) {
+  const supabase = createPublicSupabaseClient();
+  const { data, error } = await supabase
+    .from("courses")
+    .select(`
+      *,
+      enrollments:enrollments(count)
+    `)
+    .eq("id", id)
+    .single();
 
-const getCourse = unstable_cache(
-  async (id: string) => {
-    const supabase = createPublicSupabaseClient();
-    const { data, error } = await supabase
-      .from("courses")
-      .select(`
-        *,
-        enrollments:enrollments(count)
-      `)
-      .eq("id", id)
-      .single();
-
-    if (error) throw error;
-    return data;
-  },
-  ["course-detail"],
-  { revalidate: 3600, tags: ["courses"] }
-);
+  if (error) throw error;
+  return data;
+}
 
 export default async function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

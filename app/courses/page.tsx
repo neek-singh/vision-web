@@ -1,6 +1,5 @@
 import { createPublicSupabaseClient } from "@/lib/supabase-server";
 import { Metadata } from "next";
-import { unstable_cache } from "next/cache";
 import CoursesListClientWrapper from "@/components/CoursesListClientWrapper";
 
 export const metadata: Metadata = {
@@ -9,25 +8,21 @@ export const metadata: Metadata = {
   keywords: "computer courses Pratappur, DCA course, PGDCA course, ADCA course, learn web development",
 };
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
-const getCourses = unstable_cache(
-  async () => {
-    const supabase = createPublicSupabaseClient();
-    const { data, error } = await supabase
-      .from("courses")
-      .select(`
-        *,
-        enrollments:enrollments(count)
-      `)
-      .order("created_at", { ascending: false });
+async function getCourses() {
+  const supabase = createPublicSupabaseClient();
+  const { data, error } = await supabase
+    .from("courses")
+    .select(`
+      *,
+      enrollments:enrollments(count)
+    `)
+    .order("created_at", { ascending: false });
 
-    if (error) throw error;
-    return data || [];
-  },
-  ["courses-list"],
-  { revalidate: 3600, tags: ["courses"] }
-);
+  if (error) throw error;
+  return data || [];
+}
 
 export default async function CoursesPage() {
   let displayCourses = [];

@@ -2,24 +2,19 @@ import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import Link from "next/link";
 import { createPublicSupabaseClient } from "@/lib/supabase-server";
-import { unstable_cache } from "next/cache";
 import Image from "next/image";
 
-const getPopularCourses = unstable_cache(
-  async () => {
-    const supabase = createPublicSupabaseClient();
-    const { data, error } = await supabase
-      .from("courses")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(3);
+async function getPopularCourses() {
+  const supabase = createPublicSupabaseClient();
+  const { data, error } = await supabase
+    .from("courses")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(3);
 
-    if (error) throw error;
-    return data || [];
-  },
-  ["popular-courses"],
-  { revalidate: 3600, tags: ["courses"] }
-);
+  if (error) throw error;
+  return data || [];
+}
 
 export default async function PopularCourses() {
   let displayCourses = [];

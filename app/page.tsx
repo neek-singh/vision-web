@@ -6,7 +6,7 @@ import PopularCourses, { PopularCoursesSkeleton } from "@/components/PopularCour
 import UpcomingBatches, { UpcomingBatchesSkeleton } from "@/components/UpcomingBatches";
 import { FAQSection, SocialSection } from "@/components/HomeSections";
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   return (
