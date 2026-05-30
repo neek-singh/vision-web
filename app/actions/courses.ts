@@ -66,7 +66,7 @@ export async function saveCourse(formData: any) {
       revalidatePath(`/courses/${formData.id}`, "page");
     }
     revalidatePath("/admin/courses", "page");
-    revalidateTag("courses");
+    revalidateTag("courses", "max");
     return { success: true };
   } catch (e: any) {
     console.error("Failed to save course to DB:", e);
@@ -87,7 +87,7 @@ export async function deleteCourse(id: string) {
 
     revalidatePath("/courses", "page");
     revalidatePath("/admin/courses", "page");
-    revalidateTag("courses");
+    revalidateTag("courses", "max");
     return { success: true };
   } catch (e: any) {
     console.error("Failed to delete course from DB:", e);

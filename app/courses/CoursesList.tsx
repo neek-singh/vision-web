@@ -18,21 +18,42 @@ type Course = {
   image_url?: string;
   enrollments?: { count: number }[];
   course_level?: string;
+  category?: string;
 };
 
 export default function CoursesList({ initialCourses }: { initialCourses: Course[] }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // Component mounted
   }, []);
 
-  // Simple client-side filter
-  const filteredCourses = initialCourses.filter((course) =>
-    course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (course.description && course.description.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
+  // Dynamically collect unique categories from the fetched courses
+  const categoriesList = [
+    "All",
+    ...Array.from(
+      new Set(
+        initialCourses
+          .map((c) => c.category)
+          .filter((cat): cat is string => !!cat)
+      )
+    ).sort()
+  ];
+
+  // Advanced client-side search and category filtering
+  const filteredCourses = initialCourses.filter((course) => {
+    const matchesSearch =
+      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (course.description && course.description.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      (course.category && course.category.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    const matchesCategory =
+      selectedCategory === "All" || course.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="w-full">
@@ -69,6 +90,25 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
         </div>
       </div>
 
+      {/* Category Filter Chips */}
+      {categoriesList.length > 1 && (
+        <div className="flex flex-wrap gap-2.5 justify-center mb-8 animate-in fade-in slide-in-from-top-3 duration-500">
+          {categoriesList.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-4 py-2 rounded-xl text-xs md:text-sm font-semibold border transition-all duration-300 ${
+                selectedCategory === category
+                  ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-transparent shadow-md shadow-blue-500/20 scale-[1.03]"
+                  : "bg-white text-slate-600 border-slate-200 hover:border-blue-200 hover:text-blue-600 hover:bg-blue-50/20"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Grid */}
       <Skeleton name="courses-list" loading={isLoading}>
         {filteredCourses.length > 0 ? (
@@ -93,6 +133,12 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
                     <span className="absolute top-2.5 left-2.5 bg-emerald-100/90 backdrop-blur-md text-emerald-800 text-[10px] font-bold px-2.5 py-0.5 rounded shadow-sm border border-emerald-200/50 uppercase tracking-wide">
                       {course.course_level || 'Beginner'}
                     </span>
+                    {/* Floating Category Badge */}
+                    {course.category && (
+                      <span className="absolute top-2.5 right-2.5 bg-slate-900/75 backdrop-blur-md text-white text-[9px] font-bold px-2.5 py-0.5 rounded shadow-sm uppercase tracking-wider">
+                        {course.category}
+                      </span>
+                    )}
                   </div>
                 )}
                 <CardHeader className="bg-gradient-to-b from-blue-50/40 to-transparent pt-5 pb-3 border-b border-slate-100/50">
@@ -102,6 +148,14 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
                 </CardHeader>
 
                 <CardContent className="flex flex-col flex-grow pt-4">
+                  {/* Category Tag */}
+                  {course.category && (
+                    <div className="mb-3">
+                      <span className="inline-flex px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-semibold rounded uppercase tracking-wider">
+                        {course.category}
+                      </span>
+                    </div>
+                  )}
                   {/* Course Metadata Tags */}
                   <div className="flex flex-wrap items-center gap-3.5 mb-4">
                     {/* Duration Tag */}
