@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import fs from "fs";
 import path from "path";
 import { unstable_cache } from "next/cache";
-import GalleryGridClientWrapper from "@/components/GalleryGridClientWrapper";
+import GalleryGridClientWrapper from "@/features/gallery/components/GalleryGridClientWrapper";
 
 export const metadata: Metadata = {
   title: "Gallery | Vision IT Computer Institute Pratappur",
@@ -18,7 +18,7 @@ export const revalidate = 3600;
 
 const getGalleryImages = unstable_cache(
   async () => {
-    const galleryFilePath = path.join(process.cwd(), "data", "gallery.json");
+    const galleryFilePath = path.join(process.cwd(), "features", "gallery", "data", "gallery.json");
     try {
       if (fs.existsSync(galleryFilePath)) {
         const fileData = fs.readFileSync(galleryFilePath, "utf-8");

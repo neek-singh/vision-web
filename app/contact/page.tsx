@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
-import ContactFormClientWrapper from "@/components/ContactFormClientWrapper";
+import ContactFormClientWrapper from "@/features/contact/components/ContactFormClientWrapper";
 
 export const metadata: Metadata = {
   title: "Contact Us | Vision IT Computer Institute Pratappur",

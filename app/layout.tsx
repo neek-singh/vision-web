@@ -5,7 +5,7 @@ import "./globals.css";
 import "../bones/registry";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { UserNav } from "@/components/UserNav";
+import { UserNav } from "@/features/auth/components/UserNav";
 import StructuredData from "@/components/StructuredData";
 import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 

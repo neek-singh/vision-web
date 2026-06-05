@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 const getBlogs = unstable_cache(
   async () => {
-    const blogsFilePath = path.join(process.cwd(), "data", "blogs.json");
+    const blogsFilePath = path.join(process.cwd(), "features", "blog", "data", "blogs.json");
     try {
       if (fs.existsSync(blogsFilePath)) {
         const fileData = fs.readFileSync(blogsFilePath, "utf-8");

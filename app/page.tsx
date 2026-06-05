@@ -2,8 +2,9 @@ import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { Suspense } from "react";
 import Image from "next/image";
-import PopularCourses, { PopularCoursesSkeleton } from "@/components/PopularCourses";
-import UpcomingBatches, { UpcomingBatchesSkeleton } from "@/components/UpcomingBatches";
+import PopularCourses, { PopularCoursesSkeleton } from "@/features/courses/components/PopularCourses";
+import UpcomingBatches, { UpcomingBatchesSkeleton } from "@/features/courses/components/UpcomingBatches";
+import GoogleReviews from "@/features/reviews/components/GoogleReviews";
 import { FAQSection, SocialSection } from "@/components/HomeSections";
 
 export const dynamic = "force-dynamic";
@@ -82,10 +83,158 @@ export default async function Home() {
       <Suspense fallback={<PopularCoursesSkeleton />}>
         <PopularCourses />
       </Suspense>
+
+      {/* Diploma Programs Section */}
+      <section className="py-20 md:py-24 bg-white relative overflow-hidden border-t border-slate-100">
+        {/* Background decorations */}
+        <div className="absolute top-0 right-0 w-80 h-80 bg-blue-100/40 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-100/30 rounded-full blur-[80px] pointer-events-none" />
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-indigo-50 text-indigo-700 font-semibold rounded-full text-xs border border-indigo-200/60 shadow-sm">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+              Diploma Programs
+            </div>
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 mb-3 tracking-tight">
+              Our Certified <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Course Programs</span>
+            </h2>
+            <p className="text-xs md:text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
+              Government-recognized diploma programs designed to give you practical skills and industry-ready expertise at every level.
+            </p>
+          </div>
+
+          {/* Course Cards Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+            {/* BCC */}
+            <div className="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-200 hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-11 h-11 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center shadow-sm group-hover:bg-emerald-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">BCC</h3>
+                    <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">3 Months</p>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-900 font-medium mb-1">Basic Computer Course</p>
+                <p className="text-xs text-slate-500 leading-relaxed mb-4">
+                  Perfect starting point for absolute beginners. Learn computer basics, typing, MS Office, and internet fundamentals.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {["Computer Basics", "MS Office", "Typing", "Internet"].map((t) => (
+                    <span key={t} className="px-2 py-0.5 bg-emerald-50 text-emerald-600 text-[10px] font-semibold rounded-full border border-emerald-100">{t}</span>
+                  ))}
+                </div>
+                <Link href="/courses" className="text-xs font-semibold text-emerald-600 hover:text-emerald-700 hover:underline underline-offset-2 transition-colors">
+                  View Details →
+                </Link>
+              </div>
+            </div>
+
+            {/* DCA */}
+            <div className="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-200 hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-11 h-11 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center shadow-sm group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">DCA</h3>
+                    <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">6 Months</p>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-900 font-medium mb-1">Diploma in Computer Application</p>
+                <p className="text-xs text-slate-500 leading-relaxed mb-4">
+                  Foundation diploma covering computer fundamentals, MS Office, internet basics, and introductory programming concepts.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {["MS Office", "Programming", "Internet", "Data Entry"].map((t) => (
+                    <span key={t} className="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-semibold rounded-full border border-blue-100">{t}</span>
+                  ))}
+                </div>
+                <Link href="/courses" className="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:underline underline-offset-2 transition-colors">
+                  View Details →
+                </Link>
+              </div>
+            </div>
+
+            {/* ADCA */}
+            <div className="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-11 h-11 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center shadow-sm group-hover:bg-indigo-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">ADCA</h3>
+                    <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">12 Months</p>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-900 font-medium mb-1">Advanced Diploma in Computer Application</p>
+                <p className="text-xs text-slate-500 leading-relaxed mb-4">
+                  Comprehensive advanced program with programming, web design, Tally accounting, and database management skills.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {["Tally", "Web Design", "C Language", "Database"].map((t) => (
+                    <span key={t} className="px-2 py-0.5 bg-indigo-50 text-indigo-600 text-[10px] font-semibold rounded-full border border-indigo-100">{t}</span>
+                  ))}
+                </div>
+                <Link href="/courses" className="text-xs font-semibold text-indigo-600 hover:text-indigo-700 hover:underline underline-offset-2 transition-colors">
+                  View Details →
+                </Link>
+              </div>
+            </div>
+
+            {/* PGDCA */}
+            <div className="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-purple-200 hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-11 h-11 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center shadow-sm group-hover:bg-purple-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M22 10v6M2 10l10-5 10 5-10 5z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 12v5c3 3 10 3 12 0v-5" /></svg>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">PGDCA</h3>
+                    <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">12 Months</p>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-900 font-medium mb-1">Post Graduate Diploma in Computer Application</p>
+                <p className="text-xs text-slate-500 leading-relaxed mb-4">
+                  Professional-level program covering advanced programming, DBMS, software engineering, and industry project work.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {["C/C++", "Java", "DBMS & SQL", "Projects"].map((t) => (
+                    <span key={t} className="px-2 py-0.5 bg-purple-50 text-purple-600 text-[10px] font-semibold rounded-full border border-purple-100">{t}</span>
+                  ))}
+                </div>
+                <Link href="/courses" className="text-xs font-semibold text-purple-600 hover:text-purple-700 hover:underline underline-offset-2 transition-colors">
+                  View Details →
+                </Link>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-10">
+            <Button href="/courses" className="px-7 h-11 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/20 rounded-full font-semibold text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl inline-flex items-center gap-2 group border-none">
+              View All Courses
+              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Upcoming Batches Section */}
       <Suspense fallback={<UpcomingBatchesSkeleton />}>
         <UpcomingBatches />
       </Suspense>
+
+      {/* Google Reviews Section */}
+      <GoogleReviews />
 
       {/* 4. Contact CTA Section (White Theme) */}
       < section className="container mx-auto px-6 lg:px-8 py-24 relative z-10" >

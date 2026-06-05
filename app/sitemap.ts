@@ -19,10 +19,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  // Fetch blogs from local data/blogs.json
+  // Fetch blogs from local features/blog/data/blogs.json
   let blogUrls: MetadataRoute.Sitemap = []
   try {
-    const blogsFilePath = path.join(process.cwd(), 'data', 'blogs.json')
+    const blogsFilePath = path.join(process.cwd(), 'features', 'blog', 'data', 'blogs.json')
     if (fs.existsSync(blogsFilePath)) {
       const fileData = fs.readFileSync(blogsFilePath, 'utf-8')
       const blogs = JSON.parse(fileData)

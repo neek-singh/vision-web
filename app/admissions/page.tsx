@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { Metadata } from "next";
-import AdmissionFormClientWrapper from "@/components/AdmissionFormClientWrapper";
+import AdmissionFormClientWrapper from "@/features/admissions/components/AdmissionFormClientWrapper";
 
 export const metadata: Metadata = {
   title: "Online Admission | Vision IT Computer Institute",

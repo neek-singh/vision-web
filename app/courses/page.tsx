@@ -1,6 +1,6 @@
 import { createPublicSupabaseClient } from "@/lib/supabase-server";
 import { Metadata } from "next";
-import CoursesListClientWrapper from "@/components/CoursesListClientWrapper";
+import CoursesListClientWrapper from "@/features/courses/components/CoursesListClientWrapper";
 
 export const metadata: Metadata = {
   title: "Our Courses | Vision IT Computer Institute Pratappur",
