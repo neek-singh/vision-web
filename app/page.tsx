@@ -9,6 +9,12 @@ import { FAQSection, SocialSection } from "@/components/HomeSections";
 
 export const dynamic = "force-dynamic";
 
+const COURSE_IDS = {
+  DCA: "38fdc235-f7b5-4628-9d72-41c9ff2eabd8",
+  ADCA: "2fc69f17-e7a0-4bde-b995-8cbda1e2e55b",
+  PGDCA: "f9004121-1274-4b57-8179-ccc8365864b9",
+};
+
 export default async function Home() {
   return (
     <main className="flex-col w-full bg-gray-50 pb-20">
@@ -27,13 +33,13 @@ export default async function Home() {
         <div className="container mx-auto max-w-5xl text-center relative z-10">
 
           {/* Animated Badge */}
-          <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-blue-50 text-blue-700 font-semibold rounded-full text-sm border border-blue-200/60 shadow-sm transition-transform hover:scale-105 cursor-default">
+          <Link href="/admissions" className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-blue-50 text-blue-700 font-semibold rounded-full text-sm border border-blue-200/60 shadow-sm transition-transform hover:scale-105 hover:bg-blue-100/70">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
             </span>
-            Admissions Open for 2026 Batches
-          </div>
+            Admissions Open for 2026-27 Batches
+          </Link>
 
           {/* Headline with Gradient Text */}
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-6 leading-[1.2]">
@@ -106,36 +112,9 @@ export default async function Home() {
           </div>
 
           {/* Course Cards Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-            {/* BCC */}
-            <div className="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-200 hover:-translate-y-1 transition-all duration-400 overflow-hidden">
-              <div className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-11 h-11 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center shadow-sm group-hover:bg-emerald-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-slate-900">BCC</h3>
-                    <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">3 Months</p>
-                  </div>
-                </div>
-                <p className="text-xs text-slate-900 font-medium mb-1">Basic Computer Course</p>
-                <p className="text-xs text-slate-500 leading-relaxed mb-4">
-                  Perfect starting point for absolute beginners. Learn computer basics, typing, MS Office, and internet fundamentals.
-                </p>
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {["Computer Basics", "MS Office", "Typing", "Internet"].map((t) => (
-                    <span key={t} className="px-2 py-0.5 bg-emerald-50 text-emerald-600 text-[10px] font-semibold rounded-full border border-emerald-100">{t}</span>
-                  ))}
-                </div>
-                <Link href="/courses" className="text-xs font-semibold text-emerald-600 hover:text-emerald-700 hover:underline underline-offset-2 transition-colors">
-                  View Details →
-                </Link>
-              </div>
-            </div>
 
-            {/* DCA */}
             <div className="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-200 hover:-translate-y-1 transition-all duration-400 overflow-hidden">
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
@@ -156,7 +135,7 @@ export default async function Home() {
                     <span key={t} className="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-semibold rounded-full border border-blue-100">{t}</span>
                   ))}
                 </div>
-                <Link href="/courses" className="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:underline underline-offset-2 transition-colors">
+                <Link href={`/courses/${COURSE_IDS.DCA}`} className="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:underline underline-offset-2 transition-colors">
                   View Details →
                 </Link>
               </div>
@@ -183,7 +162,7 @@ export default async function Home() {
                     <span key={t} className="px-2 py-0.5 bg-indigo-50 text-indigo-600 text-[10px] font-semibold rounded-full border border-indigo-100">{t}</span>
                   ))}
                 </div>
-                <Link href="/courses" className="text-xs font-semibold text-indigo-600 hover:text-indigo-700 hover:underline underline-offset-2 transition-colors">
+                <Link href={`/courses/${COURSE_IDS.ADCA}`} className="text-xs font-semibold text-indigo-600 hover:text-indigo-700 hover:underline underline-offset-2 transition-colors">
                   View Details →
                 </Link>
               </div>
@@ -210,7 +189,7 @@ export default async function Home() {
                     <span key={t} className="px-2 py-0.5 bg-purple-50 text-purple-600 text-[10px] font-semibold rounded-full border border-purple-100">{t}</span>
                   ))}
                 </div>
-                <Link href="/courses" className="text-xs font-semibold text-purple-600 hover:text-purple-700 hover:underline underline-offset-2 transition-colors">
+                <Link href={`/courses/${COURSE_IDS.PGDCA}`} className="text-xs font-semibold text-purple-600 hover:text-purple-700 hover:underline underline-offset-2 transition-colors">
                   View Details →
                 </Link>
               </div>

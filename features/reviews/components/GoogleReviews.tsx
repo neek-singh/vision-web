@@ -13,14 +13,6 @@ interface Review {
 
 const REVIEWS: Review[] = [
   {
-    id: "1",
-    name: "Sushil Thakur",
-    avatarColor: "bg-slate-700",
-    rating: 5,
-    date: "2 weeks ago",
-    comment: "👍 👍 🥰",
-  },
-  {
     id: "2",
     name: "Kamlesh Kanshi",
     avatarColor: "bg-emerald-600",
@@ -97,7 +89,7 @@ export default function GoogleReviews() {
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
           {REVIEWS.map((review) => (
             <Card
               key={review.id}
@@ -113,15 +105,9 @@ export default function GoogleReviews() {
                     <h4 className="text-xs font-bold text-slate-900 leading-tight">
                       {review.name}
                     </h4>
-                    <div className="flex items-center gap-1 mt-0.5">
-                      <span className="text-[10px] text-slate-400 font-medium">
-                        {review.date}
-                      </span>
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-200" />
-                      <span className="text-[9px] text-emerald-600 font-bold uppercase tracking-wider">
-                        Verified
-                      </span>
-                    </div>
+                    <span className="text-[9px] text-emerald-600 font-bold uppercase tracking-wider mt-0.5 block">
+                      Verified
+                    </span>
                   </div>
                 </div>
 
