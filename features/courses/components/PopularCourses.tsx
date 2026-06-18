@@ -9,11 +9,27 @@ async function getPopularCourses() {
   const { data, error } = await supabase
     .from("courses")
     .select("*")
-    .order("created_at", { ascending: false })
-    .limit(3);
+    .in("id", [
+      "38fdc235-f7b5-4628-9d72-41c9ff2eabd8", // DCA
+      "f9004121-1274-4b57-8179-ccc8365864b9", // PGDCA
+      "1125b5a2-a20e-48a4-8ef3-3496ec955d17", // AI
+      "197f7c89-e410-4768-8b49-567b4b4e3e9e"  // BCC
+    ]);
 
   if (error) throw error;
-  return data || [];
+  
+  const desiredOrder = [
+    "38fdc235-f7b5-4628-9d72-41c9ff2eabd8", // DCA
+    "f9004121-1274-4b57-8179-ccc8365864b9", // PGDCA
+    "1125b5a2-a20e-48a4-8ef3-3496ec955d17", // AI
+    "197f7c89-e410-4768-8b49-567b4b4e3e9e"  // BCC
+  ];
+
+  const sortedData = (data || []).sort(
+    (a, b) => desiredOrder.indexOf(a.id) - desiredOrder.indexOf(b.id)
+  );
+
+  return sortedData;
 }
 
 export default async function PopularCourses() {
@@ -38,7 +54,7 @@ export default async function PopularCourses() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
         {displayCourses.map((course: any) => (
           <Card
             key={course.id}
@@ -73,22 +89,6 @@ export default async function PopularCourses() {
                 <span className="font-semibold text-slate-600 text-[11px] uppercase tracking-wide flex items-center gap-1">
                   ⏱ {course.duration}
                 </span>
-
-                {/* Pricing Tag */}
-                {course.discount_fee ? (
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-emerald-600 text-[11px] uppercase tracking-wide">
-                      ₹{course.discount_fee}
-                    </span>
-                    <span className="font-semibold text-slate-400 line-through text-[10px]">
-                      ₹{course.fee}
-                    </span>
-                  </div>
-                ) : course.fee ? (
-                  <span className="font-bold text-emerald-600 text-[11px] uppercase tracking-wide">
-                    ₹{course.fee}
-                  </span>
-                ) : null}
               </div>
 
               <div className="flex gap-2.5 mt-auto border-t border-slate-100/80 pt-3">
@@ -146,8 +146,8 @@ export function PopularCoursesSkeleton() {
         <div className="h-4 bg-slate-200 rounded-full w-80 mx-auto animate-pulse"></div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
-        {[1, 2, 3].map((i) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
+        {[1, 2, 3, 4].map((i) => (
           <div
             key={i}
             className="bg-white/70 backdrop-blur-xl border border-slate-200 flex flex-col overflow-hidden animate-pulse shadow-sm h-[324px] rounded-2xl"

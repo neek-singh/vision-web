@@ -20,6 +20,65 @@ async function getCourse(id: string) {
   return data;
 }
 
+function getToolBadgeStyle(name: string) {
+  const cleanName = name.toLowerCase().trim();
+  if (cleanName.includes("word")) {
+    return "border-blue-200 text-blue-700 bg-blue-50/40 hover:bg-blue-100/60 hover:border-blue-400";
+  }
+  if (cleanName.includes("excel")) {
+    return "border-emerald-200 text-emerald-700 bg-emerald-50/40 hover:bg-emerald-100/60 hover:border-emerald-400";
+  }
+  if (cleanName.includes("powerpoint") || cleanName.includes("power point")) {
+    return "border-orange-200 text-orange-700 bg-orange-50/40 hover:bg-orange-100/60 hover:border-orange-400";
+  }
+  if (cleanName.includes("vs code") || cleanName.includes("vscode") || cleanName.includes("visual studio code")) {
+    return "border-sky-200 text-sky-700 bg-sky-50/40 hover:bg-sky-100/60 hover:border-sky-400";
+  }
+  if (cleanName.includes("tally")) {
+    return "border-teal-200 text-teal-700 bg-teal-50/40 hover:bg-teal-100/60 hover:border-teal-400";
+  }
+  if (cleanName.includes("canva")) {
+    return "border-purple-200 text-purple-700 bg-purple-50/40 hover:bg-purple-100/60 hover:border-purple-400";
+  }
+  if (cleanName.includes("notion")) {
+    return "border-slate-300 text-slate-800 bg-slate-50/40 hover:bg-slate-100 hover:border-slate-500";
+  }
+  if (cleanName.includes("gmail") || cleanName.includes("mail")) {
+    return "border-red-200 text-red-700 bg-red-50/40 hover:bg-red-100/60 hover:border-red-400";
+  }
+  if (cleanName.includes("chrome") || cleanName.includes("google chrome")) {
+    return "border-amber-200 text-amber-700 bg-amber-50/40 hover:bg-amber-100/60 hover:border-amber-400";
+  }
+  if (cleanName.includes("html")) {
+    return "border-orange-200 text-orange-600 bg-orange-50/40 hover:bg-orange-100/60 hover:border-orange-400";
+  }
+  if (cleanName.includes("css")) {
+    return "border-blue-200 text-blue-600 bg-blue-50/40 hover:bg-blue-100/60 hover:border-blue-400";
+  }
+  if (cleanName.includes("javascript") || cleanName.includes("js")) {
+    return "border-yellow-200 text-yellow-700 bg-yellow-50/40 hover:bg-yellow-100/60 hover:border-yellow-400";
+  }
+  if (cleanName.includes("python")) {
+    return "border-blue-200 text-blue-700 bg-blue-50/40 hover:bg-blue-100/60 hover:border-blue-400";
+  }
+  if (cleanName.includes("photoshop")) {
+    return "border-cyan-200 text-cyan-700 bg-cyan-50/40 hover:bg-cyan-100/60 hover:border-cyan-400";
+  }
+  if (cleanName.includes("illustrator")) {
+    return "border-amber-200 text-amber-800 bg-amber-50/40 hover:bg-amber-100/60 hover:border-amber-400";
+  }
+  if (cleanName.includes("slack")) {
+    return "border-purple-200 text-purple-700 bg-purple-50/40 hover:bg-purple-100/60 hover:border-purple-400";
+  }
+  if (cleanName.includes("youtube")) {
+    return "border-red-200 text-red-700 bg-red-50/40 hover:bg-red-100/60 hover:border-red-400";
+  }
+  if (cleanName.includes("drive")) {
+    return "border-green-200 text-green-700 bg-green-50/40 hover:bg-green-100/60 hover:border-green-400";
+  }
+  return "border-slate-200 text-slate-700 bg-slate-50/40 hover:bg-slate-100 hover:border-slate-400";
+}
+
 export default async function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   let course;
@@ -172,7 +231,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                     href={`/admissions?courseId=${course.id}`}
                     className="w-full sm:w-auto bg-blue-600 hover:bg-slate-900 text-white h-11 px-6 rounded-xl text-xs font-bold shadow-md shadow-blue-500/10 transition-all duration-300 group flex items-center justify-center gap-1.5"
                   >
-                    Enroll Now
+                    Apply Now
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
                       <line x1="5" y1="12" x2="19" y2="12"></line>
                       <polyline points="12 5 19 12 12 19"></polyline>
@@ -273,35 +332,16 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                 Gain hands-on experience with industry-standard tools and technologies used by professionals worldwide.
               </p>
 
-              {/* Tools Grid */}
-              <div className="flex flex-wrap gap-6 md:gap-8 justify-start">
+              {/* Tools Badges */}
+              <div className="flex flex-wrap gap-2.5 justify-start">
 
                 {tools.map((tool: any, idx: number) => (
-                  <div
+                  <span
                     key={idx}
-                    className="group flex flex-col items-center gap-1.5 w-16 text-center"
+                    className={`px-5 py-2 text-xs md:text-sm font-semibold border rounded-full transition-all duration-300 cursor-default shadow-sm select-none ${getToolBadgeStyle(tool.name)}`}
                   >
-
-                    {/* Icon */}
-                    <div className="w-10 h-10 flex items-center justify-center text-slate-700 group-hover:scale-110 transition-all duration-300">
-                      {tool.image_url ? (
-                        <img src={tool.image_url} alt={tool.name} className="w-9 h-9 object-contain" />
-                      ) : (
-                        <div
-                          className="[&>svg]:w-9 [&>svg]:h-9"
-                          dangerouslySetInnerHTML={{
-                            __html: tool.icon_svg || `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`
-                          }}
-                        />
-                      )}
-                    </div>
-
-                    {/* Tool Name */}
-                    <span className="font-semibold text-slate-800 text-[11px] leading-tight select-none">
-                      {tool.name}
-                    </span>
-
-                  </div>
+                    {tool.name}
+                  </span>
                 ))}
 
               </div>
@@ -323,19 +363,16 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                 </span>
                 Projects
               </h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
                 {projects.map((project: any, idx: number) => (
-                  <div key={idx} className="group bg-white rounded-xl border border-gray-100 p-2 shadow-sm hover:shadow-md transition-all duration-300">
-                    <div className="aspect-[4/3] bg-gray-100 overflow-hidden relative rounded-lg">
-                      {project.image_url ? (
-                        <Image src={project.image_url} alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 50vw, 33vw" />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-xl bg-gradient-to-br from-blue-50 to-indigo-50">📁</div>
-                      )}
-                    </div>
-                    <div className="p-2 text-center">
-                      <h3 className="text-xs md:text-sm font-semibold text-slate-900 line-clamp-1">{project.title}</h3>
-                    </div>
+                  <div key={idx} className="flex items-start gap-2.5 py-1">
+                    {/* Bullet marker */}
+                    <span className="text-purple-600 font-extrabold text-sm md:text-base leading-none select-none flex-shrink-0">
+                      •
+                    </span>
+                    <p className="font-semibold text-slate-800 text-xs md:text-sm leading-normal">
+                      {project.title}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -435,7 +472,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
         </p>
 
         <Button href={`/admissions?courseId=${course.id}`} className="px-8 py-3.5 text-xs font-bold rounded-xl border-none">
-          Enroll Now 🚀
+          Apply Now 🚀
         </Button>
       </section>
     </main>

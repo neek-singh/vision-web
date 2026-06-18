@@ -123,7 +123,7 @@ export default async function Home() {
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-slate-900">DCA</h3>
-                    <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">6 Months</p>
+                    <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">6-12 Months</p>
                   </div>
                 </div>
                 <p className="text-xs text-slate-900 font-medium mb-1">Diploma in Computer Application</p>
@@ -218,14 +218,10 @@ export default async function Home() {
       {/* 4. Contact CTA Section (White Theme) */}
       < section className="container mx-auto px-6 lg:px-8 py-24 relative z-10" >
 
-        {/* Outer Wrapper with Premium Light Shadow */}
-        < div className="bg-white rounded-[3rem] lg:rounded-[4rem] p-10 md:p-16 lg:p-20 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 relative overflow-hidden group" >
+        {/* Outer Wrapper */}
+        < div className="p-10 md:p-16 lg:p-20 text-center" >
 
-          {/* Light Animated Aurora/Glow Backgrounds */}
-          <div className="absolute -right-32 -top-32 w-[30rem] h-[30rem] bg-blue-300/60 rounded-full blur-[100px] pointer-events-none group-hover:bg-blue-400/60 transition-colors duration-700"></div>
-          <div className="absolute -left-32 -bottom-32 w-[30rem] h-[30rem] bg-indigo-300/60 rounded-full blur-[100px] pointer-events-none group-hover:bg-indigo-400/60 transition-colors duration-700"></div>
-
-          <div className="relative z-10">
+          <div>
 
             {/* Headline */}
             <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 tracking-tight">
@@ -240,7 +236,7 @@ export default async function Home() {
             {/* Primary Actions */}
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
               <Button href="/admissions" size="md" className="w-full sm:w-auto text-sm px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/25 rounded-full transition-all duration-300 hover:-translate-y-0.5 font-bold flex items-center justify-center border-none">
-                Enroll Now
+                Apply Now
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
               </Button>
               <Button href="/contact" size="md" variant="outline" className="w-full sm:w-auto text-sm px-6 py-3 bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:border-slate-300 hover:text-blue-700 rounded-full transition-all duration-300 hover:-translate-y-0.5 font-semibold">

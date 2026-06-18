@@ -96,7 +96,7 @@ export default function GoogleReviews() {
               className="bg-white hover:bg-slate-50/50 p-5 rounded-2xl border border-slate-200/60 hover:border-blue-300/60 shadow-[0_4px_20px_rgb(0,0,0,0.02)] hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div className="space-y-3.5">
-                {/* Header: Avatar, Name, Verified */}
+                {/* Header: Avatar, Name */}
                 <div className="flex items-center gap-3">
                   <div className={`w-9 h-9 rounded-full ${review.avatarColor} text-white font-extrabold text-sm flex items-center justify-center shadow-inner`}>
                     {review.name[0]}
@@ -105,9 +105,6 @@ export default function GoogleReviews() {
                     <h4 className="text-xs font-bold text-slate-900 leading-tight">
                       {review.name}
                     </h4>
-                    <span className="text-[9px] text-emerald-600 font-bold uppercase tracking-wider mt-0.5 block">
-                      Verified
-                    </span>
                   </div>
                 </div>
 
@@ -122,14 +119,7 @@ export default function GoogleReviews() {
                 </p>
               </div>
 
-              {/* Google Verified Seal */}
-              <div className="border-t border-slate-100/80 pt-3 mt-4 flex items-center justify-between text-[10px] text-slate-400">
-                <span className="flex items-center gap-1 font-semibold">
-                  <svg className="w-3.5 h-3.5 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                  </svg>
-                  Verified Student
-                </span>
+              <div className="border-t border-slate-100/80 pt-3 mt-4 flex items-center justify-end text-[10px] text-slate-400">
                 <span className="font-semibold uppercase tracking-wider">Maps Review</span>
               </div>
             </Card>

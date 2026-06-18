@@ -720,22 +720,21 @@ export default function LearnPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
-            <Button
+            <Link
               href="https://learn.visionitinstitute.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-7 h-12 bg-white text-blue-900 hover:!bg-blue-500 hover:!text-white active:!bg-blue-600 active:!text-white shadow-lg rounded-full transition-all duration-300 hover:-translate-y-0.5 font-semibold text-sm inline-flex items-center group border-none"
+              className="px-7 h-12 rounded-full bg-white text-slate-900 hover:bg-blue-600 hover:text-white transition-all duration-300 hover:-translate-y-0.5 font-semibold text-sm inline-flex items-center justify-center gap-2 group w-full sm:w-auto shadow-lg"
             >
               Go to Portal
               <IconArrow />
-            </Button>
-            <Button
+            </Link>
+            <Link
               href="/courses"
-              variant="outline"
-              className="px-7 h-12 rounded-full bg-transparent border border-white/20 text-white hover:!bg-white/10 transition-all duration-300 hover:-translate-y-0.5 font-semibold text-sm inline-flex items-center"
+              className="px-7 h-12 rounded-full bg-transparent border border-white/20 text-white hover:bg-white/10 transition-all duration-300 hover:-translate-y-0.5 font-semibold text-sm inline-flex items-center justify-center w-full sm:w-auto"
             >
               Explore Courses
-            </Button>
+            </Link>
           </div>
 
           {/* Support note */}

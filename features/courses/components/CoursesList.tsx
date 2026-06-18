@@ -162,22 +162,6 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
                     <span className="font-semibold text-slate-600 text-[11px] uppercase tracking-wide flex items-center gap-1">
                       ⏱ {course.duration || 'Flexible'}
                     </span>
-
-                    {/* Pricing Tag */}
-                    {course.discount_fee && course.discount_fee > 0 ? (
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-emerald-600 text-[11px] uppercase tracking-wide">
-                          ₹{course.discount_fee}
-                        </span>
-                        <span className="font-semibold text-slate-400 line-through text-[10px]">
-                          ₹{course.fee}
-                        </span>
-                      </div>
-                    ) : course.fee ? (
-                      <span className="font-bold text-emerald-600 text-[11px] uppercase tracking-wide">
-                        ₹{course.fee}
-                      </span>
-                    ) : null}
                   </div>
 
                   <div className="flex gap-2.5 mt-auto border-t border-slate-100/80 pt-3">
@@ -195,7 +179,7 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
                       size="sm"
                       className="rounded-lg flex-1 font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 border-none py-1.5 text-[11px] md:text-xs"
                     >
-                      Enroll Now
+                      Apply Now
                     </Button>
                   </div>
                 </CardContent>

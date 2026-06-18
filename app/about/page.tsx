@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import Image from 'next/image';
 import Link from 'next/link';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata: Metadata = {
   title: 'About Us | Vision IT Computer Institute in Pratappur',
@@ -50,7 +51,7 @@ const coursePrograms = [
   {
     name: "DCA",
     fullName: "Diploma in Computer Application",
-    duration: "6 Months",
+    duration: "6-12 Months",
     desc: "Foundation course covering computer fundamentals, MS Office, internet basics, and introductory programming. Perfect for beginners starting their tech journey.",
     topics: ["Computer Fundamentals", "MS Office Suite", "Internet & Email", "Basic Programming", "Typing & Data Entry"],
     color: "blue",
@@ -315,7 +316,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-start">
 
             {/* Left Column: Text Content */}
-            <div className="max-w-2xl">
+            <ScrollReveal className="max-w-2xl">
               <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-blue-50 text-blue-700 font-semibold rounded-full text-xs border border-blue-200/60">
                 Who We Are
               </div>
@@ -350,7 +351,7 @@ export default function AboutPage() {
                   ))}
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right Column: Feature Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -362,15 +363,17 @@ export default function AboutPage() {
               ].map((card, i) => {
                 const c = colorStyles[card.color];
                 return (
-                  <div key={card.title} className={`bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 ${i % 2 === 1 ? "sm:mt-4" : ""}`}>
-                    <div className="flex items-center gap-3 mb-2.5">
-                      <div className={`w-9 h-9 ${c.bg} ${c.text} rounded-lg flex items-center justify-center shrink-0 [&>svg]:w-5 [&>svg]:h-5`}>
-                        {card.icon}
+                  <ScrollReveal key={card.title} delay={i * 100} className={`h-full ${i % 2 === 1 ? "sm:mt-4" : ""}`}>
+                    <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 h-full">
+                      <div className="flex items-center gap-3 mb-2.5">
+                        <div className={`w-9 h-9 ${c.bg} ${c.text} rounded-lg flex items-center justify-center shrink-0 [&>svg]:w-5 [&>svg]:h-5`}>
+                          {card.icon}
+                        </div>
+                        <h4 className="text-sm font-semibold text-slate-900 leading-tight">{card.title}</h4>
                       </div>
-                      <h4 className="text-sm font-semibold text-slate-900 leading-tight">{card.title}</h4>
+                      <p className="text-slate-600 text-sm leading-relaxed">{card.desc}</p>
                     </div>
-                    <p className="text-slate-600 text-sm leading-relaxed">{card.desc}</p>
-                  </div>
+                  </ScrollReveal>
                 );
               })}
             </div>
@@ -391,13 +394,15 @@ export default function AboutPage() {
               { value: stats.expert_mentors, label: "Expert Mentors" },
               { value: stats.practical_learning, label: "Practical Learning" },
               { value: stats.courses_offered, label: "Courses Offered" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center group">
-                <div className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:scale-105 transition-transform duration-300">
-                  {stat.value}
+            ].map((stat, i) => (
+              <ScrollReveal key={stat.label} delay={i * 100}>
+                <div className="text-center group">
+                  <div className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:scale-105 transition-transform duration-300">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-slate-500 font-semibold mt-1 uppercase tracking-wide">{stat.label}</div>
                 </div>
-                <div className="text-xs text-slate-500 font-semibold mt-1 uppercase tracking-wide">{stat.label}</div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -412,7 +417,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-50 pointer-events-none" />
 
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative z-10">
-          <div className="text-center mb-12">
+          <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-indigo-50 text-indigo-700 font-semibold rounded-full text-xs border border-indigo-200/60">
               Our Purpose
             </div>
@@ -422,58 +427,62 @@ export default function AboutPage() {
             <p className="text-sm md:text-base text-slate-500 max-w-2xl mx-auto leading-relaxed">
               Driving excellence in computer education with a relentless focus on real-world skills, innovation, and student success.
             </p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {/* Mission Card */}
-            <div className="group relative bg-white p-6 md:p-8 rounded-3xl border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-2 transition-all duration-500 flex flex-col text-left overflow-hidden z-10">
-              <div className="absolute -bottom-6 -right-6 text-[12rem] font-black text-slate-50 opacity-50 group-hover:text-blue-50 group-hover:-translate-y-4 group-hover:-translate-x-4 transition-all duration-700 pointer-events-none z-0 leading-none">01</div>
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+            <ScrollReveal className="h-full">
+              <div className="group relative bg-white p-6 md:p-8 rounded-3xl border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-2 transition-all duration-500 flex flex-col text-left overflow-hidden z-10 h-full">
+                <div className="absolute -bottom-6 -right-6 text-[12rem] font-black text-slate-50 opacity-50 group-hover:text-blue-50 group-hover:-translate-y-4 group-hover:-translate-x-4 transition-all duration-700 pointer-events-none z-0 leading-none">01</div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
 
-              <div className="flex items-center gap-3.5 mb-4 relative z-10">
-                <div className="w-11 h-11 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white group-hover:rotate-3 transition-all duration-300">
-                  <IconRocket />
+                <div className="flex items-center gap-3.5 mb-4 relative z-10">
+                  <div className="w-11 h-11 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white group-hover:rotate-3 transition-all duration-300">
+                    <IconRocket />
+                  </div>
+                  <h3 className="text-base md:text-lg font-bold text-slate-900 tracking-tight">Our Mission</h3>
                 </div>
-                <h3 className="text-base md:text-lg font-bold text-slate-900 tracking-tight">Our Mission</h3>
+
+                <p className="text-slate-600 leading-relaxed text-sm md:text-base relative z-10 mb-4">
+                  To deliver <strong className="text-slate-800">industry-relevant, skill-based computer education</strong> that is accessible to all. We focus on practical learning, real-world projects, and career-oriented training to ensure every student is job-ready from day one.
+                </p>
+
+                <ul className="space-y-2 relative z-10">
+                  {["Practical-first teaching approach", "Affordable & accessible education", "Real-world project experience", "Career readiness from day one"].map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-xs text-slate-600">
+                      <IconCheck /> {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              <p className="text-slate-600 leading-relaxed text-sm md:text-base relative z-10 mb-4">
-                To deliver <strong className="text-slate-800">industry-relevant, skill-based computer education</strong> that is accessible to all. We focus on practical learning, real-world projects, and career-oriented training to ensure every student is job-ready from day one.
-              </p>
-
-              <ul className="space-y-2 relative z-10">
-                {["Practical-first teaching approach", "Affordable & accessible education", "Real-world project experience", "Career readiness from day one"].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-xs text-slate-600">
-                    <IconCheck /> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </ScrollReveal>
 
             {/* Vision Card */}
-            <div className="group relative bg-white p-6 md:p-8 rounded-3xl border border-slate-200 hover:border-indigo-200 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/5 hover:-translate-y-2 transition-all duration-500 flex flex-col text-left overflow-hidden z-10 mt-0 md:mt-8">
-              <div className="absolute -bottom-6 -right-6 text-[12rem] font-black text-slate-50 opacity-50 group-hover:text-indigo-50 group-hover:-translate-y-4 group-hover:-translate-x-4 transition-all duration-700 pointer-events-none z-0 leading-none">02</div>
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+            <ScrollReveal delay={200} className="h-full md:mt-8">
+              <div className="group relative bg-white p-6 md:p-8 rounded-3xl border border-slate-200 hover:border-indigo-200 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/5 hover:-translate-y-2 transition-all duration-500 flex flex-col text-left overflow-hidden z-10 h-full">
+                <div className="absolute -bottom-6 -right-6 text-[12rem] font-black text-slate-50 opacity-50 group-hover:text-indigo-50 group-hover:-translate-y-4 group-hover:-translate-x-4 transition-all duration-700 pointer-events-none z-0 leading-none">02</div>
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
 
-              <div className="flex items-center gap-3.5 mb-4 relative z-10">
-                <div className="w-11 h-11 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white group-hover:-rotate-3 transition-all duration-300">
-                  <IconGlobe />
+                <div className="flex items-center gap-3.5 mb-4 relative z-10">
+                  <div className="w-11 h-11 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white group-hover:-rotate-3 transition-all duration-300">
+                    <IconGlobe />
+                  </div>
+                  <h3 className="text-base md:text-lg font-bold text-slate-900 tracking-tight">Our Vision</h3>
                 </div>
-                <h3 className="text-base md:text-lg font-bold text-slate-900 tracking-tight">Our Vision</h3>
+
+                <p className="text-slate-600 leading-relaxed text-sm md:text-base relative z-10 mb-4">
+                  To become a <strong className="text-slate-800">leading hub of digital education</strong>, empowering students with the skills, confidence, and mindset needed to thrive in the global technology landscape and become future innovators.
+                </p>
+
+                <ul className="space-y-2 relative z-10">
+                  {["Digital education leadership", "Global technology skills", "Innovation-driven mindset", "Empowering future leaders"].map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-xs text-slate-600">
+                      <IconCheck /> {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              <p className="text-slate-600 leading-relaxed text-sm md:text-base relative z-10 mb-4">
-                To become a <strong className="text-slate-800">leading hub of digital education</strong>, empowering students with the skills, confidence, and mindset needed to thrive in the global technology landscape and become future innovators.
-              </p>
-
-              <ul className="space-y-2 relative z-10">
-                {["Digital education leadership", "Global technology skills", "Innovation-driven mindset", "Empowering future leaders"].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-xs text-slate-600">
-                    <IconCheck /> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -487,7 +496,7 @@ export default function AboutPage() {
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-200/20 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative z-10">
-          <div className="text-center mb-12">
+          <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-purple-50 text-purple-700 font-semibold rounded-full text-xs border border-purple-200/60">
               What We Offer
             </div>
@@ -497,56 +506,51 @@ export default function AboutPage() {
             <p className="text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
               Each program is carefully designed with industry standards in mind. Choose the right path for your career goals.
             </p>
-          </div>
+          </ScrollReveal>
 
           <div className="space-y-5">
-            {coursePrograms.map((course) => {
+            {coursePrograms.map((course, i) => {
               const c = colorStyles[course.color];
               return (
-                <div key={course.name} className={`bg-white rounded-2xl border border-slate-200/80 shadow-sm ${c.hoverBg} hover:shadow-md transition-all duration-300 overflow-hidden group`}>
-                  <div className="p-6 md:p-8">
-                    <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
-                      {/* Course badge & name */}
-                      <div className="shrink-0">
-                        <div className={`inline-flex items-center gap-2 px-3 py-1.5 ${c.badge} text-white rounded-lg text-xs font-bold shadow-sm`}>
-                          {course.name}
+                <ScrollReveal key={course.name} delay={i * 100}>
+                  <div className={`bg-white rounded-2xl border border-slate-200/80 shadow-sm ${c.hoverBg} hover:shadow-md transition-all duration-300 overflow-hidden group`}>
+                    <div className="p-6 md:p-8">
+                      <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
+                        {/* Course badge & name */}
+                        <div className="shrink-0">
+                          <div className={`inline-flex items-center gap-2 px-3 py-1.5 ${c.badge} text-white rounded-lg text-xs font-bold shadow-sm`}>
+                            {course.name}
+                          </div>
+                          <p className="text-[10px] text-slate-400 font-semibold mt-2 uppercase tracking-wider">{course.duration}</p>
                         </div>
-                        <p className="text-[10px] text-slate-400 font-semibold mt-2 uppercase tracking-wider">{course.duration}</p>
-                      </div>
 
-                      {/* Details */}
-                      <div className="flex-grow">
-                        <h3 className="text-base md:text-lg font-bold text-slate-900 mb-2">{course.fullName}</h3>
-                        <p className="text-sm text-slate-500 leading-relaxed mb-4">{course.desc}</p>
+                        {/* Details */}
+                        <div className="flex-grow">
+                          <h3 className="text-base md:text-lg font-bold text-slate-900 mb-2">{course.fullName}</h3>
+                          <p className="text-sm text-slate-500 leading-relaxed mb-4">{course.desc}</p>
 
-                        {/* Topics */}
-                        <div className="flex flex-wrap gap-2">
-                          {course.topics.map((topic) => (
-                            <span key={topic} className={`px-3 py-1 ${c.light} ${c.text} text-xs font-semibold rounded-full border ${c.border}`}>
-                              {topic}
-                            </span>
-                          ))}
+                          {/* Topics */}
+                          <div className="flex flex-wrap gap-2">
+                            {course.topics.map((topic) => (
+                              <span key={topic} className={`px-3 py-1 ${c.light} ${c.text} text-xs font-semibold rounded-full border ${c.border}`}>
+                                {topic}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-
-                      {/* CTA */}
-                      <div className="shrink-0 flex md:flex-col items-center gap-2">
-                        <Link href="/courses" className={`text-xs font-semibold ${c.text} hover:underline underline-offset-2`}>
-                          View Details →
-                        </Link>
                       </div>
                     </div>
                   </div>
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
 
-          <div className="text-center mt-8">
+          <ScrollReveal className="text-center mt-8" delay={150}>
             <Button href="/courses" className="px-7 h-11 bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/20 rounded-full font-semibold text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl inline-flex items-center gap-2 group border-none">
               Explore All Courses <IconArrow />
             </Button>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -558,7 +562,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-30 pointer-events-none" />
 
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative z-10">
-          <div className="text-center mb-12">
+          <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-emerald-50 text-emerald-700 font-semibold rounded-full text-xs border border-emerald-200/60">
               How We Teach
             </div>
@@ -568,20 +572,22 @@ export default function AboutPage() {
             <p className="text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
               We follow a proven 6-step methodology that ensures deep understanding and practical mastery of every concept.
             </p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {methodologySteps.map((s) => (
-              <div key={s.step} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-xl flex items-center justify-center font-bold text-xs shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
-                    {s.step}
+            {methodologySteps.map((s, i) => (
+              <ScrollReveal key={s.step} delay={(i % 3) * 100} className="h-full">
+                <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group h-full">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-xl flex items-center justify-center font-bold text-xs shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
+                      {s.step}
+                    </div>
+                    <span className="text-xl">{s.icon}</span>
                   </div>
-                  <span className="text-xl">{s.icon}</span>
+                  <h3 className="text-sm md:text-base font-semibold text-slate-900 mb-2">{s.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">{s.desc}</p>
                 </div>
-                <h3 className="text-sm md:text-base font-semibold text-slate-900 mb-2">{s.title}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">{s.desc}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -596,7 +602,7 @@ export default function AboutPage() {
         <div className="absolute -left-40 top-40 w-96 h-96 bg-indigo-100/40 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
-          <div className="text-center mb-12">
+          <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-sky-50 text-sky-700 font-semibold rounded-full text-xs border border-sky-200/60">
               Why Us?
             </div>
@@ -606,21 +612,23 @@ export default function AboutPage() {
             <p className="text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
               Not just courses — we build careers with practical skills, real projects, and industry-focused training.
             </p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {whyChooseFeatures.map((f) => {
+            {whyChooseFeatures.map((f, i) => {
               const c = colorStyles[f.color];
               return (
-                <div key={f.title} className={`group relative bg-white border border-slate-200 rounded-2xl p-6 text-left shadow-sm hover:shadow-lg hover:-translate-y-1 hover:${c.border} transition-all duration-400`}>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className={`w-10 h-10 ${c.bg} ${c.text} rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:${c.badge} group-hover:text-white transition-all duration-300 [&>svg]:w-5 [&>svg]:h-5`}>
-                      {f.icon}
+                <ScrollReveal key={f.title} delay={(i % 4) * 100} className="h-full">
+                  <div className={`group relative bg-white border border-slate-200 rounded-2xl p-6 text-left shadow-sm hover:shadow-lg hover:-translate-y-1 hover:${c.border} transition-all duration-400 h-full`}>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className={`w-10 h-10 ${c.bg} ${c.text} rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:${c.badge} group-hover:text-white transition-all duration-300 [&>svg]:w-5 [&>svg]:h-5`}>
+                        {f.icon}
+                      </div>
+                      <h4 className="text-sm font-bold text-slate-900 tracking-tight">{f.title}</h4>
                     </div>
-                    <h4 className="text-sm font-bold text-slate-900 tracking-tight">{f.title}</h4>
+                    <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{f.desc}</p>
                   </div>
-                  <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{f.desc}</p>
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
@@ -633,7 +641,7 @@ export default function AboutPage() {
       ════════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 bg-white border-t border-slate-100">
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
-          <div className="text-center mb-12">
+          <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-amber-50 text-amber-700 font-semibold rounded-full text-xs border border-amber-200/60">
               Our Infrastructure
             </div>
@@ -643,15 +651,17 @@ export default function AboutPage() {
             <p className="text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
               We invest in creating the best learning environment so you can focus entirely on building your skills.
             </p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {facilities.map((f) => (
-              <div key={f.name} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group">
-                <div className="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">{f.icon}</div>
-                <h3 className="text-sm md:text-base font-semibold text-slate-900 mb-2">{f.name}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">{f.desc}</p>
-              </div>
+            {facilities.map((f, i) => (
+              <ScrollReveal key={f.name} delay={(i % 3) * 100} className="h-full">
+                <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group h-full">
+                  <div className="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">{f.icon}</div>
+                  <h3 className="text-sm md:text-base font-semibold text-slate-900 mb-2">{f.name}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">{f.desc}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -666,7 +676,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-50 pointer-events-none" />
 
         <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
-          <div className="text-center mb-12">
+          <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-purple-50 text-purple-700 font-semibold rounded-full text-xs border border-purple-200/60">
               Our Mentors
             </div>
@@ -676,10 +686,10 @@ export default function AboutPage() {
             <p className="text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
               Learn from passionate mentors who bring real industry experience into the classroom to help you succeed.
             </p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {faculty.map((member: any) => {
+            {faculty.map((member: any, i: number) => {
               const teamColorMap: Record<string, { from: string; to: string; text: string; glow: string; hoverBorder: string; hoverText: string }> = {
                 blue: { from: "from-blue-50/50", to: "to-transparent", text: "text-blue-600", glow: "from-blue-200 to-indigo-100", hoverBorder: "hover:border-blue-200", hoverText: "group-hover:text-blue-600" },
                 indigo: { from: "from-indigo-50/50", to: "to-transparent", text: "text-indigo-600", glow: "from-indigo-200 to-purple-100", hoverBorder: "hover:border-indigo-200", hoverText: "group-hover:text-indigo-600" },
@@ -690,46 +700,48 @@ export default function AboutPage() {
               const colors = teamColorMap[member.color as string] || teamColorMap.blue;
 
               return (
-                <div key={member.id} className={`group relative bg-white rounded-3xl p-6 text-center border border-slate-200 shadow-sm hover:shadow-xl ${colors.hoverBorder} transition-all duration-500 overflow-hidden flex flex-col h-full`}>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${colors.from} ${colors.to} opacity-0 group-hover:opacity-100 transition duration-500 -z-10`} />
+                <ScrollReveal key={member.id} delay={(i % 3) * 100} className="h-full">
+                  <div className={`group relative bg-white rounded-3xl p-6 text-center border border-slate-200 shadow-sm hover:shadow-xl ${colors.hoverBorder} transition-all duration-500 overflow-hidden flex flex-col h-full`}>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${colors.from} ${colors.to} opacity-0 group-hover:opacity-100 transition duration-500 -z-10`} />
 
-                  <div className="relative w-20 h-20 mx-auto mb-4">
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${colors.glow} blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-500`} />
-                    <div className={`relative w-full h-full rounded-full bg-white border-2 border-slate-100 flex items-center justify-center text-2xl font-black ${colors.text} shadow-sm group-hover:scale-105 transition-all duration-300 overflow-hidden`}>
-                      {member.image ? (
-                        <Image src={member.image} alt={member.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-                      ) : (
-                        member.initials
-                      )}
+                    <div className="relative w-20 h-20 mx-auto mb-4">
+                      <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${colors.glow} blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-500`} />
+                      <div className={`relative w-full h-full rounded-full bg-white border-2 border-slate-100 flex items-center justify-center text-2xl font-black ${colors.text} shadow-sm group-hover:scale-105 transition-all duration-300 overflow-hidden`}>
+                        {member.image ? (
+                          <Image src={member.image} alt={member.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+                        ) : (
+                          member.initials
+                        )}
+                      </div>
+                    </div>
+
+                    <h4 className={`text-base md:text-lg font-semibold text-slate-900 mb-1 ${colors.hoverText} transition-colors`}>
+                      {member.name}
+                    </h4>
+                    <p className="font-semibold mb-2 text-slate-500 text-xs tracking-wider uppercase">
+                      {member.role}
+                    </p>
+
+                    <p className="text-slate-500 text-xs md:text-sm leading-relaxed mb-4 flex-grow">
+                      {member.bio}
+                    </p>
+
+                    <div className="mt-auto pt-4 border-t border-slate-100">
+                      <div className="flex flex-wrap justify-center gap-2 text-[11px] font-semibold mb-3">
+                        {member.tags.map((tag: string, idx: number) => (
+                          <span key={idx} className="px-2.5 py-1 bg-slate-50 text-slate-600 border border-slate-200 rounded-full">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex justify-center gap-3 text-slate-400">
+                        <a href={member.instagram} className={`hover:${colors.text} transition-colors`}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
+                        </a>
+                      </div>
                     </div>
                   </div>
-
-                  <h4 className={`text-base md:text-lg font-semibold text-slate-900 mb-1 ${colors.hoverText} transition-colors`}>
-                    {member.name}
-                  </h4>
-                  <p className="font-semibold mb-2 text-slate-500 text-xs tracking-wider uppercase">
-                    {member.role}
-                  </p>
-
-                  <p className="text-slate-500 text-xs md:text-sm leading-relaxed mb-4 flex-grow">
-                    {member.bio}
-                  </p>
-
-                  <div className="mt-auto pt-4 border-t border-slate-100">
-                    <div className="flex flex-wrap justify-center gap-2 text-[11px] font-semibold mb-3">
-                      {member.tags.map((tag: string, idx: number) => (
-                        <span key={idx} className="px-2.5 py-1 bg-slate-50 text-slate-600 border border-slate-200 rounded-full">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex justify-center gap-3 text-slate-400">
-                      <a href={member.instagram} className={`hover:${colors.text} transition-colors`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
@@ -742,7 +754,7 @@ export default function AboutPage() {
       ════════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 bg-white border-t border-slate-100">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
-          <div className="text-center mb-10">
+          <ScrollReveal className="text-center mb-10">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-amber-50 text-amber-700 font-semibold rounded-full text-xs border border-amber-200/60">
               Got Questions?
             </div>
@@ -752,21 +764,23 @@ export default function AboutPage() {
             <p className="text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
               Everything you need to know about Vision IT Computer Institute and our programs.
             </p>
-          </div>
+          </ScrollReveal>
 
           <div className="space-y-3">
-            {faqs.map((faq) => (
-              <details key={faq.q} className="group bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden hover:border-slate-200 transition-colors">
-                <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-sm font-semibold text-slate-800 select-none list-none">
-                  <span>{faq.q}</span>
-                  <svg className="w-5 h-5 text-slate-400 transition-transform duration-300 group-open:rotate-180 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-6 pb-4 text-xs md:text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-3">
-                  {faq.a}
-                </div>
-              </details>
+            {faqs.map((faq, i) => (
+              <ScrollReveal key={faq.q} delay={(i % 4) * 50}>
+                <details className="group bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden hover:border-slate-200 transition-colors">
+                  <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-sm font-semibold text-slate-800 select-none list-none">
+                    <span>{faq.q}</span>
+                    <svg className="w-5 h-5 text-slate-400 transition-transform duration-300 group-open:rotate-180 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <div className="px-6 pb-4 text-xs md:text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-3">
+                    {faq.a}
+                  </div>
+                </details>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -776,7 +790,7 @@ export default function AboutPage() {
       {/* ════════════════════════════════════════════════════════════
           11. BOTTOM CTA
       ════════════════════════════════════════════════════════════ */}
-      <section className="container mx-auto px-6 lg:px-8 max-w-4xl pb-16 md:pb-24">
+      <ScrollReveal className="container mx-auto px-6 lg:px-8 max-w-4xl pb-16 md:pb-24">
         <div className="bg-slate-900 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-2xl">
           <div className="absolute -right-24 -top-24 w-72 h-72 bg-blue-600/30 rounded-full blur-[80px] pointer-events-none" />
           <div className="absolute -left-24 -bottom-24 w-72 h-72 bg-indigo-600/30 rounded-full blur-[80px] pointer-events-none" />
@@ -801,9 +815,12 @@ export default function AboutPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <Button href="/admissions" className="w-full sm:w-auto px-7 h-12 bg-white text-blue-900 hover:!bg-blue-500 hover:!text-white shadow-lg rounded-full font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center justify-center gap-2 group border-none">
+              <Link
+                href="/admissions"
+                className="w-full sm:w-auto px-7 h-12 bg-white text-slate-900 hover:bg-blue-600 hover:text-white shadow-lg rounded-full font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center justify-center gap-2 group border-none"
+              >
                 Join Now <IconArrow />
-              </Button>
+              </Link>
               <a
                 href="https://wa.me/918103170595"
                 target="_blank"
@@ -826,7 +843,7 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-      </section>
+      </ScrollReveal>
 
     </main>
   );

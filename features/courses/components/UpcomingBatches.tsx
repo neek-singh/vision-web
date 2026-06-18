@@ -30,7 +30,7 @@ export default async function UpcomingBatches() {
 
       <div className="text-center mb-10 relative">
         <h2 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight mb-3">
-          Upcoming Batches
+          Batches
         </h2>
         <p className="text-slate-900 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-medium">
           Choose a schedule that fits your routine and start your career transformation today.
