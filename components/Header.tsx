@@ -77,7 +77,7 @@ export default function Header({ userNav }: { userNav?: React.ReactNode }) {
                 Vision<span className="text-blue-600">IT</span>
               </span>
               <span className="text-[9px] font-black text-slate-800 tracking-wider mt-1 uppercase">
-                Computer Institute <span className="text-blue-600">Pratappur</span>
+                Computer Institute
               </span>
             </div>
           </Link>

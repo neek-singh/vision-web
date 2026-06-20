@@ -54,7 +54,7 @@ export default function Footer() {
                     Vision<span className="text-blue-600">IT</span>
                   </span>
                   <span className="text-[10px] font-bold text-slate-500 tracking-widest mt-1 uppercase">
-                    Computer Institute <span className="text-blue-600">Pratappur</span>
+                    Computer Institute
                   </span>
                 </div>
               </Link>

@@ -98,6 +98,8 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
   const projects = Array.isArray(course.projects) ? course.projects : [];
   const faqs = Array.isArray(course.faqs) ? course.faqs : [];
   const trainers = Array.isArray(course.trainers) ? course.trainers : [];
+  const skillsDeveloped = Array.isArray(course.skills_developed) ? course.skills_developed : [];
+
 
   return (
     <main className="min-h-screen bg-[#F8FAFC] pb-16">
@@ -127,7 +129,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                 {/* Category */}
                 {course.category && (
                   <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 text-slate-700 rounded-md text-xs font-bold shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-amber-500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-amber-500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" /><path d="M6 6h10M6 10h10" /></svg>
                     {course.category}
                   </span>
                 )}
@@ -311,6 +313,147 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
 
           </div>
 
+          {/* 2. Who is this program for? */}
+          {course.target_audience && (
+            <div className="relative mt-12 md:mt-16 bg-white p-6 md:p-8 rounded-2xl border border-slate-100 shadow-sm">
+              <h2 className="text-base md:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2.5">
+                <span className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-blue-600 rounded-lg flex items-center justify-center text-white shadow-sm shadow-indigo-200/50 flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                </span>
+                Who is this program for?
+              </h2>
+              <p className="text-xs md:text-sm text-slate-700 leading-relaxed font-semibold mt-2 bg-slate-50/50 p-4 rounded-xl border border-slate-100">
+                This program is designed for: <span className="text-slate-900 font-medium">{course.target_audience}</span>.
+              </p>
+            </div>
+          )}
+
+          {/* 3. Essential Skills You Develop */}
+          {skillsDeveloped.length > 0 && (
+            <div className="relative mt-12 md:mt-16 bg-white p-6 md:p-8 rounded-2xl border border-slate-100 shadow-sm">
+              <h2 className="text-base md:text-lg font-bold text-slate-900 mb-4 flex items-center gap-2.5">
+                <span className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white shadow-sm shadow-blue-200/50 flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                  </svg>
+                </span>
+                Essential Skills You Develop
+              </h2>
+              <div className="flex flex-wrap gap-2.5 mt-4">
+                {skillsDeveloped.map((skill: string, index: number) => (
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-indigo-50/40 text-indigo-700 font-semibold text-xs md:text-sm rounded-xl border border-indigo-100/50 hover:bg-indigo-100/40 transition-colors cursor-default select-none shadow-sm flex items-center gap-1.5"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 4. Course Curriculum */}
+          {curriculum.length > 0 && (
+            <div className="relative mt-12 md:mt-16 bg-white p-6 md:p-8 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="flex items-center gap-2.5 mb-6">
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white shadow-sm shadow-blue-200/50 flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+                    <path d="M6 6h10M6 10h10" />
+                  </svg>
+                </div>
+                <h2 className="text-base md:text-lg font-bold text-slate-900 tracking-tight">
+                  Course Curriculum
+                </h2>
+              </div>
+
+              <div className="max-w-4xl mx-auto divide-y divide-slate-100">
+                {curriculum.map((module: any, idx: number) => {
+                  let displayTitle = module.module_title;
+                  let displaySubtitle = `Module ${idx + 1}`;
+
+                  if (module.module_title.includes(":")) {
+                    const parts = module.module_title.split(":");
+                    displaySubtitle = parts[0].trim();
+                    displayTitle = parts.slice(1).join(":").trim();
+                  }
+
+                  return (
+                    <details
+                      key={idx}
+                      className="group transition-all duration-300 overflow-hidden cursor-pointer"
+                    >
+                      <summary className="flex items-center justify-between py-5 px-2 font-bold text-slate-900 list-none [&::-webkit-details-marker]:hidden select-none hover:bg-slate-50/60 rounded-xl transition-colors duration-250">
+                        <div className="flex flex-col gap-1 text-left">
+                          <h3 className="text-sm md:text-base font-semibold text-slate-900 tracking-tight">
+                            {displayTitle}
+                          </h3>
+                          <span className="text-[11px] text-slate-500 font-semibold uppercase tracking-wider">
+                            {displaySubtitle}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-blue-600 shrink-0">
+                          <div className={`flex items-center gap-1.5 transition-opacity duration-200 ${idx === 0
+                            ? "opacity-100"
+                            : "opacity-0 group-hover:opacity-100"
+                            }`}>
+                            <span className="text-xs md:text-sm font-semibold hidden sm:inline group-open:hidden">
+                              Module details
+                            </span>
+                            <span className="text-xs md:text-sm font-semibold hidden group-open:sm:inline">
+                              Hide details
+                            </span>
+                          </div>
+                          <svg
+                            className="w-4 h-4 text-blue-600 transition-transform group-open:rotate-180"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      </summary>
+
+                      {module.topics && module.topics.length > 0 && (
+                        <div className="px-4 pb-6 pt-2 text-slate-600 text-xs md:text-sm bg-slate-50/20 rounded-xl mb-4 border border-slate-100/50">
+                          <div className="flex flex-col gap-2 mt-2">
+                            {module.topics.map((topic: string, tIdx: number) => (
+                              <div
+                                key={tIdx}
+                                className="flex items-center gap-3 py-2.5 px-3 hover:bg-blue-50/40 rounded-xl border border-transparent hover:border-blue-100/30 transition-all duration-200 group/item"
+                              >
+                                <div className="w-5 h-5 rounded-full bg-blue-50/80 text-blue-600 flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all duration-200 shadow-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                  </svg>
+                                </div>
+                                <span className="font-semibold text-black text-xs md:text-sm transition-colors duration-200">
+                                  {topic}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </details>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
 
 
           {/* 3. Enhanced Tools Covered */}
@@ -379,25 +522,6 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
             </div>
           )}
 
-          {/* 5. Program Trainers */}
-          {trainers.length > 0 && (
-            <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-100 shadow-sm">
-              <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-6">Program Trainers</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {trainers.map((trainer: any, idx: number) => (
-                  <div key={idx} className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-xl overflow-hidden shadow-inner shrink-0">
-                      {trainer.image_url ? <Image src={trainer.image_url} alt={trainer.name} width={48} height={48} className="object-cover" /> : '👤'}
-                    </div>
-                    <div>
-                      <p className="font-bold text-slate-900 text-sm">{trainer.name}</p>
-                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{trainer.role}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* 6. FAQs */}
           {faqs.length > 0 && (

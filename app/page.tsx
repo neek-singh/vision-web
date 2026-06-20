@@ -7,7 +7,7 @@ import UpcomingBatches, { UpcomingBatchesSkeleton } from "@/features/courses/com
 import GoogleReviews from "@/features/reviews/components/GoogleReviews";
 import { FAQSection, SocialSection } from "@/components/HomeSections";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 const COURSE_IDS = {
   DCA: "38fdc235-f7b5-4628-9d72-41c9ff2eabd8",
@@ -43,7 +43,7 @@ export default async function Home() {
 
           {/* Headline with Gradient Text */}
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-6 leading-[1.2]">
-            Vision <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">IT</span> Computer Institute Pratappur
+            Vision <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">IT</span> Computer Institute
           </h1>
 
           {/* Refined Sub-headline */}
