@@ -4,6 +4,11 @@ import { Button } from "@/components/ui/Button";
 import { createPublicSupabaseClient } from "@/lib/supabase-server";
 import Image from "next/image";
 import { Metadata } from "next";
+import { ToolsList } from "@/features/courses/components/ToolsList";
+import { ProjectsList } from "@/features/courses/components/ProjectsList";
+import { SkillsList } from "@/features/courses/components/SkillsList";
+import { HighlightsList } from "@/features/courses/components/HighlightsList";
+import { FaqList } from "@/features/courses/components/FaqList";
 
 export const dynamic = "force-dynamic";
 
@@ -40,64 +45,7 @@ export async function generateMetadata(
   }
 }
 
-function getToolBadgeStyle(name: string) {
-  const cleanName = name.toLowerCase().trim();
-  if (cleanName.includes("word")) {
-    return "border-blue-200 text-blue-700 bg-blue-50/40 hover:bg-blue-100/60 hover:border-blue-400";
-  }
-  if (cleanName.includes("excel")) {
-    return "border-emerald-200 text-emerald-700 bg-emerald-50/40 hover:bg-emerald-100/60 hover:border-emerald-400";
-  }
-  if (cleanName.includes("powerpoint") || cleanName.includes("power point")) {
-    return "border-orange-200 text-orange-700 bg-orange-50/40 hover:bg-orange-100/60 hover:border-orange-400";
-  }
-  if (cleanName.includes("vs code") || cleanName.includes("vscode") || cleanName.includes("visual studio code")) {
-    return "border-sky-200 text-sky-700 bg-sky-50/40 hover:bg-sky-100/60 hover:border-sky-400";
-  }
-  if (cleanName.includes("tally")) {
-    return "border-teal-200 text-teal-700 bg-teal-50/40 hover:bg-teal-100/60 hover:border-teal-400";
-  }
-  if (cleanName.includes("canva")) {
-    return "border-purple-200 text-purple-700 bg-purple-50/40 hover:bg-purple-100/60 hover:border-purple-400";
-  }
-  if (cleanName.includes("notion")) {
-    return "border-slate-300 text-slate-800 bg-slate-50/40 hover:bg-slate-100 hover:border-slate-500";
-  }
-  if (cleanName.includes("gmail") || cleanName.includes("mail")) {
-    return "border-red-200 text-red-700 bg-red-50/40 hover:bg-red-100/60 hover:border-red-400";
-  }
-  if (cleanName.includes("chrome") || cleanName.includes("google chrome")) {
-    return "border-amber-200 text-amber-700 bg-amber-50/40 hover:bg-amber-100/60 hover:border-amber-400";
-  }
-  if (cleanName.includes("html")) {
-    return "border-orange-200 text-orange-600 bg-orange-50/40 hover:bg-orange-100/60 hover:border-orange-400";
-  }
-  if (cleanName.includes("css")) {
-    return "border-blue-200 text-blue-600 bg-blue-50/40 hover:bg-blue-100/60 hover:border-blue-400";
-  }
-  if (cleanName.includes("javascript") || cleanName.includes("js")) {
-    return "border-yellow-200 text-yellow-700 bg-yellow-50/40 hover:bg-yellow-100/60 hover:border-yellow-400";
-  }
-  if (cleanName.includes("python")) {
-    return "border-blue-200 text-blue-700 bg-blue-50/40 hover:bg-blue-100/60 hover:border-blue-400";
-  }
-  if (cleanName.includes("photoshop")) {
-    return "border-cyan-200 text-cyan-700 bg-cyan-50/40 hover:bg-cyan-100/60 hover:border-cyan-400";
-  }
-  if (cleanName.includes("illustrator")) {
-    return "border-amber-200 text-amber-800 bg-amber-50/40 hover:bg-amber-100/60 hover:border-amber-400";
-  }
-  if (cleanName.includes("slack")) {
-    return "border-purple-200 text-purple-700 bg-purple-50/40 hover:bg-purple-100/60 hover:border-purple-400";
-  }
-  if (cleanName.includes("youtube")) {
-    return "border-red-200 text-red-700 bg-red-50/40 hover:bg-red-100/60 hover:border-red-400";
-  }
-  if (cleanName.includes("drive")) {
-    return "border-green-200 text-green-700 bg-green-50/40 hover:bg-green-100/60 hover:border-green-400";
-  }
-  return "border-slate-200 text-slate-700 bg-slate-50/40 hover:bg-slate-100 hover:border-slate-400";
-}
+
 
 export default async function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -302,29 +250,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
               Program Highlights
             </h2>
 
-            {/* Features Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
-
-              {(course.key_features || []).map((feature: string, index: number) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-2.5 py-1"
-                >
-
-                  {/* Tiny Subtle Checkmark Icon */}
-                  <span className="text-blue-600 font-bold text-sm md:text-base leading-none select-none flex-shrink-0">
-                    ✓
-                  </span>
-
-                  {/* Content */}
-                  <p className="font-semibold text-slate-800 text-xs md:text-sm leading-normal">
-                    {feature}
-                  </p>
-
-                </div>
-              ))}
-
-            </div>
+            <HighlightsList highlights={course.key_features || []} />
 
             {/* Bottom CTA Hint */}
             <div className="mt-6 text-xs md:text-sm text-slate-500 font-medium">
@@ -335,7 +261,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
 
           {/* 2. Who is this program for? */}
           {course.target_audience && (
-            <div className="relative mt-12 md:mt-16 bg-white p-6 md:p-8 rounded-2xl border border-slate-100 shadow-sm">
+            <div className="relative mt-12 md:mt-16">
               <h2 className="text-base md:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2.5">
                 <span className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-blue-600 rounded-lg flex items-center justify-center text-white shadow-sm shadow-indigo-200/50 flex-shrink-0">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -347,7 +273,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                 </span>
                 Who is this program for?
               </h2>
-              <p className="text-xs md:text-sm text-slate-700 leading-relaxed font-semibold mt-2 bg-slate-50/50 p-4 rounded-xl border border-slate-100">
+              <p className="text-xs md:text-sm text-slate-900 leading-relaxed font-semibold mt-3">
                 This program is designed for: <span className="text-slate-900 font-medium">{course.target_audience}</span>.
               </p>
             </div>
@@ -355,7 +281,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
 
           {/* 3. Essential Skills You Develop */}
           {skillsDeveloped.length > 0 && (
-            <div className="relative mt-12 md:mt-16 bg-white p-6 md:p-8 rounded-2xl border border-slate-100 shadow-sm">
+            <div className="relative mt-12 md:mt-16">
               <h2 className="text-base md:text-lg font-bold text-slate-900 mb-4 flex items-center gap-2.5">
                 <span className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white shadow-sm shadow-blue-200/50 flex-shrink-0">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -365,25 +291,13 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                 </span>
                 Essential Skills You Develop
               </h2>
-              <div className="flex flex-wrap gap-2.5 mt-4">
-                {skillsDeveloped.map((skill: string, index: number) => (
-                  <span
-                    key={index}
-                    className="px-4 py-2 bg-indigo-50/40 text-indigo-700 font-semibold text-xs md:text-sm rounded-xl border border-indigo-100/50 hover:bg-indigo-100/40 transition-colors cursor-default select-none shadow-sm flex items-center gap-1.5"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    {skill}
-                  </span>
-                ))}
-              </div>
+              <SkillsList skills={skillsDeveloped} />
             </div>
           )}
 
           {/* 4. Course Curriculum */}
           {curriculum.length > 0 && (
-            <div className="relative mt-12 md:mt-16 bg-white p-6 md:p-8 rounded-2xl border border-slate-100 shadow-sm">
+            <div className="relative mt-12 md:mt-16">
               <div className="flex items-center gap-2.5 mb-6">
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white shadow-sm shadow-blue-200/50 flex-shrink-0">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -496,18 +410,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
               </p>
 
               {/* Tools Badges */}
-              <div className="flex flex-wrap gap-2.5 justify-start">
-
-                {tools.map((tool: any, idx: number) => (
-                  <span
-                    key={idx}
-                    className={`px-5 py-2 text-xs md:text-sm font-semibold border rounded-full transition-all duration-300 cursor-default shadow-sm select-none ${getToolBadgeStyle(tool.name)}`}
-                  >
-                    {tool.name}
-                  </span>
-                ))}
-
-              </div>
+              <ToolsList tools={tools} />
 
               {/* Bottom Insight */}
               <p className="mt-6 text-xs md:text-sm text-slate-500 font-medium">
@@ -526,19 +429,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                 </span>
                 Projects
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
-                {projects.map((project: any, idx: number) => (
-                  <div key={idx} className="flex items-start gap-2.5 py-1">
-                    {/* Bullet marker */}
-                    <span className="text-purple-600 font-extrabold text-sm md:text-base leading-none select-none flex-shrink-0">
-                      •
-                    </span>
-                    <p className="font-semibold text-slate-800 text-xs md:text-sm leading-normal">
-                      {project.title}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              <ProjectsList projects={projects} />
             </div>
           )}
 
@@ -552,55 +443,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                 </h2>
               </div>
 
-              <div className="space-y-3 max-w-3xl mx-auto">
-                {faqs.map((faq: any, idx: number) => (
-                  <details
-                    key={idx}
-                    className="group bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-100 transition-all duration-300 overflow-hidden cursor-pointer"
-                  >
-                    {/* Question Header */}
-                    <summary className="flex items-center justify-between p-3.5 font-bold text-blue-900 list-none [&::-webkit-details-marker]:hidden select-none">
-                      <div className="flex items-center gap-2.5">
-                        <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-md bg-blue-50 text-blue-600 font-bold text-xs">
-                          Q
-                        </span>
-                        <span className="text-sm md:text-base font-semibold text-slate-900">{faq.question}</span>
-                      </div>
-
-                      {/* Animated Plus / Minus Icon */}
-                      <div className="relative flex-shrink-0 ml-3 w-4 h-4 text-blue-500">
-                        {/* Plus Icon (Visible when closed) */}
-                        <svg
-                          className="absolute inset-0 w-4 h-4 opacity-100 group-open:opacity-0 transition-opacity duration-200"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                        </svg>
-                        {/* Minus Icon (Visible when open) */}
-                        <svg
-                          className="absolute inset-0 w-4 h-4 opacity-0 group-open:opacity-100 transition-opacity duration-200"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" />
-                        </svg>
-                      </div>
-                    </summary>
-
-                    {/* Answer Content */}
-                    <div className="px-3.5 pb-3.5 pt-1 text-slate-800 text-sm md:text-base leading-relaxed sm:pl-12">
-                      <div className="border-l-2 border-blue-100 pl-3 ">
-                        {faq.answer}
-                      </div>
-                    </div>
-                  </details>
-                ))}
-              </div>
+              <FaqList faqs={faqs} />
             </div>
           )}
         </div>
