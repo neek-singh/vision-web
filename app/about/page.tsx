@@ -162,7 +162,7 @@ const methodologySteps = [
 
 const facilities = [
   { name: "Modern Computer Lab", desc: "Equipped with latest hardware and high-speed internet for seamless learning.", icon: "🖥️" },
-  { name: "AC Classrooms", desc: "Comfortable, well-ventilated classrooms designed for focused learning sessions.", icon: "❄️" },
+  { name: "Classrooms", desc: "Comfortable, well-ventilated classrooms designed for focused learning sessions.", icon: "🏫" },
   { name: "High-Speed WiFi", desc: "Uninterrupted internet connectivity for research, practice, and online resources.", icon: "📶" },
   { name: "Digital Library", desc: "Access to e-books, video tutorials, coding resources, and reference materials.", icon: "📚" },
   { name: "Practice Sessions", desc: "Dedicated extra lab hours for students to practice coding and projects independently.", icon: "⏰" },
@@ -720,10 +720,6 @@ export default function AboutPage() {
                     </h4>
                     <p className="font-semibold mb-2 text-slate-500 text-xs tracking-wider uppercase">
                       {member.role}
-                    </p>
-
-                    <p className="text-slate-500 text-xs md:text-sm leading-relaxed mb-4 flex-grow">
-                      {member.bio}
                     </p>
 
                     <div className="mt-auto pt-4 border-t border-slate-100">

@@ -5,6 +5,13 @@ import fs from "fs";
 import path from "path";
 import Image from "next/image";
 import { unstable_cache } from "next/cache";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog & Tech Updates | Vision IT Computer Institute",
+  description: "Stay updated with the latest computer technology trends, programming tutorials, career tips, and official announcements from Vision IT Computer Institute in Pratappur.",
+  keywords: "vision it blog, computer tutorials, learn programming, pratappur computer coaching, IT news",
+};
 
 export const revalidate = 3600;
 

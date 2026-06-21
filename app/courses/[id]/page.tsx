@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { createPublicSupabaseClient } from "@/lib/supabase-server";
 import Image from "next/image";
+import { Metadata } from "next";
+
 export const dynamic = "force-dynamic";
 
 async function getCourse(id: string) {
@@ -18,6 +20,24 @@ async function getCourse(id: string) {
 
   if (error) throw error;
   return data;
+}
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ id: string }> }
+): Promise<Metadata> {
+  const { id } = await params;
+  try {
+    const course = await getCourse(id);
+    if (!course) {
+      return { title: "Course Not Found" };
+    }
+    return {
+      title: `${course.title} | Vision IT Computer Institute`,
+      description: course.description || `Enroll in ${course.title} at Vision IT Computer Institute in Pratappur.`,
+    };
+  } catch (error) {
+    return { title: "Course Details | Vision IT Computer Institute" };
+  }
 }
 
 function getToolBadgeStyle(name: string) {
