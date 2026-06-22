@@ -14,7 +14,7 @@ const contact = {
 export default function Footer() {
   const pathname = usePathname();
   const hideNav =
-    ["/login", "/signup", "/admissions"].includes(pathname) ||
+    ["/login", "/signup", "/admissions", "/forgot-password"].includes(pathname) ||
     pathname.startsWith("/admin");
 
   if (hideNav) return null;
@@ -182,6 +182,9 @@ export default function Footer() {
             </Link>
             <Link href="/terms" className="hover:text-blue-500 transition-colors duration-300">
               Terms of Service
+            </Link>
+            <Link href="/refund" className="hover:text-blue-500 transition-colors duration-300">
+              Refund Policy
             </Link>
           </div>
         </div>

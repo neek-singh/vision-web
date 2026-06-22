@@ -16,7 +16,7 @@ export default function Header({ userNav }: { userNav?: React.ReactNode }) {
   const handleClose = () => setIsOpen(false);
 
   const hideNav =
-    ["/login", "/signup", "/admissions"].includes(pathname) ||
+    ["/login", "/signup", "/admissions", "/forgot-password"].includes(pathname) ||
     pathname.startsWith("/admin");
 
   useEffect(() => {

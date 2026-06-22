@@ -30,6 +30,17 @@ CREATE TABLE IF NOT EXISTS public.admissions (
 
     status public.admission_status DEFAULT 'pending' NOT NULL,
 
+    -- 📋 Additional Pipeline Info
+    father_name TEXT,
+    mother_name TEXT,
+    dob DATE,
+    gender TEXT,
+    category TEXT,
+    address TEXT,
+    qualification TEXT,
+    flow_step TEXT DEFAULT 'personal',
+    document_verified BOOLEAN DEFAULT false,
+
     message TEXT,
 
     created_at TIMESTAMPTZ DEFAULT now() NOT NULL,

@@ -11,6 +11,7 @@ function AuthCallbackContent() {
     useEffect(() => {
         const handleAuth = async () => {
             const type = params.get('type')
+            const redirectParam = params.get('redirect')
 
             const isAdmin = await AuthServices.isAdmin()
 
@@ -20,6 +21,8 @@ function AuthCallbackContent() {
                 } else {
                     router.push('/dashboard')
                 }
+            } else if (redirectParam) {
+                router.push(redirectParam)
             } else {
                 router.push('/dashboard')
             }

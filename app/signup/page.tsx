@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { AuthServices } from "@/lib/auth";
 import {
@@ -17,8 +17,10 @@ import {
   ArrowLeft
 } from "lucide-react";
 
-export default function SignupPage() {
+function SignupForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectPath = searchParams.get("redirect") || "";
 
   const [formData, setFormData] = useState({
     full_name: "",
@@ -30,6 +32,7 @@ export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [isAutoLoggedIn, setIsAutoLoggedIn] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -56,15 +59,21 @@ export default function SignupPage() {
 
     try {
       // 🚀 Signup
-      const { error: authError } = await AuthServices.signUp(
+      const { data, error: authError } = await AuthServices.signUp(
         formData.email,
         formData.password,
-        formData.full_name
+        formData.full_name,
+        redirectPath
       );
 
       if (authError) {
-        if (authError.message.includes("already registered")) {
-          setError("Email already exists. Please login.");
+        if (authError.message.includes("already registered") || authError.message.includes("already exists")) {
+          setError("Email already exists. Redirecting to login page...");
+          setIsLoading(false);
+          setTimeout(() => {
+            router.push(`/login${redirectPath ? `?redirect=${encodeURIComponent(redirectPath)}` : ""}`);
+          }, 2000);
+          return;
         } else {
           setError(authError.message);
         }
@@ -72,13 +81,22 @@ export default function SignupPage() {
         return;
       }
 
-      // ✅ Success
+      // Check if user is auto-logged in by Supabase
+      const hasSession = !!data?.session;
+      setIsAutoLoggedIn(hasSession);
       setSuccess(true);
 
-      // ⏳ Auto redirect to login
-      setTimeout(() => {
-        router.push("/login");
-      }, 3000);
+      if (hasSession) {
+        // ⏳ Auto redirect directly to target since they are already logged in
+        setTimeout(() => {
+          router.push(redirectPath || "/dashboard");
+        }, 2000);
+      } else {
+        // ⏳ Auto redirect to login
+        setTimeout(() => {
+          router.push(`/login${redirectPath ? `?redirect=${encodeURIComponent(redirectPath)}` : ""}`);
+        }, 3000);
+      }
 
     } catch (err) {
       console.error("Signup error:", err);
@@ -113,17 +131,21 @@ export default function SignupPage() {
             </div>
           </div>
           <h2 className="text-3xl font-bold text-white mb-4 tracking-tight">
-            Account Created
+            {isAutoLoggedIn ? "Welcome!" : "Account Created"}
           </h2>
           <p className="text-gray-400 mb-8 leading-relaxed">
-            We've sent a verification link to your email. Please verify your account before logging in.
+            {isAutoLoggedIn 
+              ? "Your account has been successfully created. Redirecting you to your destination..."
+              : "We've sent a verification link to your email. Please verify your account before logging in."}
           </p>
 
           <Link
-            href="/login"
+            href={isAutoLoggedIn 
+              ? (redirectPath || "/dashboard")
+              : `/login${redirectPath ? `?redirect=${encodeURIComponent(redirectPath)}` : ""}`}
             className="group flex items-center justify-center w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold transition-all duration-200 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_25px_rgba(37,99,235,0.5)]"
           >
-            Go to Login
+            {isAutoLoggedIn ? "Proceed" : "Go to Login"}
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -263,7 +285,7 @@ export default function SignupPage() {
         <p className="text-sm text-gray-400 mt-8 text-center">
           Already have an account?{" "}
           <Link
-            href="/login"
+            href={`/login${redirectPath ? `?redirect=${encodeURIComponent(redirectPath)}` : ""}`}
             className="text-blue-400 hover:text-blue-300 font-medium hover:underline transition-colors"
           >
             Log in here
@@ -272,5 +294,20 @@ export default function SignupPage() {
 
       </div>
     </main>
+  );
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen flex items-center justify-center px-4 bg-[#0a0f1d] relative overflow-hidden">
+        <div className="flex flex-col items-center gap-4 animate-pulse">
+          <Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
+          <p className="text-white font-medium text-sm">Loading secure registration...</p>
+        </div>
+      </main>
+    }>
+      <SignupForm />
+    </Suspense>
   );
 }

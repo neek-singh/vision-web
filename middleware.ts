@@ -44,7 +44,9 @@ export async function middleware(request: NextRequest) {
 
   // Redirect logged-in users away from login page
   if (user && isAuthRoute) {
-    const redirectResponse = NextResponse.redirect(new URL("/dashboard", request.url));
+    const redirectParam = request.nextUrl.searchParams.get("redirect");
+    const redirectTarget = redirectParam || "/dashboard";
+    const redirectResponse = NextResponse.redirect(new URL(redirectTarget, request.url));
     response.cookies.getAll().forEach((cookie) => {
       redirectResponse.cookies.set(cookie.name, cookie.value, {
         path: cookie.path,

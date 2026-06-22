@@ -31,7 +31,10 @@ export const AuthServices = {
     })
   },
 
-  async signUp(email: string, password: string, fullName: string) {
+  async signUp(email: string, password: string, fullName: string, redirectTo?: string) {
+    const emailRedirectUrl = redirectTo 
+      ? `${getBaseUrl()}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`
+      : `${getBaseUrl()}/auth/callback`;
     return await supabase.auth.signUp({
       email,
       password,
@@ -39,7 +42,7 @@ export const AuthServices = {
         data: {
           full_name: fullName,
         },
-        emailRedirectTo: `${getBaseUrl()}/auth/callback`,
+        emailRedirectTo: emailRedirectUrl,
       },
     })
   },

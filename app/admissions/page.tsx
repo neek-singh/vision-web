@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 import AdmissionFormClientWrapper from "@/features/admissions/components/AdmissionFormClientWrapper";
 
 export const metadata: Metadata = {
@@ -49,6 +50,11 @@ export default async function AdmissionsPage({
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  if (!user) {
+    const target = `/admissions${courseId ? `?courseId=${courseId}` : ""}`;
+    redirect(`/signup?redirect=${encodeURIComponent(target)}`);
+  }
 
   // 🔥 ✅ FIXED: Fetch courses from DB (NO JSON)
   const { data: availableCourses, error } = await supabase
