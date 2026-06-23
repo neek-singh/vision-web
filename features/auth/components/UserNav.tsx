@@ -31,15 +31,17 @@ export function UserNav() {
         if (currentUser) {
           const { data: profileData } = await supabase
             .from("profiles")
-            .select("role, full_name, avatar_url")
+            .select("role, full_name, avatar_url, photo_url")
             .eq("id", currentUser.id)
             .single();
+          
+          console.log("UserNav fetched profileData:", profileData);
           
           if (isMounted) {
             setProfile({
               role: profileData?.role || 'student',
               full_name: profileData?.full_name || currentUser.user_metadata?.full_name || currentUser.user_metadata?.name || "Student",
-              avatar_url: profileData?.avatar_url || currentUser.user_metadata?.avatar_url || null
+              avatar_url: profileData?.photo_url || profileData?.avatar_url || currentUser.user_metadata?.avatar_url || null
             });
           }
         } else {
@@ -53,7 +55,6 @@ export function UserNav() {
     };
 
     // onAuthStateChange handles initial session and updates
-
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event: AuthChangeEvent, session: Session | null) => {
         if (isMounted) {
@@ -68,9 +69,17 @@ export function UserNav() {
       }
     );
 
+    // Listen to custom local profile-updated event
+    const handleProfileUpdate = () => {
+      console.log("UserNav received profile-updated event, fetching new details...");
+      fetchUserAndProfile();
+    };
+    window.addEventListener("profile-updated", handleProfileUpdate);
+
     return () => {
       isMounted = false;
       subscription.unsubscribe();
+      window.removeEventListener("profile-updated", handleProfileUpdate);
     };
   }, []);
 

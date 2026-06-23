@@ -80,14 +80,24 @@ export function UserNavClient({ user, profile }: { user: any; profile: Profile |
                   Admin Panel
                 </Link>
               ) : (
-                <Link
-                  href="/dashboard"
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-2.5 w-full px-3 py-2 text-sm font-medium text-slate-700 rounded-lg transition-colors hover:bg-slate-100 hover:text-slate-900 focus:bg-slate-100 focus:outline-none"
-                >
-                  <LayoutDashboard className="w-4 h-4 opacity-70" />
-                  My Dashboard
-                </Link>
+                <>
+                  <Link
+                    href="/profile"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-2.5 w-full px-3 py-2 text-sm font-medium text-slate-700 rounded-lg transition-colors hover:bg-slate-100 hover:text-slate-900 focus:bg-slate-100 focus:outline-none"
+                  >
+                    <User className="w-4 h-4 opacity-70" />
+                    My Profile
+                  </Link>
+                  <Link
+                    href="/dashboard"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-2.5 w-full px-3 py-2 text-sm font-medium text-slate-700 rounded-lg transition-colors hover:bg-slate-100 hover:text-slate-900 focus:bg-slate-100 focus:outline-none"
+                  >
+                    <LayoutDashboard className="w-4 h-4 opacity-70" />
+                    My Dashboard
+                  </Link>
+                </>
               )}
 
               {/* Logout */}

@@ -31,7 +31,7 @@ export const AuthServices = {
     })
   },
 
-  async signUp(email: string, password: string, fullName: string, redirectTo?: string) {
+  async signUp(email: string, password: string, fullName: string, redirectTo?: string, phone?: string) {
     const emailRedirectUrl = redirectTo 
       ? `${getBaseUrl()}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`
       : `${getBaseUrl()}/auth/callback`;
@@ -41,6 +41,7 @@ export const AuthServices = {
       options: {
         data: {
           full_name: fullName,
+          ...(phone ? { phone } : {}),
         },
         emailRedirectTo: emailRedirectUrl,
       },

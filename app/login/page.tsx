@@ -69,10 +69,10 @@ function LoginForm() {
       // ⏳ Small delay for session sync
       await new Promise((res) => setTimeout(res, 200));
 
-      // 🧠 Step 2: Fetch role from DB
+      // 🧠 Step 2: Fetch role and profile status from DB
       const { data: profile, error: profileError } = await supabase
         .from("profiles")
-        .select("role")
+        .select("role, is_profile_completed")
         .eq("id", data.user.id)
         .single();
 
@@ -83,12 +83,15 @@ function LoginForm() {
       }
 
       const role = profile.role;
+      const isProfileCompleted = profile.is_profile_completed;
 
-      // 🚀 Step 3: Redirect based on role
-      if (redirectPath && redirectPath !== "/dashboard") {
-        router.push(redirectPath);
-      } else if (role === "admin") {
+      // 🚀 Step 3: Redirect based on role and profile completeness
+      if (role === "admin") {
         router.push("/admin");
+      } else if (!isProfileCompleted) {
+        router.push("/profile");
+      } else if (redirectPath && redirectPath !== "/dashboard") {
+        router.push(redirectPath);
       } else {
         router.push("/dashboard");
       }

@@ -14,17 +14,47 @@ export async function submitAdmission(formData: any) {
 
     const { student_name, email, phone, course_id, message } = formData;
 
+    // Fetch user profile to see if it is already completed
+    const { data: profile } = user
+      ? await supabase
+          .from("profiles")
+          .select("*")
+          .eq("id", user.id)
+          .maybeSingle()
+      : { data: null };
+
+    const isProfileCompleted = !!profile?.is_profile_completed;
+
+    const insertPayload: any = {
+      user_id: user?.id,
+      student_name: profile?.full_name || student_name,
+      email: user?.email || email,
+      phone: profile?.phone || phone || (user ? profile?.phone : ""),
+      course_id,
+      status: "pending",
+      message: message || null,
+    };
+
+    if (isProfileCompleted && profile) {
+      insertPayload.father_name = profile.father_name;
+      insertPayload.mother_name = profile.mother_name;
+      insertPayload.dob = profile.dob;
+      insertPayload.gender = profile.gender;
+      insertPayload.category = profile.category;
+      insertPayload.address = profile.address;
+      insertPayload.qualification = profile.qualification;
+      insertPayload.photo_url = profile.photo_url;
+      insertPayload.signature_url = profile.signature_url;
+      insertPayload.identity_proof_url = profile.identity_proof_url;
+      insertPayload.aadhar_proof_url = profile.aadhar_proof_url;
+      insertPayload.caste_proof_url = profile.caste_proof_url;
+      insertPayload.document_verified = !!profile.document_verified;
+      insertPayload.flow_step = profile.document_verified ? "payment" : "review";
+    }
+
     const { data, error } = await supabase
       .from("admissions")
-      .insert({
-        user_id: user?.id,
-        student_name,
-        email,
-        phone,
-        course_id,
-        status: "pending",
-        message: message || null,
-      })
+      .insert(insertPayload)
       .select();
 
     if (error) {
@@ -91,6 +121,23 @@ export async function updateAdmissionPersonalDetails(
 
     if (error) throw error;
 
+    // Sync to user profile if logged in
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      await supabase
+        .from("profiles")
+        .update({
+          father_name: details.father_name,
+          mother_name: details.mother_name,
+          dob: details.dob,
+          gender: details.gender,
+          category: details.category,
+          address: details.address,
+          qualification: details.qualification,
+        })
+        .eq("id", user.id);
+    }
+
     revalidatePath("/dashboard");
     revalidatePath(`/admissions/pipeline/${admissionId}`);
     return { success: true };
@@ -124,6 +171,20 @@ export async function updateAdmissionDocuments(
 
     if (error) throw error;
 
+    // Sync to user profile if logged in and mark profile as completed
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      await supabase
+        .from("profiles")
+        .update({
+          photo_url: docs.photo_url,
+          signature_url: docs.signature_url,
+          identity_proof_url: docs.identity_proof_url,
+          is_profile_completed: true,
+        })
+        .eq("id", user.id);
+    }
+
     revalidatePath("/dashboard");
     revalidatePath(`/admissions/pipeline/${admissionId}`);
     revalidatePath("/admin/admissions");
@@ -148,6 +209,20 @@ export async function verifyAdmissionDocuments(admissionId: string, verified: bo
       .eq("id", admissionId);
 
     if (error) throw error;
+
+    // Sync verification status back to profile so future courses bypass verification
+    const { data: admissionData } = await supabase
+      .from("admissions")
+      .select("user_id")
+      .eq("id", admissionId)
+      .single();
+
+    if (admissionData?.user_id) {
+      await supabase
+        .from("profiles")
+        .update({ document_verified: verified })
+        .eq("id", admissionData.user_id);
+    }
 
     revalidatePath("/dashboard");
     revalidatePath(`/admissions/pipeline/${admissionId}`);
