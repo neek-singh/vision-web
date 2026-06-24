@@ -28,12 +28,7 @@ export function CheckoutClient({ admission }: CheckoutClientProps) {
   const [error, setError] = useState<string | null>(null);
 
   const course = admission.courses;
-  const finalFee = course.discount_fee || course.fee;
-
-  // SGST & CGST calculations (inclusive 18%)
-  const baseFee = finalFee / 1.18;
-  const sgst = baseFee * 0.09;
-  const cgst = baseFee * 0.09;
+  const finalFee = 1000; // Fixed Admission Fee
 
   const handlePayment = async () => {
     setLoading(true);
@@ -221,16 +216,8 @@ export function CheckoutClient({ admission }: CheckoutClientProps) {
               {/* Price Calculation */}
               <div className="space-y-3.5 border-b border-slate-100 pb-5 text-sm font-semibold text-slate-500">
                 <div className="flex justify-between">
-                  <span>Course Fee (Base)</span>
-                  <span className="text-slate-950 font-bold">₹{baseFee.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>SGST (9%)</span>
-                  <span className="text-slate-950 font-bold">₹{sgst.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>CGST (9%)</span>
-                  <span className="text-slate-950 font-bold">₹{cgst.toFixed(2)}</span>
+                  <span>Admission Fee</span>
+                  <span className="text-slate-950 font-bold">₹{finalFee}</span>
                 </div>
               </div>
 
@@ -239,7 +226,6 @@ export function CheckoutClient({ admission }: CheckoutClientProps) {
                 <span className="text-base font-extrabold text-slate-900">Total Payable</span>
                 <div className="text-right">
                   <span className="text-2xl font-black text-slate-900">₹{finalFee}</span>
-                  <span className="text-[10px] block text-slate-400 font-semibold mt-0.5">inclusive of all taxes</span>
                 </div>
               </div>
 
@@ -275,7 +261,7 @@ export function CheckoutClient({ admission }: CheckoutClientProps) {
                   </>
                 ) : (
                   <>
-                    Pay with SMEPay
+                    Pay Admission Fee
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="14"

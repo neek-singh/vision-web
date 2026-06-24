@@ -164,7 +164,7 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
                     </span>
                   </div>
 
-                  <div className="flex gap-2.5 mt-auto border-t border-slate-100/80 pt-3">
+                  <div className="flex gap-2 mt-auto border-t border-slate-100/80 pt-3">
                     <Button
                       href={`/courses/${course.id}`}
                       variant="outline"
@@ -174,12 +174,20 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
                       Details
                     </Button>
                     <Button
-                      href={`/admissions?courseId=${course.id}`}
+                      href={`/inquire?courseId=${course.id}`}
+                      variant="outline"
+                      size="sm"
+                      className="rounded-lg flex-1 font-semibold text-slate-700 border-slate-200 bg-white/50 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all duration-300 py-1.5 text-[11px] md:text-xs"
+                    >
+                      Inquire
+                    </Button>
+                    <Button
+                      href={`/apply?courseId=${course.id}`}
                       variant="primary"
                       size="sm"
                       className="rounded-lg flex-1 font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 border-none py-1.5 text-[11px] md:text-xs"
                     >
-                      Apply Now
+                      Apply
                     </Button>
                   </div>
                 </CardContent>

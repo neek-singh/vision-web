@@ -23,6 +23,7 @@ interface Admission {
   identity_proof_url: string | null;
   flow_step: string | null;
   document_verified: boolean;
+  message: string | null;
   courses: {
     title: string;
     course_code: string;
@@ -198,7 +199,7 @@ export function AdminAdmissionsClient({ initialAdmissions }: AdminAdmissionsClie
                         {/* Actions */}
                         <td className="px-6 py-4 text-xs">
                           {item.status === "pending" ? (
-                            <div className="flex gap-2">
+                            <div className="flex gap-2 items-center">
                               <button
                                 disabled={updatingId !== null}
                                 onClick={() => handleStatusUpdate(item.id, "approved")}
@@ -213,15 +214,21 @@ export function AdminAdmissionsClient({ initialAdmissions }: AdminAdmissionsClie
                               >
                                 Reject
                               </button>
+                              <button
+                                onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
+                                className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-700 rounded-lg text-xs font-bold cursor-pointer transition-colors"
+                              >
+                                {expandedId === item.id ? "Hide Details" : "View Details"}
+                              </button>
                             </div>
                           ) : (
                             <div className="flex items-center gap-2">
-                              <span className="text-slate-400 font-semibold">Approved</span>
+                              <span className="text-slate-400 font-semibold capitalize">{item.status}</span>
                               <button
                                 onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                                 className="px-2.5 py-1.5 bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 rounded-lg text-xs font-bold cursor-pointer transition-colors"
                               >
-                                {expandedId === item.id ? "Hide Pipeline" : "View Pipeline"}
+                                {expandedId === item.id ? "Hide Details" : "View Details"}
                               </button>
                             </div>
                           )}
@@ -230,14 +237,18 @@ export function AdminAdmissionsClient({ initialAdmissions }: AdminAdmissionsClie
                       {expandedId === item.id && (
                         <tr className="bg-slate-50/50">
                           <td colSpan={5} className="px-6 py-5 border-t border-b border-slate-100">
-                            <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4 max-w-4xl">
+                            <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4 max-w-4xl animate-in fade-in slide-in-from-top-1 duration-200">
                               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                                <h3 className="font-extrabold text-sm text-slate-900">Admission Pipeline Details</h3>
+                                <h3 className="font-extrabold text-sm text-slate-900">Inquiry / Admission Details</h3>
                                 <div className="flex items-center gap-2">
-                                  <span className="text-xs font-bold text-slate-400">Current Step:</span>
-                                  <span className="text-xs font-black uppercase tracking-wider px-2 py-0.5 bg-blue-50 text-blue-700 border border-blue-200 rounded">
-                                    {item.flow_step || "personal"}
-                                  </span>
+                                  {item.flow_step && (
+                                    <>
+                                      <span className="text-xs font-bold text-slate-400">Current Step:</span>
+                                      <span className="text-xs font-black uppercase tracking-wider px-2 py-0.5 bg-blue-50 text-blue-700 border border-blue-200 rounded">
+                                        {item.flow_step}
+                                      </span>
+                                    </>
+                                  )}
                                   {item.document_verified && (
                                     <span className="text-xs font-black uppercase tracking-wider px-2 py-0.5 bg-green-50 text-green-700 border border-green-200 rounded">
                                       Verified
@@ -245,6 +256,14 @@ export function AdminAdmissionsClient({ initialAdmissions }: AdminAdmissionsClie
                                   )}
                                 </div>
                               </div>
+
+                              {/* Show inquiry message if present */}
+                              {item.message && (
+                                <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 text-xs font-semibold text-slate-800">
+                                  <span className="text-blue-500 font-bold block uppercase tracking-wider mb-1 text-[10px]">Inquiry Message</span>
+                                  <p className="whitespace-pre-wrap">{item.message}</p>
+                                </div>
+                              )}
 
                               {/* Show Form Details if present */}
                               {item.father_name ? (
@@ -276,9 +295,9 @@ export function AdminAdmissionsClient({ initialAdmissions }: AdminAdmissionsClie
                                     <span className="text-slate-900 font-semibold block whitespace-pre-line">{item.address}</span>
                                   </div>
                                 </div>
-                              ) : (
+                              ) : item.flow_step ? (
                                 <p className="text-xs text-slate-400 italic">Personal details form not yet completed by the student.</p>
-                              )}
+                              ) : null}
 
                               {/* Show uploaded documents if present */}
                               {(item.photo_url || item.signature_url || item.identity_proof_url) && (

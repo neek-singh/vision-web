@@ -381,3 +381,158 @@ export async function createStudentAccountAction(admissionId: string) {
     return { error: e.message || "Failed to create student account" };
   }
 }
+
+// 📱 Send OTP to student mobile for admission verification
+export async function sendAdmissionOtp(phone: string) {
+  const sanitizedPhone = phone.trim().replace(/\D/g, "");
+  if (sanitizedPhone.length !== 10) {
+    return { error: "Please enter a valid 10-digit mobile number." };
+  }
+
+  const supabase = await createServerSupabaseClient();
+
+  // Generate 6-digit OTP
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  const expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString(); // 10 minutes
+
+  try {
+    // 1. Clear old OTPs for this phone
+    await supabase
+      .from("admission_otps")
+      .delete()
+      .eq("phone", sanitizedPhone);
+
+    // 2. Save new OTP
+    const { error: insertError } = await supabase
+      .from("admission_otps")
+      .insert({
+        phone: sanitizedPhone,
+        otp,
+        expires_at: expiresAt,
+      });
+
+    if (insertError) {
+      console.error("OTP insert error:", insertError);
+      return { error: "Failed to generate OTP. Please try again." };
+    }
+
+    // 3. Send SMS via TextBee API
+    const textBeeUrl = "https://api.textbee.dev/api/v1/gateway/devices/6a38c43577015dcde182aaaa/send-sms";
+    const response = await fetch(textBeeUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "77fcb14a-f6a2-4aa6-9e38-869b77c0256e",
+      },
+      body: JSON.stringify({
+        recipients: [`+91${sanitizedPhone}`],
+        message: `Vision IT: Your OTP for admission verification is ${otp}. Valid for 10 minutes.`,
+      }),
+    });
+
+    if (!response.ok) {
+      const resText = await response.text();
+      console.error("TextBee OTP response error:", resText);
+      return { error: "Failed to send SMS OTP. Please check device connectivity." };
+    }
+
+    return { success: true };
+  } catch (err: any) {
+    console.error("SMS sending exception:", err);
+    return { error: err.message || "Failed to send SMS OTP. Please try again." };
+  }
+}
+
+// 🔐 Verify OTP and generate Admission Number
+export async function verifyAdmissionOtp(
+  phone: string,
+  otp: string,
+  admissionId: string
+) {
+  const sanitizedPhone = phone.trim().replace(/\D/g, "");
+  const sanitizedOtp = otp.trim();
+
+  if (sanitizedPhone.length !== 10) {
+    return { error: "Invalid mobile number." };
+  }
+
+  if (sanitizedOtp.length !== 6) {
+    return { error: "OTP must be exactly 6 digits." };
+  }
+
+  const supabase = await createServerSupabaseClient();
+
+  try {
+    // 1. Fetch latest active OTP for this phone
+    const { data: otpRecord, error: otpError } = await supabase
+      .from("admission_otps")
+      .select("*")
+      .eq("phone", sanitizedPhone)
+      .eq("otp", sanitizedOtp)
+      .gt("expires_at", new Date().toISOString())
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (otpError || !otpRecord) {
+      return { error: "Invalid or expired OTP. Please request a new one." };
+    }
+
+    // 2. Delete the used OTP record
+    await supabase
+      .from("admission_otps")
+      .delete()
+      .eq("id", otpRecord.id);
+
+    // 3. Check if admission number is already generated
+    const { data: existingAdmission, error: fetchErr } = await supabase
+      .from("admissions")
+      .select("admission_no")
+      .eq("id", admissionId)
+      .single();
+
+    if (fetchErr) {
+      return { error: "Could not find admission record." };
+    }
+
+    let admissionNo = existingAdmission?.admission_no;
+
+    if (!admissionNo) {
+      // 4. Generate next sequential Admission No (e.g. VIT2026ADM0001)
+      const currentYear = new Date().getFullYear();
+      const prefix = `VIT${currentYear}ADM`;
+
+      const { count } = await supabase
+        .from("admissions")
+        .select("id", { count: "exact", head: true })
+        .like("admission_no", `${prefix}%`);
+
+      const nextSeq = String((count || 0) + 1).padStart(4, "0");
+      admissionNo = `${prefix}${nextSeq}`;
+
+      // 5. Update admission record with generated Admission No.
+      const { error: updateErr } = await supabase
+        .from("admissions")
+        .update({
+          admission_no: admissionNo,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", admissionId);
+
+      if (updateErr) {
+        console.error("Admission number update error:", updateErr);
+        return { error: "Failed to generate Admission Number." };
+      }
+    }
+
+    revalidatePath("/admin/admissions");
+    revalidatePath("/dashboard");
+    revalidatePath(`/admissions/pipeline/${admissionId}`);
+
+    return { success: true, admissionNo };
+  } catch (err: any) {
+    console.error("OTP verification error:", err);
+    return { error: err.message || "Failed to verify OTP." };
+  }
+}
+

@@ -196,10 +196,21 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
                 <div className="hidden sm:block w-px h-10 bg-slate-100"></div>
 
                 {/* Action Section */}
-                <div className="w-full sm:w-auto flex-grow flex sm:justify-end">
+                <div className="w-full sm:w-auto flex-grow flex sm:justify-end gap-2 flex-wrap">
                   <Button
                     href={`/admissions?courseId=${course.id}`}
-                    className="w-full sm:w-auto bg-blue-600 hover:bg-slate-900 text-white h-11 px-6 rounded-xl text-xs font-bold shadow-md shadow-blue-500/10 transition-all duration-300 group flex items-center justify-center gap-1.5"
+                    className="flex-1 sm:flex-none bg-white hover:bg-slate-100 text-slate-800 border border-slate-200 h-11 px-4 rounded-xl text-xs font-bold shadow-sm transition-all duration-300 group flex items-center justify-center gap-1.5"
+                  >
+                    Inquire
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                      <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                  </Button>
+                  <Button
+                    href={`/admissions/apply?courseId=${course.id}`}
+                    className="flex-1 sm:flex-none bg-blue-600 hover:bg-slate-900 text-white h-11 px-5 rounded-xl text-xs font-bold shadow-md shadow-blue-500/10 transition-all duration-300 group flex items-center justify-center gap-1.5"
                   >
                     Apply Now
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
@@ -458,9 +469,14 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
           Join now and become job-ready with practical skills.
         </p>
 
-        <Button href={`/admissions?courseId=${course.id}`} className="px-8 py-3.5 text-xs font-bold rounded-xl border-none">
-          Apply Now 🚀
-        </Button>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <Button href={`/admissions?courseId=${course.id}`} className="px-6 py-3.5 text-xs font-bold rounded-xl bg-white border border-slate-200 text-slate-800 hover:bg-slate-100 shadow-sm">
+            Inquire First 💬
+          </Button>
+          <Button href={`/admissions/apply?courseId=${course.id}`} className="px-8 py-3.5 text-xs font-bold rounded-xl border-none">
+            Apply Now 🚀
+          </Button>
+        </div>
       </section>
     </main>
   );

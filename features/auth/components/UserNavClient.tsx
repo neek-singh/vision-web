@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { User, LogOut, LayoutDashboard, ShieldCheck } from "lucide-react";
-import Image from "next/image";
 
 type Profile = {
   full_name: string | null;
@@ -14,11 +13,19 @@ type Profile = {
 
 export function UserNavClient({ user, profile }: { user: any; profile: Profile | null }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
     window.location.href = "/";
   };
+
+  const avatarUrl = profile?.avatar_url;
+  const displayName = profile?.full_name || user?.user_metadata?.full_name || "Student";
+  const initials = displayName[0]?.toUpperCase() || "S";
+
+  // Show photo if URL exists and no load error
+  const showPhoto = !!avatarUrl && !imgError;
 
   return (
     <div className="relative">
@@ -27,15 +34,16 @@ export function UserNavClient({ user, profile }: { user: any; profile: Profile |
         onClick={() => setIsOpen(!isOpen)}
         className="relative w-10 h-10 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 shadow-sm flex items-center justify-center text-white font-semibold text-sm transition-all duration-300 hover:shadow-md hover:shadow-blue-500/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 select-none overflow-hidden"
       >
-        {profile?.avatar_url ? (
-          <Image 
-            src={profile.avatar_url} 
-            alt={profile.full_name || "User"} 
-            fill 
-            className="object-cover"
+        {showPhoto ? (
+          // Use <img> (not Next Image) to support base64 data URLs
+          <img
+            src={avatarUrl!}
+            alt={displayName}
+            className="w-full h-full object-cover"
+            onError={() => setImgError(true)}
           />
         ) : profile?.full_name ? (
-          profile.full_name[0].toUpperCase()
+          initials
         ) : (
           <User className="w-5 h-5" />
         )}
@@ -52,20 +60,34 @@ export function UserNavClient({ user, profile }: { user: any; profile: Profile |
 
           <div className="absolute right-0 mt-2 w-64 bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-200/80 p-1.5 z-50 animate-in fade-in zoom-in-95 duration-200 origin-top-right">
 
-            {/* User Info */}
-            <div className="px-3 py-2.5 mb-1 border-b border-slate-100">
-              <p className="text-sm font-semibold text-slate-900 truncate">
-                {profile?.full_name || user?.user_metadata?.full_name || "Student"}
-              </p>
-              <p className="text-xs text-slate-500 truncate mt-0.5">
-                {user.email}
-              </p>
-
-              {profile?.role === "admin" && (
-                <span className="inline-flex items-center px-2 py-0.5 mt-2 bg-blue-50 text-blue-700 text-[10px] font-bold uppercase rounded-full tracking-wider">
-                  Admin
-                </span>
-              )}
+            {/* User Info with Avatar */}
+            <div className="px-3 py-3 mb-1 border-b border-slate-100 flex items-center gap-3">
+              {/* Mini avatar in dropdown */}
+              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white font-bold text-sm shrink-0 overflow-hidden">
+                {showPhoto ? (
+                  <img
+                    src={avatarUrl!}
+                    alt={displayName}
+                    className="w-full h-full object-cover"
+                    onError={() => setImgError(true)}
+                  />
+                ) : (
+                  initials
+                )}
+              </div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-slate-900 truncate">
+                  {displayName}
+                </p>
+                <p className="text-xs text-slate-500 truncate mt-0.5">
+                  {user.email}
+                </p>
+                {profile?.role === "admin" && (
+                  <span className="inline-flex items-center px-2 py-0.5 mt-1 bg-blue-50 text-blue-700 text-[10px] font-bold uppercase rounded-full tracking-wider">
+                    Admin
+                  </span>
+                )}
+              </div>
             </div>
 
             {/* Links */}

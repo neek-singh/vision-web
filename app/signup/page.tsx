@@ -4,7 +4,7 @@ import { useState, Suspense, useRef, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { AuthServices } from "@/lib/auth";
-import { sendOtpSms } from "@/features/auth/actions/auth";
+import { sendOtpSms, checkAccountExists } from "@/features/auth/actions/auth";
 import {
   User,
   Mail,
@@ -49,6 +49,7 @@ function SignupForm() {
   const [otpVerifying, setOtpVerifying] = useState(false);
   const [otpSending, setOtpSending] = useState(false);
   const [resendCooldown, setResendCooldown] = useState(0);
+  const [existingAccountField, setExistingAccountField] = useState<"email" | "phone" | null>(null);
   const otpRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   // Countdown timer for resend
@@ -77,10 +78,11 @@ function SignupForm() {
     return "";
   };
 
-  // Step 1: Validate form and send OTP
+  // Step 1: Validate form, check existing account, then send OTP
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setExistingAccountField(null);
 
     const validationErr = validateForm();
     if (validationErr) {
@@ -90,6 +92,14 @@ function SignupForm() {
 
     setOtpSending(true);
     try {
+      // 🔍 Check if email or phone already exists
+      const check = await checkAccountExists(formData.email, formData.phone);
+      if (check.exists) {
+        setExistingAccountField(check.field as "email" | "phone");
+        setError(check.message || "Account already exists. Please log in.");
+        return;
+      }
+
       const otp = Math.floor(100000 + Math.random() * 900000).toString();
       setGeneratedOtp(otp);
 
@@ -106,7 +116,6 @@ function SignupForm() {
       setOtpError("");
       setShowOtpModal(true);
       setResendCooldown(60);
-      // Focus first OTP box after modal renders
       setTimeout(() => otpRefs.current[0]?.focus(), 100);
     } catch (err) {
       setError("Failed to send OTP. Please try again.");
@@ -314,9 +323,24 @@ function SignupForm() {
         </div>
 
         {error && (
-          <div className="mb-5 p-4 text-sm bg-red-500/10 text-red-400 rounded-xl border border-red-500/20 flex items-start gap-3 animate-in slide-in-from-top-2">
-            <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-            <p>{error}</p>
+          <div className={`mb-5 p-4 text-sm rounded-xl border flex flex-col gap-3 animate-in slide-in-from-top-2 ${
+            existingAccountField
+              ? "bg-amber-500/10 text-amber-300 border-amber-500/25"
+              : "bg-red-500/10 text-red-400 border-red-500/20"
+          }`}>
+            <div className="flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+              <p className="leading-relaxed">{error}</p>
+            </div>
+            {existingAccountField && (
+              <Link
+                href={`/login${redirectPath ? `?redirect=${encodeURIComponent(redirectPath)}` : ""}`}
+                className="flex items-center justify-center gap-2 w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition-all"
+              >
+                Go to Login
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            )}
           </div>
         )}
 

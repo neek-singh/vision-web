@@ -9,6 +9,42 @@ export async function signOut() {
   redirect("/");
 }
 
+// ✅ Check if email or phone already exists before signup
+export async function checkAccountExists(email: string, phone: string) {
+  try {
+    const supabase = await createServerSupabaseClient();
+
+    // Check email in auth.users via admin API
+    const { data: usersData } = await supabase.auth.admin.listUsers();
+    const emailExists = usersData?.users?.some(
+      (u) => u.email?.toLowerCase() === email.trim().toLowerCase()
+    );
+
+    if (emailExists) {
+      return { exists: true, field: "email", message: "This email is already registered. Please log in." };
+    }
+
+    // Check phone in profiles table
+    const sanitizedPhone = phone.trim().replace(/\D/g, "");
+    if (sanitizedPhone.length === 10) {
+      const { data: profileWithPhone } = await supabase
+        .from("profiles")
+        .select("id, full_name")
+        .eq("phone", sanitizedPhone)
+        .maybeSingle();
+
+      if (profileWithPhone) {
+        return { exists: true, field: "phone", message: "This mobile number is already registered. Please log in." };
+      }
+    }
+
+    return { exists: false };
+  } catch (e: any) {
+    console.error("checkAccountExists error:", e);
+    return { exists: false }; // fail-open: allow signup to proceed
+  }
+}
+
 // 📱 Send password reset OTP via TextBee SMS Gateway
 export async function sendPasswordResetOTP(phone: string) {
   const sanitizedPhone = phone.trim().replace(/\D/g, "");

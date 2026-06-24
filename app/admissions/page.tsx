@@ -5,9 +5,9 @@ import { redirect } from "next/navigation";
 import AdmissionFormClientWrapper from "@/features/admissions/components/AdmissionFormClientWrapper";
 
 export const metadata: Metadata = {
-  title: "Online Admission | Vision IT Computer Institute",
-  description: "Apply online for DCA, ADCA, PGDCA, and Web Development courses at Vision IT Computer Institute Pratappur.",
-  keywords: "computer admission Pratappur, apply online computer course, Vision IT admission",
+  title: "Course Inquiry | Vision IT Computer Institute",
+  description: "Send a course inquiry for DCA, ADCA, PGDCA, and Web Development courses at Vision IT Computer Institute Pratappur.",
+  keywords: "computer course inquiry Pratappur, contact computer course, Vision IT inquiry",
 };
 import Link from "next/link";
 import { Suspense } from "react";
@@ -46,15 +46,10 @@ export default async function AdmissionsPage({
   const courseId = params.courseId || "";
   const supabase = await getSupabase();
 
-  // ✅ Auth
+  // ✅ Auth (optional for guest queries)
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
-  if (!user) {
-    const target = `/admissions${courseId ? `?courseId=${courseId}` : ""}`;
-    redirect(`/signup?redirect=${encodeURIComponent(target)}`);
-  }
 
   // 🔥 ✅ FIXED: Fetch courses from DB (NO JSON)
   const { data: availableCourses, error } = await supabase
@@ -115,7 +110,7 @@ export default async function AdmissionsPage({
 
         <div className="bg-white rounded-3xl p-6 md:p-8 shadow-xl border border-slate-100">
           <h2 className="text-lg text-slate-900 mb-5 flex items-center gap-2">
-            <span>📄</span> Application Form
+            <span>📄</span> Course Inquiry Form
           </h2>
 
           <Suspense fallback={<FormSkeleton />}>

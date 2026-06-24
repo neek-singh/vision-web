@@ -800,14 +800,14 @@ export default function AboutPage() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
               </span>
-              Admissions Open
+              Inquiries Open
             </div>
 
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 tracking-tight">
               Ready to Transform Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Career?</span>
             </h2>
             <p className="text-slate-300 text-sm md:text-base mb-8 max-w-lg mx-auto leading-relaxed">
-              Admissions for our upcoming batches are now open. Don&apos;t miss your chance to learn from the best computer institute in Pratappur.
+              Inquiries for our upcoming batches are now open. Don&apos;t miss your chance to learn from the best computer institute in Pratappur.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-3">
@@ -815,7 +815,7 @@ export default function AboutPage() {
                 href="/admissions"
                 className="w-full sm:w-auto px-7 h-12 bg-white text-slate-900 hover:bg-blue-600 hover:text-white shadow-lg rounded-full font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center justify-center gap-2 group border-none"
               >
-                Join Now <IconArrow />
+                Inquire Now <IconArrow />
               </Link>
               <a
                 href="https://wa.me/918103170595"

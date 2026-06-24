@@ -267,6 +267,19 @@ export function ProfileForm({
 
   // Real file upload: convert to base64 data URL so actual image is shown and stored
   const handleFileChange = (type: "photo" | "signature" | "identity" | "aadhar" | "caste", file: File) => {
+    // Block SVG files — only real photos allowed
+    if (file.type === "image/svg+xml" || file.name.endsWith(".svg")) {
+      setError("SVG files are not allowed. Please upload a JPG, PNG, or JPEG photo.");
+      return;
+    }
+
+    // Only allow real image formats
+    const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/gif"];
+    if (!allowedTypes.includes(file.type)) {
+      setError(`Invalid file type (${file.type}). Please upload a JPG, PNG, or WEBP image.`);
+      return;
+    }
+
     if (file.size > 100 * 1024) {
       setError(`File size exceeds 100 KB limit. Current size: ${(file.size / 1024).toFixed(1)} KB`);
       return;
@@ -274,6 +287,7 @@ export function ProfileForm({
 
     setError(null);
     setUploadProgress(prev => ({ ...prev, [type]: 10 }));
+
 
     const keyMap: Record<string, string> = {
       photo: "photo_url",

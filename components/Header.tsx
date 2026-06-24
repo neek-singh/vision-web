@@ -87,7 +87,7 @@ export default function Header({ userNav }: { userNav?: React.ReactNode }) {
             <div className="flex items-center gap-8 pr-4">
               <NavLink href="/">Home</NavLink>
               <NavLink href="/courses">Courses</NavLink>
-              <NavLink href="/admissions">Admissions</NavLink>
+              <NavLink href="/admissions">Inquiry</NavLink>
               <NavLink href="/about">About</NavLink>
               <NavLink href="/blog">Blog</NavLink>
               <NavLink href="/gallery">Gallery</NavLink>
@@ -144,7 +144,7 @@ export default function Header({ userNav }: { userNav?: React.ReactNode }) {
           <div className="flex flex-col px-4 py-6 space-y-1 bg-slate-50/50">
             <MobileLink href="/" onClick={handleClose}>Home</MobileLink>
             <MobileLink href="/courses" onClick={handleClose}>Courses</MobileLink>
-            <MobileLink href="/admissions" onClick={handleClose}>Admissions</MobileLink>
+            <MobileLink href="/admissions" onClick={handleClose}>Inquiry</MobileLink>
             <MobileLink href="/about" onClick={handleClose}>About</MobileLink>
             <MobileLink href="/blog" onClick={handleClose}>Blog</MobileLink>
             <MobileLink href="/gallery" onClick={handleClose}>Gallery</MobileLink>

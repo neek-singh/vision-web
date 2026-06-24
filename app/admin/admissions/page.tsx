@@ -53,6 +53,7 @@ export default async function AdminAdmissionsPage() {
       identity_proof_url,
       flow_step,
       document_verified,
+      message,
       courses(title, course_code)
     `)
     .order("created_at", { ascending: false });
@@ -84,6 +85,7 @@ export default async function AdminAdmissionsPage() {
     identity_proof_url: item.identity_proof_url,
     flow_step: item.flow_step,
     document_verified: item.document_verified,
+    message: item.message,
     courses: Array.isArray(item.courses) ? item.courses[0] : item.courses,
   }));
 

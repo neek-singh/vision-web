@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
 import { Button } from "@/components/ui/Button";
 import { submitAdmission } from "@/features/admissions/actions/admissions";
@@ -50,6 +51,27 @@ export default function AdmissionForm({
     }
   }, [preselectedCourseId]);
 
+  // 🔄 Fetch profile details if user is logged in
+  useEffect(() => {
+    if (user?.id) {
+      const fetchProfile = async () => {
+        const { data } = await supabase
+          .from("profiles")
+          .select("full_name, phone")
+          .eq("id", user.id)
+          .single();
+        if (data) {
+          setFormData((prev) => ({
+            ...prev,
+            student_name: data.full_name || prev.student_name || user.user_metadata?.full_name || "",
+            phone: data.phone || prev.phone || "",
+          }));
+        }
+      };
+      fetchProfile();
+    }
+  }, [user]);
+
   const handleChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError("");
@@ -89,10 +111,10 @@ export default function AdmissionForm({
 
       setSuccess(true);
       
-      // ⏳ Auto redirect to dashboard
+      // ⏳ Auto redirect to home/dashboard after 5s
       setTimeout(() => {
-        router.push("/dashboard");
-      }, 3000);
+        router.push(user ? "/dashboard" : "/");
+      }, 5000);
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     } finally {
@@ -110,10 +132,10 @@ export default function AdmissionForm({
 
         <div className="space-y-2">
           <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 tracking-tight">
-            Application Submitted
+            Inquiry Submitted Successfully
           </h3>
           <p className="text-gray-500 font-medium">
-            Redirecting to your dashboard in 3 seconds...
+            {user ? "Redirecting to your dashboard in 5 seconds..." : "Redirecting to home page in 5 seconds..."}
           </p>
         </div>
 
@@ -121,13 +143,13 @@ export default function AdmissionForm({
         <div className="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
           <a
             href={`https://wa.me/918103170595?text=${encodeURIComponent(
-              `*New Admission Inquiry* 🎓\n` +
+              `*New Course Inquiry* 🎓\n` +
               `--------------------------\n` +
               `*Name:* ${formData.student_name}\n` +
               `*Course:* ${courses.find((c) => c.id === formData.course_id)?.title || "Selected Course"}\n` +
               `*Email:* ${formData.email}\n` +
               `*Phone:* ${formData.phone}\n\n` +
-              `Hello, I just submitted my application on the website. Please let me know the next steps.`
+              `Hello, I just submitted an inquiry on the website. Please let me know the details.`
             )}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -138,12 +160,21 @@ export default function AdmissionForm({
             </svg>
             Chat on WhatsApp
           </a>
-          <button
-            onClick={() => router.push("/dashboard")}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
-          >
-            Go to Dashboard
-          </button>
+          {user ? (
+            <button
+              onClick={() => router.push("/dashboard")}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Go to Dashboard
+            </button>
+          ) : (
+            <button
+              onClick={() => router.push("/")}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Go to Homepage
+            </button>
+          )}
         </div>
       </div>
     );
@@ -166,6 +197,7 @@ export default function AdmissionForm({
       <div>
         <input
           name="student_name"
+          value={formData.student_name}
           placeholder="Full Name"
           onChange={handleChange}
           className="w-full px-4 py-3.5 text-gray-900 bg-gray-50 border border-gray-200 rounded-xl placeholder:text-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
@@ -175,6 +207,7 @@ export default function AdmissionForm({
       <div>
         <input
           name="phone"
+          value={formData.phone}
           placeholder="Phone Number"
           onChange={handleChange}
           className="w-full px-4 py-3.5 text-gray-900 bg-gray-50 border border-gray-200 rounded-xl placeholder:text-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
@@ -227,6 +260,7 @@ export default function AdmissionForm({
       <div>
         <textarea
           name="message"
+          value={formData.message}
           placeholder="Message (optional)"
           onChange={handleChange}
           className="w-full px-4 py-3.5 text-gray-900 bg-gray-50 border border-gray-200 rounded-xl placeholder:text-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 min-h-[120px] resize-y"
@@ -247,7 +281,7 @@ export default function AdmissionForm({
               Submitting...
             </span>
           ) : (
-            "Apply Now"
+            "Submit Inquiry"
           )}
         </Button>
       </div>

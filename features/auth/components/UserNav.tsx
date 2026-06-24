@@ -31,17 +31,26 @@ export function UserNav() {
         if (currentUser) {
           const { data: profileData } = await supabase
             .from("profiles")
-            .select("role, full_name, avatar_url, photo_url")
+            .select("role, full_name, photo_url")
             .eq("id", currentUser.id)
             .single();
           
-          console.log("UserNav fetched profileData:", profileData);
-          
+          // Only use photo_url if it's a real photo (jpeg/png/webp/gif) — not SVG/logo
+          const rawPhoto = profileData?.photo_url || null;
+          const isRealPhoto = rawPhoto && (
+            rawPhoto.startsWith("data:image/jpeg") ||
+            rawPhoto.startsWith("data:image/jpg") ||
+            rawPhoto.startsWith("data:image/png") ||
+            rawPhoto.startsWith("data:image/webp") ||
+            rawPhoto.startsWith("data:image/gif") ||
+            (rawPhoto.startsWith("http") && !rawPhoto.includes(".svg"))
+          );
+
           if (isMounted) {
             setProfile({
               role: profileData?.role || 'student',
               full_name: profileData?.full_name || currentUser.user_metadata?.full_name || currentUser.user_metadata?.name || "Student",
-              avatar_url: profileData?.photo_url || profileData?.avatar_url || currentUser.user_metadata?.avatar_url || null
+              avatar_url: isRealPhoto ? rawPhoto : null,
             });
           }
         } else {

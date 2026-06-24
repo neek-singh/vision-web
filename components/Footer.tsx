@@ -131,8 +131,8 @@ export default function Footer() {
             <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Programs</h4>
             <ul className="space-y-3">
               <FooterLink href="/courses">All Courses</FooterLink>
-              <FooterLink href="/admissions">Batch Schedules</FooterLink>
-              <FooterLink href="/admissions">Apply Now</FooterLink>
+              <FooterLink href="/admissions">Course Inquiry</FooterLink>
+              <FooterLink href="/admissions">Inquire Now</FooterLink>
             </ul>
           </div>
 

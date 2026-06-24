@@ -157,12 +157,7 @@ export function AdmissionPipelineClient({ admission }: AdmissionPipelineClientPr
   }, [admission, generatedStudentId]);
 
   const course = admission.courses;
-  const finalFee = course.discount_fee || course.fee;
-  
-  // Invoice calculations
-  const baseFee = finalFee / 1.18;
-  const sgst = baseFee * 0.09;
-  const cgst = baseFee * 0.09;
+  const finalFee = 1000; // Fixed Admission Fee
 
   // Handle navigation
   const handleNextStep = () => {
@@ -1031,16 +1026,8 @@ export function AdmissionPipelineClient({ admission }: AdmissionPipelineClientPr
 
                     <div className="space-y-2.5 text-xs font-semibold text-slate-500">
                       <div className="flex justify-between">
-                        <span>Base Course Fee</span>
-                        <span className="text-slate-900">₹{baseFee.toFixed(2)}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>SGST (9%)</span>
-                        <span className="text-slate-900">₹{sgst.toFixed(2)}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>CGST (9%)</span>
-                        <span className="text-slate-900">₹{cgst.toFixed(2)}</span>
+                        <span>Admission Fee</span>
+                        <span className="text-slate-900">₹{finalFee}</span>
                       </div>
                     </div>
 
