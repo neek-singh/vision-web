@@ -149,26 +149,26 @@ export function PopularCoursesSkeleton() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-blue-400/10 blur-[100px] rounded-full pointer-events-none"></div>
 
       <div className="text-center mb-16 relative">
-        <div className="h-8 bg-slate-200 rounded-full w-48 mx-auto mb-4 animate-pulse"></div>
-        <div className="h-4 bg-slate-200 rounded-full w-80 mx-auto animate-pulse"></div>
+        <div className="h-8 shimmer rounded-full w-48 mx-auto mb-4"></div>
+        <div className="h-4 shimmer rounded-full w-80 mx-auto"></div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
         {[1, 2, 3, 4].map((i) => (
           <div
             key={i}
-            className="bg-white/70 backdrop-blur-xl border border-slate-200 flex flex-col overflow-hidden animate-pulse shadow-sm h-[324px] rounded-2xl"
+            className="bg-white/70 backdrop-blur-xl border border-slate-200/60 flex flex-col overflow-hidden shadow-sm h-[324px] rounded-2xl"
           >
             {/* Image Placeholder */}
-            <div className="w-full h-36 bg-slate-200 relative">
+            <div className="w-full h-36 shimmer relative">
               {/* Level Badge Placeholder */}
-              <div className="absolute top-2.5 left-2.5 bg-slate-300/80 w-16 h-4 rounded shadow-sm"></div>
+              <div className="absolute top-2.5 left-2.5 bg-white/40 w-16 h-4 rounded shadow-sm"></div>
             </div>
 
             {/* Header Placeholder */}
-            <div className="pt-5 pb-3 px-4 border-b border-slate-100 bg-gradient-to-b from-blue-50/20 to-transparent">
-              <div className="h-4 bg-slate-200 rounded w-3/4 mb-1.5"></div>
-              <div className="h-3 bg-slate-200 rounded w-1/2"></div>
+            <div className="pt-5 pb-3 px-4 border-b border-slate-100/80 bg-gradient-to-b from-blue-50/20 to-transparent space-y-2">
+              <div className="h-4.5 shimmer rounded w-3/4"></div>
+              <div className="h-3 shimmer rounded w-1/2"></div>
             </div>
 
             {/* Content Placeholder */}
@@ -176,15 +176,13 @@ export function PopularCoursesSkeleton() {
               {/* Metadata Tags Placeholder */}
               <div className="flex flex-wrap items-center gap-3.5 mb-4">
                 {/* Duration Tag Placeholder */}
-                <div className="h-3.5 bg-slate-200 rounded-full w-14"></div>
-                {/* Fee Tag Placeholder */}
-                <div className="h-3.5 bg-slate-200 rounded-full w-12"></div>
+                <div className="h-3.5 shimmer rounded-full w-14"></div>
               </div>
 
               {/* Buttons Placeholder */}
               <div className="flex gap-2.5 mt-auto border-t border-slate-100/80 pt-3">
-                <div className="h-8 bg-slate-200 rounded-lg flex-1"></div>
-                <div className="h-8 bg-slate-200 rounded-lg flex-1"></div>
+                <div className="h-8 shimmer rounded-lg flex-1"></div>
+                <div className="h-8 shimmer rounded-lg flex-1"></div>
               </div>
             </div>
           </div>

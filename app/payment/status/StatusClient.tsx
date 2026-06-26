@@ -688,11 +688,11 @@ export function StatusClient({ payment, print }: StatusClientProps) {
              <table class="meta-table">
                <tr>
                  <td>Receipt ID: <span>REC-${payment.id.substring(0, 8).toUpperCase()}</span></td>
-                 <td>Transaction ID: <span style="font-family: monospace;">${payment.transaction_id || "N/A"}</span></td>
+                 <td>Transaction ID: <span style="font-family: monospace;">${payment.amount > 0 ? (payment.transaction_id || "N/A") : "N/A"}</span></td>
                </tr>
                <tr>
                  <td>Date & Time: <span>${formattedPaymentDate}</span></td>
-                 <td>Payment Mode: <span>SMEPay (UPI)</span></td>
+                 <td>Payment Mode: <span>${payment.amount > 0 ? "SMEPay (UPI)" : "Free Admission"}</span></td>
                </tr>
                <tr>
                  <td>Admission No: <span>${doc.admission_no || "Pending"}</span></td>
@@ -846,7 +846,7 @@ export function StatusClient({ payment, print }: StatusClientProps) {
             </span>
           </div>
 
-          {payment.transaction_id && (
+          {payment.transaction_id && payment.amount > 0 && (
             <div className="flex justify-between items-baseline border-b border-slate-200/60 pb-3">
               <span className="text-slate-400 text-xs uppercase tracking-wider">Transaction ID</span>
               <span className="text-slate-950 font-mono text-xs font-bold">

@@ -157,7 +157,7 @@ export function AdmissionPipelineClient({ admission }: AdmissionPipelineClientPr
   }, [admission, generatedStudentId]);
 
   const course = admission.courses;
-  const finalFee = 1000; // Fixed Admission Fee
+  const finalFee = 0; // Fixed Admission Fee
 
   // Handle navigation
   const handleNextStep = () => {

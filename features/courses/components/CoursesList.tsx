@@ -116,7 +116,7 @@ export default function CoursesList({ initialCourses }: { initialCourses: Course
             {filteredCourses.map((course, index) => (
               <Card
                 key={course.id}
-                className="group relative bg-white rounded-xl shadow-sm hover:shadow-lg border border-slate-200 hover:border-blue-200 transition-all duration-300 hover:-translate-y-1 flex flex-col overflow-hidden fill-mode-both"
+                className="group relative bg-white rounded-xl shadow-sm hover:shadow-lg border border-slate-200 hover:border-blue-200 transition-all duration-300 hover:-translate-y-1 flex flex-col overflow-hidden fill-mode-both animate-in fade-in slide-in-from-bottom-5 duration-500"
                 style={{ animationDelay: `${index * 75}ms` }}
               >
                 {course.image_url && (

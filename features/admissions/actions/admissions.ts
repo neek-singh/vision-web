@@ -286,15 +286,48 @@ export async function createStudentAccountAction(admissionId: string) {
       // 3. Generate Sequential Student ID
       const year = new Date().getFullYear();
       const idPrefix = `VIT${year}STD`;
-      
-      const { count } = await supabase
+
+      // Find the highest existing student_id for this year
+      const { data: latestStudents } = await supabase
         .from("students")
-        .select("*", { count: "exact", head: true })
-        .ilike("student_id", `${idPrefix}%`);
-      
-      const nextNumber = (count || 0) + 1;
-      const sequence = nextNumber.toString().padStart(3, "0");
-      const studentId = `${idPrefix}${sequence}`;
+        .select("student_id")
+        .ilike("student_id", `${idPrefix}%`)
+        .order("student_id", { ascending: false })
+        .limit(1);
+
+      let nextNum = 1;
+      if (latestStudents && latestStudents.length > 0) {
+        const latestId = latestStudents[0].student_id;
+        if (latestId) {
+          const seqStr = latestId.replace(idPrefix, "");
+          const seqNum = parseInt(seqStr, 10);
+          if (!isNaN(seqNum)) {
+            nextNum = seqNum + 1;
+          }
+        }
+      }
+
+      let studentId = "";
+      let attempts = 0;
+      while (!studentId && attempts < 10) {
+        const sequence = String(nextNum + attempts).padStart(3, "0");
+        const candidate = `${idPrefix}${sequence}`;
+
+        const { data: existing } = await supabase
+          .from("students")
+          .select("id")
+          .eq("student_id", candidate)
+          .maybeSingle();
+
+        if (!existing) {
+          studentId = candidate;
+        }
+        attempts++;
+      }
+
+      if (!studentId) {
+        throw new Error("Could not generate a unique Student ID");
+      }
 
       // 4. Generate Password
       const firstName = admission.student_name.trim().split(/\s+/)[0];

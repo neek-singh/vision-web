@@ -28,14 +28,16 @@ export async function initiatePayment(admissionId: string, amount: number) {
       return { error: "Payment already completed for this admission" };
     }
 
-    // Insert pending payment
+    // Insert pending or auto-completed payment
+    const isFree = amount === 0;
     const { data: payment, error } = await supabase
       .from("admission_payments")
       .insert({
         admission_id: admissionId,
         amount,
-        status: "pending",
-        payment_method: "SMEPay",
+        status: isFree ? "completed" : "pending",
+        payment_method: isFree ? "Free" : "SMEPay",
+        transaction_id: isFree ? `FREE-${Math.random().toString(36).substring(2, 11).toUpperCase()}` : null,
       })
       .select()
       .single();
@@ -43,6 +45,11 @@ export async function initiatePayment(admissionId: string, amount: number) {
     if (error) {
       console.error("Initiating payment failed:", error);
       return { error: error.message };
+    }
+
+    if (isFree) {
+      revalidatePath("/dashboard");
+      return { success: true, redirectUrl: `/payment/status?paymentId=${payment.id}` };
     }
 
     return { success: true, redirectUrl: `/payment/gateway/${payment.id}` };

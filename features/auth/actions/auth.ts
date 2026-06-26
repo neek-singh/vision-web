@@ -283,13 +283,43 @@ export async function updateUserProfile(profileData: {
       const currentYear = new Date().getFullYear();
       const prefix = `VIT${currentYear}`;
 
-      const { count } = await supabase
+      // Find the highest existing roll number for the current year
+      const { data: latestProfiles } = await supabase
         .from("profiles")
-        .select("id", { count: "exact", head: true })
-        .like("roll_number", `${prefix}%`);
+        .select("roll_number")
+        .like("roll_number", `${prefix}%`)
+        .order("roll_number", { ascending: false })
+        .limit(1);
 
-      const nextSeq = String((count || 0) + 1).padStart(4, "0");
-      rollNumber = `${prefix}${nextSeq}`;
+      let nextNum = 1;
+      if (latestProfiles && latestProfiles.length > 0) {
+        const latestRoll = latestProfiles[0].roll_number;
+        if (latestRoll) {
+          const seqStr = latestRoll.replace(prefix, "");
+          const seqNum = parseInt(seqStr, 10);
+          if (!isNaN(seqNum)) {
+            nextNum = seqNum + 1;
+          }
+        }
+      }
+
+      // Safe retry loop to handle race conditions during simultaneous registration
+      let attempts = 0;
+      while (!rollNumber && attempts < 10) {
+        const nextSeq = String(nextNum + attempts).padStart(4, "0");
+        const candidate = `${prefix}${nextSeq}`;
+
+        const { data: existing } = await supabase
+          .from("profiles")
+          .select("id")
+          .eq("roll_number", candidate)
+          .maybeSingle();
+
+        if (!existing) {
+          rollNumber = candidate;
+        }
+        attempts++;
+      }
     }
 
     const { revalidatePath } = await import("next/cache");

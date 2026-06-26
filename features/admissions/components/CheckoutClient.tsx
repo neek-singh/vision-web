@@ -28,7 +28,7 @@ export function CheckoutClient({ admission }: CheckoutClientProps) {
   const [error, setError] = useState<string | null>(null);
 
   const course = admission.courses;
-  const finalFee = 1000; // Fixed Admission Fee
+  const finalFee = 0; // Fixed Admission Fee
 
   const handlePayment = async () => {
     setLoading(true);
@@ -261,7 +261,7 @@ export function CheckoutClient({ admission }: CheckoutClientProps) {
                   </>
                 ) : (
                   <>
-                    Pay Admission Fee
+                    {finalFee === 0 ? "Complete Admission" : "Pay Admission Fee"}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="14"

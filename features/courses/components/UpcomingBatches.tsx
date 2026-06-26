@@ -104,35 +104,35 @@ export function UpcomingBatchesSkeleton() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <div className="text-center mb-10 relative">
-        <div className="h-5 bg-slate-200 rounded-full w-36 mx-auto mb-4 animate-pulse"></div>
-        <div className="h-8 bg-slate-200 rounded-full w-56 mx-auto mb-4 animate-pulse"></div>
-        <div className="h-4 bg-slate-200 rounded-full w-80 mx-auto animate-pulse"></div>
+        <div className="h-5 shimmer rounded-full w-36 mx-auto mb-4"></div>
+        <div className="h-8 shimmer rounded-full w-56 mx-auto mb-4"></div>
+        <div className="h-4 shimmer rounded-full w-80 mx-auto"></div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
         {[1, 2, 3, 4].map((i) => (
           <div
             key={i}
-            className="bg-white rounded-xl p-4 md:p-5 border border-slate-200 animate-pulse flex flex-col overflow-hidden h-[190px] shadow-sm"
+            className="bg-white rounded-xl p-4 md:p-5 border border-slate-200 flex flex-col overflow-hidden h-[190px] shadow-sm"
           >
             {/* Tag Badge Placeholder */}
-            <div className="w-14 h-4 bg-slate-200 rounded mb-3"></div>
+            <div className="w-14 h-4 shimmer rounded mb-3"></div>
 
             {/* Course Title Placeholder */}
-            <div className="h-4 bg-slate-200 rounded w-11/12 mb-1.5"></div>
-            <div className="h-4 bg-slate-200 rounded w-3/4 mb-3"></div>
+            <div className="h-4 shimmer rounded w-11/12 mb-1.5"></div>
+            <div className="h-4 shimmer rounded w-3/4 mb-3"></div>
 
             {/* Start Date Placeholder */}
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-md bg-slate-200 shrink-0"></div>
+              <div className="w-7 h-7 rounded-md shimmer shrink-0"></div>
               <div className="space-y-1">
-                <div className="h-2 w-8 bg-slate-200 rounded"></div>
-                <div className="h-3 w-16 bg-slate-200 rounded"></div>
+                <div className="h-2 w-8 shimmer rounded"></div>
+                <div className="h-3 w-16 shimmer rounded"></div>
               </div>
             </div>
 
             {/* Button Placeholder */}
-            <div className="mt-auto w-28 h-7 bg-slate-200 rounded-lg"></div>
+            <div className="mt-auto w-28 h-7 shimmer rounded-lg"></div>
           </div>
         ))}
       </div>

@@ -506,8 +506,10 @@ function SignupForm() {
                     key={i}
                     ref={(el) => { otpRefs.current[i] = el; }}
                     id={`signup-otp-${i}`}
-                    type="text"
+                    type="tel"
                     inputMode="numeric"
+                    pattern="[0-9]*"
+                    autoComplete="one-time-code"
                     maxLength={1}
                     value={digit}
                     onChange={(e) => handleOtpChange(i, e.target.value)}

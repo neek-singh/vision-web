@@ -354,7 +354,7 @@ export default function AboutPage() {
             </ScrollReveal>
 
             {/* Right Column: Feature Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <ScrollReveal className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 { icon: <IconFlask />, title: "100% Practical", desc: "Focus on lab work and real-world projects over purely theoretical lectures.", color: "blue" },
                 { icon: <IconBriefcase />, title: "Industry Ready", desc: "Curriculum designed to meet the current demands of the modern tech job market.", color: "indigo" },
@@ -363,20 +363,18 @@ export default function AboutPage() {
               ].map((card, i) => {
                 const c = colorStyles[card.color];
                 return (
-                  <ScrollReveal key={card.title} delay={i * 100} className={`h-full ${i % 2 === 1 ? "sm:mt-4" : ""}`}>
-                    <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 h-full">
-                      <div className="flex items-center gap-3 mb-2.5">
-                        <div className={`w-9 h-9 ${c.bg} ${c.text} rounded-lg flex items-center justify-center shrink-0 [&>svg]:w-5 [&>svg]:h-5`}>
-                          {card.icon}
-                        </div>
-                        <h4 className="text-sm font-semibold text-slate-900 leading-tight">{card.title}</h4>
+                  <div key={card.title} className={`bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 h-full ${i % 2 === 1 ? "sm:mt-4" : ""}`}>
+                    <div className="flex items-center gap-3 mb-2.5">
+                      <div className={`w-9 h-9 ${c.bg} ${c.text} rounded-lg flex items-center justify-center shrink-0 [&>svg]:w-5 [&>svg]:h-5`}>
+                        {card.icon}
                       </div>
-                      <p className="text-slate-600 text-sm leading-relaxed">{card.desc}</p>
+                      <h4 className="text-sm font-semibold text-slate-900 leading-tight">{card.title}</h4>
                     </div>
-                  </ScrollReveal>
+                    <p className="text-slate-600 text-sm leading-relaxed">{card.desc}</p>
+                  </div>
                 );
               })}
-            </div>
+            </ScrollReveal>
 
           </div>
         </div>
@@ -388,23 +386,21 @@ export default function AboutPage() {
       ════════════════════════════════════════════════════════════ */}
       <section className="bg-white border-y border-slate-100 py-8">
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <ScrollReveal className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { value: stats.students_trained, label: "Students Trained" },
               { value: stats.expert_mentors, label: "Expert Mentors" },
               { value: stats.practical_learning, label: "Practical Learning" },
               { value: stats.courses_offered, label: "Courses Offered" },
             ].map((stat, i) => (
-              <ScrollReveal key={stat.label} delay={i * 100}>
-                <div className="text-center group">
-                  <div className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:scale-105 transition-transform duration-300">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs text-slate-500 font-semibold mt-1 uppercase tracking-wide">{stat.label}</div>
+              <div key={stat.label} className="text-center group">
+                <div className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:scale-105 transition-transform duration-300">
+                  {stat.value}
                 </div>
-              </ScrollReveal>
+                <div className="text-xs text-slate-500 font-semibold mt-1 uppercase tracking-wide">{stat.label}</div>
+              </div>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -508,43 +504,41 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
 
-          <div className="space-y-5">
+          <ScrollReveal className="space-y-5">
             {coursePrograms.map((course, i) => {
               const c = colorStyles[course.color];
               return (
-                <ScrollReveal key={course.name} delay={i * 100}>
-                  <div className={`bg-white rounded-2xl border border-slate-200/80 shadow-sm ${c.hoverBg} hover:shadow-md transition-all duration-300 overflow-hidden group`}>
-                    <div className="p-6 md:p-8">
-                      <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
-                        {/* Course badge & name */}
-                        <div className="shrink-0">
-                          <div className={`inline-flex items-center gap-2 px-3 py-1.5 ${c.badge} text-white rounded-lg text-xs font-bold shadow-sm`}>
-                            {course.name}
-                          </div>
-                          <p className="text-[10px] text-slate-400 font-semibold mt-2 uppercase tracking-wider">{course.duration}</p>
+                <div key={course.name} className={`bg-white rounded-2xl border border-slate-200/80 shadow-sm ${c.hoverBg} hover:shadow-md transition-all duration-300 overflow-hidden group`}>
+                  <div className="p-6 md:p-8">
+                    <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
+                      {/* Course badge & name */}
+                      <div className="shrink-0">
+                        <div className={`inline-flex items-center gap-2 px-3 py-1.5 ${c.badge} text-white rounded-lg text-xs font-bold shadow-sm`}>
+                          {course.name}
                         </div>
+                        <p className="text-[10px] text-slate-400 font-semibold mt-2 uppercase tracking-wider">{course.duration}</p>
+                      </div>
 
-                        {/* Details */}
-                        <div className="flex-grow">
-                          <h3 className="text-base md:text-lg font-bold text-slate-900 mb-2">{course.fullName}</h3>
-                          <p className="text-sm text-slate-500 leading-relaxed mb-4">{course.desc}</p>
+                      {/* Details */}
+                      <div className="flex-grow">
+                        <h3 className="text-base md:text-lg font-bold text-slate-900 mb-2">{course.fullName}</h3>
+                        <p className="text-sm text-slate-500 leading-relaxed mb-4">{course.desc}</p>
 
-                          {/* Topics */}
-                          <div className="flex flex-wrap gap-2">
-                            {course.topics.map((topic) => (
-                              <span key={topic} className={`px-3 py-1 ${c.light} ${c.text} text-xs font-semibold rounded-full border ${c.border}`}>
-                                {topic}
-                              </span>
-                            ))}
-                          </div>
+                        {/* Topics */}
+                        <div className="flex flex-wrap gap-2">
+                          {course.topics.map((topic) => (
+                            <span key={topic} className={`px-3 py-1 ${c.light} ${c.text} text-xs font-semibold rounded-full border ${c.border}`}>
+                              {topic}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
                   </div>
-                </ScrollReveal>
+                </div>
               );
             })}
-          </div>
+          </ScrollReveal>
 
           <ScrollReveal className="text-center mt-8" delay={150}>
             <Button href="/courses" className="px-7 h-11 bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/20 rounded-full font-semibold text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl inline-flex items-center gap-2 group border-none">
@@ -574,22 +568,20 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <ScrollReveal className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {methodologySteps.map((s, i) => (
-              <ScrollReveal key={s.step} delay={(i % 3) * 100} className="h-full">
-                <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group h-full">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-xl flex items-center justify-center font-bold text-xs shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
-                      {s.step}
-                    </div>
-                    <span className="text-xl">{s.icon}</span>
+              <div key={s.step} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group h-full">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-xl flex items-center justify-center font-bold text-xs shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
+                    {s.step}
                   </div>
-                  <h3 className="text-sm md:text-base font-semibold text-slate-900 mb-2">{s.title}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed">{s.desc}</p>
+                  <span className="text-xl">{s.icon}</span>
                 </div>
-              </ScrollReveal>
+                <h3 className="text-sm md:text-base font-semibold text-slate-900 mb-2">{s.title}</h3>
+                <p className="text-xs text-slate-500 leading-relaxed">{s.desc}</p>
+              </div>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -614,12 +606,12 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {whyChooseFeatures.map((f, i) => {
-              const c = colorStyles[f.color];
-              return (
-                <ScrollReveal key={f.title} delay={(i % 4) * 100} className="h-full">
-                  <div className={`group relative bg-white border border-slate-200 rounded-2xl p-6 text-left shadow-sm hover:shadow-lg hover:-translate-y-1 hover:${c.border} transition-all duration-400 h-full`}>
+          <ScrollReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {whyChooseFeatures.map((f, i) => {
+                const c = colorStyles[f.color];
+                return (
+                  <div key={f.title} className={`group relative bg-white border border-slate-200 rounded-2xl p-6 text-left shadow-sm hover:shadow-lg hover:-translate-y-1 hover:${c.border} transition-all duration-400 h-full`}>
                     <div className="flex items-center gap-3 mb-3">
                       <div className={`w-10 h-10 ${c.bg} ${c.text} rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:${c.badge} group-hover:text-white transition-all duration-300 [&>svg]:w-5 [&>svg]:h-5`}>
                         {f.icon}
@@ -628,10 +620,10 @@ export default function AboutPage() {
                     </div>
                     <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{f.desc}</p>
                   </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -653,17 +645,17 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {facilities.map((f, i) => (
-              <ScrollReveal key={f.name} delay={(i % 3) * 100} className="h-full">
-                <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group h-full">
+          <ScrollReveal>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {facilities.map((f, i) => (
+                <div key={f.name} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group h-full">
                   <div className="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">{f.icon}</div>
                   <h3 className="text-sm md:text-base font-semibold text-slate-900 mb-2">{f.name}</h3>
                   <p className="text-xs text-slate-500 leading-relaxed">{f.desc}</p>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -688,20 +680,20 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {faculty.map((member: any, i: number) => {
-              const teamColorMap: Record<string, { from: string; to: string; text: string; glow: string; hoverBorder: string; hoverText: string }> = {
-                blue: { from: "from-blue-50/50", to: "to-transparent", text: "text-blue-600", glow: "from-blue-200 to-indigo-100", hoverBorder: "hover:border-blue-200", hoverText: "group-hover:text-blue-600" },
-                indigo: { from: "from-indigo-50/50", to: "to-transparent", text: "text-indigo-600", glow: "from-indigo-200 to-purple-100", hoverBorder: "hover:border-indigo-200", hoverText: "group-hover:text-indigo-600" },
-                sky: { from: "from-sky-50/50", to: "to-transparent", text: "text-sky-600", glow: "from-sky-200 to-blue-100", hoverBorder: "hover:border-sky-200", hoverText: "group-hover:text-sky-600" },
-                pink: { from: "from-pink-50/50", to: "to-transparent", text: "text-pink-600", glow: "from-pink-200 to-rose-100", hoverBorder: "hover:border-pink-200", hoverText: "group-hover:text-pink-600" },
-              };
+          <ScrollReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {faculty.map((member: any, i: number) => {
+                const teamColorMap: Record<string, { from: string; to: string; text: string; glow: string; hoverBorder: string; hoverText: string }> = {
+                  blue: { from: "from-blue-50/50", to: "to-transparent", text: "text-blue-600", glow: "from-blue-200 to-indigo-100", hoverBorder: "hover:border-blue-200", hoverText: "group-hover:text-blue-600" },
+                  indigo: { from: "from-indigo-50/50", to: "to-transparent", text: "text-indigo-600", glow: "from-indigo-200 to-purple-100", hoverBorder: "hover:border-indigo-200", hoverText: "group-hover:text-indigo-600" },
+                  sky: { from: "from-sky-50/50", to: "to-transparent", text: "text-sky-600", glow: "from-sky-200 to-blue-100", hoverBorder: "hover:border-sky-200", hoverText: "group-hover:text-sky-600" },
+                  pink: { from: "from-pink-50/50", to: "to-transparent", text: "text-pink-600", glow: "from-pink-200 to-rose-100", hoverBorder: "hover:border-pink-200", hoverText: "group-hover:text-pink-600" },
+                };
 
-              const colors = teamColorMap[member.color as string] || teamColorMap.blue;
+                const colors = teamColorMap[member.color as string] || teamColorMap.blue;
 
-              return (
-                <ScrollReveal key={member.id} delay={(i % 3) * 100} className="h-full">
-                  <div className={`group relative bg-white rounded-3xl p-6 text-center border border-slate-200 shadow-sm hover:shadow-xl ${colors.hoverBorder} transition-all duration-500 overflow-hidden flex flex-col h-full`}>
+                return (
+                  <div key={member.id} className={`group relative bg-white rounded-3xl p-6 text-center border border-slate-200 shadow-sm hover:shadow-xl ${colors.hoverBorder} transition-all duration-500 overflow-hidden flex flex-col h-full`}>
                     <div className={`absolute inset-0 bg-gradient-to-br ${colors.from} ${colors.to} opacity-0 group-hover:opacity-100 transition duration-500 -z-10`} />
 
                     <div className="relative w-20 h-20 mx-auto mb-4">
@@ -737,10 +729,10 @@ export default function AboutPage() {
                       </div>
                     </div>
                   </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -762,10 +754,10 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
 
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <ScrollReveal key={faq.q} delay={(i % 4) * 50}>
-                <details className="group bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden hover:border-slate-200 transition-colors">
+          <ScrollReveal>
+            <div className="space-y-3">
+              {faqs.map((faq, i) => (
+                <details key={faq.q} className="group bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden hover:border-slate-200 transition-colors">
                   <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-sm font-semibold text-slate-800 select-none list-none">
                     <span>{faq.q}</span>
                     <svg className="w-5 h-5 text-slate-400 transition-transform duration-300 group-open:rotate-180 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -776,9 +768,9 @@ export default function AboutPage() {
                     {faq.a}
                   </div>
                 </details>
-              </ScrollReveal>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

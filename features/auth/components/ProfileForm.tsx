@@ -359,10 +359,7 @@ export function ProfileForm({
   };
 
   const validateStep5 = () => {
-    if (!uploadedUrls.photo_url) return "Profile Photo is required";
-    if (!uploadedUrls.signature_url) return "Student Signature is required";
-    if (!uploadedUrls.identity_proof_url) return `${docInfo.title} is required`;
-    if (!uploadedUrls.aadhar_proof_url) return "Aadhar Card is required";
+    // All documents are optional — no required validation
     return "";
   };
 
@@ -666,16 +663,7 @@ export function ProfileForm({
     if (!formData.qualification) {
       missing.push("Highest Qualification (Step 4)");
     }
-    // Step 5 check (documents)
-    const missingDocs: string[] = [];
-    if (!uploadedUrls.photo_url) missingDocs.push("Profile Photo");
-    if (!uploadedUrls.signature_url) missingDocs.push("Student Signature");
-    if (!uploadedUrls.identity_proof_url) missingDocs.push(docInfo.title);
-    if (!uploadedUrls.aadhar_proof_url) missingDocs.push("Aadhar Card");
-    
-    if (missingDocs.length > 0) {
-      missing.push(`Required Documents (Step 5: ${missingDocs.join(", ")})`);
-    }
+    // Step 5 documents are all optional — no missing check
     
     return missing;
   };
@@ -1178,7 +1166,9 @@ export function ProfileForm({
               <div>
                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1.5">Phone Number</label>
                 <input
-                  type="text"
+                  type="tel"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
                   name="phone"
                   required
                   value={formData.phone}
@@ -1742,7 +1732,10 @@ export function ProfileForm({
                     <input
                       key={index}
                       id={`otp-${index}`}
-                      type="text"
+                      type="tel"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
+                      autoComplete="one-time-code"
                       maxLength={1}
                       required
                       value={val}

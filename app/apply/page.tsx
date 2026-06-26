@@ -40,14 +40,27 @@ export default async function ApplyPage({ searchParams }: Props) {
   }
 
   // Course details
-  let course: Record<string, any> | null = null;
+  let course: {
+    id: string;
+    title: string;
+    course_code: string;
+    fee: number;
+    discount_fee: number | null;
+  } | null = null;
+
   if (courseId) {
     const { data } = await supabase
       .from("courses")
       .select("id, title, fee, discount_fee, course_code")
       .eq("id", courseId)
       .maybeSingle();
-    course = data;
+    course = data as {
+      id: string;
+      title: string;
+      course_code: string;
+      fee: number;
+      discount_fee: number | null;
+    } | null;
   }
 
   return (
