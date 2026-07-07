@@ -5,6 +5,8 @@ import fs from "fs";
 import path from "path";
 import Image from "next/image";
 import { unstable_cache } from "next/cache";
+import { BlogActions } from "@/features/blog/components/BlogActions";
+import { getBlogLikes } from "@/features/blog/actions/blog";
 
 export const revalidate = 3600;
 
@@ -51,6 +53,8 @@ export default async function BlogPostPage(
   if (!blog) {
     return notFound();
   }
+  
+  const initialLikes = await getBlogLikes(slug);
   const cleanContent = blog.content.replace(/^<h1>.*?<\/h1>\s*/i, "");
 
   return (
@@ -104,10 +108,14 @@ export default async function BlogPostPage(
 
       {/* Content */}
       <section className="max-w-3xl mx-auto px-6 mt-16">
+        <BlogActions blogSlug={slug} initialLikes={initialLikes} blogTitle={blog.title} />
+
         <div 
           className="blog-html-content text-slate-800 text-sm md:text-base leading-relaxed"
           dangerouslySetInnerHTML={{ __html: cleanContent }} 
         />
+
+        <BlogActions blogSlug={slug} initialLikes={initialLikes} blogTitle={blog.title} />
 
         {/* CTA Buttons */}
         <div className="mt-16 pt-8 border-t border-slate-200 flex flex-wrap gap-4 justify-center">
