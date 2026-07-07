@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import Link from "next/link";
-import { createPublicSupabaseClient } from "@/lib/supabase-server";
+import { createPublicSupabaseClient, createServerSupabaseClient } from "@/lib/supabase-server";
 import Image from "next/image";
 
 async function getPopularCourses() {
@@ -34,8 +34,12 @@ async function getPopularCourses() {
 
 export default async function PopularCourses() {
   let displayCourses = [];
+  let isLoggedIn = false;
   try {
     displayCourses = await getPopularCourses();
+    const supabase = await createServerSupabaseClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    isLoggedIn = !!user;
   } catch (error) {
     console.error("Error fetching courses for home:", error);
   }
@@ -100,21 +104,23 @@ export default async function PopularCourses() {
                   Details
                 </Button>
                 <Button
-                  href={`/inquire?courseId=${course.id}`}
+                  href={`/admissions?courseId=${course.id}`}
                   variant="outline"
                   size="sm"
                   className="rounded-lg flex-1 font-semibold text-slate-700 border-slate-200 bg-white/50 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all duration-300 py-1.5 text-[11px] md:text-xs"
                 >
                   Inquire
                 </Button>
-                <Button
-                  href={`/apply?courseId=${course.id}`}
-                  variant="primary"
-                  size="sm"
-                  className="rounded-lg flex-1 font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 border-none py-1.5 text-[11px] md:text-xs"
-                >
-                  Apply
-                </Button>
+                {isLoggedIn && (
+                  <Button
+                    href={`/apply?courseId=${course.id}`}
+                    variant="primary"
+                    size="sm"
+                    className="rounded-lg flex-1 font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 border-none py-1.5 text-[11px] md:text-xs"
+                  >
+                    Apply
+                  </Button>
+                )}
               </div>
             </CardContent>
           </Card>

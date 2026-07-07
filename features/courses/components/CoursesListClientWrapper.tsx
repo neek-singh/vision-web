@@ -43,6 +43,12 @@ const CoursesList = dynamic(() => import("@/features/courses/components/CoursesL
   ),
 });
 
-export default function CoursesListClientWrapper({ initialCourses }: { initialCourses: any[] }) {
-  return <CoursesList initialCourses={initialCourses} />;
+export default function CoursesListClientWrapper({ 
+  initialCourses,
+  isLoggedIn
+}: { 
+  initialCourses: any[];
+  isLoggedIn: boolean;
+}) {
+  return <CoursesList initialCourses={initialCourses} isLoggedIn={isLoggedIn} />;
 }

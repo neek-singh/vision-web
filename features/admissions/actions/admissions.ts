@@ -4,8 +4,8 @@ import { revalidatePath } from "next/cache";
 import { createServerSupabaseClient } from "@/lib/supabase-server";
 import bcrypt from "bcryptjs";
 
-const TEXTBEE_DEVICE_ID = process.env.TEXTBEE_DEVICE_ID || "6a38c43577015dcde182aaaa";
-const TEXTBEE_API_KEY = process.env.TEXTBEE_API_KEY || "77fcb14a-f6a2-4aa6-9e38-869b77c0256e";
+const TEXTBEE_DEVICE_ID = process.env.TEXTBEE_DEVICE_ID || "6a4ccfef9317f40a16f2e151";
+const TEXTBEE_API_KEY = process.env.TEXTBEE_API_KEY || "edaf6794-b331-4913-8370-0ec81f8d6df5";
 
 export async function submitAdmission(formData: any) {
   try {
@@ -463,7 +463,7 @@ export async function sendAdmissionOtp(phone: string) {
       },
       body: JSON.stringify({
         recipients: [`+91${sanitizedPhone}`],
-        message: `Vision IT: Your OTP for admission verification is ${otp}. Valid for 10 minutes.`,
+        message: `Vision IT Computer Institute: Your OTP for admission verification is ${otp}. Valid for 10 minutes. Do not share with anyone.`,
       }),
     });
 

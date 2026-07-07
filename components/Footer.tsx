@@ -121,6 +121,7 @@ export default function Footer() {
               <FooterLink href="/about">About Us</FooterLink>
               <FooterLink href="/blog">Our Blogs</FooterLink>
               <FooterLink href="/gallery">Institute Gallery</FooterLink>
+              <FooterLink href="/verify">Verify Credentials</FooterLink>
               <FooterLink href="/learn">Vision Learn</FooterLink>
               <FooterLink href="/contact">Get in Touch</FooterLink>
             </ul>

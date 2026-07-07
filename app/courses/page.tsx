@@ -1,4 +1,4 @@
-import { createPublicSupabaseClient } from "@/lib/supabase-server";
+import { createPublicSupabaseClient, createServerSupabaseClient } from "@/lib/supabase-server";
 import { Metadata } from "next";
 import CoursesListClientWrapper from "@/features/courses/components/CoursesListClientWrapper";
 import { Suspense } from "react";
@@ -67,12 +67,16 @@ function CoursesSkeleton() {
 
 async function CoursesListSection() {
   let displayCourses = [];
+  let isLoggedIn = false;
   try {
     displayCourses = await getCourses();
+    const supabase = await createServerSupabaseClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    isLoggedIn = !!user;
   } catch (error) {
     console.error("Error fetching courses from DB:", error);
   }
-  return <CoursesListClientWrapper initialCourses={displayCourses} />;
+  return <CoursesListClientWrapper initialCourses={displayCourses} isLoggedIn={isLoggedIn} />;
 }
 
 export default async function CoursesPage() {
