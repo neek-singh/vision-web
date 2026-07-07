@@ -38,9 +38,35 @@ export async function generateMetadata(
     return { title: "Blog Not Found" };
   }
 
+  // Generate absolute URL for the image (required by WhatsApp/Facebook scrapers)
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://visionitcomputerinstitute.com";
+  const absoluteImageUrl = blog.image_url 
+    ? (blog.image_url.startsWith("http") ? blog.image_url : `${siteUrl}${blog.image_url}`)
+    : `${siteUrl}/og-image.png`;
+
   return {
     title: `${blog.title} | Vision IT Blog`,
     description: blog.excerpt || `Read ${blog.title}`,
+    openGraph: {
+      title: blog.title,
+      description: blog.excerpt || `Read ${blog.title}`,
+      type: "article",
+      url: `${siteUrl}/blog/${slug}`,
+      images: [
+        {
+          url: absoluteImageUrl,
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.excerpt || `Read ${blog.title}`,
+      images: [absoluteImageUrl],
+    },
   };
 }
 
