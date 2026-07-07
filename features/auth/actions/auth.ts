@@ -3,6 +3,9 @@
 import { createServerSupabaseClient } from "@/lib/supabase-server";
 import { redirect } from "next/navigation";
 
+const TEXTBEE_DEVICE_ID = process.env.TEXTBEE_DEVICE_ID || "6a38c43577015dcde182aaaa";
+const TEXTBEE_API_KEY = process.env.TEXTBEE_API_KEY || "116f2332-5431-4b30-b706-f299a9c14ab1";
+
 export async function signOut() {
   const supabase = await createServerSupabaseClient();
   await supabase.auth.signOut();
@@ -96,12 +99,12 @@ export async function sendPasswordResetOTP(phone: string) {
 
   // 4. Send SMS via TextBee API
   try {
-    const textBeeUrl = "https://api.textbee.dev/api/v1/gateway/devices/6a38c43577015dcde182aaaa/send-sms";
+    const textBeeUrl = `https://api.textbee.dev/api/v1/gateway/devices/${TEXTBEE_DEVICE_ID}/send-sms`;
     const response = await fetch(textBeeUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": "77fcb14a-f6a2-4aa6-9e38-869b77c0256e",
+        "x-api-key": TEXTBEE_API_KEY,
       },
       body: JSON.stringify({
         recipients: [`+91${sanitizedPhone}`],
@@ -367,12 +370,12 @@ export async function sendOtpSms(phone: string, otp: string) {
   }
 
   try {
-    const textBeeUrl = "https://api.textbee.dev/api/v1/gateway/devices/6a38c43577015dcde182aaaa/send-sms";
+    const textBeeUrl = `https://api.textbee.dev/api/v1/gateway/devices/${TEXTBEE_DEVICE_ID}/send-sms`;
     const response = await fetch(textBeeUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": "77fcb14a-f6a2-4aa6-9e38-869b77c0256e",
+        "x-api-key": TEXTBEE_API_KEY,
       },
       body: JSON.stringify({
         recipients: [`+91${sanitizedPhone}`],
@@ -401,14 +404,14 @@ export async function sendRegistrationSms(phone: string, studentName: string, re
   }
 
   try {
-    const textBeeUrl = "https://api.textbee.dev/api/v1/gateway/devices/6a38c43577015dcde182aaaa/send-sms";
+    const textBeeUrl = `https://api.textbee.dev/api/v1/gateway/devices/${TEXTBEE_DEVICE_ID}/send-sms`;
     const message = `Dear ${studentName}, your Student Profile is successfully verified. Your Registration Number is ${regNumber}. Thank you, Vision IT.`;
 
     const response = await fetch(textBeeUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": "77fcb14a-f6a2-4aa6-9e38-869b77c0256e",
+        "x-api-key": TEXTBEE_API_KEY,
       },
       body: JSON.stringify({
         recipients: [`+91${sanitizedPhone}`],
