@@ -4,7 +4,7 @@ import { createServerSupabaseClient } from "@/lib/supabase-server";
 import { redirect } from "next/navigation";
 
 const TEXTBEE_DEVICE_ID = process.env.TEXTBEE_DEVICE_ID || "6a38c43577015dcde182aaaa";
-const TEXTBEE_API_KEY = process.env.TEXTBEE_API_KEY || "116f2332-5431-4b30-b706-f299a9c14ab1";
+const TEXTBEE_API_KEY = process.env.TEXTBEE_API_KEY || "77fcb14a-f6a2-4aa6-9e38-869b77c0256e";
 
 export async function signOut() {
   const supabase = await createServerSupabaseClient();
@@ -73,6 +73,7 @@ export async function sendPasswordResetOTP(phone: string) {
 
   // 2. Generate a 6-digit numeric OTP
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  console.log("--- PASSWORD RESET OTP (FOR TESTING) for", sanitizedPhone, ":", otp);
   const expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString(); // 10 minutes
 
   // 3. Save OTP in the database (clear old ones first)

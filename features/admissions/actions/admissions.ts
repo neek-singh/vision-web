@@ -5,7 +5,7 @@ import { createServerSupabaseClient } from "@/lib/supabase-server";
 import bcrypt from "bcryptjs";
 
 const TEXTBEE_DEVICE_ID = process.env.TEXTBEE_DEVICE_ID || "6a38c43577015dcde182aaaa";
-const TEXTBEE_API_KEY = process.env.TEXTBEE_API_KEY || "116f2332-5431-4b30-b706-f299a9c14ab1";
+const TEXTBEE_API_KEY = process.env.TEXTBEE_API_KEY || "77fcb14a-f6a2-4aa6-9e38-869b77c0256e";
 
 export async function submitAdmission(formData: any) {
   try {
@@ -429,6 +429,7 @@ export async function sendAdmissionOtp(phone: string) {
 
   // Generate 6-digit OTP
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  console.log("--- ADMISSION OTP (FOR TESTING) for", sanitizedPhone, ":", otp);
   const expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString(); // 10 minutes
 
   try {
