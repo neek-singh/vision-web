@@ -17,10 +17,10 @@ const COURSE_IDS = {
 
 export default async function Home() {
   return (
-    <main className="flex-col w-full bg-gray-50 pb-20">
+    <main className="flex-col w-full bg-gray-50 pb-20 overflow-x-hidden">
 
       {/* 1. Hero Section */}
-      <section className="relative bg-white text-slate-900 rounded-b-[3rem] lg:rounded-b-[5rem] overflow-hidden pt-32 pb-36 px-6 lg:px-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-b border-slate-100">
+      <section className="relative bg-white text-slate-900 rounded-b-[2rem] md:rounded-b-[3rem] lg:rounded-b-[5rem] overflow-hidden pt-28 md:pt-32 pb-20 md:pb-36 px-4 sm:px-6 lg:px-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-b border-slate-100">
 
         {/* Abstract Background Elements (Enhanced with a subtle tech grid) */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080801a_1px,transparent_1px),linear-gradient(to_bottom,#8080801a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -42,7 +42,7 @@ export default async function Home() {
           </Link>
 
           {/* Headline with Gradient Text */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-6 leading-[1.2]">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-6 leading-[1.2]">
             Vision <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">IT</span> Computer Institute
           </h1>
 
@@ -91,12 +91,12 @@ export default async function Home() {
       </Suspense>
 
       {/* Diploma Programs Section */}
-      <section className="py-20 md:py-24 bg-white relative overflow-hidden border-t border-slate-100">
+      <section className="py-14 md:py-24 bg-white relative overflow-hidden border-t border-slate-100">
         {/* Background decorations */}
         <div className="absolute top-0 right-0 w-80 h-80 bg-blue-100/40 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-100/30 rounded-full blur-[80px] pointer-events-none" />
 
-        <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
           {/* Section Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-indigo-50 text-indigo-700 font-semibold rounded-full text-xs border border-indigo-200/60 shadow-sm">
@@ -216,10 +216,10 @@ export default async function Home() {
       <GoogleReviews />
 
       {/* 4. Contact CTA Section (White Theme) */}
-      < section className="container mx-auto px-6 lg:px-8 py-24 relative z-10" >
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24 relative z-10">
 
         {/* Outer Wrapper */}
-        < div className="p-10 md:p-16 lg:p-20 text-center" >
+        <div className="p-4 sm:p-8 md:p-12 lg:p-16 text-center">
 
           <div>
 
@@ -245,7 +245,7 @@ export default async function Home() {
             </div>
 
             {/* Quick Contact Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto border-t border-slate-100 pt-10 mt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto border-t border-slate-100 pt-8 mt-4">
 
               {/* Phone */}
               <a href="tel:+918103170595" className="flex flex-col items-center p-4 rounded-2xl hover:bg-slate-50 transition-colors group/link">
@@ -276,8 +276,8 @@ export default async function Home() {
 
             </div>
           </div>
-        </div >
-      </section >
+        </div>
+      </section>
 
       {/* 5. FAQ Section */}
       <FAQSection />
@@ -285,7 +285,7 @@ export default async function Home() {
       {/* 6. Instagram / Social Section */}
       <SocialSection />
 
-    </main >
+    </main>
   );
 }
 

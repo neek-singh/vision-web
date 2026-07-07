@@ -6,8 +6,15 @@
 }
 
 @layer base {
+  html {
+    overflow-x: hidden;
+    width: 100%;
+  }
   body {
     @apply antialiased text-gray-900 bg-gray-50 min-h-screen flex flex-col;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;

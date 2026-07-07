@@ -31,10 +31,10 @@ export default function Footer() {
       {/* Subtle grid pattern overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_0.5px,transparent_0.5px),linear-gradient(to_bottom,#f1f5f9_0.5px,transparent_0.5px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] opacity-60 pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-6 lg:gap-12">
           {/* Column 1: Logo & Description (Wide) */}
-          <div className="md:col-span-12 lg:col-span-4 flex flex-col justify-between">
+          <div className="col-span-2 md:col-span-12 lg:col-span-4 flex flex-col justify-between">
             <div>
               <Link
                 href="/"
@@ -102,7 +102,7 @@ export default function Footer() {
           </div>
 
           {/* Column 2: Popular Courses */}
-          <div className="md:col-span-6 lg:col-span-2">
+          <div className="col-span-1 md:col-span-6 lg:col-span-2">
             <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Popular Courses</h4>
             <ul className="space-y-3">
               <FooterLink href="/courses/197f7c89-e410-4768-8b49-567b4b4e3e9e">Basic Computer (BCC)</FooterLink>
@@ -115,7 +115,7 @@ export default function Footer() {
           </div>
 
           {/* Column 3: Quick Links */}
-          <div className="md:col-span-4 lg:col-span-2">
+          <div className="col-span-1 md:col-span-4 lg:col-span-2">
             <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Quick Links</h4>
             <ul className="space-y-3">
               <FooterLink href="/about">About Us</FooterLink>
@@ -127,7 +127,7 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Programs */}
-          <div className="md:col-span-4 lg:col-span-2">
+          <div className="col-span-1 md:col-span-4 lg:col-span-2">
             <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Programs</h4>
             <ul className="space-y-3">
               <FooterLink href="/courses">All Courses</FooterLink>
@@ -137,7 +137,7 @@ export default function Footer() {
           </div>
 
           {/* Column 5: Reach Out (Contact) */}
-          <div className="md:col-span-4 lg:col-span-2">
+          <div className="col-span-1 md:col-span-4 lg:col-span-2">
             <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Reach Out</h4>
             <ul className="space-y-4 text-xs font-medium text-slate-600">
               <li className="flex items-start gap-3 group">
@@ -171,7 +171,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold text-slate-400">
+        <div className="mt-12 md:mt-16 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold text-slate-400">
           <p className="text-center md:text-left">
             &copy; {new Date().getFullYear()} Vision IT Computer Institute. All rights reserved.
           </p>

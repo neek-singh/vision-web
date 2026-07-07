@@ -238,12 +238,12 @@ export default function AboutPage() {
   }
 
   return (
-    <main className="flex-col w-full bg-slate-50 min-h-screen">
+    <main className="flex-col w-full bg-slate-50 min-h-screen overflow-x-hidden">
 
       {/* ════════════════════════════════════════════════════════════
           1. HERO SECTION
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative bg-white text-slate-900 rounded-b-[3rem] md:rounded-b-[4rem] overflow-hidden pt-32 pb-24 md:pb-36 px-6 lg:px-8 shadow-sm border-b border-slate-200/80">
+      <section className="relative bg-white text-slate-900 rounded-b-[2rem] md:rounded-b-[3rem] md:rounded-b-[4rem] overflow-hidden pt-28 md:pt-32 pb-16 md:pb-24 md:pb-36 px-4 sm:px-6 lg:px-8 shadow-sm border-b border-slate-200/80">
         {/* Tech Dot Pattern Background */}
         <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-50 pointer-events-none" />
 
@@ -312,7 +312,7 @@ export default function AboutPage() {
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-100/70 rounded-full blur-[80px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-indigo-50/80 rounded-full blur-[80px] pointer-events-none" />
 
-        <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-start">
 
             {/* Left Column: Text Content */}
@@ -385,7 +385,7 @@ export default function AboutPage() {
           3. STATS BANNER
       ════════════════════════════════════════════════════════════ */}
       <section className="bg-white border-y border-slate-100 py-8">
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <ScrollReveal className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { value: stats.students_trained, label: "Students Trained" },
@@ -412,7 +412,7 @@ export default function AboutPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-b from-blue-50/80 to-transparent blur-3xl rounded-full -z-10 pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-50 pointer-events-none" />
 
-        <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
           <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-indigo-50 text-indigo-700 font-semibold rounded-full text-xs border border-indigo-200/60">
               Our Purpose
@@ -491,7 +491,7 @@ export default function AboutPage() {
         <div className="absolute top-0 right-0 w-80 h-80 bg-blue-200/20 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-200/20 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
           <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-purple-50 text-purple-700 font-semibold rounded-full text-xs border border-purple-200/60">
               What We Offer
@@ -555,7 +555,7 @@ export default function AboutPage() {
       <section className="py-20 md:py-28 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-30 pointer-events-none" />
 
-        <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10">
           <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-emerald-50 text-emerald-700 font-semibold rounded-full text-xs border border-emerald-200/60">
               How We Teach
@@ -593,7 +593,7 @@ export default function AboutPage() {
         <div className="absolute top-0 right-0 w-full h-[500px] bg-gradient-to-b from-blue-50/60 to-transparent pointer-events-none" />
         <div className="absolute -left-40 top-40 w-96 h-96 bg-indigo-100/40 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-sky-50 text-sky-700 font-semibold rounded-full text-xs border border-sky-200/60">
               Why Us?
@@ -632,7 +632,7 @@ export default function AboutPage() {
           8. INFRASTRUCTURE & FACILITIES
       ════════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 bg-white border-t border-slate-100">
-        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-amber-50 text-amber-700 font-semibold rounded-full text-xs border border-amber-200/60">
               Our Infrastructure
@@ -667,7 +667,7 @@ export default function AboutPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-b from-blue-50/70 to-transparent blur-3xl rounded-full -z-10 pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-50 pointer-events-none" />
 
-        <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-purple-50 text-purple-700 font-semibold rounded-full text-xs border border-purple-200/60">
               Our Mentors
@@ -741,7 +741,7 @@ export default function AboutPage() {
           10. FAQ SECTION
       ════════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 bg-white border-t border-slate-100">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
           <ScrollReveal className="text-center mb-10">
             <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-amber-50 text-amber-700 font-semibold rounded-full text-xs border border-amber-200/60">
               Got Questions?
@@ -758,8 +758,8 @@ export default function AboutPage() {
             <div className="space-y-3">
               {faqs.map((faq, i) => (
                 <details key={faq.q} className="group bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden hover:border-slate-200 transition-colors">
-                  <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-sm font-semibold text-slate-800 select-none list-none">
-                    <span>{faq.q}</span>
+                  <summary className="flex items-center justify-between cursor-pointer px-4 sm:px-6 py-4 text-sm font-semibold text-slate-800 select-none list-none">
+                    <span className="pr-4">{faq.q}</span>
                     <svg className="w-5 h-5 text-slate-400 transition-transform duration-300 group-open:rotate-180 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
@@ -778,7 +778,7 @@ export default function AboutPage() {
       {/* ════════════════════════════════════════════════════════════
           11. BOTTOM CTA
       ════════════════════════════════════════════════════════════ */}
-      <ScrollReveal className="container mx-auto px-6 lg:px-8 max-w-4xl pb-16 md:pb-24">
+      <ScrollReveal className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl pb-12 md:pb-16 md:pb-24">
         <div className="bg-slate-900 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-2xl">
           <div className="absolute -right-24 -top-24 w-72 h-72 bg-blue-600/30 rounded-full blur-[80px] pointer-events-none" />
           <div className="absolute -left-24 -bottom-24 w-72 h-72 bg-indigo-600/30 rounded-full blur-[80px] pointer-events-none" />

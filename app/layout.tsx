@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Roboto, Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -22,6 +22,12 @@ const poppins = Poppins({
   display: "swap",
   variable: "--font-poppins",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://visionitinstitute.com"),
@@ -112,7 +118,7 @@ export default function RootLayout({
         <GoogleAnalytics gaId="G-SNT7CK2VDP" />
         <StructuredData />
         {/* Basic page structure with Flexbox to keep footer at bottom */}
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen overflow-x-hidden">
           <Header userNav={<UserNav />} />
           {children}
           <Footer />

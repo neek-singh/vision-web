@@ -36,13 +36,13 @@ export default async function BlogListingPage() {
   const blogsList = await getBlogs();
 
   return (
-    <main className="w-full bg-gray-50 pb-32 min-h-screen">
+    <main className="w-full bg-gray-50 pb-32 min-h-screen overflow-x-hidden">
 
       {/* Header */}
       <section className="bg-white pt-24 pb-16 border-b relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/3"></div>
 
-        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
           <span className="inline-block mb-3 px-2.5 py-0.5 bg-blue-50 text-blue-700 rounded-full text-xs font-semibold">
             📚 Insights & Updates
           </span>
@@ -58,7 +58,7 @@ export default async function BlogListingPage() {
       </section>
 
       {/* Blog Grid */}
-      <section className="max-w-7xl mx-auto px-6 pt-10">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 md:pt-10">
 
         {blogsList.length === 0 ? (
           <div className="text-center py-16 bg-white rounded-3xl shadow border max-w-2xl mx-auto">

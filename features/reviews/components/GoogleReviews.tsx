@@ -42,14 +42,14 @@ export default function GoogleReviews() {
   const googleReviewLink = "https://g.page/r/CZkPSap_DwIeEAE/review";
 
   return (
-    <section className="container mx-auto px-6 lg:px-8 py-20 relative z-10">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10 overflow-hidden">
       {/* Decorative Blur Backgrounds */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 bg-blue-100/50 rounded-full blur-[100px] pointer-events-none -z-10" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-indigo-100/40 rounded-full blur-[100px] pointer-events-none -z-10" />
 
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row items-center md:items-end justify-between gap-6 mb-12 border-b border-slate-100 pb-8">
+        <div className="flex flex-col md:flex-row items-center md:items-end justify-between gap-4 mb-10 md:mb-12 border-b border-slate-100 pb-6 md:pb-8">
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
               <span className="flex h-2.5 w-2.5 relative">
@@ -66,7 +66,7 @@ export default function GoogleReviews() {
           </div>
 
           {/* Google Ratings summary card */}
-          <div className="flex items-center gap-4 bg-white p-4.5 rounded-2xl border border-slate-200/60 shadow-sm backdrop-blur-md">
+          <div className="flex items-center gap-3 sm:gap-4 bg-white p-3 sm:p-4 rounded-2xl border border-slate-200/60 shadow-sm backdrop-blur-md w-full sm:w-auto justify-center sm:justify-start">
             {/* Google Logo */}
             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-slate-50 rounded-xl border border-slate-100">
               <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg">

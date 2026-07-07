@@ -41,7 +41,7 @@ export default async function PopularCourses() {
   }
 
   return (
-    <section className="container mx-auto px-6 lg:px-8 pt-24 relative z-10">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 relative z-10 overflow-hidden">
       {/* Decorative Aurora Glow behind heading */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-blue-400/10 blur-[100px] rounded-full pointer-events-none"></div>
 
@@ -144,7 +144,7 @@ export default async function PopularCourses() {
 
 export function PopularCoursesSkeleton() {
   return (
-    <section className="container mx-auto px-6 lg:px-8 pt-24 relative z-10">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 relative z-10">
       {/* Decorative Aurora Glow behind heading */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-blue-400/10 blur-[100px] rounded-full pointer-events-none"></div>
 

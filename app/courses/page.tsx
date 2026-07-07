@@ -77,7 +77,7 @@ async function CoursesListSection() {
 
 export default async function CoursesPage() {
   return (
-    <main className="flex-col w-full bg-slate-50 min-h-screen">
+    <main className="flex-col w-full bg-slate-50 min-h-screen overflow-x-hidden">
 
       {/* Hero Section (Enhanced Gradient & Spacing) */}
       <section className="relative overflow-hidden bg-white border-b border-slate-200 py-20 lg:py-32">
@@ -86,7 +86,7 @@ export default async function CoursesPage() {
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-300/80 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute top-32 -left-24 w-72 h-72 bg-indigo-300/80 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative container mx-auto px-6 lg:px-8 text-center">
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
           <h1 className="text-2xl md:text-3xl font-semibold text-slate-900 tracking-tight mb-3 animate-in fade-in slide-in-from-bottom-6 duration-700">
             Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Courses</span>
@@ -99,7 +99,7 @@ export default async function CoursesPage() {
       </section>
 
       {/* Courses List Component */}
-      <section className="relative container mx-auto px-6 lg:px-8 -mt-8 z-10 pb-24">
+      <section className="relative container mx-auto px-4 sm:px-6 lg:px-8 -mt-6 md:-mt-8 z-10 pb-16 md:pb-24">
         <Suspense fallback={<CoursesSkeleton />}>
           <CoursesListSection />
         </Suspense>
@@ -112,7 +112,7 @@ export default async function CoursesPage() {
         <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-blue-300/80 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
         <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-indigo-300/80 rounded-full blur-[100px] pointer-events-none translate-y-1/3 -translate-x-1/4"></div>
 
-        <div className="container mx-auto px-6 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 md:mb-20">
             <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mb-6 tracking-tight">
               Why Learn With <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Vision IT?</span>
@@ -209,7 +209,7 @@ export default async function CoursesPage() {
         {/* Subtle Top Glow (Reduced size so it doesn't stretch the page) */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-48 bg-blue-200/80 blur-[80px] pointer-events-none rounded-full"></div>
 
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10">
 
           <div className="text-center mb-10 relative">
             <h2 className="text-xl md:text-2xl font-semibold mb-3 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 pb-1">

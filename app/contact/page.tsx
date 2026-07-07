@@ -56,10 +56,10 @@ function InfoCard({
 
 export default function ContactPage() {
   return (
-    <main className="flex-col w-full bg-slate-50 min-h-screen pb-16 md:pb-24">
+    <main className="flex-col w-full bg-slate-50 min-h-screen pb-16 md:pb-24 overflow-x-hidden">
 
       {/* Hero Section */}
-      <section className="relative bg-white text-slate-900 rounded-b-3xl overflow-hidden pt-20 md:pt-24 pb-12 px-6 lg:px-8 border-b border-slate-200/80 shadow-sm">
+      <section className="relative bg-white text-slate-900 rounded-b-3xl overflow-hidden pt-20 md:pt-24 pb-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80 shadow-sm">
         {/* Soft Background Gradients */}
         <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-blue-50/80 via-white to-white pointer-events-none" />
         <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[80px] pointer-events-none" />
@@ -82,7 +82,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main Content */}
-      <section className="container mx-auto px-6 lg:px-8 max-w-7xl py-12 lg:py-16">
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-10 md:py-12 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10">
 
           {/* Left: Contact Info */}
@@ -164,8 +164,8 @@ export default function ContactPage() {
       </section>
 
       {/* Embedded Map */}
-      <section className="container mx-auto px-6 lg:px-8 max-w-7xl pb-10">
-        <div className="relative rounded-[2rem] overflow-hidden shadow-md border border-slate-200/80 h-[400px] bg-slate-100 group">
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl pb-10">
+        <div className="relative rounded-2xl sm:rounded-[2rem] overflow-hidden shadow-md border border-slate-200/80 h-[250px] sm:h-[300px] md:h-[400px] bg-slate-100 group">
           {/* Optional Overlay to prevent accidental scrolling inside map */}
           <div className="absolute inset-0 bg-transparent group-hover:pointer-events-none transition-all z-10" />
           <iframe
@@ -183,7 +183,7 @@ export default function ContactPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="container mx-auto px-6 lg:px-8 max-w-4xl pt-16">
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl pt-10 md:pt-16">
         <div className="bg-slate-900 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-2xl">
           {/* Dark Mode Gradients for CTA */}
           <div className="absolute -right-24 -top-24 w-72 h-72 bg-blue-600/30 rounded-full blur-[80px]" />

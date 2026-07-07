@@ -25,7 +25,7 @@ export default async function UpcomingBatches() {
   const displayBatches = await getBatches();
 
   return (
-    <section className="container mx-auto px-6 lg:px-8 py-24 max-w-7xl relative z-10">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 max-w-7xl relative z-10">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <div className="text-center mb-10 relative">
@@ -100,7 +100,7 @@ export default async function UpcomingBatches() {
 
 export function UpcomingBatchesSkeleton() {
   return (
-    <section className="container mx-auto px-6 lg:px-8 py-24 max-w-7xl relative z-10">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 max-w-7xl relative z-10">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <div className="text-center mb-10 relative">
