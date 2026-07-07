@@ -51,23 +51,20 @@ export default async function BlogPostPage(
   if (!blog) {
     return notFound();
   }
-
-
-
   const cleanContent = blog.content.replace(/^<h1>.*?<\/h1>\s*/i, "");
 
   return (
-    <main className="w-full bg-slate-50 pb-32 min-h-screen">
+    <main className="w-full bg-slate-50 min-h-screen pb-32">
+      {/* Premium Hero Section (Clean Light Theme) */}
+      <section className="relative overflow-hidden bg-white border-b border-slate-200 py-20 lg:py-24">
+        {/* Subtle Background Elements */}
+        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-blue-100/80 to-white pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-300/80 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-32 -left-24 w-72 h-72 bg-indigo-300/80 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Premium Hero Section */}
-      <section className="relative bg-[#0a0f1d] text-white pt-40 pb-32 rounded-b-[3rem] sm:rounded-b-[4rem] overflow-hidden shadow-2xl shadow-blue-950/20">
-        {/* Soft Background Gradients & Grid */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-        
         <div className="relative max-w-4xl mx-auto text-center px-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-8 animate-in fade-in duration-500">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-600 text-xs font-semibold mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
             {blog.created_at
               ? new Date(blog.created_at).toLocaleDateString('en-IN', {
                   day: 'numeric',
@@ -77,22 +74,22 @@ export default async function BlogPostPage(
               : "Recent Update"}
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-50 to-slate-300 animate-in slide-in-from-bottom-4 duration-700">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 leading-snug">
             {blog.title}
           </h1>
 
           {blog.excerpt && (
-            <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed animate-in slide-in-from-bottom-6 duration-700 delay-150">
+            <p className="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium">
               {blog.excerpt}
             </p>
           )}
         </div>
       </section>
 
-
+      {/* Main Image */}
       {blog.image_url && (
-        <div className="max-w-4xl mx-auto px-6 mt-12">
-          <div className="relative w-full aspect-[21/9] rounded-[2rem] overflow-hidden shadow-xl">
+        <div className="max-w-4xl mx-auto px-6 -mt-8 md:-mt-12 relative z-10">
+          <div className="relative w-full aspect-[2/1] rounded-[2rem] overflow-hidden shadow-lg border border-slate-200/40">
             <Image
               src={blog.image_url}
               alt={blog.title}
@@ -106,19 +103,29 @@ export default async function BlogPostPage(
       )}
 
       {/* Content */}
-      <section className="max-w-4xl mx-auto px-6 mt-16">
-
+      <section className="max-w-3xl mx-auto px-6 mt-16">
         <div 
-          className="blog-html-content"
+          className="blog-html-content text-slate-800 text-sm md:text-base leading-relaxed"
           dangerouslySetInnerHTML={{ __html: cleanContent }} 
         />
 
-        {/* CTA */}
-        <div className="mt-20 flex gap-4 justify-center">
-          <Button href="/blog">← Back</Button>
-          <Button href="/admissions">Start Learning</Button>
+        {/* CTA Buttons */}
+        <div className="mt-16 pt-8 border-t border-slate-200 flex flex-wrap gap-4 justify-center">
+          <Button 
+            href="/blog" 
+            variant="outline"
+            className="rounded-2xl px-6 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200 transition-all duration-300 hover:-translate-y-0.5"
+          >
+            ← Back to Blog
+          </Button>
+          <Button 
+            href="/admissions"
+            variant="primary" 
+            className="rounded-2xl px-6 py-2.5 text-xs font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/10 hover:shadow-blue-500/25 transition-all duration-300 hover:-translate-y-0.5"
+          >
+            Start Learning
+          </Button>
         </div>
-
       </section>
     </main>
   );

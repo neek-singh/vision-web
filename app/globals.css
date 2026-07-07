@@ -23,25 +23,43 @@
 
 /* 📝 Blog HTML Content Styles */
 .blog-html-content h1 {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  color: #0f172a;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-.blog-html-content h2 {
-  font-size: 1.875rem;
-  font-weight: 700;
   color: #0f172a;
   margin-top: 1.75rem;
   margin-bottom: 0.75rem;
+  line-height: 1.35;
 }
-.blog-html-content h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
+@media (min-width: 640px) {
+  .blog-html-content h1 {
+    font-size: 2rem;
+  }
+}
+.blog-html-content h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
   color: #0f172a;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
+  line-height: 1.35;
+}
+@media (min-width: 640px) {
+  .blog-html-content h2 {
+    font-size: 1.65rem;
+  }
+}
+.blog-html-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.35;
+}
+@media (min-width: 640px) {
+  .blog-html-content h3 {
+    font-size: 1.35rem;
+  }
 }
 .blog-html-content p {
   margin-bottom: 1.25rem;
