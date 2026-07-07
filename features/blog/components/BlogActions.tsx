@@ -15,9 +15,10 @@ export function BlogActions({ blogSlug, initialLikes, blogTitle }: BlogActionsPr
   const [isLiked, setIsLiked] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [shareUrl, setShareUrl] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Read liked state from localStorage on client side mount
+  // Read liked state from localStorage and set browser URL on client side mount
   useEffect(() => {
     try {
       const stored = localStorage.getItem(`liked_blog_${blogSlug}`);
@@ -26,6 +27,11 @@ export function BlogActions({ blogSlug, initialLikes, blogTitle }: BlogActionsPr
       }
     } catch (e) {
       console.error("Error reading localStorage:", e);
+    }
+    
+    // Safely read window location on mount
+    if (typeof window !== "undefined") {
+      setShareUrl(window.location.href);
     }
   }, [blogSlug]);
 
@@ -68,19 +74,11 @@ export function BlogActions({ blogSlug, initialLikes, blogTitle }: BlogActionsPr
     }
   };
 
-  const getShareUrl = () => {
-    if (typeof window !== "undefined") {
-      return window.location.href;
-    }
-    return "";
-  };
-
   const handleCopyLink = async () => {
-    const url = getShareUrl();
-    if (!url) return;
+    if (!shareUrl) return;
     
     try {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (e) {
@@ -88,7 +86,6 @@ export function BlogActions({ blogSlug, initialLikes, blogTitle }: BlogActionsPr
     }
   };
 
-  const shareUrl = getShareUrl();
   const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(`${blogTitle} - ${shareUrl}`)}`;
   const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
   const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(blogTitle)}&url=${encodeURIComponent(shareUrl)}`;
