@@ -2,7 +2,7 @@
   {
     "id": "1",
     "course": "Junior tech Batch",
-    "date": "April 15, 2026",
+    "date": "July 01, 2026",
     "time": "08:05 AM - 10:00 AM",
     "type": "Morning Batch",
     "seats": "Seats full"
@@ -10,7 +10,7 @@
   {
     "id": "2",
     "course": "Vision Elite",
-    "date": "April 15, 2026",
+    "date": "July 01, 2026",
     "time": "10:05 AM - 12:00 PM",
     "type": "Morning Batch",
     "seats": "Only 3 seats left"
@@ -18,7 +18,7 @@
   {
     "id": "3",
     "course": "Vision Elite pro",
-    "date": "May 02, 2026",
+    "date": "July 02, 2026",
     "time": "12:05 PM - 02:00 PM",
     "type": "Afternoon Batch",
     "seats": "Only 4 seats left"
@@ -26,7 +26,7 @@
   {
     "id": "4",
     "course": "Junior Coding Batch",
-    "date": "May 02, 2026",
+    "date": "July 02, 2026",
     "time": "02:05 PM - 04:00 PM",
     "type": "Evening Batch",
     "seats": "Only 4 seats left"
@@ -34,7 +34,7 @@
   {
     "id": "5",
     "course": "E-Tech Batch",
-    "date": "May 05, 2026",
+    "date": "July 05, 2026",
     "time": "04:05 PM - 06:00 PM",
     "type": "Evening Batch",
     "seats": "Only 4 seats left"

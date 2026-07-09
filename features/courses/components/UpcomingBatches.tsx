@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import fs from "fs";
 import path from "path";
@@ -17,7 +16,7 @@ const getBatches = unstable_cache(
     }
     return [];
   },
-  ["upcoming-batches"],
+  ["upcoming-batches-v2"],
   { revalidate: 3600, tags: ["batches"] }
 );
 
@@ -74,23 +73,6 @@ export default async function UpcomingBatches() {
 
 
             </div>
-
-            <Button
-              href="/admissions"
-              className="group relative mt-auto w-fit mr-auto px-5 rounded-lg bg-slate-900 hover:bg-blue-600 text-white py-2 text-xs font-semibold transition-all duration-300 flex items-center justify-center gap-1.5 border-none"
-            >
-              Book Your Seat
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2.5"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </Button>
           </Card>
         ))}
       </div>
