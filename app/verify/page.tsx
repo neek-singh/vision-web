@@ -18,28 +18,23 @@ export default async function VerifyPage({
   const initialQuery = params.id || "";
 
   return (
-    <main className="w-full bg-slate-50 min-h-screen pb-24 font-sans overflow-x-hidden">
-      {/* Hero Section (Clean Light Theme) */}
-      <section className="relative overflow-hidden bg-white border-b border-slate-200 py-20 lg:py-28">
-        {/* Subtle Background Elements */}
-        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-blue-100/80 to-white pointer-events-none" />
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-300/80 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-32 -left-24 w-72 h-72 bg-indigo-300/80 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-2xl md:text-3xl font-semibold text-slate-900 tracking-tight mb-3">
-            Academic <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Verification</span>
+    <main className="w-full bg-[#f8fafc] min-h-screen py-12 px-4 sm:px-6 lg:px-8 font-sans">
+      <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
+        <div className="text-center mb-10">
+          <h1 className="text-3xl md:text-4xl font-serif font-black text-slate-900 mb-4 tracking-tight">
+            Verify Credentials
           </h1>
-          <p className="text-xs md:text-sm text-slate-700 max-w-lg mx-auto leading-relaxed font-medium">
-            Verify official student certifications, transcript records, and grades issued by our institute.
+          <p className="text-slate-500 text-xs sm:text-sm md:text-base max-w-3xl mx-auto leading-relaxed font-medium">
+            A secure tool for employers and institutions to validate academic records, marksheets, and certificates issued by the Computer Applications Institute.
           </p>
         </div>
-      </section>
 
-      {/* Verification Portal Wrapper */}
-      <section className="relative container mx-auto px-4 sm:px-6 lg:px-8 -mt-6 md:-mt-8 z-10">
-        <VerificationPortal initialQuery={initialQuery} />
-      </section>
+        {/* Verification Portal Wrapper */}
+        <div className="mt-8">
+          <VerificationPortal initialQuery={initialQuery} />
+        </div>
+      </div>
     </main>
   );
 }

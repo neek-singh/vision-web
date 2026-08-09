@@ -2,6 +2,16 @@
 
 These rules are strict guidelines for all AI agents working on this project.
 
+## 🧠 MANDATORY FIRST STEP — Read BRAIN.md
+
+**EVERY agent MUST read `.agents/BRAIN.md` at the start of EVERY session, task, or conversation.**
+
+- Path: `c:\Users\as007\vision-web\.agents\BRAIN.md`
+- This file contains full project context: stack, folder structure, auth patterns, DB tables, env vars, gotchas.
+- **Do NOT scan the codebase** to understand the project — read BRAIN.md instead.
+- **After completing any task**, update the relevant section(s) in BRAIN.md and add a line to the Update Log.
+- No reminder will be given — this rule is always active.
+
 ## General Strict Rules
 - **Do not scan full codebase:** Only read the files strictly necessary to understand the immediate context.
 - **Modify only required files:** Do not refactor or touch files unrelated to the specific task.

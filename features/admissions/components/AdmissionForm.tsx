@@ -34,6 +34,10 @@ export default function AdmissionForm({
     email: user?.email || "",
     phone: "",
     course_id: preselectedCourseId || "",
+    dob: "",
+    qualification: "",
+    school_name: "",
+    batch_preference: "",
     message: "",
   });
 
@@ -57,7 +61,7 @@ export default function AdmissionForm({
       const fetchProfile = async () => {
         const { data } = await supabase
           .from("profiles")
-          .select("full_name, phone")
+          .select("full_name, phone, dob, qualification")
           .eq("id", user.id)
           .single();
         if (data) {
@@ -65,6 +69,8 @@ export default function AdmissionForm({
             ...prev,
             student_name: data.full_name || prev.student_name || user.user_metadata?.full_name || "",
             phone: data.phone || prev.phone || "",
+            dob: data.dob || prev.dob || "",
+            qualification: data.qualification || prev.qualification || "",
           }));
         }
       };
@@ -79,17 +85,25 @@ export default function AdmissionForm({
 
   // ✅ Strong validation
   const validate = () => {
-    if (!formData.student_name.trim()) return "Name required";
+    if (!formData.student_name.trim()) return { error: "Full Name is required", field: "student_name" };
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) return "Valid email required";
+    if (formData.email && formData.email.trim()) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) return { error: "Valid email address required", field: "email" };
+    }
 
     const phoneRegex = /^[6-9]\d{9}$/;
-    if (!phoneRegex.test(formData.phone)) return "Valid Indian phone required";
+    if (!phoneRegex.test(formData.phone)) return { error: "Valid 10-digit Indian phone number required", field: "phone" };
 
-    if (!formData.course_id) return "Select course";
+    if (!formData.dob) return { error: "Date of Birth is required", field: "dob" };
 
-    return "";
+    if (!formData.qualification) return { error: "Highest Qualification is required", field: "qualification" };
+
+    if (!formData.school_name.trim()) return { error: "School/College Name is required", field: "school_name" };
+
+    if (!formData.course_id) return { error: "Select a course", field: "course_id" };
+
+    return null;
   };
 
   const handleSubmit = async (e: any) => {
@@ -97,8 +111,16 @@ export default function AdmissionForm({
 
     if (isSubmitting) return;
 
-    const err = validate();
-    if (err) return setError(err);
+    const validationResult = validate();
+    if (validationResult) {
+      setError(validationResult.error);
+      const element = document.querySelector(`[name="${validationResult.field}"]`) as HTMLElement;
+      if (element) {
+        element.focus();
+        element.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -111,9 +133,9 @@ export default function AdmissionForm({
 
       setSuccess(true);
       
-      // ⏳ Auto redirect to home/dashboard after 5s
+      // ⏳ Auto redirect to home after 5s
       setTimeout(() => {
-        router.push(user ? "/dashboard" : "/");
+        router.push("/");
       }, 5000);
     } catch (err: any) {
       setError(err.message || "Something went wrong");
@@ -121,6 +143,44 @@ export default function AdmissionForm({
       setIsSubmitting(false);
     }
   };
+
+  const coreCourseIds = [
+    "197f7c89-e410-4768-8b49-567b4b4e3e9e", // Basic Computer Course (BCC)
+    "a100f278-ea6c-4189-b09b-7d4e7cd9d0e7", // Basic Computer For Beginner
+    "38fdc235-f7b5-4628-9d72-41c9ff2eabd8", // Diploma In Computer Applications (DCA)
+    "2fc69f17-e7a0-4bde-b995-8cbda1e2e55b", // Advanced Diploma in Computer Applications (ADCA)
+    "f9004121-1274-4b57-8179-ccc8365864b9"  // Post Graduate Diploma in Computer Applications (PGDCA)
+  ];
+
+  const courseDisplayName = (title: string) => {
+    const t = title.toLowerCase();
+    if (t.includes("beginner")) return "Basic computer for Beginner";
+    if (t.includes("basic computer course")) return "BCC";
+    if (t.includes("diploma in computer applications") && !t.includes("advanced") && !t.includes("post")) return "DCA";
+    if (t.includes("advanced diploma")) return "ADCA";
+    if (t.includes("post graduate")) return "PGDCA";
+    return title;
+  };
+
+  const mappedCourses = courses
+    .filter((c) => c.id !== "e0d6cfa9-a400-47b2-97b4-bb579c3ee595" && !c.title.toLowerCase().includes("university"))
+    .map((c) => ({
+      id: c.id,
+      title: courseDisplayName(c.title),
+    }));
+
+  const coreCoursesList = mappedCourses
+    .filter((c) => coreCourseIds.includes(c.id))
+    .sort((a, b) => coreCourseIds.indexOf(a.id) - coreCourseIds.indexOf(b.id));
+
+  const otherCoursesList = mappedCourses
+    .filter((c) => !coreCourseIds.includes(c.id))
+    .sort((a, b) => a.title.localeCompare(b.title));
+
+  const filteredCourses = [...coreCoursesList, ...otherCoursesList];
+
+  const selectedCourse = filteredCourses.find((c) => c.id === formData.course_id);
+  const subtitle = selectedCourse ? selectedCourse.title : "Course Application";
 
   // 🎉 Success UI
   if (success) {
@@ -132,10 +192,10 @@ export default function AdmissionForm({
 
         <div className="space-y-2">
           <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 tracking-tight">
-            Inquiry Submitted Successfully
+            Application Submitted Successfully
           </h3>
           <p className="text-gray-500 font-medium">
-            {user ? "Redirecting to your dashboard in 5 seconds..." : "Redirecting to home page in 5 seconds..."}
+            Redirecting to home page in 5 seconds...
           </p>
         </div>
 
@@ -143,13 +203,13 @@ export default function AdmissionForm({
         <div className="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
           <a
             href={`https://wa.me/918103170595?text=${encodeURIComponent(
-              `*New Course Inquiry* 🎓\n` +
+              `*New Admission Application* 🎓\n` +
               `--------------------------\n` +
               `*Name:* ${formData.student_name}\n` +
-              `*Course:* ${courses.find((c) => c.id === formData.course_id)?.title || "Selected Course"}\n` +
+              `*Course:* ${selectedCourse?.title || "Selected Course"}\n` +
               `*Email:* ${formData.email}\n` +
               `*Phone:* ${formData.phone}\n\n` +
-              `Hello, I just submitted an inquiry on the website. Please let me know the details.`
+              `Hello, I just submitted an application on the website. Please let me know the details.`
             )}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -160,21 +220,12 @@ export default function AdmissionForm({
             </svg>
             Chat on WhatsApp
           </a>
-          {user ? (
-            <button
-              onClick={() => router.push("/dashboard")}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
-            >
-              Go to Dashboard
-            </button>
-          ) : (
-            <button
-              onClick={() => router.push("/")}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
-            >
-              Go to Homepage
-            </button>
-          )}
+          <button
+            onClick={() => router.push("/")}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+          >
+            Go to Homepage
+          </button>
         </div>
       </div>
     );
@@ -183,8 +234,19 @@ export default function AdmissionForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-5 bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100"
+      className="bg-white p-6 sm:p-10 space-y-6"
     >
+      <div>
+        <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 tracking-tight leading-none mb-1.5">
+          Application Form
+        </h1>
+        <p className="text-xs sm:text-sm text-slate-655 font-semibold leading-none text-slate-500">
+          {subtitle}
+        </p>
+      </div>
+
+      <hr className="border-slate-100" />
+
       {error && (
         <div className="flex items-center gap-3 bg-red-50 text-red-700 px-4 py-3 rounded-xl border border-red-100 text-sm font-medium animate-in slide-in-from-top-2 duration-300">
           <svg className="w-5 h-5 text-red-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -194,94 +256,186 @@ export default function AdmissionForm({
         </div>
       )}
 
-      <div>
-        <input
-          name="student_name"
-          value={formData.student_name}
-          placeholder="Full Name"
-          onChange={handleChange}
-          className="w-full px-4 py-3.5 text-gray-900 bg-gray-50 border border-gray-200 rounded-xl placeholder:text-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-        />
-      </div>
+      {/* Section: PERSONAL INFORMATION */}
+      <div className="space-y-4">
+        <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest">
+          Personal Information
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-slate-900">Full Name <span className="text-red-500">*</span></label>
+            <input
+              name="student_name"
+              value={formData.student_name}
+              placeholder="John Doe"
+              onChange={handleChange}
+              className="w-full px-3.5 py-2 text-sm text-gray-900 bg-white border border-gray-250 rounded-lg placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+            />
+          </div>
 
-      <div>
-        <input
-          name="phone"
-          value={formData.phone}
-          placeholder="Phone Number"
-          onChange={handleChange}
-          className="w-full px-4 py-3.5 text-gray-900 bg-gray-50 border border-gray-200 rounded-xl placeholder:text-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-        />
-      </div>
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-slate-900">Email Address <span className="text-slate-400 font-normal">(Optional)</span></label>
+            <input
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              readOnly={!!user?.email}
+              placeholder="john@example.com"
+              className={`w-full px-3.5 py-2 text-sm text-gray-900 border border-gray-250 rounded-lg placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 ${
+                user?.email ? "bg-gray-50 text-gray-500 cursor-not-allowed" : ""
+              }`}
+            />
+          </div>
 
-      <div>
-        <input
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          readOnly={!!user?.email}
-          placeholder="Email Address"
-          className={`w-full px-4 py-3.5 text-gray-900 border border-gray-200 rounded-xl placeholder:text-gray-400 focus:outline-none transition-all duration-200 ${user?.email
-            ? "bg-gray-100 text-gray-500 cursor-not-allowed focus:ring-0"
-            : "bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            }`}
-        />
-      </div>
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-slate-900">Phone Number <span className="text-red-500">*</span></label>
+            <input
+              name="phone"
+              value={formData.phone}
+              placeholder="e.g. 9876543210"
+              onChange={handleChange}
+              className="w-full px-3.5 py-2 text-sm text-gray-900 bg-white border border-gray-250 rounded-lg placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+            />
+          </div>
 
-      {/* ✅ FIXED SELECT */}
-      <div className="relative">
-        <select
-          name="course_id"
-          value={formData.course_id}
-          onChange={(e) =>
-            setFormData({ ...formData, course_id: e.target.value })
-          }
-          className="w-full px-4 py-3.5 text-gray-900 bg-gray-50 border border-gray-200 rounded-xl appearance-none focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-        >
-          {displayedCourses.length > 1 && (
-            <option value="" disabled className="text-gray-400">
-              Select a Course
-            </option>
-          )}
-          {displayedCourses.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.title}
-            </option>
-          ))}
-        </select>
-        {/* Custom Dropdown Arrow */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-          </svg>
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-slate-900">Date of Birth <span className="text-red-500">*</span></label>
+            <input
+              name="dob"
+              type="date"
+              value={formData.dob}
+              onChange={handleChange}
+              className="w-full px-3.5 py-2 text-sm text-gray-900 bg-white border border-gray-250 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+            />
+          </div>
         </div>
       </div>
 
-      <div>
+      {/* Section: EDUCATIONAL BACKGROUND */}
+      <div className="space-y-4 pt-2">
+        <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest">
+          Educational Background
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-slate-900">Highest Qualification <span className="text-red-500">*</span></label>
+            <div className="relative">
+              <select
+                name="qualification"
+                value={formData.qualification}
+                onChange={handleChange}
+                className="w-full px-3.5 py-2 text-sm text-gray-900 bg-white border border-gray-250 rounded-lg appearance-none focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+              >
+                <option value="">Select qualification</option>
+                <option value="10th Pass">10th Pass</option>
+                <option value="12th Pass">12th Pass</option>
+                <option value="Graduate">Graduate</option>
+                <option value="Post Graduate">Post Graduate</option>
+                <option value="Other">Other</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-gray-400">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-slate-900">School/College Name <span className="text-red-500">*</span></label>
+            <input
+              name="school_name"
+              value={formData.school_name}
+              placeholder="Institution Name"
+              onChange={handleChange}
+              className="w-full px-3.5 py-2 text-sm text-gray-900 bg-white border border-gray-250 rounded-lg placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Section: COURSE PREFERENCES */}
+      <div className="space-y-4 pt-2">
+        <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest">
+          Course Preferences
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-slate-900">Select Course <span className="text-red-500">*</span></label>
+            <div className="relative">
+              <select
+                name="course_id"
+                value={formData.course_id}
+                onChange={(e) => setFormData({ ...formData, course_id: e.target.value })}
+                className="w-full px-3.5 py-2 text-sm text-gray-900 bg-white border border-gray-255 rounded-lg appearance-none focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+              >
+                <option value="" disabled>Select course</option>
+                {filteredCourses.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.title}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-gray-400">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-slate-900">Batch Preference <span className="text-slate-400 font-normal">(Optional)</span></label>
+            <div className="relative">
+              <select
+                name="batch_preference"
+                value={formData.batch_preference}
+                onChange={handleChange}
+                className="w-full px-3.5 py-2 text-sm text-gray-900 bg-white border border-gray-250 rounded-lg appearance-none focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+              >
+                <option value="">Select batch</option>
+                <option value="Morning Batch (7:00 AM - 9:00 AM)">Morning Batch (7:00 AM - 9:00 AM)</option>
+                <option value="Morning Batch (9:00 AM - 11:00 AM)">Morning Batch (9:00 AM - 11:00 AM)</option>
+                <option value="Noon Batch (12:00 PM - 2:00 PM)">Noon Batch (12:00 PM - 2:00 PM)</option>
+                <option value="Afternoon Batch (2:00 PM - 4:00 PM)">Afternoon Batch (2:00 PM - 4:00 PM)</option>
+                <option value="Evening Batch (4:00 PM - 6:00 PM)">Evening Batch (4:00 PM - 6:00 PM)</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-gray-400">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-1 pt-2">
+        <label className="text-xs font-semibold text-slate-900">Why do you want to join this course? <span className="text-slate-400 font-normal">(Optional)</span></label>
         <textarea
           name="message"
           value={formData.message}
-          placeholder="Message (optional)"
+          placeholder="Briefly describe your motivation and goals..."
           onChange={handleChange}
-          className="w-full px-4 py-3.5 text-gray-900 bg-gray-50 border border-gray-200 rounded-xl placeholder:text-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 min-h-[120px] resize-y"
+          className="w-full px-3.5 py-2 text-sm text-gray-900 bg-white border border-gray-250 rounded-lg placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 min-h-[100px] resize-y"
         />
       </div>
 
-      <div className="pt-2">
+      <div className="flex justify-end pt-3 border-t border-slate-100">
         <Button
           disabled={isSubmitting}
-          className="w-full py-4 text-base font-semibold rounded-xl transition-all duration-200 hover:shadow-md disabled:opacity-70"
+          className="bg-black hover:bg-slate-900 text-white font-semibold text-xs px-6 py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 disabled:opacity-70 flex items-center gap-2 cursor-pointer"
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center gap-2">
-              <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
               Submitting...
             </span>
           ) : (
-            "Submit Inquiry"
+            "Submit Application"
           )}
         </Button>
       </div>

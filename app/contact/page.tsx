@@ -1,18 +1,37 @@
 import { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import ContactFormClientWrapper from "@/features/contact/components/ContactFormClientWrapper";
+import InteractiveMap from "@/components/InteractiveMap";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Vision IT Computer Institute Pratappur",
+  title: "Contact Vision IT Computer Institute | Computer Institute Pratappur",
   description:
-    "Contact Vision IT Computer Institute — the best computer institute in Pratappur. Enquire about DCA, ADCA, PGDCA, Web Development & AI courses.",
-  keywords:
-    "Contact computer institute Pratappur, Vision IT contact, DCA ADCA PGDCA admission enquiry",
+    "Contact Vision IT Computer Institute — the best computer institute pratappur. Located at Kadampara Chowk, Pratappur, Chhattisgarh. Call +91-8103170595 for DCA, ADCA, PGDCA, and BCC course admissions.",
+  keywords: [
+    "contact computer institute pratappur",
+    "vision it computer institute contact",
+    "computer coaching pratappur admission",
+    "computer center pratappur address",
+    "vision it computer center phone number",
+    "IT training center pratappur contact"
+  ],
+  alternates: {
+    canonical: "https://visionitinstitute.com/contact",
+  },
   openGraph: {
-    title: "Contact Vision IT Computer Institute",
+    title: "Contact Vision IT Computer Institute | Computer Institute Pratappur",
     description:
-      "Get in touch with Vision IT Computer Institute in Pratappur for admissions, course details, and enquiries.",
+      "Get in touch with Vision IT Computer Institute at Kadampara Chowk, Pratappur, Chhattisgarh. Call +91-8103170595 for admissions and course enquiries.",
+    url: "https://visionitinstitute.com/contact",
+    siteName: "Vision IT Computer Institute",
+    locale: "en_IN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Vision IT Computer Institute | Computer Institute Pratappur",
+    description:
+      "Contact Vision IT Computer Institute in Pratappur — Call +91-8103170595 for DCA, ADCA, PGDCA course admissions.",
   },
 };
 
@@ -165,21 +184,7 @@ export default function ContactPage() {
 
       {/* Embedded Map */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl pb-10">
-        <div className="relative rounded-2xl sm:rounded-[2rem] overflow-hidden shadow-md border border-slate-200/80 h-[250px] sm:h-[300px] md:h-[400px] bg-slate-100 group">
-          {/* Optional Overlay to prevent accidental scrolling inside map */}
-          <div className="absolute inset-0 bg-transparent group-hover:pointer-events-none transition-all z-10" />
-          <iframe
-            src="https://maps.google.com/maps?q=Vision+IT+Computer+Institute+Pratappur&t=k&z=19&ie=UTF8&iwloc=&output=embed"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Vision IT Computer Institute Location"
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <InteractiveMap />
       </section>
 
       {/* Bottom CTA */}
@@ -195,8 +200,8 @@ export default function ContactPage() {
               Join Vision IT and take the first step toward a successful tech career today. Expert mentorship awaits.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <Button href="/admissions" className="w-full sm:w-auto px-6 h-11 bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 rounded-full font-semibold text-sm transition-all duration-300">
-                Enroll Now
+              <Button href="/inquiry" className="w-full sm:w-auto px-6 h-11 bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 rounded-full font-semibold text-sm transition-all duration-300">
+                Apply Now
               </Button>
               <Button
                 href="/courses"

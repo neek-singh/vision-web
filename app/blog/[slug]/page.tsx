@@ -153,7 +153,7 @@ export default async function BlogPostPage(
             ← Back to Blog
           </Button>
           <Button 
-            href="/admissions"
+            href="/inquiry"
             variant="primary" 
             className="rounded-2xl px-6 py-2.5 text-xs font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/10 hover:shadow-blue-500/25 transition-all duration-300 hover:-translate-y-0.5"
           >

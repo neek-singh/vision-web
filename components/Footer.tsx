@@ -14,7 +14,7 @@ const contact = {
 export default function Footer() {
   const pathname = usePathname();
   const hideNav =
-    ["/login", "/signup", "/admissions", "/forgot-password"].includes(pathname) ||
+    ["/login", "/signup", "/inquiry", "/forgot-password"].includes(pathname) ||
     pathname.startsWith("/admin");
 
   if (hideNav) return null;
@@ -105,11 +105,11 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-6 lg:col-span-2">
             <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Popular Courses</h4>
             <ul className="space-y-3">
-              <FooterLink href="/courses/197f7c89-e410-4768-8b49-567b4b4e3e9e">Basic Computer (BCC)</FooterLink>
-              <FooterLink href="/courses/38fdc235-f7b5-4628-9d72-41c9ff2eabd8">Diploma in Computer (DCA)</FooterLink>
-              <FooterLink href="/courses/f9004121-1274-4b57-8179-ccc8365864b9">PGDCA Diploma</FooterLink>
-              <FooterLink href="/courses/2fc69f17-e7a0-4bde-b995-8cbda1e2e55b">ADCA Diploma</FooterLink>
-              <FooterLink href="/courses/31a26227-fb8d-4fc2-b8f0-6db262c46765">Python & C Classes</FooterLink>
+              <FooterLink href="/courses/bcc">Basic Computer (BCC)</FooterLink>
+              <FooterLink href="/courses/dca">Diploma in Computer (DCA)</FooterLink>
+              <FooterLink href="/courses/pgdca">PGDCA Diploma</FooterLink>
+              <FooterLink href="/courses/adca">ADCA Diploma</FooterLink>
+              <FooterLink href="/courses/basic-beginner">Basic Computer for Beginner</FooterLink>
               <FooterLink href="/courses" className="text-blue-600 hover:text-blue-500 font-semibold text-xs mt-1 inline-block">Explore All Courses</FooterLink>
             </ul>
           </div>
@@ -132,8 +132,8 @@ export default function Footer() {
             <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Programs</h4>
             <ul className="space-y-3">
               <FooterLink href="/courses">All Courses</FooterLink>
-              <FooterLink href="/admissions">Course Inquiry</FooterLink>
-              <FooterLink href="/admissions">Inquire Now</FooterLink>
+              <FooterLink href="/courses/university">University Courses</FooterLink>
+              <FooterLink href="/inquiry">Inquire Now</FooterLink>
             </ul>
           </div>
 

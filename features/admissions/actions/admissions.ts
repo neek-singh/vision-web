@@ -15,7 +15,7 @@ export async function submitAdmission(formData: any) {
       data: { user },
     } = await supabase.auth.getUser();
 
-    const { student_name, email, phone, course_id, message } = formData;
+    const { student_name, email, phone, course_id, message, dob, qualification, school_name, batch_preference } = formData;
 
     // Fetch user profile to see if it is already completed
     const { data: profile } = user
@@ -28,6 +28,11 @@ export async function submitAdmission(formData: any) {
 
     const isProfileCompleted = !!profile?.is_profile_completed;
 
+    let finalMessage = message || null;
+    if (school_name || batch_preference) {
+      finalMessage = `School/College Name: ${school_name || "N/A"}\nBatch Preference: ${batch_preference || "N/A"}${message ? `\n\nMotivation:\n${message}` : ""}`;
+    }
+
     const insertPayload: any = {
       user_id: user?.id,
       student_name: profile?.full_name || student_name,
@@ -35,7 +40,9 @@ export async function submitAdmission(formData: any) {
       phone: profile?.phone || phone || (user ? profile?.phone : ""),
       course_id,
       status: "pending",
-      message: message || null,
+      message: finalMessage,
+      dob: dob || profile?.dob || null,
+      qualification: qualification || profile?.qualification || null,
     };
 
     if (isProfileCompleted && profile) {
@@ -142,7 +149,7 @@ export async function updateAdmissionPersonalDetails(
     }
 
     revalidatePath("/dashboard");
-    revalidatePath(`/admissions/pipeline/${admissionId}`);
+    revalidatePath(`/inquiry/pipeline/${admissionId}`);
     return { success: true };
   } catch (e: any) {
     console.error("Personal details update error:", e);
@@ -189,7 +196,7 @@ export async function updateAdmissionDocuments(
     }
 
     revalidatePath("/dashboard");
-    revalidatePath(`/admissions/pipeline/${admissionId}`);
+    revalidatePath(`/inquiry/pipeline/${admissionId}`);
     revalidatePath("/admin/admissions");
     return { success: true };
   } catch (e: any) {
@@ -228,7 +235,7 @@ export async function verifyAdmissionDocuments(admissionId: string, verified: bo
     }
 
     revalidatePath("/dashboard");
-    revalidatePath(`/admissions/pipeline/${admissionId}`);
+    revalidatePath(`/inquiry/pipeline/${admissionId}`);
     revalidatePath("/admin/admissions");
     return { success: true };
   } catch (e: any) {
@@ -410,7 +417,7 @@ export async function createStudentAccountAction(admissionId: string) {
     }
 
     revalidatePath("/dashboard");
-    revalidatePath(`/admissions/pipeline/${admissionId}`);
+    revalidatePath(`/inquiry/pipeline/${admissionId}`);
     return { success: true, studentId: targetStudent?.student_id };
   } catch (e: any) {
     console.error("Student creation error in pipeline:", e);
@@ -564,7 +571,7 @@ export async function verifyAdmissionOtp(
 
     revalidatePath("/admin/admissions");
     revalidatePath("/dashboard");
-    revalidatePath(`/admissions/pipeline/${admissionId}`);
+    revalidatePath(`/inquiry/pipeline/${admissionId}`);
 
     return { success: true, admissionNo };
   } catch (err: any) {

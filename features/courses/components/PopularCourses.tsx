@@ -17,7 +17,7 @@ async function getPopularCourses() {
     ]);
 
   if (error) throw error;
-  
+
   const desiredOrder = [
     "38fdc235-f7b5-4628-9d72-41c9ff2eabd8", // DCA
     "f9004121-1274-4b57-8179-ccc8365864b9", // PGDCA
@@ -54,7 +54,7 @@ export default async function PopularCourses() {
           Popular Courses
         </h2>
         <p className="text-slate-900 text-sm md:text-base max-w-2xl mx-auto font-medium">
-          Master the most in-demand tech skills with our 100% practical training programs.
+          Master the most in-demand tech skills with our 70% practical training programs.
         </p>
       </div>
 
@@ -104,7 +104,7 @@ export default async function PopularCourses() {
                   Details
                 </Button>
                 <Button
-                  href={`/admissions?courseId=${course.id}`}
+                  href={`/inquiry?courseId=${course.id}`}
                   variant="outline"
                   size="sm"
                   className="rounded-lg flex-1 font-semibold text-slate-700 border-slate-200 bg-white/50 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all duration-300 py-1.5 text-[11px] md:text-xs"
