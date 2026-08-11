@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import CourseCard from "@/components/CourseCard";
+import OfferSlider from "@/components/OfferSlider";
+import HeroSlider from "@/components/HeroSlider";
 
 const GoogleReviews = dynamic(() => import("@/features/reviews/components/GoogleReviews"), { ssr: true });
 const FAQSection = dynamic(() => import("@/components/HomeSections").then((mod) => mod.FAQSection), { ssr: true });
@@ -39,28 +41,12 @@ export default async function Home() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
             </span>
-            Admission Applications Open for 2026-27
+            <OfferSlider />
           </Link>
 
-          {/* Headline with Gradient Text */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-6 leading-[1.2]">
-            Vision <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">IT</span> Computer Institute
-          </h1>
-
-          {/* Refined Sub-headline */}
-          <p className="mt-4 text-base md:text-lg text-slate-900 max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
-            Computer training to transform beginners into highly sought-after tech professionals.
-          </p>
-
-          {/* Enhanced CTAs */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-14">
-            <Button href="/courses" size="lg" className="w-full sm:w-auto text-base px-4 py-2 shadow-lg shadow-blue-500/25 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/30 flex items-center justify-center">
-              Explore Courses
-              <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-            </Button>
-            <Button href="/inquiry" size="lg" variant="outline" className="w-full sm:w-auto text-base px-4 py-2 rounded-full bg-white shadow-sm border-slate-200 text-slate-700 hover:text-blue-700 hover:bg-blue-50/50 hover:border-blue-200 transition-all duration-300 hover:-translate-y-1">
-              Apply Now
-            </Button>
+          {/* Dynamic Hero Slider (Includes heading, selector tabs, descriptions, and action buttons) */}
+          <div className="mt-4 mb-14">
+            <HeroSlider />
           </div>
 
           {/* NEW: Social Proof / Trust Indicators */}
@@ -126,8 +112,9 @@ export default async function Home() {
             badge="Advanced"
             duration="12 Months"
             mode="Offline"
-            price="₹18,999"
+            price="₹16,999"
             imageSrc="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600&auto=format&fit=crop"
+            detailsHref="/courses/pgdca"
             applyHref="/inquiry?courseId=f9004121-1274-4b57-8179-ccc8365864b9"
           />
           <CourseCard

@@ -284,6 +284,14 @@ Google ke Knowledge Graph mein entity establish karo.
 > **Rule:** Har kaam ke baad sirf relevant section update karo. Full rescan mat karo.
 | Date | Change | Section Updated |
 |---|---|---|
+| 2026-08-11 | Added DFSO, PGDRD, and DSPS slides to dynamic HeroSlider. | Update Log |
+| 2026-08-11 | Removed selector tabs container from HeroSlider to keep layout clean and simple. | Update Log |
+| 2026-08-11 | Moved home page main h1 headline inside HeroSlider to dynamically rotate title suffixes ('Computer Institute', 'DCA', 'PGDCA', 'BCA'). | Update Log |
+| 2026-08-11 | Added default 'Overview' slide to HeroSlider with original copy and Explore Courses/Apply Now CTA buttons. | Update Log |
+| 2026-08-11 | Replaced generic indicator dots in HeroSlider with interactive course name tabs (DCA, PGDCA, BCA) for clearer navigation. | Update Log |
+| 2026-08-11 | Integrated HeroSlider client component to rotate between DCA, PGDCA, and BCA courses and dynamically swap Details & Apply CTA buttons. | Update Log |
+| 2026-08-11 | Created OfferSlider client component and replaced static hero badge announcement with rotating offers for institute & university courses. | Update Log |
+| 2026-08-11 | Added missing detailsHref link and aligned price (₹16,999) for PGDCA course card in popular courses section on home page. | Update Log |
 | 2026-08-09 | Cleaned metadata keywords and aligned primary & secondary brand descriptions for AI SEO task optimization. | Update Log |
 | 2026-08-09 | Updated course fees across all listings and details pages: DCA to ₹13,999, ADCA to ₹14,999, PGDCA to ₹16,999. | Update Log |
 | 2026-08-09 | Created dedicated details pages for ADCA and PGDCA courses with custom curriculums, stats badges, structured fees, and eligibility cards. | Update Log, Folder Structure |
