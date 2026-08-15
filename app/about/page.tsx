@@ -165,7 +165,7 @@ export default function AboutPage() {
             {/* Right Column: Visual Image Asset & Floating Card */}
             <ScrollReveal className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-slate-200/50 bg-white">
               <Image
-                src="https://images.unsplash.com/photo-1531498860502-7c67cf02f69e?q=80&w=800&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop"
                 alt="Students studying and collaborating"
                 fill
                 className="object-cover"

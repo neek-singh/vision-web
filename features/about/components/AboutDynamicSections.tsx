@@ -260,8 +260,8 @@ export default function AboutDynamicSections({ faculty }: AboutDynamicSectionsPr
             {/* Right Column: Visual Image Asset */}
             <ScrollReveal className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-slate-200/50 bg-white">
               <Image
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop"
-                alt="Students studying in library"
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop"
+                alt="Students studying and collaborating"
                 fill
                 className="object-cover"
                 priority

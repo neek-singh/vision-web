@@ -337,6 +337,14 @@ export default function CoursesPage() {
               <p className="text-sm sm:text-base text-slate-650 leading-relaxed max-w-xl animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 font-normal">
                 Empowering students with cutting-edge tech skills. Discover comprehensive courses designed for modern careers, blending theoretical knowledge with practical, hands-on experience in our state-of-the-art facilities.
               </p>
+              <div className="pt-2 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-black hover:bg-slate-900 text-white font-bold text-sm rounded-xl transition-all shadow-sm hover:shadow"
+                >
+                  About Us
+                </Link>
+              </div>
             </div>
 
             {/* Right Column: Visual Image Asset */}

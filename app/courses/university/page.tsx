@@ -204,7 +204,8 @@ const engineeringTechCourses = [
     mode: "Regular",
     price: "Enquire",
     imageSrc: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop",
-    applyHref: "/inquiry",
+    detailsHref: "/courses/bca",
+    applyHref: "/inquiry?type=university",
   },
   {
     title: "Master of Computer Applications (MCA)",
@@ -339,7 +340,8 @@ const diplomaCoursesList = [
     mode: "Regular",
     price: "Enquire",
     imageSrc: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600&auto=format&fit=crop",
-    applyHref: "/inquiry",
+    detailsHref: "/courses/pgdca",
+    applyHref: "/inquiry?type=university",
   },
   {
     title: "Diploma in Computer Applications (DCA)",
@@ -348,7 +350,8 @@ const diplomaCoursesList = [
     mode: "Regular",
     price: "Enquire",
     imageSrc: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=600&auto=format&fit=crop",
-    applyHref: "/inquiry",
+    detailsHref: "/courses/dca",
+    applyHref: "/inquiry?type=university",
   },
   {
     title: "Diploma in Solar Power System (DSPS)",
@@ -357,7 +360,8 @@ const diplomaCoursesList = [
     mode: "Regular",
     price: "Enquire",
     imageSrc: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=600&auto=format&fit=crop",
-    applyHref: "/inquiry",
+    detailsHref: "/courses/dsps",
+    applyHref: "/inquiry?type=university",
   },
   {
     title: "Diploma in Fire Service & Operations (DFSO)",
@@ -366,7 +370,8 @@ const diplomaCoursesList = [
     mode: "Regular",
     price: "Enquire",
     imageSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=600&auto=format&fit=crop",
-    applyHref: "/inquiry",
+    detailsHref: "/courses/dfso",
+    applyHref: "/inquiry?type=university",
   },
   {
     title: "PG Diploma in Rural Development (PGDRD)",
@@ -375,7 +380,8 @@ const diplomaCoursesList = [
     mode: "Regular",
     price: "Enquire",
     imageSrc: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=600&auto=format&fit=crop",
-    applyHref: "/inquiry",
+    detailsHref: "/courses/pgdrd",
+    applyHref: "/inquiry?type=university",
   },
 ];
 

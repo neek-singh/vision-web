@@ -124,6 +124,7 @@ export default async function Home() {
             mode="Offline"
             price="Contact Us"
             imageSrc="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&auto=format&fit=crop"
+            detailsHref="/courses/bca"
             applyHref="/inquiry?type=university&course=Bachelor of Computer Applications (BCA)"
           />
         </div>
@@ -133,6 +134,311 @@ export default async function Home() {
             View All Courses
             <svg className="w-5 h-5 transition-transform group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>
+        </div>
+      </section>
+
+      {/* 2.4. Institute Programs Section (Light Theme) */}
+      <section className="bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8 border-y border-slate-100 relative overflow-hidden z-10">
+        {/* Decorative Glow Blobs */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-blue-100/30 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute bottom-0 right-10 w-80 h-80 bg-indigo-100/30 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div className="container mx-auto px-4 max-w-6xl relative z-10 text-center">
+          
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 tracking-tight mb-4">
+            Vision IT Computer Programs
+          </h2>
+          <p className="text-slate-655 text-sm md:text-base max-w-2xl mx-auto mb-16 leading-relaxed font-normal">
+            Equip yourself with industry-ready skills through our standard certificate and diploma programs featuring a 70% practical-focused training approach.
+          </p>
+
+          {/* Department Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left mb-16">
+            
+            {/* Card 1: Professional Diplomas */}
+            <div className="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 hover:bg-white hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 group flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">Professional Diplomas</h3>
+                <p className="text-slate-505 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
+                  Standard 12-month programs for comprehensive computer application skills and project training.
+                </p>
+              </div>
+              <ul className="space-y-2 border-t border-slate-200/50 pt-4">
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> DCA (12 Months)
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> ADCA (12 Months)
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> PGDCA (Post Graduate)
+                </li>
+              </ul>
+            </div>
+
+            {/* Card 2: Core Certificates */}
+            <div className="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 hover:bg-white hover:border-indigo-500 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 group flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">Core Certificates</h3>
+                <p className="text-slate-550 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
+                  Short-term programs targeting basic digital literacy, typing proficiency, and office tools.
+                </p>
+              </div>
+              <ul className="space-y-2 border-t border-slate-200/50 pt-4">
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> BCC (Basic Computer Course)
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Basic Computer for Beginner
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Typing Course (Hindi/English)
+                </li>
+              </ul>
+            </div>
+
+            {/* Card 3: Industry Skills */}
+            <div className="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 hover:bg-white hover:border-emerald-500 hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-300 group flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">Industry Skills</h3>
+                <p className="text-slate-550 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
+                  Gain specialized expertise in computer accounting, graphic design, and document publishing.
+                </p>
+              </div>
+              <ul className="space-y-2 border-t border-slate-200/50 pt-4">
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Tally Prime & Accounting
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> DTP (Desktop Publishing)
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Photoshop & Design
+                </li>
+              </ul>
+            </div>
+
+            {/* Card 4: Code & Tech AI */}
+            <div className="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 hover:bg-white hover:border-amber-500 hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300 group flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-605 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">Advanced Coding & AI</h3>
+                <p className="text-slate-550 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
+                  Master modern programming logic, web development, and AI tools for digital careers.
+                </p>
+              </div>
+              <ul className="space-y-2 border-t border-slate-200/50 pt-4">
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Web Development (HTML/CSS/JS)
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Python Programming
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span> AI Tools & Prompts Training
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              href="/courses"
+              className="px-8 py-4 bg-black hover:bg-slate-900 text-white font-bold text-sm rounded-full transition-all duration-300 text-center shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            >
+              Browse Institute Courses
+            </Link>
+            <Link
+              href="/inquiry"
+              className="px-8 py-4 bg-white border border-slate-200 hover:border-slate-350 hover:bg-slate-50 text-slate-800 font-bold text-sm rounded-full transition-all duration-300 text-center hover:-translate-y-0.5"
+            >
+              Admission Inquiry
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 2.5. University Programs Section */}
+      <section className="bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8 border-y border-slate-100 relative overflow-hidden z-10">
+        {/* Decorative Glow Blobs */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-blue-100/30 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute bottom-0 right-10 w-80 h-80 bg-indigo-100/30 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div className="container mx-auto px-4 max-w-6xl relative z-10 text-center">
+          
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 tracking-tight mb-4">
+            Jagrani Devi University (JDU) Programs
+          </h2>
+          <p className="text-slate-650 text-sm md:text-base max-w-2xl mx-auto mb-16 leading-relaxed font-normal">
+            Pursue UGC-approved degrees, professional management courses, and specialized technical qualifications with flexible Regular & Private modes of study.
+          </p>
+
+          {/* Department Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left mb-16">
+            
+            {/* Card 1: Computer & Tech */}
+            <div className="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 hover:bg-white hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 group flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">Computer & IT</h3>
+                <p className="text-slate-505 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
+                  Premium degrees preparing you for modern tech roles and software development careers.
+                </p>
+              </div>
+              <ul className="space-y-2 border-t border-slate-200/50 pt-4 mb-5">
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> BCA (3 Years)
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> MCA (2 Years)
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> B.Sc Computer Science
+                </li>
+              </ul>
+              <Link
+                href="/courses/bca"
+                className="w-full block text-center text-xs font-bold text-blue-700 border border-blue-200 hover:border-blue-500 hover:bg-blue-50 bg-white py-2.5 rounded-xl transition-all duration-200"
+              >
+                View BCA Details →
+              </Link>
+            </div>
+
+            {/* Card 2: Arts & Library */}
+            <div className="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 hover:bg-white hover:border-indigo-500 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 group flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-650 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">Arts & Humanities</h3>
+                <p className="text-slate-550 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
+                  Diverse liberal arts and professional library programs with flexible learning.
+                </p>
+              </div>
+              <ul className="space-y-2 border-t border-slate-200/50 pt-4 mb-5">
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> BA & MA (Sociology, History, etc.)
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> B.Lib & M.Lib (1 Year)
+                </li>
+              </ul>
+              <Link
+                href="/courses/university"
+                className="w-full block text-center text-xs font-bold text-indigo-700 border border-indigo-200 hover:border-indigo-500 hover:bg-indigo-50 bg-white py-2.5 rounded-xl transition-all duration-200"
+              >
+                Explore Courses →
+              </Link>
+            </div>
+
+            {/* Card 3: Management & Commerce */}
+            <div className="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 hover:bg-white hover:border-emerald-500 hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-300 group flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">Management</h3>
+                <p className="text-slate-550 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
+                  Equip yourself with administrative and leadership skills for modern organizations.
+                </p>
+              </div>
+              <ul className="space-y-2 border-t border-slate-200/50 pt-4 mb-5">
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> MBA & BBA Degrees
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> B.Com & M.Com Degrees
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Hotel Management (BHMCT)
+                </li>
+              </ul>
+              <Link
+                href="/courses/university"
+                className="w-full block text-center text-xs font-bold text-emerald-700 border border-emerald-200 hover:border-emerald-500 hover:bg-emerald-50 bg-white py-2.5 rounded-xl transition-all duration-200"
+              >
+                Explore Courses →
+              </Link>
+            </div>
+
+            {/* Card 4: Law & Pharmacy */}
+            <div className="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 hover:bg-white hover:border-amber-500 hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300 group flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-605 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">Law & Pharmacy</h3>
+                <p className="text-slate-550 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
+                  Professional legal and healthcare studies aligned with statutory regulations.
+                </p>
+              </div>
+              <ul className="space-y-2 border-t border-slate-200/50 pt-4 mb-5">
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span> LLB (3 Years) & LLM
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span> BA LLB & B.Com LLB
+                </li>
+                <li className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span> D.Pharm (Pharmacy)
+                </li>
+              </ul>
+              <Link
+                href="/courses/university"
+                className="w-full block text-center text-xs font-bold text-amber-700 border border-amber-200 hover:border-amber-500 hover:bg-amber-50 bg-white py-2.5 rounded-xl transition-all duration-200"
+              >
+                Explore Courses →
+              </Link>
+            </div>
+
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              href="/courses/university"
+              className="px-8 py-4 bg-black hover:bg-slate-900 text-white font-bold text-sm rounded-full transition-all duration-300 text-center shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            >
+              Explore University Courses
+            </Link>
+            <Link
+              href="/inquiry?type=university"
+              className="px-8 py-4 bg-white border border-slate-200 hover:border-slate-350 hover:bg-slate-50 text-slate-800 font-bold text-sm rounded-full transition-all duration-300 text-center hover:-translate-y-0.5"
+            >
+              Admission Inquiry
+            </Link>
+          </div>
         </div>
       </section>
 

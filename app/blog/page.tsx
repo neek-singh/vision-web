@@ -4,7 +4,6 @@ import Link from "next/link";
 import fs from "fs";
 import path from "path";
 import Image from "next/image";
-import { unstable_cache } from "next/cache";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,24 +12,20 @@ export const metadata: Metadata = {
   keywords: "vision it blog, computer tutorials, learn programming, pratappur computer coaching, IT news",
 };
 
-export const revalidate = 3600;
+export const revalidate = 0;
 
-const getBlogs = unstable_cache(
-  async () => {
-    const blogsFilePath = path.join(process.cwd(), "features", "blog", "data", "blogs.json");
-    try {
-      if (fs.existsSync(blogsFilePath)) {
-        const fileData = fs.readFileSync(blogsFilePath, "utf-8");
-        return JSON.parse(fileData);
-      }
-    } catch (e) {
-      console.error("Error loading blogs from JSON:", e);
+async function getBlogs() {
+  const blogsFilePath = path.join(process.cwd(), "features", "blog", "data", "blogs.json");
+  try {
+    if (fs.existsSync(blogsFilePath)) {
+      const fileData = fs.readFileSync(blogsFilePath, "utf-8");
+      return JSON.parse(fileData);
     }
-    return [];
-  },
-  ["blogs-list"],
-  { revalidate: 3600, tags: ["blogs"] }
-);
+  } catch (e) {
+    console.error("Error loading blogs from JSON:", e);
+  }
+  return [];
+}
 
 export default async function BlogListingPage() {
   const blogsList = await getBlogs();

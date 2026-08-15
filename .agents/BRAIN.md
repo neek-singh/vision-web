@@ -284,6 +284,27 @@ Google ke Knowledge Graph mein entity establish karo.
 > **Rule:** Har kaam ke baad sirf relevant section update karo. Full rescan mat karo.
 | Date | Change | Section Updated |
 |---|---|---|
+| 2026-08-15 | Added institute address and contact number details under English heading to the Vision IT Computer Institute blog in `blogs.json`. | Update Log |
+| 2026-08-15 | Added a detailed, informative blog post about Vision IT Computer Institute, classes, labs, and placements with English headings and Hindi body text to `blogs.json`. | Update Log |
+| 2026-08-15 | Added a "Related Articles" section at the bottom of the blog details page displaying cards for other published blogs. | Update Log |
+| 2026-08-15 | Replaced the broken AI blog image URL with a highly reliable Unsplash abstract digital design image URL. | Update Log |
+| 2026-08-15 | Added a detailed, informative blog post about Artificial Intelligence (AI), toolkits, and preparation tips with English headings and Hindi body text to `blogs.json`. | Update Log |
+| 2026-08-15 | Kept JDU blog main title and sub-headings (H2s) in English while retaining the detailed explanation paragraphs in Hindi. | Update Log |
+| 2026-08-15 | Added a premium "Back to Blog" arrow button at the top of the blog details page for easy navigation back to the blog index. | Update Log |
+| 2026-08-15 | Linked PGDCA and DCA cards in the university program listings to their respective dedicated details pages (`/courses/pgdca` & `/courses/dca`) with proper inquiry parameters. | Update Log |
+| 2026-08-15 | Created dedicated Diploma in Solar Power System (DSPS) details page (`/courses/dsps`) with custom layout and JSON-LD structured data, and updated details links on the university courses page and HeroSlider. | Update Log |
+| 2026-08-15 | Created dedicated Diploma in Fire Service & Operations (DFSO) details page (`/courses/dfso`) with custom layout and JSON-LD structured data, and updated details links on the university courses page and HeroSlider. | Update Log |
+| 2026-08-15 | Created dedicated BCA course details page (`/courses/bca`) with dark hero banner, 6-semester curriculum accordion, 9 career roles, 3 capstone projects, fees section, reviews, sticky sidebar with Apply Now routing to `/inquiry?type=university`, and JSON-LD + SEO metadata layout. | Update Log, Folder Structure |
+| 2026-08-15 | Removed 'Government Recognized Institute' badge and changed homepage Institute Computer Programs section background to white with dark slate text and light gray cards. | Update Log |
+| 2026-08-15 | Added a dedicated, dark-themed Institute Computer Programs section to the homepage featuring 4 vocational categories (Diplomas, Certificates, Industry Skills, Coding/AI) with grid cards and custom icons. | Update Log |
+| 2026-08-15 | Updated the homepage University Programs inquiry CTA button to route to the university-specific form (`/inquiry?type=university`). | Update Log |
+| 2026-08-15 | Removed 'Official Academic Partner' badge and changed homepage University Programs section background to white with dark slate text and light gray cards. | Update Log |
+| 2026-08-15 | Added a dedicated Jagrani Devi University (JDU) Programs section to the homepage featuring 4 major academic departments with clean grid cards and direct CTAs. | Update Log |
+| 2026-08-15 | Changed the default navbar links, logo text, dropdown choices, and mobile menu items from slate-600/700/800 to solid black (with blue hover effects) for all other states. | Update Log |
+| 2026-08-15 | Dynamically set navbar text, logo, and icons to white on the About page when it is transparent (not scrolled) to ensure readability on the dark background image. | Update Log |
+| 2026-08-15 | Updated the image URL for the 'Pioneers in IT Education' section on the About page to a highly reliable student collaboration photo. | Update Log |
+| 2026-08-15 | Updated the image URL for the 'Our Purpose & Future' section on the About page to a highly reliable classroom photo. | Update Log |
+| 2026-08-15 | Added 'About Us' button under the hero description on the courses index page. | Update Log |
 | 2026-08-11 | Added DFSO, PGDRD, and DSPS slides to dynamic HeroSlider. | Update Log |
 | 2026-08-11 | Removed selector tabs container from HeroSlider to keep layout clean and simple. | Update Log |
 | 2026-08-11 | Moved home page main h1 headline inside HeroSlider to dynamically rotate title suffixes ('Computer Institute', 'DCA', 'PGDCA', 'BCA'). | Update Log |

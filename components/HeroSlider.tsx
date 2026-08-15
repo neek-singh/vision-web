@@ -40,7 +40,7 @@ const SLIDES: Slide[] = [
   {
     course: "BCA",
     description: "3-year university degree program. Develop core software engineering skills, database concepts, and coding practices.",
-    detailsHref: "/courses/university",
+    detailsHref: "/courses/bca",
     applyHref: "/inquiry?type=university&course=Bachelor of Computer Applications (BCA)",
     detailsLabel: "Details",
     applyLabel: "Apply",
@@ -48,7 +48,7 @@ const SLIDES: Slide[] = [
   {
     course: "DFSO",
     description: "1-year university diploma. Master fire safety engineering, industrial rescue operations, emergency relief, and hazard control.",
-    detailsHref: "/courses/university",
+    detailsHref: "/courses/dfso",
     applyHref: "/inquiry?type=university&course=Diploma in Fire Service & Operations (DFSO)",
     detailsLabel: "Details",
     applyLabel: "Apply",
@@ -56,7 +56,7 @@ const SLIDES: Slide[] = [
   {
     course: "PGDRD",
     description: "1-year post-graduate program covering rural economy, agricultural policies, social welfare systems, and development execution.",
-    detailsHref: "/courses/university",
+    detailsHref: "/courses/pgdrd",
     applyHref: "/inquiry?type=university&course=PG Diploma in Rural Development (PGDRD)",
     detailsLabel: "Details",
     applyLabel: "Apply",
@@ -64,7 +64,7 @@ const SLIDES: Slide[] = [
   {
     course: "DSPS",
     description: "1-year university diploma covering solar photovoltaic installation, operations, green energy principles, and power grid systems.",
-    detailsHref: "/courses/university",
+    detailsHref: "/courses/dsps",
     applyHref: "/inquiry?type=university&course=Diploma in Solar Power System (DSPS)",
     detailsLabel: "Details",
     applyLabel: "Apply",
