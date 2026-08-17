@@ -18,7 +18,8 @@ export default function Header() {
 
   const hideNav =
     ["/login", "/signup", "/inquiry", "/forgot-password"].includes(pathname) ||
-    pathname.startsWith("/admin");
+    pathname.startsWith("/admin") ||
+    (pathname.startsWith("/blog/") && pathname !== "/blog");
 
   useEffect(() => {
     if (hideNav) return;

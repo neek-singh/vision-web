@@ -30,6 +30,15 @@ async function getBlogs() {
 export default async function BlogListingPage() {
   const blogsList = await getBlogs();
 
+  // Sort blogs: latest first based on published_at or created_at
+  const sortedBlogs = [...blogsList]
+    .filter((blog: any) => blog.is_published !== false)
+    .sort((a: any, b: any) => {
+      const dateA = new Date(a.published_at || a.created_at || 0).getTime();
+      const dateB = new Date(b.published_at || b.created_at || 0).getTime();
+      return dateB - dateA;
+    });
+
   return (
     <main className="w-full bg-gray-50 pb-32 min-h-screen overflow-x-hidden">
 
@@ -55,7 +64,7 @@ export default async function BlogListingPage() {
       {/* Blog Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 md:pt-10">
 
-        {blogsList.length === 0 ? (
+        {sortedBlogs.length === 0 ? (
           <div className="text-center py-16 bg-white rounded-3xl shadow border max-w-2xl mx-auto">
             <span className="text-4xl block mb-3">✍️</span>
             <h2 className="text-lg md:text-xl font-bold text-slate-900 mb-2">
@@ -68,7 +77,7 @@ export default async function BlogListingPage() {
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 
-            {blogsList.map((blog: any) => (
+            {sortedBlogs.map((blog: any) => (
               <Link href={`/blog/${blog.slug}`} key={blog.id} className="block group">
                 <Card className="hover:-translate-y-2 hover:shadow-xl border border-slate-100 transition-all duration-300 flex flex-col overflow-hidden rounded-2xl h-full bg-white">
                   {blog.image_url && (
@@ -85,8 +94,12 @@ export default async function BlogListingPage() {
 
                   <CardHeader className="p-5 pb-3">
                     <span className="text-[11px] text-blue-500 mb-1.5 font-bold">
-                      {blog.created_at
-                        ? new Date(blog.created_at).toLocaleDateString()
+                      {blog.published_at || blog.created_at
+                        ? new Date(blog.published_at || blog.created_at).toLocaleDateString('en-IN', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric'
+                          })
                         : "Recent"}
                     </span>
 

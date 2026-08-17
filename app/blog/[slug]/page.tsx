@@ -89,6 +89,11 @@ export default async function BlogPostPage(
       const allBlogs = JSON.parse(fileData);
       relatedBlogs = allBlogs
         .filter((b: any) => b.slug !== slug && b.is_published !== false)
+        .sort((a: any, b: any) => {
+          const dateA = new Date(a.published_at || a.created_at || 0).getTime();
+          const dateB = new Date(b.published_at || b.created_at || 0).getTime();
+          return dateB - dateA;
+        })
         .slice(0, 3);
     }
   } catch (e) {
@@ -118,8 +123,8 @@ export default async function BlogPostPage(
 
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-600 text-xs font-semibold mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-            {blog.created_at
-              ? new Date(blog.created_at).toLocaleDateString('en-IN', {
+            {blog.published_at || blog.created_at
+              ? new Date(blog.published_at || blog.created_at).toLocaleDateString('en-IN', {
                   day: 'numeric',
                   month: 'short',
                   year: 'numeric'
@@ -212,9 +217,20 @@ export default async function BlogPostPage(
                 )}
                 
                 <div className="p-5 flex flex-col flex-grow">
-                  <span className="text-[10px] text-blue-600 mb-1.5 font-bold uppercase tracking-wider">
-                    {item.category || "Recent"}
-                  </span>
+                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                    <span className="text-[10px] text-blue-600 font-bold uppercase tracking-wider">
+                      {item.category || "Recent"}
+                    </span>
+                    <span className="text-[10px] text-slate-400">
+                      {item.published_at || item.created_at
+                        ? new Date(item.published_at || item.created_at).toLocaleDateString('en-IN', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric'
+                          })
+                        : ""}
+                    </span>
+                  </div>
                   
                   <h4 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors text-sm sm:text-base leading-snug mb-2 line-clamp-2">
                     {item.title}

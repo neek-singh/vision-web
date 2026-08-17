@@ -284,6 +284,15 @@ Google ke Knowledge Graph mein entity establish karo.
 > **Rule:** Har kaam ke baad sirf relevant section update karo. Full rescan mat karo.
 | Date | Change | Section Updated |
 |---|---|---|
+| 2026-08-17 | Added B.Sc. Honors, Integrated B.Sc. B.Ed., and D.Ed. options to both PCM and PCB career guide blogs in `blogs.json`. | Update Log |
+| 2026-08-17 | Added general B.Sc. options and details to both 12th PCM and PCB career guide blogs in `blogs.json`. | Update Log |
+| 2026-08-17 | Replaced the duplicate cover image with a microscope laboratory image for the 12th PCB career guide blog in `blogs.json`. | Update Log |
+| 2026-08-17 | Added a new career guide blog post detailing career options after 12th PCB (and removed the 'निष्कर्ष' heading) in `blogs.json`. | Update Log |
+| 2026-08-17 | Dynamically hid the main navbar (Header component) on all blog sub pages (details routes). | Update Log |
+| 2026-08-17 | Added a new career guide blog post detailing career options after 12th PCM (and removed the 'निष्कर्ष' heading) in `blogs.json`. | Update Log |
+| 2026-08-17 | Created layout.tsx files under university and university/about courses directories to implement comprehensive AI SEO (UGC JDU Affiliation schemas, FAQPage structured data, and metadata). | Update Log |
+| 2026-08-17 | Replaced abstract gradient blog cover image with a high-quality AI-related image for the Artificial Intelligence blog post in `blogs.json`. | Update Log |
+| 2026-08-17 | Sorted blog listings so the latest blogs appear first, and updated blog card and detail layouts to display the publication date correctly. | Update Log |
 | 2026-08-15 | Added institute address and contact number details under English heading to the Vision IT Computer Institute blog in `blogs.json`. | Update Log |
 | 2026-08-15 | Added a detailed, informative blog post about Vision IT Computer Institute, classes, labs, and placements with English headings and Hindi body text to `blogs.json`. | Update Log |
 | 2026-08-15 | Added a "Related Articles" section at the bottom of the blog details page displaying cards for other published blogs. | Update Log |
