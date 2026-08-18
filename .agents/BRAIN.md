@@ -284,6 +284,9 @@ Google ke Knowledge Graph mein entity establish karo.
 > **Rule:** Har kaam ke baad sirf relevant section update karo. Full rescan mat karo.
 | Date | Change | Section Updated |
 |---|---|---|
+| 2026-08-18 | Rewrote the 12th Career Guide blog post in `blogs.json` to make the tone professional, engaging, and non-repetitive (grouped into 4 career tracks). | Update Log |
+| 2026-08-18 | Removed the 'निष्कर्ष' heading from the 12th Career Guide blog post in `blogs.json`. | Update Log |
+| 2026-08-18 | Removed the 6-Month Career Roadmap section from the 12th Career Guide blog post in `blogs.json`. | Update Log |
 | 2026-08-17 | Added a new career guide blog post detailing computer and IT-related diploma courses after 12th in `blogs.json`. | Update Log |
 | 2026-08-17 | Added B.Sc. Honors, Integrated B.Sc. B.Ed., and D.Ed. options to both PCM and PCB career guide blogs in `blogs.json`. | Update Log |
 | 2026-08-17 | Added general B.Sc. options and details to both 12th PCM and PCB career guide blogs in `blogs.json`. | Update Log |
