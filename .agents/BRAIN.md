@@ -284,6 +284,7 @@ Google ke Knowledge Graph mein entity establish karo.
 > **Rule:** Har kaam ke baad sirf relevant section update karo. Full rescan mat karo.
 | Date | Change | Section Updated |
 |---|---|---|
+| 2026-08-18 | Added a dynamic, responsive Blog Preview section to the homepage in `app/page.tsx` loading the 3 latest posts. | Update Log |
 | 2026-08-18 | Rewrote the 12th Career Guide blog post in `blogs.json` to make the tone professional, engaging, and non-repetitive (grouped into 4 career tracks). | Update Log |
 | 2026-08-18 | Removed the 'निष्कर्ष' heading from the 12th Career Guide blog post in `blogs.json`. | Update Log |
 | 2026-08-18 | Removed the 6-Month Career Roadmap section from the 12th Career Guide blog post in `blogs.json`. | Update Log |

@@ -5,12 +5,27 @@ import dynamic from "next/dynamic";
 import CourseCard from "@/components/CourseCard";
 import OfferSlider from "@/components/OfferSlider";
 import HeroSlider from "@/components/HeroSlider";
+import fs from "fs";
+import path from "path";
 
 const GoogleReviews = dynamic(() => import("@/features/reviews/components/GoogleReviews"), { ssr: true });
 const FAQSection = dynamic(() => import("@/components/HomeSections").then((mod) => mod.FAQSection), { ssr: true });
 const SocialSection = dynamic(() => import("@/components/HomeSections").then((mod) => mod.SocialSection), { ssr: true });
 
 export const revalidate = 3600;
+
+async function getBlogs() {
+  const blogsFilePath = path.join(process.cwd(), "features", "blog", "data", "blogs.json");
+  try {
+    if (fs.existsSync(blogsFilePath)) {
+      const fileData = fs.readFileSync(blogsFilePath, "utf-8");
+      return JSON.parse(fileData);
+    }
+  } catch (e) {
+    console.error("Error loading blogs for home:", e);
+  }
+  return [];
+}
 
 const COURSE_IDS = {
   DCA: "38fdc235-f7b5-4628-9d72-41c9ff2eabd8",
@@ -19,6 +34,16 @@ const COURSE_IDS = {
 };
 
 export default async function Home() {
+  const blogsList = await getBlogs();
+  const latestBlogs = [...blogsList]
+    .filter((blog: any) => blog.is_published !== false)
+    .sort((a: any, b: any) => {
+      const dateA = new Date(a.published_at || a.created_at || 0).getTime();
+      const dateB = new Date(b.published_at || b.created_at || 0).getTime();
+      return dateB - dateA;
+    })
+    .slice(0, 3);
+
   return (
     <main className="flex-col w-full bg-gray-50 pb-20 overflow-x-hidden">
 
@@ -564,6 +589,85 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+
+
+
+      {/* 5.5 Latest Blogs Section */}
+      {latestBlogs.length > 0 && (
+        <section className="bg-slate-50 py-20 md:py-24 relative overflow-hidden border-b border-slate-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10">
+            <div className="text-center mb-12">
+              <span className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 font-semibold rounded-full text-xs border border-blue-200/50">
+                📚 Insights & Updates
+              </span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                Latest from Our Blog
+              </h2>
+              <p className="text-slate-500 text-xs sm:text-sm max-w-2xl mx-auto mt-2 font-normal leading-relaxed">
+                Stay updated with the latest computer technology trends, programming tutorials, career tips, and official announcements.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {latestBlogs.map((blog: any) => (
+                <Link href={`/blog/${blog.slug}`} key={blog.id} className="block group h-full">
+                  <div className="bg-white border border-slate-200/60 rounded-3xl p-5 hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 group flex flex-col justify-between h-full">
+                    <div>
+                      {blog.image_url && (
+                        <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-5 bg-slate-100 border border-slate-100">
+                          <Image
+                            src={blog.image_url}
+                            alt={blog.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                          />
+                        </div>
+                      )}
+                      
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-[10px] uppercase font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full">
+                          {blog.category}
+                        </span>
+                        <span className="text-[10px] text-slate-400 font-medium">
+                          {blog.published_at || blog.created_at
+                            ? new Date(blog.published_at || blog.created_at).toLocaleDateString('en-IN', {
+                                day: 'numeric',
+                                month: 'short',
+                                year: 'numeric'
+                              })
+                            : "Recent"}
+                        </span>
+                      </div>
+
+                      <h3 className="text-base font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors mb-2 line-clamp-2">
+                        {blog.title}
+                      </h3>
+                      
+                      <p className="text-slate-500 text-xs sm:text-sm leading-relaxed font-normal mb-4 line-clamp-3">
+                        {blog.excerpt || "Read this article to learn more."}
+                      </p>
+                    </div>
+
+                    <div className="text-blue-600 font-bold text-xs inline-flex items-center gap-1 mt-auto">
+                      Read Article
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <Link href="/blog" className="inline-flex items-center gap-2 font-semibold text-base text-blue-700 hover:bg-blue-50/80 px-8 py-4 rounded-full transition-all duration-300 group">
+                Explore All Articles
+                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
 
 
