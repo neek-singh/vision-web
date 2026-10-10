@@ -134,7 +134,7 @@ export default function RefundPage() {
                 To initiate a withdrawal and request a refund, please follow these steps:
               </p>
               <ol>
-                <li>Obtain a <strong>Course Withdrawal Form</strong> from the office administration or request one by email at <a href="mailto:visionitpratappur@gmail.com">visionitpratappur@gmail.com</a>.</li>
+                <li>Obtain a <strong>Course Withdrawal Form</strong> from the office administration or request one by email at <a href="mailto:support@visionitinstitute.com">support@visionitinstitute.com</a>.</li>
                 <li>Submit the completed form along with original payment receipts and bank account details for processing.</li>
                 <li>Approved refunds will be processed via bank transfer or cheque within <strong>7 to 10 working days</strong> from the date of submission of the withdrawal form.</li>
               </ol>
@@ -166,8 +166,8 @@ export default function RefundPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     <div>
-                      <p className="text-sm font-medium text-slate-900">Email Address</p>
-                      <a href="mailto:visionitpratappur@gmail.com" className="text-blue-600 hover:text-blue-700 transition-colors">visionitpratappur@gmail.com</a>
+                      <p className="text-sm font-medium text-slate-900">Support Email</p>
+                      <a href="mailto:support@visionitinstitute.com" className="text-blue-600 hover:text-blue-700 transition-colors">support@visionitinstitute.com</a>
                     </div>
                   </div>
 

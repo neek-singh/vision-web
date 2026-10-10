@@ -6,7 +6,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const contact = {
-  email: "visionitpratappur@gmail.com",
+  email: "info@visionitinstitute.com",
+  supportEmail: "support@visionitinstitute.com",
   phone: "+91 81031 70595",
   address: "Vision IT Computer Institute, kadampara chowk, Pratappur, Surajpur(C.G.) - 497223",
 };
@@ -147,7 +148,22 @@ export default function Footer() {
                     <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                   </svg>
                 </div>
-                <a href={`mailto:${contact.email}`} className="mt-0.5 group-hover:text-blue-600 transition-colors break-all leading-relaxed">{contact.email}</a>
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Inquiry</span>
+                  <a href={`mailto:${contact.email}`} className="group-hover:text-blue-600 transition-colors break-all leading-relaxed">{contact.email}</a>
+                </div>
+              </li>
+
+              <li className="flex items-start gap-3 group">
+                <div className="mt-0.5 p-1.5 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Support</span>
+                  <a href={`mailto:${contact.supportEmail}`} className="group-hover:text-indigo-600 transition-colors break-all leading-relaxed">{contact.supportEmail}</a>
+                </div>
               </li>
 
               <li className="flex items-start gap-3 group">

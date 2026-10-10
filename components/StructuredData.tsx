@@ -34,16 +34,27 @@ export default function StructuredData() {
           "longitude": "82.5983"
         },
         "telephone": "+91-8103170595",
-        "email": "visionitpratappur@gmail.com",
+        "email": "info@visionitinstitute.com",
         "openingHours": "Mo,Tu,We,Th,Fr,Sa 09:00-18:00",
         "priceRange": "₹₹",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+91-8103170595",
-          "contactType": "admissions",
-          "areaServed": "IN",
-          "availableLanguage": ["en", "hi"]
-        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+91-8103170595",
+            "email": "info@visionitinstitute.com",
+            "contactType": "admissions",
+            "areaServed": "IN",
+            "availableLanguage": ["en", "hi"]
+          },
+          {
+            "@type": "ContactPoint",
+            "telephone": "+91-8103170595",
+            "email": "support@visionitinstitute.com",
+            "contactType": "customer support",
+            "areaServed": "IN",
+            "availableLanguage": ["en", "hi"]
+          }
+        ],
         "sameAs": [
           "https://www.facebook.com/visionitinstitute",
           "https://www.instagram.com/visionitinstitute"

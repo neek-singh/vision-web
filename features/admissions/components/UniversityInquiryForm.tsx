@@ -504,8 +504,8 @@ export default function UniversityInquiryForm({
 
             <div className="flex items-center gap-3">
               <Mail className="w-4 h-4 text-slate-400 shrink-0" />
-              <a href="mailto:visionitpratappur@gmail.com" className="text-sm text-slate-600 hover:text-violet-600 transition-colors font-medium">
-                visionitpratappur@gmail.com
+              <a href="mailto:info@visionitinstitute.com" className="text-sm text-slate-600 hover:text-violet-600 transition-colors font-medium">
+                info@visionitinstitute.com
               </a>
             </div>
 

@@ -332,7 +332,7 @@ export function StatusClient({ payment, print }: StatusClientProps) {
                 <h1>Vision IT Computer Institute</h1>
                 <div class="tagline">"Learn. Practice. Succeed."</div>
                 <div class="address-info">Pratappur, District Surajpur, Chhattisgarh - 497223</div>
-                <div class="contact-info">Contact: +91 81031 70595 | Email: visionitpratappur@gmail.com</div>
+                <div class="contact-info">Contact: +91 81031 70595 | Email: support@visionitinstitute.com</div>
               </div>
             </div>
 
@@ -679,7 +679,7 @@ export function StatusClient({ payment, print }: StatusClientProps) {
                 <h1>Vision IT Computer Institute</h1>
                 <div class="tagline">"Learn. Practice. Succeed."</div>
                 <div class="address-info">Pratappur, District Surajpur, Chhattisgarh - 497223</div>
-                <div class="contact-info">Contact: +91 81031 70595 | Email: visionitpratappur@gmail.com</div>
+                <div class="contact-info">Contact: +91 81031 70595 | Email: support@visionitinstitute.com</div>
               </div>
             </div>
 

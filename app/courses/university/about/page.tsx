@@ -615,7 +615,7 @@ export default function JDUAboutPage() {
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="w-5 h-5 text-violet-600 shrink-0" />
-                    <span>visionitpratappur@gmail.com</span>
+                    <a href="mailto:info@visionitinstitute.com" className="hover:text-violet-600 transition-colors">info@visionitinstitute.com</a>
                   </div>
                 </div>
               </div>
