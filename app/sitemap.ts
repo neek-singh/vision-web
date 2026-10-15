@@ -7,10 +7,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://visionitinstitute.com'
   const supabase = createPublicSupabaseClient()
   
-  // Fetch courses from Supabase
+  // Fetch courses from Supabase (only published courses)
   const { data: courses } = await supabase
     .from('courses')
     .select('id')
+    .neq('is_published', false)
   
   const courseUrls = (courses || []).map((course) => ({
     url: `${baseUrl}/courses/${course.id}`,

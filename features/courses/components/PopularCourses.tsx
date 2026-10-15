@@ -9,6 +9,7 @@ async function getPopularCourses() {
   const { data, error } = await supabase
     .from("courses")
     .select("*")
+    .neq("is_published", false)
     .in("id", [
       "38fdc235-f7b5-4628-9d72-41c9ff2eabd8", // DCA
       "f9004121-1274-4b57-8179-ccc8365864b9", // PGDCA

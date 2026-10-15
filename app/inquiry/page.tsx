@@ -43,7 +43,8 @@ export default async function AdmissionsPage({
 
   const { data: availableCourses } = await supabase
     .from("courses")
-    .select("id, title");
+    .select("id, title")
+    .neq("is_published", false);
 
   const isUniversity = type === "university";
 
