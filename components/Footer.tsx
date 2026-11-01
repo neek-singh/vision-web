@@ -146,8 +146,8 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-700 font-normal uppercase tracking-wider">Email</span>
-                  <a href={`mailto:${contact.email}`} className="text-slate-950 group-hover:text-blue-700 transition-colors break-all leading-relaxed font-normal">{contact.email}</a>
+                  <span className="text-[10px] text-slate-700 font-normal uppercase tracking-wider mb-1">Email</span>
+                  <a href={`mailto:${contact.email}`} className="inline-block py-0.5 text-slate-950 group-hover:text-blue-700 transition-colors break-all leading-relaxed font-normal">{contact.email}</a>
                 </div>
               </li>
 
@@ -158,10 +158,14 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-700 font-normal uppercase tracking-wider">Phone</span>
-                  <div className="flex flex-col gap-0.5">
+                  <span className="text-[10px] text-slate-700 font-normal uppercase tracking-wider mb-1">Phone</span>
+                  <div className="flex flex-col gap-1.5">
                     {contact.phones.map((p, idx) => (
-                      <a key={idx} href={`tel:${p.raw}`} className="text-slate-950 group-hover:text-blue-700 transition-colors leading-relaxed font-normal">
+                      <a
+                        key={idx}
+                        href={`tel:${p.raw}`}
+                        className="inline-block py-1 text-slate-950 group-hover:text-blue-700 transition-colors leading-relaxed font-normal"
+                      >
                         {p.display}
                       </a>
                     ))}
