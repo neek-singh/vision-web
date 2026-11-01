@@ -4,9 +4,9 @@ import Image from "next/image";
 import {
   Users,
   Laptop,
-  BookOpen,
   ShieldCheck,
-  Wifi,
+  HelpCircle,
+  PhoneCall,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -27,40 +27,53 @@ export default function AboutPage() {
     {
       num: "02",
       title: "70% Practical Training",
-      desc: "Hands-on practice in the computer lab alongside every topic, focusing on practical skills rather than rote learning.",
+      desc: "Hands-on practice in the computer lab alongside every topic, focusing on real practice rather than theory memorization.",
     },
     {
       num: "03",
       title: "Practical Projects",
-      desc: "Hands-on projects toward course completion (such as digital resume design, Excel calculation sheets, and Tally vouchers).",
+      desc: "Course projects including document design, Excel calculation sheets, and Tally accounting vouchers.",
     },
     {
       num: "04",
       title: "Exam & Certification",
-      desc: "Course assessment examination upon completion, followed by certification issued by Drishti Computer Education.",
+      desc: "Course completion assessment, followed by certification issued by Drishti Computer Education.",
     },
   ];
 
   const facilities = [
     {
       title: "Computer Lab",
-      desc: "Equipped for daily offline practical practice with hands-on training support.",
+      desc: "Equipped for daily offline practical sessions with individual PC allocation during lab hours.",
       icon: Laptop,
     },
     {
       title: "Classroom",
-      desc: "Face-to-face classroom learning with step-by-step instruction explained in Hindi.",
+      desc: "Comfortable classroom environment with step-by-step concepts explained simply in Hindi.",
       icon: Users,
     },
+  ];
+
+  const faqs = [
     {
-      title: "High-Speed Wi-Fi",
-      desc: "Wi-Fi connectivity available in the lab to practice internet browsing, online tools, and digital resources.",
-      icon: Wifi,
+      q: "Which courses are available at Vision IT?",
+      a: "We offer BCC (3 months), DCA (12 months), ADCA (12 months), PGDCA (12 months), Tally Prime with GST (3 months), and School Computer Tuition for Class 6th to 11th. All classes are offline with 70% practical lab training.",
     },
     {
-      title: "PDF Study Material",
-      desc: "Comprehensive study notes, reference guides, and practical assignments provided in digital PDF format.",
-      icon: BookOpen,
+      q: "What are the fees? Can I pay in installments?",
+      a: "BCC is ₹2,999, DCA is ₹13,999, ADCA is ₹14,999, PGDCA is ₹16,999, Tally Prime with GST is ₹4,499, and School Tuition is ₹599/month. Fees include admission, tuition, and exam fees. Installment options are available—call +91 81031 70595 for details.",
+    },
+    {
+      q: "Who issues the certificate?",
+      a: "Certificates are issued by Drishti Computer Education. Vision IT is an authorized franchise branch (Branch Code: DCE/25/041). Please check with the employer or institution where you plan to use it to ensure it fits your requirements.",
+    },
+    {
+      q: "Do you provide job placement?",
+      a: "We do not make false guarantees of 100% placement. We provide honest support with resume building, interview preparation, and practical job readiness.",
+    },
+    {
+      q: "What are the class and batch timings?",
+      a: "The institute is open Monday to Saturday, 8:00 AM to 6:00 PM. We run four daily 2-hour batches: 9:00 AM – 11:00 AM, 11:00 AM – 1:00 PM, 2:00 PM – 4:00 PM, and 4:00 PM – 6:00 PM.",
     },
   ];
 
@@ -93,7 +106,7 @@ export default function AboutPage() {
               Vision IT Computer Institute started in 2025 in Pratappur, Surajpur (Chhattisgarh). We are an authorized franchise partner of Drishti Computer Education (Branch Code: DCE/25/041).
             </p>
             <p>
-              Our mission is clear and focused: to help students from Pratappur and nearby rural and semi-urban areas build essential computer skills through simple explanations in Hindi, 70% practical lab practice, and affordable course fees.
+              Our goal is simple: to help students from Pratappur and nearby areas build essential digital and computer skills with easy explanations in Hindi, 70% practical lab practice, and transparent fees.
             </p>
           </div>
         </section>
@@ -105,7 +118,7 @@ export default function AboutPage() {
             Simple, Affordable, and Practical Learning
           </h2>
           <p className="text-white text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
-            To make computer education accessible and affordable so that every student can acquire real practical skills locally and build a confident foundation for future opportunities.
+            To make computer learning simple and affordable so that local students can gain real computer skills and build a solid foundation right in their own town.
           </p>
         </section>
 
@@ -147,7 +160,7 @@ export default function AboutPage() {
               <h2 className="text-xl sm:text-2xl font-normal text-slate-950">Ishwar Singh</h2>
               <p className="text-xs sm:text-sm font-normal text-slate-700">Director, Vision IT Computer Institute</p>
               <p className="text-xs sm:text-sm text-slate-950 leading-relaxed pt-2 font-normal">
-                4+ years of professional experience in Teaching and IT. Dedicated to guiding students in Pratappur from basic digital literacy to diploma and certificate skills with personalized, hands-on attention.
+                4+ years of professional experience in Teaching and IT. Dedicated to guiding students in Pratappur with personalized attention and hands-on computer lab training.
               </p>
             </div>
           </div>
@@ -162,7 +175,7 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {facilities.map((fac, idx) => {
               const Icon = fac.icon;
               return (
@@ -195,7 +208,43 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* 8. Call to Action */}
+        {/* 8. Frequently Asked Questions */}
+        <section className="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200/80 shadow-sm space-y-6">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center shrink-0">
+              <HelpCircle className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="text-[11px] font-normal uppercase tracking-wider text-blue-700">Questions & Answers</span>
+              <h2 className="text-xl sm:text-2xl font-normal text-slate-950 tracking-tight">
+                Frequently Asked Questions
+              </h2>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map(({ q, a }, idx) => (
+              <details key={idx} className="group bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden">
+                <summary className="flex items-center justify-between px-5 py-4 cursor-pointer list-none select-none font-normal text-slate-950 text-sm sm:text-base hover:bg-blue-50/50 transition-colors">
+                  <span className="pr-4">{q}</span>
+                  <span className="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-blue-600 flex-shrink-0 ml-2 group-open:rotate-45 transition-transform duration-300 text-base font-light">+</span>
+                </summary>
+                <div className="px-5 pb-4 pt-2 text-slate-950 font-normal text-xs sm:text-sm leading-relaxed border-t border-slate-200/60 bg-white">
+                  {a}
+                </div>
+              </details>
+            ))}
+          </div>
+
+          <div className="pt-2 text-center text-xs sm:text-sm text-slate-600 font-normal">
+            Have more questions? Call us directly:{" "}
+            <a href="tel:+918103170595" className="text-blue-700 hover:underline inline-flex items-center gap-1 font-normal">
+              <PhoneCall className="w-3.5 h-3.5" /> +91 81031 70595
+            </a>
+          </div>
+        </section>
+
+        {/* 9. Call to Action */}
         <div className="text-center space-y-4 pt-4">
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
