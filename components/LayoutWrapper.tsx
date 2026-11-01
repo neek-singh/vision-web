@@ -13,7 +13,7 @@ export default function LayoutWrapper({
 }) {
   const pathname = usePathname();
   // Hide header and footer on all course details pages
-  const hideHeaderFooter = pathname.startsWith("/courses/dca") || pathname.startsWith("/courses/bcc") || pathname.startsWith("/courses/adca") || pathname.startsWith("/courses/pgdca") || pathname.startsWith("/courses/basic-beginner");
+  const hideHeaderFooter = pathname.startsWith("/courses/dca") || pathname.startsWith("/courses/bcc") || pathname.startsWith("/courses/adca") || pathname.startsWith("/courses/pgdca");
 
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden">
