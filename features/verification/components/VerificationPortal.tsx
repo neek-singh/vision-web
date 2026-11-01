@@ -52,24 +52,11 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
     setSearched(true);
 
     try {
-      const res = await getVerificationRecord(term);
+      const res = await getVerificationRecord(term, dob);
       if (res.error) {
         setError(res.error);
       } else {
-        const data = res.record;
-        
-        // Compulsory DOB check
-        if (data && data.dob) {
-          const inputDob = new Date(dob).toISOString().split('T')[0];
-          const recordDob = new Date(data.dob).toISOString().split('T')[0];
-          if (inputDob !== recordDob) {
-            setError("No records found matching this reference and Date of Birth.");
-            setLoading(false);
-            return;
-          }
-        }
-        
-        setRecord(data);
+        setRecord(res.record);
       }
     } catch (err) {
       setError("An unexpected error occurred. Please try again.");
