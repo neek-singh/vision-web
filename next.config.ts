@@ -77,6 +77,11 @@ const nextConfig: NextConfig = {
         destination: '/blog/vision-it-computer-institute-pratappur-courses-fees-admission',
         permanent: true,
       },
+      {
+        source: '/blog/jagrani-devi-university-jdu-affiliation-expanding-higher-education-in-pratappur',
+        destination: '/blog',
+        permanent: true,
+      },
     ];
   },
 };

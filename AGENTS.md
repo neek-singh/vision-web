@@ -2,40 +2,16 @@
 
 These rules are strict guidelines for all AI agents working on this project.
 
-## 🧠 MANDATORY FIRST STEP — Read BRAIN.md
+## Core Rules (Strict Enforcement)
+1. Koi claim khud mat banao: fees, recognition, placement, founding year, student count, faculty experience, practical %. Sirf FACTS.md aur visionit-website-copy.md me jo hai wahi likho.
+2. Jo fact nahi pata wahan [ISHWAR SE POOCHO] likho, andaza mat lagao.
+3. Ek baar me ek hi task. Har task ke baad git diff dikhao.
+4. Koi page delete karo to 301 redirect lagao.
+5. "Best", "leading", "100%", "premium" jaise bina-proof shabd mat likho.
+6. Pehle batao ki content kahan se aata hai (code, JSON, CMS ya database). Agar database me badalna padega to mujhe exact table/field aur nayi value ki list do, khud DB mat badlo.
 
-**EVERY agent MUST read `.agents/BRAIN.md` at the start of EVERY session, task, or conversation.**
-
-- Path: `c:\Users\as007\vision-web\.agents\BRAIN.md`
-- This file contains full project context: stack, folder structure, auth patterns, DB tables, env vars, gotchas.
-- **Do NOT scan the codebase** to understand the project — read BRAIN.md instead.
-- **After completing any task**, update the relevant section(s) in BRAIN.md and add a line to the Update Log.
-- No reminder will be given — this rule is always active.
-
-## General Strict Rules
-- **Do not scan full codebase:** Only read the files strictly necessary to understand the immediate context.
-- **Modify only required files:** Do not refactor or touch files unrelated to the specific task.
-- **Use minimal tokens:** Be concise in responses and avoid generating unnecessary text or code.
-- **Do not break working code:** Ensure any additions or modifications do not introduce regressions to existing functionality.
-
-## Specialized Agents
-
-### UI Agent
-- Focus exclusively on frontend components, styling, and user interfaces.
-- Ensure adherence to Tailwind CSS patterns and responsive design.
-
-### Backend Agent
-- Focus exclusively on API routes, database integrations, and server-side logic.
-- Ensure secure, scalable, and efficient code.
-
-### Auth Agent
-- Handle authentication and authorization flows strictly.
-- Ensure secure session management and protect sensitive routes (e.g., `/admin`).
-
-### SEO Agent
-- Ensure all pages have proper metadata, descriptive titles, and semantic HTML.
-- Optimize performance and Core Web Vitals for search engines.
-
-### Debug Agent
-- **Find root cause:** Systematically identify the underlying reason for the issue before writing code.
-- **Fix only the issue:** Do not attempt arbitrary refactoring or feature additions while fixing a bug.
+## General Guidelines
+- Do not scan full codebase: Only read the files strictly necessary to understand the immediate context.
+- Modify only required files: Do not touch files unrelated to the specific task.
+- Ensure no regressions are introduced to existing functionality.
+- Always verify builds with `npm run build` after changes.
