@@ -1,39 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 export default function InteractiveMap() {
-  const [showMap, setShowMap] = useState(false);
-
-  useEffect(() => {
-    // Defer loading the iframe until after first render/mount
-    const timer = setTimeout(() => {
-      setShowMap(true);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
+  const mapQuery = "Vision IT Computer Institute Pratappur";
+  const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
+  const directMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(mapQuery)}`;
 
   return (
-    <div className="relative rounded-2xl sm:rounded-[2rem] overflow-hidden shadow-md border border-slate-200/80 h-[250px] sm:h-[300px] md:h-[400px] bg-slate-100 group">
-      {/* Optional Overlay to prevent accidental scrolling inside map */}
-      <div className="absolute inset-0 bg-transparent group-hover:pointer-events-none transition-all z-10" />
-      {showMap ? (
-        <iframe
-          src="https://maps.google.com/maps?q=Vision+IT+Computer+Institute+Pratappur&t=k&z=19&ie=UTF8&iwloc=&output=embed"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Vision IT Computer Institute Location"
-          className="w-full h-full object-cover"
-        />
-      ) : (
-        <div className="w-full h-full bg-slate-100 flex items-center justify-center">
-          <span className="text-slate-400 font-medium text-sm">Loading map...</span>
-        </div>
-      )}
+    <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-slate-200/80 h-[300px] sm:h-[350px] md:h-[420px] bg-slate-100">
+      <iframe
+        src={embedUrl}
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Vision IT Computer Institute Location"
+        className="w-full h-full object-cover"
+      />
+
+      {/* Floating Action: Open in Google Maps */}
+      <div className="absolute bottom-4 right-4 z-20">
+        <a
+          href={directMapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-white/95 hover:bg-white text-slate-950 font-normal text-xs rounded-xl shadow-md border border-slate-200 backdrop-blur-sm transition-all hover:-translate-y-0.5"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-600">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Open in Google Maps
+        </a>
+      </div>
     </div>
   );
 }
