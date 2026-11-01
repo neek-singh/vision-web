@@ -7,7 +7,7 @@ import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Course Application | Vision IT Computer Institute",
-  description: "Apply for DCA, ADCA, PGDCA, and Web Development courses at Vision IT Computer Institute Pratappur.",
+  description: "Apply for BCC, DCA, ADCA, PGDCA, Tally Prime, and School Tuition courses at Vision IT Computer Institute Pratappur.",
 };
 
 export const revalidate = 0;
@@ -46,27 +46,19 @@ export default async function AdmissionsPage({
     .select("id, title")
     .neq("is_published", false);
 
-  const isUniversity = type === "university";
-
   return (
     <main className="w-full bg-[#f8fafc] min-h-screen py-16 px-4 flex flex-col justify-center items-center font-sans">
       {/* Back Button */}
-      <div className={`w-full ${isUniversity ? "max-w-6xl" : "max-w-2xl"} mb-4 px-2`}>
+      <div className="w-full max-w-2xl mb-4 px-2">
         <BackButton />
       </div>
 
-      <div className={`w-full ${
-        isUniversity 
-          ? "max-w-6xl bg-transparent" 
-          : "max-w-2xl bg-white rounded-2xl border border-slate-200/60 shadow-[0_4px_24px_rgba(0,0,0,0.02)] overflow-hidden"
-      }`}>
+      <div className="w-full max-w-2xl bg-white rounded-2xl border border-slate-200/60 shadow-[0_4px_24px_rgba(0,0,0,0.02)] overflow-hidden">
         <Suspense fallback={<FormSkeleton />}>
           <AdmissionFormClientWrapper
             courses={availableCourses || []}
             user={user}
             courseId={courseId}
-            type={type}
-            courseName={courseName}
           />
         </Suspense>
       </div>

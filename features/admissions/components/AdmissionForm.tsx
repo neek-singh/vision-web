@@ -146,38 +146,50 @@ export default function AdmissionForm({
 
   const coreCourseIds = [
     "197f7c89-e410-4768-8b49-567b4b4e3e9e", // Basic Computer Course (BCC)
-    "a100f278-ea6c-4189-b09b-7d4e7cd9d0e7", // Basic Computer For Beginner
     "38fdc235-f7b5-4628-9d72-41c9ff2eabd8", // Diploma In Computer Applications (DCA)
     "2fc69f17-e7a0-4bde-b995-8cbda1e2e55b", // Advanced Diploma in Computer Applications (ADCA)
-    "f9004121-1274-4b57-8179-ccc8365864b9"  // Post Graduate Diploma in Computer Applications (PGDCA)
+    "f9004121-1274-4b57-8179-ccc8365864b9", // Post Graduate Diploma in Computer Applications (PGDCA)
+    "tally-prime-gst",
+    "school-tuition",
   ];
 
   const courseDisplayName = (title: string) => {
     const t = title.toLowerCase();
-    if (t.includes("beginner")) return "Basic computer for Beginner";
-    if (t.includes("basic computer course")) return "BCC";
-    if (t.includes("diploma in computer applications") && !t.includes("advanced") && !t.includes("post")) return "DCA";
-    if (t.includes("advanced diploma")) return "ADCA";
-    if (t.includes("post graduate")) return "PGDCA";
+    if (t.includes("basic computer course") || t.includes("bcc")) return "Basic Computer Course (BCC)";
+    if (t.includes("diploma in computer applications") && !t.includes("advanced") && !t.includes("post")) return "Diploma in Computer Applications (DCA)";
+    if (t.includes("advanced diploma")) return "Advanced Diploma in Computer Applications (ADCA)";
+    if (t.includes("post graduate")) return "Post Graduate Diploma in Computer Applications (PGDCA)";
+    if (t.includes("tally")) return "Tally Prime with GST (3 Months)";
+    if (t.includes("school")) return "School Computer Tuition (Class 6th–11th)";
     return title;
   };
 
+  const extraCourses: Course[] = [
+    { id: "tally-prime-gst", title: "Tally Prime with GST (3 Months)" },
+    { id: "school-tuition", title: "School Computer Tuition (Class 6th–11th)" },
+  ];
+
+  const fallbackCourses: Course[] = [
+    { id: "197f7c89-e410-4768-8b49-567b4b4e3e9e", title: "Basic Computer Course (BCC)" },
+    { id: "38fdc235-f7b5-4628-9d72-41c9ff2eabd8", title: "Diploma in Computer Applications (DCA)" },
+    { id: "2fc69f17-e7a0-4bde-b995-8cbda1e2e55b", title: "Advanced Diploma in Computer Applications (ADCA)" },
+    { id: "f9004121-1274-4b57-8179-ccc8365864b9", title: "Post Graduate Diploma in Computer Applications (PGDCA)" },
+    ...extraCourses,
+  ];
+
   const mappedCourses = courses
-    .filter((c) => c.id !== "e0d6cfa9-a400-47b2-97b4-bb579c3ee595" && !c.title.toLowerCase().includes("university"))
+    .filter((c) => coreCourseIds.includes(c.id) || ["bcc", "dca", "adca", "pgdca", "tally", "school"].includes(c.id.toLowerCase()))
     .map((c) => ({
       id: c.id,
       title: courseDisplayName(c.title),
     }));
 
   const coreCoursesList = mappedCourses
-    .filter((c) => coreCourseIds.includes(c.id))
     .sort((a, b) => coreCourseIds.indexOf(a.id) - coreCourseIds.indexOf(b.id));
 
-  const otherCoursesList = mappedCourses
-    .filter((c) => !coreCourseIds.includes(c.id))
-    .sort((a, b) => a.title.localeCompare(b.title));
-
-  const filteredCourses = [...coreCoursesList, ...otherCoursesList];
+  const filteredCourses = coreCoursesList.length > 0
+    ? [...coreCoursesList, ...extraCourses.filter((ec) => !coreCoursesList.some((c) => c.id === ec.id))]
+    : fallbackCourses;
 
   const selectedCourse = filteredCourses.find((c) => c.id === formData.course_id);
   const subtitle = selectedCourse ? selectedCourse.title : "Course Application";
@@ -394,11 +406,10 @@ export default function AdmissionForm({
                 className="w-full px-3.5 py-2 text-sm text-gray-900 bg-white border border-gray-250 rounded-lg appearance-none focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
               >
                 <option value="">Select batch</option>
-                <option value="Morning Batch (7:00 AM - 9:00 AM)">Morning Batch (7:00 AM - 9:00 AM)</option>
-                <option value="Morning Batch (9:00 AM - 11:00 AM)">Morning Batch (9:00 AM - 11:00 AM)</option>
-                <option value="Noon Batch (12:00 PM - 2:00 PM)">Noon Batch (12:00 PM - 2:00 PM)</option>
-                <option value="Afternoon Batch (2:00 PM - 4:00 PM)">Afternoon Batch (2:00 PM - 4:00 PM)</option>
-                <option value="Evening Batch (4:00 PM - 6:00 PM)">Evening Batch (4:00 PM - 6:00 PM)</option>
+                <option value="Batch 1 (9:00 AM - 11:00 AM)">Batch 1 (9:00 AM - 11:00 AM)</option>
+                <option value="Batch 2 (11:00 AM - 1:00 PM)">Batch 2 (11:00 AM - 1:00 PM)</option>
+                <option value="Batch 3 (2:00 PM - 4:00 PM)">Batch 3 (2:00 PM - 4:00 PM)</option>
+                <option value="Batch 4 (4:00 PM - 6:00 PM)">Batch 4 (4:00 PM - 6:00 PM)</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-gray-400">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

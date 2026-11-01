@@ -18,11 +18,11 @@ export default function StructuredData() {
           "height": 400
         },
         "image": "https://res.cloudinary.com/ddiooxxks/image/upload/f_auto,q_auto/logo_unnut8.png",
-        "description": "Vision IT Computer Institute is the leading computer institute in Pratappur, Chhattisgarh. We offer government-recognized diploma and certificate computer courses including DCA, ADCA, PGDCA, BCC, and Web Development with 70% practical offline training.",
-        "foundingDate": "2018",
+        "description": "Vision IT Computer Institute is a computer training institute in Pratappur, Chhattisgarh, operating since 2025 as a franchise branch of Drishti Computer Education (Branch Code: DCE/25/041). We offer offline BCC, DCA, ADCA, PGDCA, Tally Prime with GST, and School Tuition with 70% practical offline training.",
+        "foundingDate": "2025",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Kadampara Chowk",
+          "streetAddress": "Shubham Gift Gallery, 2nd Floor, Kadampara Chowk",
           "addressLocality": "Pratappur",
           "addressRegion": "Chhattisgarh",
           "postalCode": "497223",
@@ -35,7 +35,7 @@ export default function StructuredData() {
         },
         "telephone": "+91-8103170595",
         "email": "info@visionitinstitute.com",
-        "openingHours": "Mo,Tu,We,Th,Fr,Sa 09:00-18:00",
+        "openingHours": "Mo,Tu,We,Th,Fr,Sa 08:00-18:00",
         "priceRange": "₹₹",
         "contactPoint": [
           {
@@ -48,8 +48,8 @@ export default function StructuredData() {
           },
           {
             "@type": "ContactPoint",
-            "telephone": "+91-8103170595",
-            "email": "support@visionitinstitute.com",
+            "telephone": "+91-9301221630",
+            "email": "info@visionitinstitute.com",
             "contactType": "customer support",
             "areaServed": "IN",
             "availableLanguage": ["en", "hi"]
@@ -64,11 +64,10 @@ export default function StructuredData() {
           "Advanced Diploma in Computer Applications (ADCA)",
           "Post Graduate Diploma in Computer Applications (PGDCA)",
           "Basic Computer Course (BCC)",
-          "Web Development",
-          "Tally Prime Accounting",
+          "Tally Prime with GST",
+          "School Computer Tuition (Class 6th-11th)",
           "MS Office Automation",
-          "Computer Fundamentals",
-          "AI Tools & ChatGPT"
+          "Computer Fundamentals"
         ],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
@@ -77,7 +76,7 @@ export default function StructuredData() {
             {
               "@type": "Course",
               "name": "Diploma in Computer Applications (DCA)",
-              "description": "12-month government-recognized diploma in computer applications covering Office Automation, Programming, DBMS, Web Development, Accounting & Networking.",
+              "description": "12-month computer applications diploma covering Office Automation, C Programming, DBMS, Web Basics, and Tally Prime with GST.",
               "provider": { "@id": "https://visionitinstitute.com/#organization" },
               "url": "https://visionitinstitute.com/courses/dca",
               "timeToComplete": "P12M",
@@ -90,7 +89,7 @@ export default function StructuredData() {
             {
               "@type": "Course",
               "name": "Advanced Diploma in Computer Applications (ADCA)",
-              "description": "12-month advanced diploma covering MS Office, DTP (Photoshop, CorelDraw), Programming (C/C++), Web Development, Tally Accounting, and AI Tools.",
+              "description": "12-month advanced diploma covering MS Office, DTP (Photoshop, CorelDRAW, PageMaker), C/C++ basics, web basics, and Tally Prime with GST.",
               "provider": { "@id": "https://visionitinstitute.com/#organization" },
               "url": "https://visionitinstitute.com/courses/adca",
               "timeToComplete": "P12M",
@@ -103,7 +102,7 @@ export default function StructuredData() {
             {
               "@type": "Course",
               "name": "Post Graduate Diploma in Computer Applications (PGDCA)",
-              "description": "12-month post-graduate diploma for graduates covering Computer Architecture, OOP (C++), DBMS, Web Technologies, MS Office, Tally Accounting, Networking & AI.",
+              "description": "12-month post-graduate diploma for graduates covering C++ OOP, database design, web technologies, and accounting.",
               "provider": { "@id": "https://visionitinstitute.com/#organization" },
               "url": "https://visionitinstitute.com/courses/pgdca",
               "timeToComplete": "P12M",
@@ -116,7 +115,7 @@ export default function StructuredData() {
             {
               "@type": "Course",
               "name": "Basic Computer Course (BCC)",
-              "description": "3-month beginner certificate course covering Computer Fundamentals, Windows OS, MS Office basics, Internet & Digital Safety, and AI Tools.",
+              "description": "3-month beginner certificate course covering Computer Fundamentals, Windows OS, MS Office basics, and Internet.",
               "provider": { "@id": "https://visionitinstitute.com/#organization" },
               "url": "https://visionitinstitute.com/courses/bcc",
               "timeToComplete": "P3M",
@@ -128,14 +127,27 @@ export default function StructuredData() {
             },
             {
               "@type": "Course",
-              "name": "Basic Computer for Beginner",
-              "description": "3-month absolute beginner course covering Computer Basics, Windows Interface, MS Word, Internet, Email & AI Tools.",
+              "name": "Tally Prime with GST",
+              "description": "3-month certificate course in computerized accounting, vouchers, inventory, and GST billing.",
               "provider": { "@id": "https://visionitinstitute.com/#organization" },
-              "url": "https://visionitinstitute.com/courses/basic-beginner",
+              "url": "https://visionitinstitute.com/courses/tally",
               "timeToComplete": "P3M",
               "offers": {
                 "@type": "Offer",
-                "price": "2999",
+                "price": "4499",
+                "priceCurrency": "INR"
+              }
+            },
+            {
+              "@type": "Course",
+              "name": "School Computer Tuition (Class 6th – 11th)",
+              "description": "Monthly offline computer tuition for school students covering school curriculum, touch typing, MS Office, and digital hygiene.",
+              "provider": { "@id": "https://visionitinstitute.com/#organization" },
+              "url": "https://visionitinstitute.com/courses/school-tuition",
+              "timeToComplete": "P1M",
+              "offers": {
+                "@type": "Offer",
+                "price": "599",
                 "priceCurrency": "INR"
               }
             }
@@ -149,7 +161,7 @@ export default function StructuredData() {
         "@id": "https://visionitinstitute.com/#website",
         "url": "https://visionitinstitute.com",
         "name": "Vision IT Computer Institute",
-        "description": "Vision IT Computer Institute is the leading computer institute in Pratappur, Chhattisgarh offering government-recognized computer courses.",
+        "description": "Vision IT Computer Institute is a computer training center in Pratappur, Chhattisgarh offering offline practical computer courses.",
         "publisher": {
           "@id": "https://visionitinstitute.com/#organization"
         },
@@ -158,7 +170,7 @@ export default function StructuredData() {
             "@type": "SearchAction",
             "target": {
               "@type": "EntryPoint",
-              "urlTemplate": "https://visionitinstitute.com/search?q={search_term_string}"
+              "urlTemplate": "https://visionitinstitute.com/courses"
             },
             "query-input": "required name=search_term_string"
           }
@@ -173,10 +185,10 @@ export default function StructuredData() {
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Which is the best computer institute in Pratappur?",
+            "name": "Which computer institute is located in Pratappur?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Vision IT Computer Institute is the best computer institute in Pratappur, Chhattisgarh. It offers government-recognized computer courses like DCA, ADCA, PGDCA, and BCC with 70% practical offline training at Kadampara Chowk, Pratappur."
+              "text": "Vision IT Computer Institute is located at Shubham Gift Gallery, 2nd Floor, Kadampara Chowk, Pratappur, Chhattisgarh. It offers offline computer courses like BCC, DCA, ADCA, PGDCA, Tally Prime with GST, and School Tuition with 70% practical offline training."
             }
           },
           {
@@ -184,7 +196,7 @@ export default function StructuredData() {
             "name": "What courses are offered at Vision IT Computer Institute Pratappur?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Vision IT Computer Institute Pratappur offers DCA (Diploma in Computer Applications), ADCA (Advanced Diploma), PGDCA (Post Graduate Diploma), BCC (Basic Computer Course), and a Basic Computer for Beginner course. All courses are government-recognized with offline classroom training."
+              "text": "Vision IT Computer Institute Pratappur offers BCC (3 months), DCA (12 months), ADCA (12 months), PGDCA (12 months), Tally Prime with GST (3 months), and School Computer Tuition (Class 6th to 11th). All training is conducted offline in our computer lab."
             }
           },
           {
@@ -192,7 +204,7 @@ export default function StructuredData() {
             "name": "What is the fee for DCA course at Vision IT Computer Institute?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The total fee for the DCA (Diploma in Computer Applications) course at Vision IT Computer Institute Pratappur is ₹13,999, which includes admission fee (₹2,000), tuition fee (₹10,999), and exam fee (₹1,000). The course duration is 12 months."
+              "text": "The total fee for the DCA (Diploma in Computer Applications) course at Vision IT Computer Institute Pratappur is ₹13,999, which includes admission fee (₹2,000), tuition fee (₹10,999), and exam fee (₹1,000). The course duration is 12 months with flexible installment options."
             }
           },
           {
@@ -200,15 +212,15 @@ export default function StructuredData() {
             "name": "Where is Vision IT Computer Institute located?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Vision IT Computer Institute is located at Kadampara Chowk, Pratappur, Surajpur District, Chhattisgarh - 497223. You can contact us at +91-8103170595."
+              "text": "Vision IT Computer Institute is located at Shubham Gift Gallery, 2nd Floor, Kadampara Chowk, Pratappur, Surajpur District, Chhattisgarh - 497223. You can contact us at +91-8103170595 or +91-9301221630."
             }
           },
           {
             "@type": "Question",
-            "name": "Is Vision IT Computer Institute government recognized?",
+            "name": "Who issues the certificates for courses at Vision IT?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, Vision IT Computer Institute Pratappur is a government-recognized computer training center. Our certificates are valid for government jobs and higher education admissions."
+              "text": "Vision IT Computer Institute is an authorized franchise branch of Drishti Computer Education (Branch Code: DCE/25/041). Certificates are awarded by Drishti Computer Education upon successful completion and examination."
             }
           }
         ]

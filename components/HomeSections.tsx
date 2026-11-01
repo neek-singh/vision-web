@@ -1,29 +1,45 @@
 import { Button } from "@/components/ui/Button";
 
 export function FAQSection() {
+  const faqs = [
+    {
+      q: "Which courses are available at Vision IT?",
+      a: "BCC (3 months), DCA (12 months), ADCA (12 months), PGDCA (12 months), Tally Prime with GST (3 months), and School Students Computer Tuition (Class 6th–11th). All courses are conducted offline with hands-on computer lab training.",
+    },
+    {
+      q: "What are the fees? Can I pay in installments?",
+      a: "BCC is ₹2,999, DCA is ₹13,999, ADCA is ₹14,999, PGDCA is ₹16,999, Tally Prime with GST is ₹4,499, and School Computer Tuition is ₹599/month. Diploma fees include admission, tuition, and exam fees with flexible installment options available.",
+    },
+    {
+      q: "Who issues the certificate?",
+      a: "Certificates are issued by Drishti Computer Education. Vision IT is an authorized franchise branch (Branch Code: DCE/25/041). Please verify with your prospective employer or academic institution where you plan to use it.",
+    },
+    {
+      q: "Do you provide job placement?",
+      a: "We do not make false guarantees of 100% placement. We actively assist students with resume building, interview preparation, and practical job readiness.",
+    },
+    {
+      q: "What are the class and batch timings?",
+      a: "Daily offline classes run Monday to Saturday across 4 batches: 9:00 AM – 11:00 AM, 11:00 AM – 1:00 PM, 2:00 PM – 4:00 PM, and 4:00 PM – 6:00 PM. Students can choose any batch that fits their schedule.",
+    },
+  ];
+
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 max-w-4xl">
       <div className="text-center mb-14">
         <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 tracking-tight">Frequently Asked Questions</h2>
-        <p className="text-slate-900 font-medium text-sm md:text-base max-w-2xl mx-auto">
-          Got questions? We&apos;ve got answers. Find everything you need to know about our courses and admissions.
+        <p className="text-slate-600 font-medium text-sm md:text-base max-w-2xl mx-auto">
+          Got questions? Here are honest, clear answers about our courses and admissions.
         </p>
       </div>
       <div className="space-y-4">
-        {[
-          { q: "What courses do you offer at Vision IT?", a: "We offer DCA, ADCA, PGDCA, Full Stack Web Development, UI/UX Design, Data Science & AI, and more. Each course is industry-ready and practically focused." },
-          { q: "What are the fees and duration of courses?", a: "Courses range from 3 to 12 months. Fees are highly affordable with flexible installment options. Contact us for the latest fee structure." },
-          { q: "Do I get a certificate after completing the course?", a: "Yes! All students receive a government-recognized certificate upon successful completion, which is highly valued by employers." },
-          { q: "Is job placement support available?", a: "Yes. We provide resume building, mock interviews, and industry connections to help students land their first tech job." },
-          { q: "How do I enroll in a course?", a: "Click the Apply Now button, visit our institute in Pratappur, or reach us on WhatsApp for instant assistance." },
-          { q: "What is the batch schedule like?", a: "We offer both morning and evening batches. New batches start every month. Reach out to know the upcoming batch dates." },
-        ].map(({ q, a }, i) => (
+        {faqs.map(({ q, a }, i) => (
           <details key={i} className="group bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
             <summary className="flex items-center justify-between px-4 sm:px-6 py-4 cursor-pointer list-none select-none font-bold text-slate-900 text-sm md:text-base hover:bg-blue-50/50 transition-colors">
               <span className="pr-4">{q}</span>
               <span className="w-8 h-8 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0 ml-4 group-open:rotate-45 transition-transform duration-300 text-lg font-light">+</span>
             </summary>
-            <div className="px-6 pb-5 pt-3 text-slate-900 font-medium text-xs md:text-sm leading-relaxed border-t border-gray-50">{a}</div>
+            <div className="px-6 pb-5 pt-3 text-slate-700 font-medium text-xs md:text-sm leading-relaxed border-t border-gray-50">{a}</div>
           </details>
         ))}
       </div>

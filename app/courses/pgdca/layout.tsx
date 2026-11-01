@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "PGDCA Course Pratappur | Post Graduate Diploma in Computer Applications | Vision IT",
-  description: "Enroll in PGDCA (Post Graduate Diploma in Computer Applications) at Vision IT Computer Institute, the leading computer institute pratappur. 12-month government-recognized post-graduate course for graduates. Fee: ₹16,999.",
+  description: "Enroll in PGDCA (Post Graduate Diploma in Computer Applications) at Vision IT Computer Institute, the leading computer institute pratappur. 12-month post-graduate diploma course for graduates. Fee: ₹16,999.",
   keywords: [
     "PGDCA course pratappur",
     "post graduate diploma computer applications pratappur",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "PGDCA Course Pratappur | Post Graduate Diploma in Computer Applications | Vision IT",
-    description: "Enroll in PGDCA at Vision IT Computer Institute pratappur. 12-month government-recognized post-graduate diploma covering OOP (C++), DBMS, Web Technologies, Tally & AI. Fee: ₹16,999.",
+    description: "Enroll in PGDCA at Vision IT Computer Institute pratappur. 12-month post-graduate diploma covering OOP (C++), DBMS, Web Technologies, Tally & AI. Fee: ₹16,999.",
     url: "https://visionitinstitute.com/courses/pgdca",
     siteName: "Vision IT Computer Institute",
     locale: "en_IN",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "PGDCA Course Pratappur | Vision IT Computer Institute",
-    description: "12-month PGDCA (Post Graduate Diploma in Computer Applications) at Vision IT Computer Institute Pratappur. Government-recognized. Fee: ₹16,999.",
+    description: "12-month PGDCA (Post Graduate Diploma in Computer Applications) at Vision IT Computer Institute Pratappur. Certificate by Drishti Computer Education. Fee: ₹16,999.",
   },
 };
 
@@ -35,7 +35,7 @@ export default function PgdcaLayout({ children }: { children: React.ReactNode })
     "@context": "https://schema.org",
     "@type": "Course",
     "name": "Post Graduate Diploma in Computer Applications (PGDCA)",
-    "description": "12-month government-recognized Post Graduate Diploma in Computer Applications at Vision IT Computer Institute Pratappur. Covers Computer Architecture, OOP (C++), Database Management System, Web Technologies, MS Office, Tally Accounting, Computer Networking, and AI Tools.",
+    "description": "12-month Post Graduate Diploma in Computer Applications at Vision IT Computer Institute Pratappur. Covers Computer Architecture, OOP (C++), Database Management System, Web Technologies, MS Office, Tally Accounting, Computer Networking, and AI Tools. Certificate by Drishti Computer Education.",
     "url": "https://visionitinstitute.com/courses/pgdca",
     "provider": {
       "@type": "EducationalOrganization",
@@ -50,7 +50,7 @@ export default function PgdcaLayout({ children }: { children: React.ReactNode })
       }
     },
     "timeToComplete": "P12M",
-    "educationalCredentialAwarded": "Government-Recognized Post Graduate Diploma Certificate",
+    "educationalCredentialAwarded": "Post Graduate Diploma Certificate by Drishti Computer Education",
     "educationalCredentialRequirement": "Graduate (Any Stream)",
     "teaches": [
       "Computer Organization & Architecture",

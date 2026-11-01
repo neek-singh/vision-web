@@ -188,7 +188,7 @@ export default function RefundPage() {
                     </svg>
                     <div>
                       <p className="text-sm font-medium text-slate-900">Location</p>
-                      <p>Kadampara Chowk, Pratappur, Surajpur (C.G.) - 497223</p>
+                      <p>Shubham Gift Gallery, 2nd Floor, Kadampara Chowk, Pratappur, Surajpur (C.G.) - 497223</p>
                     </div>
                   </div>
                 </div>

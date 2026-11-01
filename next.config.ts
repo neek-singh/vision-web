@@ -24,7 +24,60 @@ const nextConfig: NextConfig = {
       },
 
     ],
-
+  },
+  async redirects() {
+    return [
+      {
+        source: '/courses/basic-beginner',
+        destination: '/courses/bcc',
+        permanent: true,
+      },
+      {
+        source: '/courses/certificate',
+        destination: '/courses',
+        permanent: true,
+      },
+      {
+        source: '/courses/diploma',
+        destination: '/courses',
+        permanent: true,
+      },
+      {
+        source: '/courses/university',
+        destination: '/courses',
+        permanent: true,
+      },
+      {
+        source: '/courses/university/:path*',
+        destination: '/courses',
+        permanent: true,
+      },
+      {
+        source: '/courses/bca',
+        destination: '/courses',
+        permanent: true,
+      },
+      {
+        source: '/courses/dfso',
+        destination: '/courses',
+        permanent: true,
+      },
+      {
+        source: '/courses/dsps',
+        destination: '/courses',
+        permanent: true,
+      },
+      {
+        source: '/courses/pgdrd',
+        destination: '/courses',
+        permanent: true,
+      },
+      {
+        source: '/blog/vision-it-computer-institute-the-pioneer-of-it-education-in-pratappur',
+        destination: '/blog/vision-it-computer-institute-pratappur-courses-fees-admission',
+        permanent: true,
+      },
+    ];
   },
 };
 

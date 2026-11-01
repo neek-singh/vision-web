@@ -40,6 +40,11 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
     if (e) e.preventDefault();
     const term = searchStr || query;
     if (!term.trim()) return;
+    if (!dob.trim()) {
+      setError("Please enter the student's Date of Birth (DOB).");
+      setSearched(true);
+      return;
+    }
 
     setLoading(true);
     setError(null);
@@ -53,8 +58,8 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
       } else {
         const data = res.record;
         
-        // Optional DOB check if user entered a date of birth
-        if (dob && data && data.dob) {
+        // Compulsory DOB check
+        if (data && data.dob) {
           const inputDob = new Date(dob).toISOString().split('T')[0];
           const recordDob = new Date(data.dob).toISOString().split('T')[0];
           if (inputDob !== recordDob) {
@@ -107,7 +112,7 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
 
           {/* Description */}
           <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
-            The document information provided does not match the official records of the Computer Applications Institute. We are unable to verify the authenticity of this document at this time.
+            The document information provided does not match the records of Vision IT Institute. Kripya Roll Number/Certificate ID aur Date of Birth verify karein.
           </p>
 
           {/* Error Details Box */}
@@ -250,34 +255,27 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
               />
             </div>
 
-            {/* Date of Birth (Optional) */}
+            {/* Date of Birth (Compulsory) */}
             <div className="flex flex-col">
-              <label className="text-slate-500 text-xs font-semibold mb-1.5 block">
-                Student Date of Birth (Optional for extra security)
+              <label className="text-slate-700 text-xs font-semibold mb-1.5 block">
+                Student Date of Birth (Compulsory) *
               </label>
               <div className="relative">
                 <input
-                  type="text"
-                  placeholder="mm/dd/yyyy"
+                  type="date"
+                  required
                   value={dob}
                   onChange={(e) => setDob(e.target.value)}
-                  onFocus={(e) => (e.target.type = "date")}
-                  onBlur={(e) => {
-                    if (!e.target.value) e.target.type = "text";
-                  }}
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-4 pr-10 py-2.5 text-xs md:text-sm font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                   disabled={loading}
                 />
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
-                  <Calendar className="w-4 h-4" />
-                </div>
               </div>
             </div>
 
             {/* Verify Document Button */}
             <button
               type="submit"
-              disabled={loading || !query.trim()}
+              disabled={loading || !query.trim() || !dob.trim()}
               className="w-full h-11 bg-black hover:bg-slate-900 text-white rounded-lg text-xs font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-sm cursor-pointer"
             >
               {loading ? (
@@ -285,7 +283,7 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
               ) : (
                 <>
                   <Search className="w-4 h-4" />
-                  Verify Document
+                  Verify Record
                 </>
               )}
             </button>
@@ -294,11 +292,11 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
           {/* Divider */}
           <hr className="border-slate-100" />
 
-          {/* Secure lock footer message */}
-          <div className="flex items-start gap-2.5 text-[10px] text-slate-400 leading-relaxed font-medium">
-            <Lock className="w-3.5 h-3.5 shrink-0 mt-0.5 text-slate-400" />
+          {/* Verification note */}
+          <div className="flex items-start gap-2.5 text-xs text-slate-500 leading-relaxed font-medium">
+            <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5 text-blue-600" />
             <span>
-              All verification requests are logged and processed over a secure 256-bit encrypted connection. Data provided matches official institute records in real-time.
+              Certificate Drishti Computer Education ke dwara jaari hota hai. Ye page Vision IT branch ke records dikhata hai.
             </span>
           </div>
         </div>
@@ -550,7 +548,7 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
               Verification Successful
             </h3>
             <p className="text-slate-500 text-[11px] leading-relaxed max-w-[240px] mx-auto">
-              This document is officially recognized and verified by the Computer Applications Institute.
+              This record is officially verified for Vision IT Computer Institute (Franchise of Drishti Computer Education).
             </p>
           </div>
         </div>
@@ -643,7 +641,7 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M8 10v11M12 10v11M16 10v11M20 10v11" /></svg>
             </div>
             <h2 className="font-serif font-black text-slate-800 text-lg sm:text-2xl tracking-tight mb-1">
-              Computer Applications Institute
+              Vision IT Computer Institute
             </h2>
             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest block">
               OFFICIAL ACADEMIC MARKSHEET

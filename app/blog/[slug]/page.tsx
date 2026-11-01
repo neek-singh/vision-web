@@ -31,7 +31,7 @@ export async function generateMetadata(
   const { slug } = await params;
   const blog = await getBlogBySlug(slug);
 
-  if (!blog) {
+  if (!blog || blog.is_published === false) {
     return { title: "Blog Not Found" };
   }
 
@@ -73,7 +73,7 @@ export default async function BlogPostPage(
   const { slug } = await params;
   const blog = await getBlogBySlug(slug);
 
-  if (!blog) {
+  if (!blog || blog.is_published === false) {
     return notFound();
   }
   

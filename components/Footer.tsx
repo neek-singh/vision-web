@@ -7,9 +7,12 @@ import { usePathname } from "next/navigation";
 
 const contact = {
   email: "info@visionitinstitute.com",
-  supportEmail: "support@visionitinstitute.com",
-  phone: "+91 81031 70595",
-  address: "Vision IT Computer Institute, kadampara chowk, Pratappur, Surajpur(C.G.) - 497223",
+  phones: [
+    { display: "+91 81031 70595", raw: "+918103170595" },
+    { display: "+91 93012 21630", raw: "+919301221630" },
+  ],
+  timing: "Mon - Sat: 8 AM - 6 PM (Batches: 9-11 AM, 11-1 PM, 2-4 PM, 4-6 PM)",
+  address: "Shubham Gift Gallery, 2nd Floor, Kadampara Chowk, Pratappur, Surajpur (C.G.) - 497223",
 };
 
 export default function Footer() {
@@ -60,7 +63,10 @@ export default function Footer() {
                 </div>
               </Link>
               <p className="mt-5 text-sm text-slate-600 max-w-sm leading-relaxed font-medium">
-                Empowering students in Pratappur with state-of-the-art computer education, professional certifications, and placement assistance.
+                Vision IT Computer Institute is a computer training institute in Pratappur, Surajpur (C.G.), running since 2025 as a franchise branch of Drishti Computer Education.
+              </p>
+              <p className="mt-3 text-[11px] text-slate-400 font-medium">
+                Franchise Branch Code: DCE/25/041 | Business registration: Udyam (MSME), UDYAM-CG-27-0012250
               </p>
             </div>
 
@@ -103,15 +109,14 @@ export default function Footer() {
           </div>
 
           {/* Column 2: Popular Courses */}
-          <div className="col-span-1 md:col-span-6 lg:col-span-2">
-            <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Popular Courses</h4>
+          <div className="col-span-1 md:col-span-4 lg:col-span-3">
+            <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Courses</h4>
             <ul className="space-y-3">
-              <FooterLink href="/courses/bcc">Basic Computer (BCC)</FooterLink>
-              <FooterLink href="/courses/dca">Diploma in Computer (DCA)</FooterLink>
-              <FooterLink href="/courses/pgdca">PGDCA Diploma</FooterLink>
-              <FooterLink href="/courses/adca">ADCA Diploma</FooterLink>
-              <FooterLink href="/courses/basic-beginner">Basic Computer for Beginner</FooterLink>
-              <FooterLink href="/courses" className="text-blue-600 hover:text-blue-500 font-semibold text-xs mt-1 inline-block">Explore All Courses</FooterLink>
+              <FooterLink href="/courses/bcc">Basic Computer Course (BCC)</FooterLink>
+              <FooterLink href="/courses/dca">Diploma in Computer Applications (DCA)</FooterLink>
+              <FooterLink href="/courses/adca">Advanced Diploma in Computer Applications (ADCA)</FooterLink>
+              <FooterLink href="/courses/pgdca">Post Graduate Diploma (PGDCA)</FooterLink>
+              <FooterLink href="/courses" className="text-blue-600 hover:text-blue-500 font-semibold text-xs mt-1 inline-block">View All Courses</FooterLink>
             </ul>
           </div>
 
@@ -120,27 +125,17 @@ export default function Footer() {
             <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Quick Links</h4>
             <ul className="space-y-3">
               <FooterLink href="/about">About Us</FooterLink>
-              <FooterLink href="/blog">Our Blogs</FooterLink>
               <FooterLink href="/gallery">Institute Gallery</FooterLink>
-              <FooterLink href="/verify">Verify Credentials</FooterLink>
-              <FooterLink href="/learn">Vision Learn</FooterLink>
-              <FooterLink href="/contact">Get in Touch</FooterLink>
+              <FooterLink href="/blog">Our Blogs</FooterLink>
+              <FooterLink href="/verify">Verify Student Record</FooterLink>
+              <FooterLink href="/learn">Student Login</FooterLink>
+              <FooterLink href="/inquiry">Apply Now</FooterLink>
             </ul>
           </div>
 
-          {/* Column 4: Programs */}
-          <div className="col-span-1 md:col-span-4 lg:col-span-2">
-            <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Programs</h4>
-            <ul className="space-y-3">
-              <FooterLink href="/courses">All Courses</FooterLink>
-              <FooterLink href="/courses/university">University Courses</FooterLink>
-              <FooterLink href="/inquiry">Inquire Now</FooterLink>
-            </ul>
-          </div>
-
-          {/* Column 5: Reach Out (Contact) */}
-          <div className="col-span-1 md:col-span-4 lg:col-span-2">
-            <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Reach Out</h4>
+          {/* Column 4: Contact & Timings */}
+          <div className="col-span-2 md:col-span-4 lg:col-span-3">
+            <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Contact Us</h4>
             <ul className="space-y-4 text-xs font-medium text-slate-600">
               <li className="flex items-start gap-3 group">
                 <div className="mt-0.5 p-1.5 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
@@ -149,20 +144,8 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Inquiry</span>
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Email</span>
                   <a href={`mailto:${contact.email}`} className="group-hover:text-blue-600 transition-colors break-all leading-relaxed">{contact.email}</a>
-                </div>
-              </li>
-
-              <li className="flex items-start gap-3 group">
-                <div className="mt-0.5 p-1.5 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                  </svg>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Support</span>
-                  <a href={`mailto:${contact.supportEmail}`} className="group-hover:text-indigo-600 transition-colors break-all leading-relaxed">{contact.supportEmail}</a>
                 </div>
               </li>
 
@@ -172,7 +155,28 @@ export default function Footer() {
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                 </div>
-                <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="mt-0.5 group-hover:text-blue-600 transition-colors leading-relaxed">{contact.phone}</a>
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Phone</span>
+                  <div className="flex flex-col gap-0.5">
+                    {contact.phones.map((p, idx) => (
+                      <a key={idx} href={`tel:${p.raw}`} className="group-hover:text-blue-600 transition-colors leading-relaxed">
+                        {p.display}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </li>
+
+              <li className="flex items-start gap-3 group">
+                <div className="mt-0.5 p-1.5 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+                  </svg>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Hours</span>
+                  <span className="leading-relaxed">{contact.timing}</span>
+                </div>
               </li>
 
               <li className="flex items-start gap-3 group">
@@ -181,7 +185,10 @@ export default function Footer() {
                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" />
                   </svg>
                 </div>
-                <span className="mt-0.5 leading-relaxed group-hover:text-blue-600 transition-colors">{contact.address}</span>
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Address</span>
+                  <span className="leading-relaxed">{contact.address}</span>
+                </div>
               </li>
             </ul>
           </div>

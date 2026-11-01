@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "BCC Course Pratappur | Vision IT Computer Institute",
-    description: "3-month BCC (Basic Computer Course) at Vision IT Computer Institute Pratappur. Government-recognized. Fee: ₹2,999.",
+    description: "3-month BCC (Basic Computer Course) at Vision IT Computer Institute Pratappur. Certificate by Drishti Computer Education. Fee: ₹2,999.",
   },
 };
 
@@ -35,7 +35,7 @@ export default function BccLayout({ children }: { children: React.ReactNode }) {
     "@context": "https://schema.org",
     "@type": "Course",
     "name": "Basic Computer Course (BCC)",
-    "description": "3-month government-recognized Basic Computer Course at Vision IT Computer Institute Pratappur. Covers Computer Fundamentals, Windows OS, Typing Skills, Office Automation, Internet & Digital Safety, and AI Tools.",
+    "description": "3-month Basic Computer Course at Vision IT Computer Institute Pratappur. Covers Computer Fundamentals, Windows OS, Typing Skills, Office Automation, Internet & Digital Safety, and AI Tools. Certificate by Drishti Computer Education.",
     "url": "https://visionitinstitute.com/courses/bcc",
     "provider": {
       "@type": "EducationalOrganization",
@@ -50,7 +50,7 @@ export default function BccLayout({ children }: { children: React.ReactNode }) {
       }
     },
     "timeToComplete": "P3M",
-    "educationalCredentialAwarded": "Government-Recognized Certificate",
+    "educationalCredentialAwarded": "Certificate by Drishti Computer Education",
     "teaches": [
       "Computer Fundamentals",
       "Windows Operating System",

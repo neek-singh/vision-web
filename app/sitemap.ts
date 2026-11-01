@@ -27,12 +27,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (fs.existsSync(blogsFilePath)) {
       const fileData = fs.readFileSync(blogsFilePath, 'utf-8')
       const blogs = JSON.parse(fileData)
-      blogUrls = blogs.map((blog: any) => ({
-        url: `${baseUrl}/blog/${blog.slug}`,
-        lastModified: blog.published_at ? new Date(blog.published_at) : new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-      }))
+      blogUrls = blogs
+        .filter((blog: any) => blog.is_published !== false)
+        .map((blog: any) => ({
+          url: `${baseUrl}/blog/${blog.slug}`,
+          lastModified: blog.published_at ? new Date(blog.published_at) : new Date(),
+          changeFrequency: 'monthly' as const,
+          priority: 0.7,
+        }))
     }
   } catch (error) {
     console.error('Error generating blog sitemap URLs:', error)
@@ -83,20 +85,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/courses/basic-beginner`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    // Course category pages
-    {
-      url: `${baseUrl}/courses/diploma`,
+      url: `${baseUrl}/courses/tally`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/courses/certificate`,
+      url: `${baseUrl}/courses/school-tuition`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/verify`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,

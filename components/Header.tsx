@@ -93,11 +93,11 @@ export default function Header() {
             <div className="flex items-center gap-8 pr-4">
               <NavLink href="/" isTransparent={isAboutPageTransparent}>Home</NavLink>
               <NavLink href="/courses" isTransparent={isAboutPageTransparent}>Courses</NavLink>
-              <NavLink href="/inquiry" isTransparent={isAboutPageTransparent}>Inquiry</NavLink>
               <NavLink href="/about" isTransparent={isAboutPageTransparent}>About</NavLink>
-              <NavLink href="/blog" isTransparent={isAboutPageTransparent}>Blog</NavLink>
               <NavLink href="/gallery" isTransparent={isAboutPageTransparent}>Gallery</NavLink>
+              <NavLink href="/blog" isTransparent={isAboutPageTransparent}>Blog</NavLink>
               <NavLink href="/contact" isTransparent={isAboutPageTransparent}>Contact</NavLink>
+              <NavLink href="/verify" isTransparent={isAboutPageTransparent}>Verify</NavLink>
 
               {/* More Dropdown */}
               <div className="relative group">
@@ -114,16 +114,8 @@ export default function Header() {
                 </button>
                 <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-slate-100 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 flex flex-col overflow-hidden py-2 z-50">
                   <Link href="/learn" className="px-5 py-2.5 text-sm font-semibold text-black hover:bg-slate-50 hover:text-blue-600 transition-colors flex items-center justify-between">
-                    Vision Learn
+                    Student Login
                     <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
-                  </Link>
-                  <Link href="/courses/university" className="px-5 py-2.5 text-sm font-semibold text-black hover:bg-slate-50 hover:text-blue-600 transition-colors flex items-center justify-between border-t border-slate-50">
-                    University Courses
-                    <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /></svg>
-                  </Link>
-                  <Link href="/verify" className="px-5 py-2.5 text-sm font-semibold text-black hover:bg-slate-50 hover:text-blue-600 transition-colors flex items-center justify-between border-t border-slate-50">
-                    Verification
-                    <svg className="w-4.5 h-4.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                   </Link>
                 </div>
               </div>
@@ -180,15 +172,13 @@ export default function Header() {
           <div className="flex flex-col px-4 py-6 space-y-1 bg-slate-50/50">
             <MobileLink href="/" onClick={handleClose}>Home</MobileLink>
             <MobileLink href="/courses" onClick={handleClose}>Courses</MobileLink>
-            <MobileLink href="/inquiry" onClick={handleClose}>Inquiry</MobileLink>
             <MobileLink href="/about" onClick={handleClose}>About</MobileLink>
-            <MobileLink href="/blog" onClick={handleClose}>Blog</MobileLink>
             <MobileLink href="/gallery" onClick={handleClose}>Gallery</MobileLink>
+            <MobileLink href="/blog" onClick={handleClose}>Blog</MobileLink>
             <MobileLink href="/contact" onClick={handleClose}>Contact</MobileLink>
+            <MobileLink href="/verify" onClick={handleClose}>Verify</MobileLink>
             <div className="my-2 border-t border-slate-200/60"></div>
-            <MobileLink href="/learn" onClick={handleClose}>Vision Learn</MobileLink>
-            <MobileLink href="/courses/university" onClick={handleClose}>University Courses</MobileLink>
-            <MobileLink href="/verify" onClick={handleClose}>Verification</MobileLink>
+            <MobileLink href="/learn" onClick={handleClose}>Student Login</MobileLink>
           </div>
         </div>
       )}

@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 
 const OFFERS = [
-  "Admission Applications Open for 2026-27",
-  "Institute Offer: Save up to 39% on DCA & PGDCA Diploma Programs!",
-  "University Courses: Regular & Private Admissions Open for BA, MA, BCA & B.Sc!"
+  "New Batches Starting for BCC, DCA, ADCA & PGDCA",
+  "Offline Classes with 70% Practical Lab Training",
+  "Installment Option Available — Call +91 81031 70595"
 ];
 
 export default function OfferSlider() {
