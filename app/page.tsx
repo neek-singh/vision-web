@@ -380,7 +380,7 @@ export default async function Home() {
           </h2>
 
           <p className="text-sm md:text-base text-slate-950 max-w-xl mx-auto mb-8 font-normal leading-relaxed">
-            Admissions open for BCC, DCA, ADCA and PGDCA courses. Visit our lab or call directly to book your seat.
+            Admissions open for BCC, DCA, ADCA, PGDCA, Tally Prime with GST, and School Computer Tuition. Visit our lab or call directly to book your seat.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">

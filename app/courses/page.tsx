@@ -4,8 +4,8 @@ import CourseCard from "@/components/CourseCard";
 import { CheckCircle2, PhoneCall, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Computer Courses in Pratappur | Vision IT Computer Institute",
-  description: "Computer courses at Vision IT, Pratappur: BCC (3 months), DCA, ADCA, PGDCA (12 months), Tally Prime with GST (3 months), and School Tuition (Class 6-11). Offline classes, 70% practical.",
+  title: "Computer Courses in Pratappur | BCC, DCA, ADCA, PGDCA, Tally & School Tuition",
+  description: "Explore 6 computer courses at Vision IT Pratappur: BCC (3 months), DCA, ADCA, PGDCA (12 months), Tally Prime with GST, and School Tuition (Class 6-11). Offline classes, 70% practical.",
 };
 
 export default function CoursesPage() {
@@ -96,7 +96,7 @@ export default function CoursesPage() {
             Computer Courses in Pratappur
           </h1>
           <p className="text-slate-950 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
-            Practical, career-focused computer courses and school batches. Every program is taught offline with direct hands-on practice in our computer lab.
+            Vision IT offers 6 practical, offline computer courses with hands-on lab training: BCC, DCA, ADCA, PGDCA, Tally Prime with GST, and School Computer Tuition. Every program is taught offline with direct practice in our computer lab.
           </p>
         </div>
       </section>

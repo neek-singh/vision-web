@@ -116,6 +116,8 @@ export default function Footer() {
               <FooterLink href="/courses/dca">Diploma in Computer Applications (DCA)</FooterLink>
               <FooterLink href="/courses/adca">Advanced Diploma in Computer Applications (ADCA)</FooterLink>
               <FooterLink href="/courses/pgdca">Post Graduate Diploma (PGDCA)</FooterLink>
+              <FooterLink href="/courses/tally">Tally Prime with GST</FooterLink>
+              <FooterLink href="/courses/school-tuition">School Computer Tuition</FooterLink>
               <FooterLink href="/courses" className="text-blue-700 hover:text-blue-800 font-normal text-xs mt-1 inline-block">View All Courses</FooterLink>
             </ul>
           </div>
