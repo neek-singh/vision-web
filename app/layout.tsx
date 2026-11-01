@@ -42,11 +42,20 @@ export const metadata: Metadata = {
     siteName: "Vision IT Computer Institute",
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Vision IT Computer Institute, Pratappur",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Computer Institute in Pratappur | Vision IT",
     description: "Vision IT Computer Institute, Pratappur (Surajpur). Offline BCC, DCA, ADCA and PGDCA courses with 70% practical lab training. Call 8103170595.",
+    images: ["/opengraph-image"],
   },
   icons: {
     icon: [
