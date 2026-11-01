@@ -3,11 +3,18 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Vision Learn - Student Portal | Vision IT Computer Institute",
+  title: "Student Portal - Vision Learn",
   description:
-    "Access your course materials, track progress, submit assignments, and interact with instructors on Vision Learn – our powerful Learning Management System.",
-  keywords:
-    "Vision Learn, student portal, LMS, online learning, course materials, assignments, Vision IT",
+    "Access course study materials, assignments, and class updates on Vision Learn portal for enrolled students.",
+  alternates: {
+    canonical: "/learn",
+  },
+  openGraph: {
+    title: "Student Portal - Vision Learn",
+    description:
+      "Access course study materials, assignments, and class updates on Vision Learn portal for enrolled students.",
+    url: "/learn",
+  },
 };
 
 /* ─── Icon Components ─── */

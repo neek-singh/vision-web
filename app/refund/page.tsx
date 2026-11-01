@@ -2,9 +2,18 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Refund & Cancellation Policy | Vision IT Computer Institute",
+  title: "Refund & Cancellation Policy",
   description:
     "Read the detailed fee refund, cancellation, and course withdrawal policy at Vision IT Computer Institute.",
+  alternates: {
+    canonical: "/refund",
+  },
+  openGraph: {
+    title: "Refund & Cancellation Policy",
+    description:
+      "Read the detailed fee refund, cancellation, and course withdrawal policy at Vision IT Computer Institute.",
+    url: "/refund",
+  },
 };
 
 export default function RefundPage() {

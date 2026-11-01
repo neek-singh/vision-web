@@ -5,12 +5,15 @@ import { unstable_cache } from "next/cache";
 import GalleryGridClientWrapper from "@/features/gallery/components/GalleryGridClientWrapper";
 
 export const metadata: Metadata = {
-  title: "Gallery | Vision IT Computer Institute Pratappur",
-  description: "Explore our photo gallery showcasing events, classes, and campus life at Vision IT Computer Institute in Pratappur.",
+  title: "Photo Gallery & Institute Life",
+  description: "Explore photos of classroom sessions, computer lab practicals, celebrations, and student activities at Vision IT Computer Institute, Pratappur.",
+  alternates: {
+    canonical: "/gallery",
+  },
   openGraph: {
-    title: "Gallery | Vision IT Computer Institute",
-    description: "Explore photos from Vision IT Computer Institute — events, workshops, and student life.",
-    type: "website",
+    title: "Photo Gallery & Institute Life",
+    description: "Explore photos of classroom sessions, computer lab practicals, celebrations, and student activities at Vision IT Computer Institute, Pratappur.",
+    url: "/gallery",
   },
 };
 

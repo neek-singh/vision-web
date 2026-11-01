@@ -2,9 +2,18 @@ import { Metadata } from "next";
 import VerificationPortal from "@/features/verification/components/VerificationPortal";
 
 export const metadata: Metadata = {
-  title: "Verify Student Record | Vision IT",
+  title: "Student Certificate Verification",
   description:
-    "Verify student records using Certificate ID and Date of Birth. Certificates are issued by Drishti Computer Education for Vision IT branch students.",
+    "Verify student certificate records using Certificate ID and Date of Birth. Certificates are issued by Drishti Computer Education for Vision IT branch students.",
+  alternates: {
+    canonical: "/verify",
+  },
+  openGraph: {
+    title: "Student Certificate Verification",
+    description:
+      "Verify student certificate records using Certificate ID and Date of Birth for Vision IT branch students.",
+    url: "/verify",
+  },
 };
 
 export const revalidate = 0;

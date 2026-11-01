@@ -29,39 +29,24 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://visionitinstitute.com"),
+  metadataBase: new URL("https://www.visionitinstitute.com"),
   title: {
-    default: "Vision IT Computer Institute | Computer Institute Pratappur",
-    template: "%s | Vision IT Computer Institute",
+    default: "Computer Institute in Pratappur | Vision IT",
+    template: "%s | Vision IT",
   },
-  description: "Vision IT Computer Institute is the leading computer institute pratappur offering premium courses like DCA, PGDCA, ADCA, and Web Development. The best computer center pratappur for professional IT education.",
-  keywords: [
-    "computer institute pratappur",
-    "computer center pratappur",
-    "best computer center pratappur",
-    "vision it computer center pratappur",
-    "vision it computer institute",
-    "computer classes pratappur",
-    "best computer institute pratappur",
-    "computer training center pratappur",
-    "IT institute pratappur",
-    "IT training center pratappur",
-    "computer course pratappur",
-    "computer coaching pratappur",
-    "computer education pratappur"
-  ],
+  description: "Vision IT Computer Institute, Pratappur (Surajpur). Offline BCC, DCA, ADCA and PGDCA courses with 70% practical lab training. Call 8103170595.",
   openGraph: {
-    title: "Vision IT Computer Institute | Computer Institute Pratappur",
-    description: "Vision IT Computer Institute is the leading computer institute pratappur offering premium courses like DCA, PGDCA, ADCA, and Web Development. The best computer center pratappur for professional IT education.",
-    url: "https://visionitinstitute.com",
+    title: "Computer Institute in Pratappur | Vision IT",
+    description: "Vision IT Computer Institute, Pratappur (Surajpur). Offline BCC, DCA, ADCA and PGDCA courses with 70% practical lab training. Call 8103170595.",
+    url: "https://www.visionitinstitute.com",
     siteName: "Vision IT Computer Institute",
     locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vision IT Computer Institute | Computer Institute Pratappur",
-    description: "Vision IT Computer Institute is the leading computer institute pratappur offering premium courses like DCA, PGDCA, ADCA, and Web Development. The best computer center pratappur for professional IT education.",
+    title: "Computer Institute in Pratappur | Vision IT",
+    description: "Vision IT Computer Institute, Pratappur (Surajpur). Offline BCC, DCA, ADCA and PGDCA courses with 70% practical lab training. Call 8103170595.",
   },
   icons: {
     icon: [

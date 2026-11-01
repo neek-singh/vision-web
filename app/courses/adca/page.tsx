@@ -4,6 +4,14 @@ import CourseDetailsView, { CourseData } from "@/components/CourseDetailsView";
 export const metadata: Metadata = {
   title: "ADCA Course in Pratappur | Advanced Diploma in Computer Applications",
   description: "ADCA course in Pratappur: 12 months, offline, 70% practical. MS Office, DTP (Photoshop, CorelDRAW), C/C++, Tally. Fee Rs 14,999. Vision IT.",
+  alternates: {
+    canonical: "/courses/adca",
+  },
+  openGraph: {
+    title: "ADCA Course in Pratappur | Advanced Diploma in Computer Applications",
+    description: "ADCA course in Pratappur: 12 months, offline, 70% practical. MS Office, DTP (Photoshop, CorelDRAW), C/C++, Tally. Fee Rs 14,999.",
+    url: "/courses/adca",
+  },
 };
 
 const adcaData: CourseData = {

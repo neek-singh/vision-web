@@ -1,45 +1,13 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "BCC Course Pratappur | Basic Computer Course | Vision IT Computer Institute",
-  description: "Enroll in BCC (Basic Computer Course) at Vision IT Computer Institute, the top computer institute pratappur. 3-month certificate course covering Computer Fundamentals, Windows OS, MS Office, Internet & AI Tools. Fee: ₹2,999.",
-  keywords: [
-    "BCC course pratappur",
-    "basic computer course pratappur",
-    "computer certificate course pratappur",
-    "vision it BCC course",
-    "beginner computer classes pratappur",
-    "computer classes pratappur",
-    "basic IT course pratappur"
-  ],
-  alternates: {
-    canonical: "https://visionitinstitute.com/courses/bcc",
-  },
-  openGraph: {
-    title: "BCC Course Pratappur | Basic Computer Course | Vision IT",
-    description: "Enroll in BCC at Vision IT Computer Institute pratappur. 3-month offline certificate course. Fee: ₹2,999. Covers Computer Fundamentals, Windows, MS Office, Internet & AI Tools.",
-    url: "https://visionitinstitute.com/courses/bcc",
-    siteName: "Vision IT Computer Institute",
-    locale: "en_IN",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "BCC Course Pratappur | Vision IT Computer Institute",
-    description: "3-month BCC (Basic Computer Course) at Vision IT Computer Institute Pratappur. Certificate by Drishti Computer Education. Fee: ₹2,999.",
-  },
-};
-
 export default function BccLayout({ children }: { children: React.ReactNode }) {
   const courseJsonLd = {
     "@context": "https://schema.org",
     "@type": "Course",
     "name": "Basic Computer Course (BCC)",
     "description": "3-month Basic Computer Course at Vision IT Computer Institute Pratappur. Covers Computer Fundamentals, Windows OS, Typing Skills, Office Automation, Internet & Digital Safety, and AI Tools. Certificate by Drishti Computer Education.",
-    "url": "https://visionitinstitute.com/courses/bcc",
+    "url": "https://www.visionitinstitute.com/courses/bcc",
     "provider": {
       "@type": "EducationalOrganization",
-      "@id": "https://visionitinstitute.com/#organization",
+      "@id": "https://www.visionitinstitute.com/#organization",
       "name": "Vision IT Computer Institute",
       "address": {
         "@type": "PostalAddress",
@@ -74,9 +42,9 @@ export default function BccLayout({ children }: { children: React.ReactNode }) {
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://visionitinstitute.com" },
-        { "@type": "ListItem", "position": 2, "name": "Courses", "item": "https://visionitinstitute.com/courses" },
-        { "@type": "ListItem", "position": 3, "name": "BCC Course", "item": "https://visionitinstitute.com/courses/bcc" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.visionitinstitute.com" },
+        { "@type": "ListItem", "position": 2, "name": "Courses", "item": "https://www.visionitinstitute.com/courses" },
+        { "@type": "ListItem", "position": 3, "name": "BCC Course", "item": "https://www.visionitinstitute.com/courses/bcc" }
       ]
     }
   };

@@ -13,6 +13,16 @@ export const metadata: Metadata = {
   title: "About Vision IT Computer Institute, Pratappur",
   description:
     "Vision IT is a computer institute in Pratappur, Surajpur (C.G.), running since 2025 as a franchise branch of Drishti Computer Education.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Vision IT Computer Institute, Pratappur",
+    description:
+      "Vision IT is a computer institute in Pratappur, Surajpur (C.G.), running since 2025 as a franchise branch of Drishti Computer Education.",
+    url: "https://www.visionitinstitute.com/about",
+    type: "website",
+  },
 };
 
 export const revalidate = 3600;

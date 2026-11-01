@@ -5,8 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/admin/',
     },
-    sitemap: 'https://visionitinstitute.com/sitemap.xml',
+    sitemap: 'https://www.visionitinstitute.com/sitemap.xml',
   }
 }

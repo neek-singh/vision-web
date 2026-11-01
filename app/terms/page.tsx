@@ -2,9 +2,18 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Vision IT Computer Institute",
+  title: "Terms of Service",
   description:
     "Terms and conditions for students and users of Vision IT Computer Institute services and courses.",
+  alternates: {
+    canonical: "/terms",
+  },
+  openGraph: {
+    title: "Terms of Service",
+    description:
+      "Terms and conditions for students and users of Vision IT Computer Institute services and courses.",
+    url: "/terms",
+  },
 };
 
 export default function TermsPage() {

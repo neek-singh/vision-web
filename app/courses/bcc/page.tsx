@@ -4,6 +4,14 @@ import CourseDetailsView, { CourseData } from "@/components/CourseDetailsView";
 export const metadata: Metadata = {
   title: "BCC Course in Pratappur | Basic Computer Course",
   description: "Basic Computer Course (BCC) in Pratappur: 3 months, offline, 70% practical. Typing, Windows, MS Office, internet. Fee Rs 2,999. Vision IT.",
+  alternates: {
+    canonical: "/courses/bcc",
+  },
+  openGraph: {
+    title: "BCC Course in Pratappur | Basic Computer Course",
+    description: "Basic Computer Course (BCC) in Pratappur: 3 months, offline, 70% practical. Typing, Windows, MS Office, internet. Fee Rs 2,999.",
+    url: "/courses/bcc",
+  },
 };
 
 const bccData: CourseData = {

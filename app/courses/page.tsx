@@ -4,8 +4,17 @@ import CourseCard from "@/components/CourseCard";
 import { CheckCircle2, PhoneCall, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Computer Courses in Pratappur | BCC, DCA, ADCA, PGDCA, Tally & School Tuition",
+  title: "Computer Courses in Pratappur: BCC, DCA, ADCA, PGDCA, Tally & School Tuition",
   description: "Explore 6 computer courses at Vision IT Pratappur: BCC (3 months), DCA, ADCA, PGDCA (12 months), Tally Prime with GST, and School Tuition (Class 6-11). Offline classes, 70% practical.",
+  alternates: {
+    canonical: "/courses",
+  },
+  openGraph: {
+    title: "Computer Courses in Pratappur: BCC, DCA, ADCA, PGDCA, Tally & School Tuition",
+    description: "Explore 6 computer courses at Vision IT Pratappur: BCC (3 months), DCA, ADCA, PGDCA (12 months), Tally Prime with GST, and School Tuition (Class 6-11). Offline classes, 70% practical.",
+    url: "https://www.visionitinstitute.com/courses",
+    type: "website",
+  },
 };
 
 export default function CoursesPage() {

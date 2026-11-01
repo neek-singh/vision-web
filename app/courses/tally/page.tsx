@@ -2,8 +2,16 @@ import type { Metadata } from "next";
 import CourseDetailsView, { CourseData } from "@/components/CourseDetailsView";
 
 export const metadata: Metadata = {
-  title: "Tally Prime with GST Course in Pratappur | Vision IT",
+  title: "Tally Prime with GST Course in Pratappur",
   description: "Tally Prime with GST certificate course in Pratappur: 3 months, offline practical accounting, ledger, vouchers, inventory, GST billing. Fee Rs 4,499. Vision IT.",
+  alternates: {
+    canonical: "/courses/tally",
+  },
+  openGraph: {
+    title: "Tally Prime with GST Course in Pratappur",
+    description: "Tally Prime with GST certificate course in Pratappur: 3 months, offline practical accounting, ledger, vouchers, inventory, GST billing. Fee Rs 4,499.",
+    url: "/courses/tally",
+  },
 };
 
 const tallyData: CourseData = {

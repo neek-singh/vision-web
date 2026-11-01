@@ -4,6 +4,14 @@ import CourseDetailsView, { CourseData } from "@/components/CourseDetailsView";
 export const metadata: Metadata = {
   title: "PGDCA Course in Pratappur | Post Graduate Diploma in Computer Applications",
   description: "PGDCA course in Pratappur for graduates: 12 months, offline, 70% practical. C++, DBMS, HTML/CSS, Tally, networking. Fee Rs 16,999. Vision IT.",
+  alternates: {
+    canonical: "/courses/pgdca",
+  },
+  openGraph: {
+    title: "PGDCA Course in Pratappur | Post Graduate Diploma in Computer Applications",
+    description: "PGDCA course in Pratappur for graduates: 12 months, offline, 70% practical. C++, DBMS, HTML/CSS, Tally, networking. Fee Rs 16,999.",
+    url: "/courses/pgdca",
+  },
 };
 
 const pgdcaData: CourseData = {

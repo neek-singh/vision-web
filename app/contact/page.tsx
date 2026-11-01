@@ -4,9 +4,18 @@ import ContactFormClientWrapper from "@/features/contact/components/ContactFormC
 import InteractiveMap from "@/components/InteractiveMap";
 
 export const metadata: Metadata = {
-  title: "Contact Vision IT Computer Institute, Pratappur",
+  title: "Contact Us",
   description:
-    "Contact Vision IT Computer Institute, Shubham Gift Gallery, 2nd Floor, Kadampara Chowk, Pratappur, Surajpur. Call 8103170595 or 9301221630. Open Mon-Sat, 8 AM to 6 PM.",
+    "Contact Vision IT Computer Institute, Shubham Gift Gallery, 2nd Floor, Kadampara Chowk, Pratappur, Surajpur (C.G.). Call 8103170595 or 9301221630. Open Mon-Sat, 8 AM to 6 PM.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact Us",
+    description:
+      "Contact Vision IT Computer Institute, Shubham Gift Gallery, 2nd Floor, Kadampara Chowk, Pratappur. Call 8103170595 or 9301221630.",
+    url: "/contact",
+  },
 };
 
 const WHATSAPP_NUMBER = "918103170595"; 

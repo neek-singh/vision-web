@@ -4,6 +4,14 @@ import CourseDetailsView, { CourseData } from "@/components/CourseDetailsView";
 export const metadata: Metadata = {
   title: "DCA Course in Pratappur | Diploma in Computer Applications",
   description: "DCA course in Pratappur: 12 months, offline, 70% practical. MS Office, C language, database, HTML, Tally, GST. Fee Rs 13,999. Vision IT.",
+  alternates: {
+    canonical: "/courses/dca",
+  },
+  openGraph: {
+    title: "DCA Course in Pratappur | Diploma in Computer Applications",
+    description: "DCA course in Pratappur: 12 months, offline, 70% practical. MS Office, C language, database, HTML, Tally, GST. Fee Rs 13,999.",
+    url: "/courses/dca",
+  },
 };
 
 const dcaData: CourseData = {

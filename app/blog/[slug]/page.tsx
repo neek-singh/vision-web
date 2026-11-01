@@ -36,19 +36,22 @@ export async function generateMetadata(
   }
 
   // Generate absolute URL for the image (required by WhatsApp/Facebook scrapers)
-  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://visionitcomputerinstitute.com";
-  const absoluteImageUrl = blog.image_url 
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.visionitinstitute.com";
+  const absoluteImageUrl = blog.image_url
     ? (blog.image_url.startsWith("http") ? blog.image_url : `${siteUrl}${blog.image_url}`)
-    : `${siteUrl}/og-image.png`;
+    : `${siteUrl}/opengraph-image`;
 
   return {
-    title: `${blog.title} | Vision IT Blog`,
+    title: blog.title,
     description: blog.excerpt || `Read ${blog.title}`,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       title: blog.title,
       description: blog.excerpt || `Read ${blog.title}`,
       type: "article",
-      url: `${siteUrl}/blog/${slug}`,
+      url: `/blog/${slug}`,
       images: [
         {
           url: absoluteImageUrl,
@@ -76,7 +79,7 @@ export default async function BlogPostPage(
   if (!blog || blog.is_published === false) {
     return notFound();
   }
-  
+
   const initialLikes = await getBlogLikes(slug);
   const cleanContent = blog.content.replace(/^<h1>.*?<\/h1>\s*/i, "");
 
@@ -125,10 +128,10 @@ export default async function BlogPostPage(
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
             {blog.published_at || blog.created_at
               ? new Date(blog.published_at || blog.created_at).toLocaleDateString('en-IN', {
-                  day: 'numeric',
-                  month: 'short',
-                  year: 'numeric'
-                })
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+              })
               : "Recent Update"}
           </div>
 
@@ -164,25 +167,25 @@ export default async function BlogPostPage(
       <section className="max-w-3xl mx-auto px-6 mt-16 font-normal">
         <BlogActions blogSlug={slug} initialLikes={initialLikes} blogTitle={blog.title} />
 
-        <div 
+        <div
           className="blog-html-content text-slate-950 text-sm md:text-base leading-relaxed font-normal"
-          dangerouslySetInnerHTML={{ __html: cleanContent }} 
+          dangerouslySetInnerHTML={{ __html: cleanContent }}
         />
 
         <BlogActions blogSlug={slug} initialLikes={initialLikes} blogTitle={blog.title} />
 
         {/* CTA Buttons */}
         <div className="mt-16 pt-8 border-t border-slate-200 flex flex-wrap gap-4 justify-center">
-          <Button 
-            href="/blog" 
+          <Button
+            href="/blog"
             variant="outline"
             className="rounded-2xl px-6 py-2.5 text-xs font-normal text-slate-950 hover:bg-slate-100 hover:text-slate-900 border border-slate-300 transition-all duration-300 hover:-translate-y-0.5"
           >
             ← Back to Blog
           </Button>
-          <Button 
+          <Button
             href="/inquiry"
-            variant="primary" 
+            variant="primary"
             className="rounded-2xl px-6 py-2.5 text-xs font-normal bg-blue-600 hover:bg-blue-500 text-white shadow-md shadow-blue-500/10 hover:shadow-blue-500/25 transition-all duration-300 hover:-translate-y-0.5"
           >
             Start Learning
@@ -196,11 +199,11 @@ export default async function BlogPostPage(
           <h3 className="text-lg md:text-xl font-normal text-slate-950 mb-8 text-center tracking-tight">
             Related Articles
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {relatedBlogs.map((item) => (
-              <Link 
-                href={`/blog/${item.slug}`} 
+              <Link
+                href={`/blog/${item.slug}`}
                 key={item.id}
                 className="bg-white border border-slate-200/60 rounded-2xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.01)] hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col group"
               >
@@ -215,7 +218,7 @@ export default async function BlogPostPage(
                     />
                   </div>
                 )}
-                
+
                 <div className="p-5 flex flex-col flex-grow">
                   <div className="flex items-center justify-between gap-2 mb-1.5">
                     <span className="text-[10px] text-blue-700 font-normal uppercase tracking-wider">
@@ -224,22 +227,22 @@ export default async function BlogPostPage(
                     <span className="text-[10px] text-slate-700 font-normal">
                       {item.published_at || item.created_at
                         ? new Date(item.published_at || item.created_at).toLocaleDateString('en-IN', {
-                            day: 'numeric',
-                            month: 'short',
-                            year: 'numeric'
-                          })
+                          day: 'numeric',
+                          month: 'short',
+                          year: 'numeric'
+                        })
                         : ""}
                     </span>
                   </div>
-                  
+
                   <h4 className="font-normal text-slate-950 group-hover:text-blue-700 transition-colors text-sm sm:text-base leading-snug mb-2 line-clamp-2">
                     {item.title}
                   </h4>
-                  
+
                   <p className="text-slate-950 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-4 font-normal">
                     {item.excerpt}
                   </p>
-                  
+
                   <span className="text-blue-700 font-normal text-xs mt-auto inline-flex items-center gap-1">
                     Read Article
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>

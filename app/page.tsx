@@ -15,8 +15,19 @@ const SocialSection = dynamic(() => import("@/components/HomeSections").then((mo
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Computer Institute in Pratappur | Vision IT",
+  title: {
+    absolute: "Computer Institute in Pratappur | Vision IT",
+  },
   description: "Vision IT Computer Institute, Pratappur (Surajpur). Offline BCC, DCA, ADCA and PGDCA courses with 70% practical lab training. Call 8103170595.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Computer Institute in Pratappur | Vision IT",
+    description: "Vision IT Computer Institute, Pratappur (Surajpur). Offline BCC, DCA, ADCA and PGDCA courses with 70% practical lab training. Call 8103170595.",
+    url: "https://www.visionitinstitute.com",
+    type: "website",
+  },
 };
 
 async function getBlogs() {

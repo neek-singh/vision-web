@@ -7,9 +7,16 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog & Tech Updates | Vision IT Computer Institute",
-  description: "Stay updated with the latest computer technology trends, programming tutorials, career tips, and official announcements from Vision IT Computer Institute in Pratappur.",
-  keywords: "vision it blog, computer tutorials, learn programming, pratappur computer coaching, IT news",
+  title: "Computer Education & Career Blog",
+  description: "Computer education updates, course guidance, career tips, and announcements from Vision IT Computer Institute in Pratappur.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Computer Education & Career Blog",
+    description: "Computer education updates, course guidance, career tips, and announcements from Vision IT Computer Institute in Pratappur.",
+    url: "/blog",
+  },
 };
 
 export const revalidate = 0;
@@ -96,10 +103,10 @@ export default async function BlogListingPage() {
                     <span className="text-[11px] text-blue-700 mb-1.5 font-normal">
                       {blog.published_at || blog.created_at
                         ? new Date(blog.published_at || blog.created_at).toLocaleDateString('en-IN', {
-                            day: 'numeric',
-                            month: 'short',
-                            year: 'numeric'
-                          })
+                          day: 'numeric',
+                          month: 'short',
+                          year: 'numeric'
+                        })
                         : "Recent"}
                     </span>
 
@@ -112,7 +119,7 @@ export default async function BlogListingPage() {
                     </p>
 
                     <span className="text-blue-700 font-normal text-xs mt-auto inline-flex items-center gap-1">
-                      Read Article 
+                      Read Article
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </span>
                   </CardContent>

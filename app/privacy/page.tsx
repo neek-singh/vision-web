@@ -2,9 +2,18 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Vision IT Computer Institute",
+  title: "Privacy Policy",
   description:
     "Learn how Vision IT Computer Institute collects, uses, and protects your personal data.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy",
+    description:
+      "Learn how Vision IT Computer Institute collects, uses, and protects your personal data.",
+    url: "/privacy",
+  },
 };
 
 export default function PrivacyPage() {

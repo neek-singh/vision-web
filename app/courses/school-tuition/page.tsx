@@ -2,8 +2,16 @@ import type { Metadata } from "next";
 import CourseDetailsView, { CourseData } from "@/components/CourseDetailsView";
 
 export const metadata: Metadata = {
-  title: "School Computer Tuition in Pratappur (Class 6 to 11) | Vision IT",
+  title: "School Computer Tuition in Pratappur (Class 6th–11th)",
   description: "Computer tuition classes for school students (Class 6th to 11th) in Pratappur. School curriculum, practical lab, typing, MS Office, digital safety. Fee Rs 599/month. Vision IT.",
+  alternates: {
+    canonical: "/courses/school-tuition",
+  },
+  openGraph: {
+    title: "School Computer Tuition in Pratappur (Class 6th–11th)",
+    description: "Computer tuition classes for school students (Class 6th to 11th) in Pratappur. School curriculum, practical lab, typing, MS Office, digital safety. Fee Rs 599/month.",
+    url: "/courses/school-tuition",
+  },
 };
 
 const schoolTuitionData: CourseData = {
