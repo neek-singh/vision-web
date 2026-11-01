@@ -89,13 +89,13 @@ export default function CoursesPage() {
       {/* Header Banner */}
       <section className="bg-white border-b border-slate-200/80 pt-28 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 font-semibold rounded-full text-xs mb-4 border border-blue-200/50">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 font-normal rounded-full text-xs mb-4 border border-blue-200/50">
             Offline Training • Pratappur
           </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal text-slate-950 tracking-tight mb-4">
             Computer Courses in Pratappur
           </h1>
-          <p className="text-slate-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-medium leading-relaxed">
+          <p className="text-slate-950 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
             Practical, career-focused computer courses and school batches. Every program is taught offline with direct hands-on practice in our computer lab.
           </p>
         </div>
@@ -122,19 +122,19 @@ export default function CoursesPage() {
         {/* Guidance Box: Which Course Should You Choose? */}
         <div className="mt-12 bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm max-w-4xl mx-auto">
           <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+            <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
               <HelpCircle className="w-5 h-5" />
             </div>
             <div className="space-y-3">
-              <h2 className="text-lg sm:text-xl font-bold text-slate-900">
+              <h2 className="text-lg sm:text-xl font-normal text-slate-950">
                 Which Course Should You Choose?
               </h2>
-              <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
-                If you are completely new to computers, start with <strong>BCC</strong> (3 months). For school students (Class 6th–11th), our <strong>School Tuition</strong> batch covers typing, MS Office, and academic curriculum. For career accounting, join <strong>Tally Prime with GST</strong> (3 months). After completing 12th, <strong>DCA</strong> or <strong>ADCA</strong> (12 months) is recommended. For college graduates, <strong>PGDCA</strong> (12 months) provides an advanced professional qualification.
+              <p className="text-slate-950 text-sm sm:text-base leading-relaxed font-normal">
+                If you are completely new to computers, start with BCC (3 months). For school students (Class 6th–11th), our School Tuition batch covers typing, MS Office, and academic curriculum. For career accounting, join Tally Prime with GST (3 months). After completing 12th, DCA or ADCA (12 months) is recommended. For college graduates, PGDCA (12 months) provides an advanced professional qualification.
               </p>
-              <div className="pt-2 text-xs sm:text-sm text-slate-500 font-medium">
-                Fees include Admission, Tuition, and Exam fees. For flexible installment options, please call:{" "}
-                <a href="tel:+918103170595" className="text-blue-600 font-bold hover:underline inline-flex items-center gap-1">
+              <div className="pt-2 text-xs sm:text-sm text-slate-600 font-normal italic">
+                *Note: Fees include Admission, Tuition, and Exam fees. For flexible installment options, please call:{" "}
+                <a href="tel:+918103170595" className="text-blue-700 not-italic hover:underline inline-flex items-center gap-1">
                   <PhoneCall className="w-3.5 h-3.5" /> +91 81031 70595
                 </a>
               </div>
@@ -142,10 +142,10 @@ export default function CoursesPage() {
           </div>
         </div>
 
-        {/* Drishti Certificate Disclaimer */}
-        <div className="mt-8 text-center text-xs text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+        {/* Drishti Certificate Disclaimer (Note) */}
+        <div className="mt-8 text-center text-xs text-slate-500 max-w-2xl mx-auto font-normal italic leading-relaxed">
           <p>
-            ℹ️ Certificate is issued by Drishti Computer Education. Please check with the employer or institution where you plan to use it.
+            *Note: Certificate is issued by Drishti Computer Education. Please check with the employer or institution where you plan to use it.
           </p>
         </div>
       </section>

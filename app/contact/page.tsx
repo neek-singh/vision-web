@@ -28,13 +28,13 @@ function InfoCard({
   href?: string;
 }) {
   const content = (
-    <div className="group flex items-start gap-3.5 p-4 bg-white rounded-xl shadow-sm border border-slate-200/60 hover:shadow-lg hover:-translate-y-0.5 hover:border-blue-200 transition-all duration-300">
-      <div className="w-9 h-9 bg-slate-50 text-slate-600 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+    <div className="group flex items-start gap-3.5 p-4 bg-white rounded-xl shadow-sm border border-slate-200/80 hover:shadow-lg hover:-translate-y-0.5 hover:border-blue-200 transition-all duration-300">
+      <div className="w-9 h-9 bg-slate-50 text-slate-700 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
         {icon}
       </div>
       <div>
-        <p className="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-0.5">{title}</p>
-        <p className="text-slate-900 font-medium text-xs md:text-sm leading-relaxed">{value}</p>
+        <p className="text-[10px] font-normal text-blue-700 uppercase tracking-widest mb-0.5">{title}</p>
+        <p className="text-slate-950 font-normal text-xs md:text-sm leading-relaxed">{value}</p>
       </div>
     </div>
   );
@@ -50,26 +50,26 @@ function InfoCard({
 
 export default function ContactPage() {
   return (
-    <main className="flex-col w-full bg-slate-50 min-h-screen pb-16 md:pb-24 overflow-x-hidden">
+    <main className="flex-col w-full bg-slate-50 min-h-screen pb-16 md:pb-24 overflow-x-hidden font-normal text-slate-950">
 
       {/* Hero Section */}
-      <section className="relative bg-white text-slate-900 rounded-b-3xl overflow-hidden pt-20 md:pt-24 pb-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80 shadow-sm">
+      <section className="relative bg-white text-slate-950 rounded-b-3xl overflow-hidden pt-20 md:pt-24 pb-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80 shadow-sm">
         {/* Soft Background Gradients */}
         <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-blue-50/80 via-white to-white pointer-events-none" />
         <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[80px] pointer-events-none" />
         <div className="absolute top-48 -left-32 w-[400px] h-[400px] bg-indigo-100/40 rounded-full blur-[80px] pointer-events-none" />
 
         <div className="container mx-auto max-w-4xl text-center relative z-10">
-          <div className="inline-flex items-center gap-2 mb-3.5 px-2.5 py-0.5 bg-blue-50 text-blue-700 font-semibold rounded-full text-xs border border-blue-200/60 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="inline-flex items-center gap-2 mb-3.5 px-2.5 py-0.5 bg-blue-50 text-blue-700 font-normal rounded-full text-xs border border-blue-200/60 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
             We're Here to Help
           </div>
 
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold tracking-tight mb-4 leading-tight animate-in fade-in slide-in-from-bottom-6 duration-700">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-normal text-slate-950 tracking-tight mb-4 leading-tight animate-in fade-in slide-in-from-bottom-6 duration-700">
             Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Touch</span>
           </h1>
 
-          <p className="text-sm md:text-base text-black max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150">
+          <p className="text-sm md:text-base text-slate-950 max-w-2xl mx-auto leading-relaxed font-normal animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150">
             Have questions about our courses? Want to enroll? We'd love to hear from you. Reach out and we'll respond promptly.
           </p>
         </div>
@@ -82,8 +82,8 @@ export default function ContactPage() {
           {/* Left: Contact Info */}
           <div className="lg:col-span-2 space-y-6">
             <div>
-              <h2 className="text-xl font-bold text-slate-900 mb-2 tracking-tight">Contact Information</h2>
-              <p className="text-slate-500 text-xs md:text-sm leading-relaxed">
+              <h2 className="text-xl font-normal text-slate-950 mb-2 tracking-tight">Contact Information</h2>
+              <p className="text-slate-950 text-xs md:text-sm leading-relaxed font-normal">
                 Reach us via phone, email, or visit us directly at our institute in Pratappur.
               </p>
             </div>
@@ -137,7 +137,7 @@ export default function ContactPage() {
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full h-11 bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold text-sm rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 outline-none"
+                className="flex items-center justify-center gap-2 w-full h-11 bg-[#25D366] hover:bg-[#20bd5a] text-white font-normal text-sm rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 outline-none"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
@@ -146,7 +146,7 @@ export default function ContactPage() {
               </a>
               <a
                 href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}
-                className="flex items-center justify-center gap-2 w-full h-11 bg-white text-slate-700 hover:text-blue-700 hover:bg-slate-50 font-semibold text-sm rounded-xl shadow-sm border border-slate-200 hover:border-blue-200 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 outline-none"
+                className="flex items-center justify-center gap-2 w-full h-11 bg-white text-slate-950 hover:text-blue-700 hover:bg-slate-50 font-normal text-sm rounded-xl shadow-sm border border-slate-300 hover:border-blue-200 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 outline-none"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                 Call Us Now
@@ -156,8 +156,8 @@ export default function ContactPage() {
 
           {/* Right: Form Area */}
           <div className="lg:col-span-3 bg-white p-6 md:p-8 rounded-2xl shadow-xl shadow-slate-200/40 border border-slate-100">
-            <h2 className="text-xl font-bold text-slate-900 mb-2 tracking-tight">Send Us a Message</h2>
-            <p className="text-slate-500 text-xs md:text-sm mb-6">Fill out the form below and our team will get back to you within 24 hours.</p>
+            <h2 className="text-xl font-normal text-slate-950 mb-2 tracking-tight">Send Us a Message</h2>
+            <p className="text-slate-950 text-xs md:text-sm mb-6 font-normal">Fill out the form below and our team will get back to you within 24 hours.</p>
             <ContactFormClientWrapper />
           </div>
         </div>
@@ -176,17 +176,17 @@ export default function ContactPage() {
           <div className="absolute -left-24 -bottom-24 w-72 h-72 bg-indigo-600/30 rounded-full blur-[80px]" />
 
           <div className="relative z-10">
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-white mb-3 tracking-tight">Ready to Start Learning?</h2>
-            <p className="text-slate-300 text-sm md:text-base mb-6 max-w-lg mx-auto leading-relaxed">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-normal text-white mb-3 tracking-tight">Ready to Start Learning?</h2>
+            <p className="text-white text-sm md:text-base mb-6 max-w-lg mx-auto leading-relaxed font-normal">
               Join Vision IT and take the first step toward a successful tech career today. Expert mentorship awaits.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <Button href="/inquiry" className="w-full sm:w-auto px-6 h-11 bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 rounded-full font-semibold text-sm transition-all duration-300">
+              <Button href="/inquiry" className="w-full sm:w-auto px-6 h-11 bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 rounded-full font-normal text-sm transition-all duration-300">
                 Apply Now
               </Button>
               <Button
                 href="/courses"
-                className="w-full sm:w-auto px-6 h-11 rounded-full bg-white/10 text-white border-slate-700 hover:bg-white/20 hover:border-slate-600 font-semibold text-sm backdrop-blur-md transition-all duration-300"
+                className="w-full sm:w-auto px-6 h-11 rounded-full bg-white/10 text-white border-slate-700 hover:bg-white/20 hover:border-slate-600 font-normal text-sm backdrop-blur-md transition-all duration-300"
               >
                 Browse Courses
               </Button>

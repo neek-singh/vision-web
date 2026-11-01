@@ -11,21 +11,30 @@
     width: 100%;
   }
   body {
-    @apply antialiased text-gray-900 bg-gray-50 min-h-screen flex flex-col;
+    @apply antialiased text-slate-950 bg-gray-50 min-h-screen flex flex-col font-normal;
     overflow-x: hidden;
     width: 100%;
     position: relative;
+    color: #020617;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 500;
+    color: #020617;
+  }
+  p, span, li, a, label, input, button {
+    color: inherit;
   }
 }
 
 /* 📝 Blog HTML Content Styles */
+.blog-html-content {
+  color: #020617;
+}
 .blog-html-content h1 {
   font-size: 1.5rem;
-  font-weight: 800;
-  color: #0f172a;
+  font-weight: 600;
+  color: #020617;
   margin-top: 1.75rem;
   margin-bottom: 0.75rem;
   line-height: 1.35;
@@ -37,8 +46,8 @@
 }
 .blog-html-content h2 {
   font-size: 1.25rem;
-  font-weight: 700;
-  color: #0f172a;
+  font-weight: 600;
+  color: #020617;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
   line-height: 1.35;
@@ -50,8 +59,8 @@
 }
 .blog-html-content h3 {
   font-size: 1.125rem;
-  font-weight: 600;
-  color: #0f172a;
+  font-weight: 500;
+  color: #020617;
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
   line-height: 1.35;
@@ -62,31 +71,53 @@
   }
 }
 .blog-html-content p {
+  color: #020617;
   margin-bottom: 1.25rem;
   line-height: 1.75;
+  font-weight: 400;
 }
 .blog-html-content ul {
   list-style-type: disc;
   padding-left: 1.5rem;
   margin-bottom: 1.25rem;
+  color: #020617;
 }
 .blog-html-content ol {
   list-style-type: decimal;
   padding-left: 1.5rem;
   margin-bottom: 1.25rem;
+  color: #020617;
 }
 .blog-html-content li {
   margin-bottom: 0.5rem;
+  color: #020617;
+  font-weight: 400;
+}
+.blog-html-content strong,
+.blog-html-content b {
+  font-weight: normal;
+  color: #020617;
+}
+.blog-html-content table {
+  color: #020617;
+}
+.blog-html-content th {
+  font-weight: 500;
+  color: #020617;
+}
+.blog-html-content td {
+  font-weight: 400;
+  color: #020617;
 }
 .blog-html-content a {
-  color: #2563eb;
+  color: #1d4ed8;
   text-decoration: underline;
 }
 .blog-html-content blockquote {
-  border-left: 4px solid #cbd5e1;
+  border-left: 4px solid #94a3b8;
   padding-left: 1rem;
   font-style: italic;
-  color: #475569;
+  color: #1e293b;
   margin-bottom: 1.25rem;
 }
 .blog-html-content img {

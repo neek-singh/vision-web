@@ -27,24 +27,24 @@ export function FAQSection() {
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 max-w-4xl">
       <div className="text-center mb-14">
-        <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 tracking-tight">Frequently Asked Questions</h2>
-        <p className="text-slate-600 font-medium text-sm md:text-base max-w-2xl mx-auto">
+        <h2 className="text-xl md:text-2xl font-normal text-slate-950 mb-3 tracking-tight">Frequently Asked Questions</h2>
+        <p className="text-slate-950 font-normal text-sm md:text-base max-w-2xl mx-auto">
           Got questions? Here are honest, clear answers about our courses and admissions.
         </p>
       </div>
       <div className="space-y-4">
         {faqs.map(({ q, a }, i) => (
-          <details key={i} className="group bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
-            <summary className="flex items-center justify-between px-4 sm:px-6 py-4 cursor-pointer list-none select-none font-bold text-slate-900 text-sm md:text-base hover:bg-blue-50/50 transition-colors">
+          <details key={i} className="group bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+            <summary className="flex items-center justify-between px-4 sm:px-6 py-4 cursor-pointer list-none select-none font-normal text-slate-950 text-sm md:text-base hover:bg-blue-50/50 transition-colors">
               <span className="pr-4">{q}</span>
               <span className="w-8 h-8 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0 ml-4 group-open:rotate-45 transition-transform duration-300 text-lg font-light">+</span>
             </summary>
-            <div className="px-6 pb-5 pt-3 text-slate-700 font-medium text-xs md:text-sm leading-relaxed border-t border-gray-50">{a}</div>
+            <div className="px-6 pb-5 pt-3 text-slate-950 font-normal text-xs md:text-sm leading-relaxed border-t border-gray-100">{a}</div>
           </details>
         ))}
       </div>
       <div className="text-center mt-10">
-        <Button href="/contact" variant="outline" className="rounded-full px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold border-slate-200 text-slate-700 hover:text-blue-700">
+        <Button href="/contact" variant="outline" className="rounded-full px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-normal border-slate-300 text-slate-950 hover:text-blue-700">
           Have More Questions? Contact Us →
         </Button>
       </div>
@@ -54,31 +54,29 @@ export function FAQSection() {
 
 export function SocialSection() {
   return (
-    <section className="relative py-24 overflow-hidden z-10 border-y border-slate-100 bg-slate-50/50">
+    <section className="relative py-24 overflow-hidden z-10 border-y border-slate-200 bg-slate-50/50">
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-pink-400/10 rounded-full blur-[100px] pointer-events-none"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px] pointer-events-none"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-64 bg-indigo-400/5 blur-[120px] pointer-events-none"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
 
-        <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 tracking-tight">
+        <h2 className="text-xl md:text-2xl font-normal text-slate-950 mb-4 tracking-tight">
           Stay Connected with <br className="hidden md:block" />
           <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent inline-block pb-1">
             @visionitinstitute
           </span>
         </h2>
 
-        <p className="text-slate-900 text-sm md:text-base mb-12 max-w-xl mx-auto font-medium">
+        <p className="text-slate-950 text-sm md:text-base mb-12 max-w-xl mx-auto font-normal">
           Follow us for daily coding tips, student success stories, course updates, and behind-the-scenes campus life in Pratappur.
         </p>
-
-
 
         <a
           href="https://www.instagram.com/visionitinstitute"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 mb-6 px-5 py-2 bg-white/60 backdrop-blur-md text-pink-600 font-bold rounded-full  hover:shadow-xl hover:shadow-pink-500/40 hover:-translate-y-1 transition-all duration-300 text-base group"
+          className="inline-flex items-center justify-center gap-2 mb-6 px-5 py-2 bg-white text-pink-600 font-normal rounded-full border border-pink-200 hover:shadow-xl hover:shadow-pink-500/40 hover:-translate-y-1 transition-all duration-300 text-base group"
         >
           <svg className="w-5 h-5 transition-transform group-hover:rotate-12" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />

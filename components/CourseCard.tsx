@@ -39,36 +39,36 @@ export default function CourseCard({
       {/* Card Body */}
       <div className="p-5 flex flex-col flex-grow space-y-4">
         {/* Badge */}
-        <span className="inline-block px-3 py-1 text-[10px] font-bold rounded-full bg-[#f1f5f9] text-[#475569] w-max uppercase tracking-wider">
+        <span className="inline-block px-3 py-1 text-[11px] font-normal rounded-full bg-slate-100 text-slate-950 w-max uppercase tracking-wider border border-slate-200">
           {badge}
         </span>
 
         {/* Title */}
-        <h3 className="text-base sm:text-lg font-serif font-bold text-slate-900 leading-snug line-clamp-2 min-h-[3.25rem] flex items-center">
+        <h3 className="text-base sm:text-lg font-normal text-slate-950 leading-snug line-clamp-2 min-h-[3.25rem] flex items-center">
           {title}
         </h3>
 
         {/* Stats */}
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-500 font-semibold">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-950 font-normal">
           {duration && (
             <div className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-slate-400" />
+              <Clock className="w-4 h-4 text-slate-800" />
               <span>{duration}</span>
             </div>
           )}
           <div className="flex items-center gap-1.5">
-            <Globe className="w-4 h-4 text-slate-400" />
+            <Globe className="w-4 h-4 text-slate-800" />
             <span>{mode}</span>
           </div>
         </div>
 
         {/* Divider */}
-        <hr className="border-slate-100" />
+        <hr className="border-slate-200" />
 
         {/* Bottom price and actions */}
         <div className="mt-auto flex items-center justify-between pt-2">
           {/* Price */}
-          <span className="text-xl font-serif font-bold text-slate-900">
+          <span className="text-xl font-normal text-slate-950">
             {price || ""}
           </span>
 
@@ -77,14 +77,14 @@ export default function CourseCard({
             {detailsHref && (
               <Link
                 href={detailsHref}
-                className="px-4 py-2 border border-slate-200 hover:border-slate-300 text-slate-800 font-semibold text-xs rounded-lg transition-colors bg-white hover:bg-slate-50"
+                className="px-4 py-2 border border-slate-300 hover:border-slate-400 text-slate-950 font-normal text-xs rounded-lg transition-colors bg-white hover:bg-slate-50"
               >
                 Details
               </Link>
             )}
             <Link
               href={applyHref}
-              className="px-4 py-2 bg-black hover:bg-slate-900 text-white font-semibold text-xs rounded-lg transition-colors"
+              className="px-4 py-2 bg-slate-950 hover:bg-black text-white font-normal text-xs rounded-lg transition-colors"
             >
               Apply
             </Link>

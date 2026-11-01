@@ -75,13 +75,13 @@ export default function Header() {
               priority
             />
             <div className="flex flex-col">
-              <span className={`text-xl md:text-2xl font-black tracking-tight leading-none transition-colors duration-300 ${
-                isAboutPageTransparent ? "text-white" : "text-black"
+              <span className={`text-xl md:text-2xl font-normal tracking-tight leading-none transition-colors duration-300 ${
+                isAboutPageTransparent ? "text-white" : "text-slate-950"
               }`}>
                 Vision<span className="text-blue-600">IT</span>
               </span>
-              <span className={`text-[9px] font-black tracking-wider mt-1 uppercase transition-colors duration-300 ${
-                isAboutPageTransparent ? "text-slate-200" : "text-black"
+              <span className={`text-[9px] font-normal tracking-wider mt-1 uppercase transition-colors duration-300 ${
+                isAboutPageTransparent ? "text-white" : "text-slate-950"
               }`}>
                 Computer Institute
               </span>
@@ -101,10 +101,10 @@ export default function Header() {
 
               {/* More Dropdown */}
               <div className="relative group">
-                <button className={`group relative flex items-center gap-1 text-sm font-semibold transition-colors py-2 ${
+                <button className={`group relative flex items-center gap-1 text-sm font-normal transition-colors py-2 ${
                   isAboutPageTransparent
-                    ? "text-white/80 hover:text-white"
-                    : "text-black hover:text-blue-600"
+                    ? "text-white hover:text-white"
+                    : "text-slate-950 hover:text-blue-700"
                 }`}>
                   More
                   <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
@@ -112,10 +112,10 @@ export default function Header() {
                     isAboutPageTransparent ? "bg-white" : "bg-blue-600"
                   }`} />
                 </button>
-                <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-slate-100 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 flex flex-col overflow-hidden py-2 z-50">
-                  <Link href="/learn" className="px-5 py-2.5 text-sm font-semibold text-black hover:bg-slate-50 hover:text-blue-600 transition-colors flex items-center justify-between">
+                <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-slate-200 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 flex flex-col overflow-hidden py-2 z-50">
+                  <Link href="/learn" className="px-5 py-2.5 text-sm font-normal text-slate-950 hover:bg-slate-50 hover:text-blue-700 transition-colors flex items-center justify-between">
                     Student Login
-                    <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
+                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
                   </Link>
                 </div>
               </div>
@@ -123,11 +123,11 @@ export default function Header() {
 
             {/* 👤 Apply Now Button */}
             <div className={`pl-4 border-l transition-colors duration-300 ${
-              isAboutPageTransparent ? "border-white/20" : "border-slate-200"
+              isAboutPageTransparent ? "border-white/40" : "border-slate-300"
             }`}>
               <Link
                 href="/inquiry"
-                className="hidden md:inline-flex items-center justify-center h-10 px-6 rounded-full text-sm font-semibold text-white bg-blue-600 shadow-sm hover:bg-blue-500 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 whitespace-nowrap"
+                className="hidden md:inline-flex items-center justify-center h-10 px-6 rounded-full text-sm font-normal text-white bg-blue-600 shadow-sm hover:bg-blue-500 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 whitespace-nowrap"
               >
                 Apply Now
               </Link>
@@ -138,7 +138,7 @@ export default function Header() {
           <div className="md:hidden flex items-center gap-3">
             <Link
               href="/inquiry"
-              className="inline-flex items-center justify-center h-9 px-4 rounded-full text-xs font-semibold text-white bg-blue-600 shadow-sm hover:bg-blue-500 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 whitespace-nowrap"
+              className="inline-flex items-center justify-center h-9 px-4 rounded-full text-xs font-normal text-white bg-blue-600 shadow-sm hover:bg-blue-500 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 whitespace-nowrap"
             >
               Apply Now
             </Link>
@@ -147,8 +147,8 @@ export default function Header() {
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 -mr-2 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
                 isAboutPageTransparent
-                  ? "text-white/80 hover:text-white hover:bg-white/10"
-                  : "text-black hover:bg-slate-100 hover:text-blue-600"
+                  ? "text-white hover:text-white hover:bg-white/10"
+                  : "text-slate-950 hover:bg-slate-100 hover:text-blue-700"
               }`}
               aria-label="Toggle menu"
             >
@@ -168,8 +168,8 @@ export default function Header() {
 
       {/* 📱 Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-slate-100 shadow-xl animate-in fade-in slide-in-from-top-4 duration-200">
-          <div className="flex flex-col px-4 py-6 space-y-1 bg-slate-50/50">
+        <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-slate-200 shadow-xl animate-in fade-in slide-in-from-top-4 duration-200">
+          <div className="flex flex-col px-4 py-6 space-y-1 bg-white">
             <MobileLink href="/" onClick={handleClose}>Home</MobileLink>
             <MobileLink href="/courses" onClick={handleClose}>Courses</MobileLink>
             <MobileLink href="/about" onClick={handleClose}>About</MobileLink>
@@ -177,7 +177,7 @@ export default function Header() {
             <MobileLink href="/blog" onClick={handleClose}>Blog</MobileLink>
             <MobileLink href="/contact" onClick={handleClose}>Contact</MobileLink>
             <MobileLink href="/verify" onClick={handleClose}>Verify</MobileLink>
-            <div className="my-2 border-t border-slate-200/60"></div>
+            <div className="my-2 border-t border-slate-200"></div>
             <MobileLink href="/learn" onClick={handleClose}>Student Login</MobileLink>
           </div>
         </div>
@@ -197,10 +197,10 @@ function NavLink({ href, children, isTransparent }: NavLinkProps) {
   return (
     <Link
       href={href}
-      className={`group relative text-sm font-semibold transition-colors duration-300 ${
+      className={`group relative text-sm font-normal transition-colors duration-300 ${
         isTransparent
-          ? "text-white/80 hover:text-white"
-          : "text-black hover:text-blue-600"
+          ? "text-white hover:text-white"
+          : "text-slate-950 hover:text-blue-700"
       }`}
     >
       {children}
@@ -222,7 +222,7 @@ function MobileLink({ href, children, onClick }: MobileLinkProps) {
     <Link
       href={href}
       onClick={onClick}
-      className="block w-full px-4 py-3 rounded-xl text-base font-medium text-black hover:bg-white hover:text-blue-600 hover:shadow-sm transition-all duration-200"
+      className="block w-full px-4 py-3 rounded-xl text-base font-normal text-slate-950 hover:bg-slate-50 hover:text-blue-700 transition-all duration-200"
     >
       {children}
     </Link>

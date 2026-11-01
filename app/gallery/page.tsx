@@ -48,25 +48,25 @@ export default async function GalleryPage() {
         <div className="container mx-auto px-6 lg:px-8 text-center relative z-10">
 
           {/* Top Pill Badge */}
-          <div className="inline-flex items-center gap-2 mb-3.5 px-2.5 py-0.5 bg-blue-50 text-blue-700 font-semibold rounded-full text-xs border border-blue-200/60 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="inline-flex items-center gap-2 mb-3.5 px-2.5 py-0.5 bg-blue-50 text-blue-700 font-normal rounded-full text-xs border border-blue-200/60 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round">
               <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" /><circle cx="12" cy="13" r="3" />
             </svg>
             Our Moments
           </div>
 
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold text-slate-900 tracking-tight mb-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-normal text-slate-950 tracking-tight mb-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
             Campus <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Gallery</span>
           </h1>
 
-          <p className="text-sm md:text-base text-black max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150">
+          <p className="text-sm md:text-base text-slate-950 max-w-2xl mx-auto leading-relaxed font-normal animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150">
             A glimpse into the vibrant life at Vision IT Computer Institute — events, workshops, achievements, and more.
           </p>
 
           {/* Photo Count Badge */}
           {images && images.length > 0 && (
             <div className="mt-4 flex justify-center animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100/80 border border-slate-200/60 text-slate-600 font-medium text-xs shadow-sm backdrop-blur-sm">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 border border-slate-200 text-slate-950 font-normal text-xs shadow-sm backdrop-blur-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round">
                   <rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
                 </svg>

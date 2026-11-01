@@ -212,7 +212,7 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
           {/* Header */}
           <div className="flex items-center gap-3">
             <ShieldCheck className="w-5 h-5 text-slate-900 shrink-0" />
-            <h2 className="text-base sm:text-lg font-serif font-bold text-slate-900 tracking-tight">
+            <h2 className="text-base sm:text-lg font-serif font-normal text-slate-950 tracking-tight">
               Secure Verification Portal
             </h2>
           </div>
@@ -221,19 +221,19 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
           <form onSubmit={(e) => handleSearch(e)} className="space-y-4">
             {/* Document Type Dropdown */}
             <div className="flex flex-col">
-              <label className="text-slate-500 text-xs font-semibold mb-1.5 block">
+              <label className="text-slate-950 text-xs font-normal mb-1.5 block">
                 Document Type
               </label>
               <div className="relative">
                 <select
                   value={docType}
                   onChange={(e) => setDocType(e.target.value)}
-                  className="w-full appearance-none bg-slate-50 border border-slate-200 rounded-lg pl-4 pr-10 py-2.5 text-xs md:text-sm font-medium text-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full appearance-none bg-slate-50 border border-slate-200 rounded-lg pl-4 pr-10 py-2.5 text-xs md:text-sm font-normal text-slate-950 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="Official Marksheet">Official Marksheet</option>
                   <option value="Official Certificate">Official Certificate</option>
                 </select>
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-600 pointer-events-none">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                 </div>
               </div>
@@ -241,7 +241,7 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
 
             {/* Roll Number or Certificate ID */}
             <div className="flex flex-col">
-              <label className="text-slate-500 text-xs font-semibold mb-1.5 block">
+              <label className="text-slate-950 text-xs font-normal mb-1.5 block">
                 Roll Number or Certificate ID
               </label>
               <input
@@ -249,15 +249,15 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
                 required
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="e.g., CAI-2024-8923"
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-xs md:text-sm font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="e.g., DCE/25/041-001"
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-xs md:text-sm font-normal text-slate-950 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                 disabled={loading}
               />
             </div>
 
             {/* Date of Birth (Compulsory) */}
             <div className="flex flex-col">
-              <label className="text-slate-700 text-xs font-semibold mb-1.5 block">
+              <label className="text-slate-950 text-xs font-normal mb-1.5 block">
                 Student Date of Birth (Compulsory) *
               </label>
               <div className="relative">
@@ -266,7 +266,7 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
                   required
                   value={dob}
                   onChange={(e) => setDob(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-4 pr-10 py-2.5 text-xs md:text-sm font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-4 pr-10 py-2.5 text-xs md:text-sm font-normal text-slate-950 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                   disabled={loading}
                 />
               </div>
@@ -276,7 +276,7 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
             <button
               type="submit"
               disabled={loading || !query.trim() || !dob.trim()}
-              className="w-full h-11 bg-black hover:bg-slate-900 text-white rounded-lg text-xs font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+              className="w-full h-11 bg-black hover:bg-slate-900 text-white rounded-lg text-xs font-normal transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-sm cursor-pointer"
             >
               {loading ? (
                 <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -293,7 +293,7 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
           <hr className="border-slate-100" />
 
           {/* Verification note */}
-          <div className="flex items-start gap-2.5 text-xs text-slate-500 leading-relaxed font-medium">
+          <div className="flex items-start gap-2.5 text-xs text-slate-950 leading-relaxed font-normal">
             <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5 text-blue-600" />
             <span>
               Certificate Drishti Computer Education ke dwara jaari hota hai. Ye page Vision IT branch ke records dikhata hai.
@@ -305,19 +305,19 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
         <div className="lg:col-span-4 space-y-6">
           {/* Card 1: How it Works */}
           <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.02)] space-y-5">
-            <h3 className="text-sm font-bold text-slate-900 tracking-tight">
+            <h3 className="text-sm font-normal text-slate-950 tracking-tight">
               How it Works
             </h3>
             
             <div className="space-y-4">
               {/* Step 1 */}
               <div className="flex gap-3">
-                <div className="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                <div className="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 text-blue-700 flex items-center justify-center text-xs font-normal shrink-0 mt-0.5">
                   1
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-800">Locate the ID</h4>
-                  <p className="text-[11px] text-slate-500 leading-relaxed mt-1">
+                  <h4 className="text-xs font-normal text-slate-950">Locate the ID</h4>
+                  <p className="text-[11px] text-slate-950 leading-relaxed mt-1 font-normal">
                     Find the unique Certificate ID or Student Roll Number printed on the top right of the physical document.
                   </p>
                 </div>
@@ -325,12 +325,12 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
 
               {/* Step 2 */}
               <div className="flex gap-3">
-                <div className="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                <div className="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 text-blue-700 flex items-center justify-center text-xs font-normal shrink-0 mt-0.5">
                   2
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-800">Enter Details</h4>
-                  <p className="text-[11px] text-slate-500 leading-relaxed mt-1">
+                  <h4 className="text-xs font-normal text-slate-950">Enter Details</h4>
+                  <p className="text-[11px] text-slate-950 leading-relaxed mt-1 font-normal">
                     Input the details exactly as they appear on the document.
                   </p>
                 </div>
@@ -338,12 +338,12 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
 
               {/* Step 3 */}
               <div className="flex gap-3">
-                <div className="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                <div className="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 text-blue-700 flex items-center justify-center text-xs font-normal shrink-0 mt-0.5">
                   3
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-800">Instant Verification</h4>
-                  <p className="text-[11px] text-slate-500 leading-relaxed mt-1">
+                  <h4 className="text-xs font-normal text-slate-950">Instant Verification</h4>
+                  <p className="text-[11px] text-slate-950 leading-relaxed mt-1 font-normal">
                     A digital copy of the verified record will be displayed immediately upon successful matching.
                   </p>
                 </div>
@@ -358,17 +358,17 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
             </div>
             
             <div className="space-y-1">
-              <h3 className="text-sm font-bold text-white tracking-tight">
+              <h3 className="text-sm font-normal text-white tracking-tight">
                 Need Assistance?
               </h3>
-              <p className="text-slate-400 text-[11px] leading-relaxed max-w-[200px]">
+              <p className="text-slate-300 text-[11px] leading-relaxed max-w-[200px] font-normal">
                 If you encounter issues verifying a valid document, our academic records team can help.
               </p>
             </div>
 
             <Link
               href="/contact"
-              className="w-full py-2.5 bg-white hover:bg-slate-100 text-slate-900 font-bold text-xs rounded-lg transition-colors text-center inline-block"
+              className="w-full py-2.5 bg-white hover:bg-slate-100 text-slate-950 font-normal text-xs rounded-lg transition-colors text-center inline-block"
             >
               Contact Registrar
             </Link>

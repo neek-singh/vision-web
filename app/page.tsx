@@ -64,12 +64,12 @@ export default async function Home() {
           </Link>
 
           {/* H1 Headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-slate-950 tracking-tight leading-tight mb-6">
             Computer Institute in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Pratappur, Surajpur</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-slate-700 text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed mb-8">
+          <p className="text-slate-950 text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-normal leading-relaxed mb-8">
             Learn computers in our offline lab: BCC, DCA, ADCA, PGDCA, Tally Prime with GST, and School Tuition. 70% practical training, taught in Hindi.
           </p>
 
@@ -77,13 +77,13 @@ export default async function Home() {
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12">
             <Link
               href="/inquiry"
-              className="px-7 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm sm:text-base rounded-full shadow-lg shadow-blue-500/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+              className="px-7 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-normal text-sm sm:text-base rounded-full shadow-lg shadow-blue-500/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
             >
               Apply Now
             </Link>
             <a
               href="tel:+918103170595"
-              className="px-7 py-3.5 bg-slate-900 hover:bg-black text-white font-bold text-sm sm:text-base rounded-full shadow-md hover:-translate-y-0.5 transition-all duration-300"
+              className="px-7 py-3.5 bg-slate-950 hover:bg-black text-white font-normal text-sm sm:text-base rounded-full shadow-md hover:-translate-y-0.5 transition-all duration-300"
             >
               Call 8103170595
             </a>
@@ -91,7 +91,7 @@ export default async function Home() {
               href="https://wa.me/918103170595"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-7 py-3.5 bg-white border border-slate-300 hover:border-emerald-500 hover:bg-emerald-50 text-slate-800 hover:text-emerald-700 font-bold text-sm sm:text-base rounded-full shadow-sm hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center gap-2"
+              className="px-7 py-3.5 bg-white border border-slate-300 hover:border-emerald-500 hover:bg-emerald-50 text-slate-950 hover:text-emerald-700 font-normal text-sm sm:text-base rounded-full shadow-sm hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center gap-2"
             >
               WhatsApp
             </a>
@@ -99,18 +99,18 @@ export default async function Home() {
 
           {/* Trust Strip */}
           <div className="pt-6 border-t border-slate-200/70 max-w-3xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs sm:text-sm font-semibold text-slate-700">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs sm:text-sm font-normal text-slate-950">
               <div className="flex items-center justify-center gap-1.5 py-1">
-                <span className="text-blue-600 font-bold">✓</span> Since 2025
+                <span className="text-blue-600">✓</span> Since 2025
               </div>
               <div className="flex items-center justify-center gap-1.5 py-1">
-                <span className="text-blue-600 font-bold">✓</span> Offline classroom & lab
+                <span className="text-blue-600">✓</span> Offline classroom & lab
               </div>
               <div className="flex items-center justify-center gap-1.5 py-1">
-                <span className="text-blue-600 font-bold">✓</span> 70% practical
+                <span className="text-blue-600">✓</span> 70% practical
               </div>
               <div className="flex items-center justify-center gap-1.5 py-1">
-                <span className="text-blue-600 font-bold">✓</span> Installment option
+                <span className="text-blue-600">✓</span> Installment option
               </div>
             </div>
           </div>
@@ -120,10 +120,10 @@ export default async function Home() {
       {/* 2. Popular Courses Section */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 relative z-10 overflow-hidden">
         <div className="text-center mb-12 relative">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-3 tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-normal text-slate-950 mb-3 tracking-tight">
             Popular Courses
           </h2>
-          <p className="text-slate-600 text-sm md:text-base max-w-2xl mx-auto font-medium">
+          <p className="text-slate-950 text-sm md:text-base max-w-2xl mx-auto font-normal">
             Learn computers in our offline lab with 70% practical training.
           </p>
         </div>
@@ -191,12 +191,12 @@ export default async function Home() {
           />
         </div>
 
-        <p className="text-center text-xs sm:text-sm text-slate-500 font-medium mt-6">
-          Fees include Admission, Tuition, and Exam fees. Installment options are available; please call for details.
+        <p className="text-center text-xs sm:text-sm text-slate-500 font-normal italic mt-6">
+          *Note: Fees include Admission, Tuition, and Exam fees. Installment options are available; please call for details.
         </p>
 
         <div className="text-center mt-8">
-          <Link href="/courses" className="inline-flex items-center gap-2 font-semibold text-sm text-blue-700 hover:text-blue-800 transition-colors group">
+          <Link href="/courses" className="inline-flex items-center gap-2 font-normal text-sm text-blue-700 hover:text-blue-800 transition-colors group">
             View All Courses
             <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>
@@ -207,71 +207,71 @@ export default async function Home() {
       <section className="bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-y border-slate-100 relative overflow-hidden z-10 mt-16">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 font-semibold rounded-full text-xs border border-blue-200/50 mb-3">
+            <span className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 font-normal rounded-full text-xs border border-blue-200/50 mb-3">
               Why Choose Us
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-normal text-slate-950 tracking-tight">
               Why Vision IT
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-6">
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/60">
-              <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm mb-4">
+              <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-normal text-sm mb-4">
                 01
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-1">Offline Classes</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <h3 className="text-base font-normal text-slate-950 mb-1">Offline Classes</h3>
+              <p className="text-xs sm:text-sm text-slate-950 leading-relaxed font-normal">
                 Learn directly from teachers in the classroom with personalized attention and dedicated support.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/60">
-              <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-sm mb-4">
+              <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-normal text-sm mb-4">
                 02
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-1">70% Practical Training</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <h3 className="text-base font-normal text-slate-950 mb-1">70% Practical Training</h3>
+              <p className="text-xs sm:text-sm text-slate-950 leading-relaxed font-normal">
                 Extensive hands-on computer lab sessions to build solid practical proficiency on every tool and software.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/60">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm mb-4">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-normal text-sm mb-4">
                 03
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-1">Taught in Simple Hindi</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <h3 className="text-base font-normal text-slate-950 mb-1">Taught in Simple Hindi</h3>
+              <p className="text-xs sm:text-sm text-slate-950 leading-relaxed font-normal">
                 All computer concepts and practical modules are clearly explained in Hindi so every student learns comfortably.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/60">
-              <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-sm mb-4">
+              <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-normal text-sm mb-4">
                 04
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-1">Transparent Fees & Installments</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <h3 className="text-base font-normal text-slate-950 mb-1">Transparent Fees & Installments</h3>
+              <p className="text-xs sm:text-sm text-slate-950 leading-relaxed font-normal">
                 Complete fee breakups are clearly stated on every course page, with flexible installment options.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/60">
-              <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm mb-4">
+              <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-normal text-sm mb-4">
                 05
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-1">Authorized Certificate</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <h3 className="text-base font-normal text-slate-950 mb-1">Authorized Certificate</h3>
+              <p className="text-xs sm:text-sm text-slate-950 leading-relaxed font-normal">
                 Complete your training and receive an authorized certificate issued by Drishti Computer Education (Vision IT is a franchise branch).
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/60">
-              <div className="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold text-sm mb-4">
+              <div className="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center font-normal text-sm mb-4">
                 06
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-1">Wi-Fi & Digital PDF Material</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <h3 className="text-base font-normal text-slate-950 mb-1">Wi-Fi & Digital PDF Material</h3>
+              <p className="text-xs sm:text-sm text-slate-950 leading-relaxed font-normal">
                 High-speed Wi-Fi available in the lab for practical exploration, with comprehensive study notes provided in digital PDF format.
               </p>
             </div>
@@ -282,16 +282,16 @@ export default async function Home() {
       {/* 4. About Snippet */}
       <section className="bg-slate-50 border-b border-slate-100 py-16 md:py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-white text-blue-700 font-semibold rounded-full text-xs border border-blue-200/50 mb-4 shadow-sm">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-white text-blue-700 font-normal rounded-full text-xs border border-blue-200/50 mb-4 shadow-sm">
             About Vision IT
           </span>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
+          <h2 className="text-2xl md:text-3xl font-normal text-slate-950 tracking-tight mb-4">
             Computer Training in Pratappur
           </h2>
-          <p className="text-slate-600 text-sm md:text-base leading-relaxed font-normal max-w-2xl mx-auto mb-6">
+          <p className="text-slate-950 text-sm md:text-base leading-relaxed font-normal max-w-2xl mx-auto mb-6">
             Vision IT Computer Institute was established in 2025 in Pratappur, Surajpur (C.G.). We operate as an authorized franchise branch of Drishti Computer Education. Our mission is simple: providing local students with authentic, practical computer training.
           </p>
-          <Link href="/about" className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-700 hover:text-blue-800 transition-colors">
+          <Link href="/about" className="inline-flex items-center gap-1.5 text-sm font-normal text-blue-700 hover:text-blue-800 transition-colors">
             Read More About Us →
           </Link>
         </div>
@@ -302,10 +302,10 @@ export default async function Home() {
         <section className="bg-white py-16 md:py-20 relative overflow-hidden border-b border-slate-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10">
             <div className="text-center mb-12">
-              <span className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 font-semibold rounded-full text-xs border border-blue-200/50">
+              <span className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 font-normal rounded-full text-xs border border-blue-200/50">
                 📚 Articles & Updates
               </span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mt-3 tracking-tight">
+              <h2 className="text-2xl md:text-3xl font-normal text-slate-950 mt-3 tracking-tight">
                 Latest from Our Blog
               </h2>
             </div>
@@ -328,10 +328,10 @@ export default async function Home() {
                       )}
                       
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="text-[10px] uppercase font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full">
+                        <span className="text-[10px] uppercase font-normal text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full">
                           {blog.category}
                         </span>
-                        <span className="text-[10px] text-slate-400 font-medium">
+                        <span className="text-[10px] text-slate-700 font-normal">
                           {blog.published_at || blog.created_at
                             ? new Date(blog.published_at || blog.created_at).toLocaleDateString('en-IN', {
                                 day: 'numeric',
@@ -342,18 +342,18 @@ export default async function Home() {
                         </span>
                       </div>
 
-                      <h3 className="text-base font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors mb-2 line-clamp-2">
+                      <h3 className="text-base font-normal text-slate-950 leading-snug group-hover:text-blue-700 transition-colors mb-2 line-clamp-2">
                         {blog.title}
                       </h3>
                       
-                      <p className="text-slate-500 text-xs sm:text-sm leading-relaxed font-normal mb-4 line-clamp-3">
+                      <p className="text-slate-950 text-xs sm:text-sm leading-relaxed font-normal mb-4 line-clamp-3">
                         {blog.excerpt || "Read this article to learn more."}
                       </p>
                     </div>
 
-                    <div className="text-blue-600 font-bold text-xs inline-flex items-center gap-1 mt-auto">
+                    <div className="text-blue-700 font-normal text-xs inline-flex items-center gap-1 mt-auto">
                       Read Article
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </div>
                   </div>
                 </Link>
@@ -361,7 +361,7 @@ export default async function Home() {
             </div>
 
             <div className="text-center mt-10">
-              <Link href="/blog" className="inline-flex items-center gap-2 font-semibold text-sm text-blue-700 hover:text-blue-800 transition-colors">
+              <Link href="/blog" className="inline-flex items-center gap-2 font-normal text-sm text-blue-700 hover:text-blue-800 transition-colors">
                 Explore All Articles →
               </Link>
             </div>
@@ -375,30 +375,30 @@ export default async function Home() {
       {/* 7. Contact CTA Section */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10">
         <div className="p-6 sm:p-10 text-center max-w-4xl mx-auto bg-white rounded-3xl border border-slate-200/80 shadow-sm">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-normal text-slate-950 mb-3 tracking-tight">
             Ready to Learn Computers in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Pratappur?</span>
           </h2>
 
-          <p className="text-sm md:text-base text-slate-600 max-w-xl mx-auto mb-8 font-medium leading-relaxed">
+          <p className="text-sm md:text-base text-slate-950 max-w-xl mx-auto mb-8 font-normal leading-relaxed">
             Admissions open for BCC, DCA, ADCA and PGDCA courses. Visit our lab or call directly to book your seat.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-            <Button href="/inquiry" size="md" className="w-full sm:w-auto text-sm px-7 py-3 bg-blue-600 hover:bg-blue-500 text-white shadow-md rounded-full font-bold flex items-center justify-center border-none">
+            <Button href="/inquiry" size="md" className="w-full sm:w-auto text-sm px-7 py-3 bg-blue-600 hover:bg-blue-500 text-white shadow-md rounded-full font-normal flex items-center justify-center border-none">
               Apply Now
             </Button>
-            <Button href="/contact" size="md" variant="outline" className="w-full sm:w-auto text-sm px-7 py-3 bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:text-blue-700 rounded-full font-semibold">
+            <Button href="/contact" size="md" variant="outline" className="w-full sm:w-auto text-sm px-7 py-3 bg-white text-slate-950 border-slate-300 hover:bg-slate-50 hover:text-blue-700 rounded-full font-normal">
               Visit Institute
             </Button>
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-6 border-t border-slate-100 pt-6">
-            <a href="tel:+918103170595" className="flex items-center justify-center gap-2 text-slate-700 hover:text-blue-600 font-bold text-sm">
-              <span className="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">📞</span>
+            <a href="tel:+918103170595" className="flex items-center justify-center gap-2 text-slate-950 hover:text-blue-700 font-normal text-sm">
+              <span className="w-8 h-8 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center">📞</span>
               +91 81031 70595
             </a>
-            <a href="tel:+919301221630" className="flex items-center justify-center gap-2 text-slate-700 hover:text-blue-600 font-bold text-sm">
-              <span className="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">📞</span>
+            <a href="tel:+919301221630" className="flex items-center justify-center gap-2 text-slate-950 hover:text-blue-700 font-normal text-sm">
+              <span className="w-8 h-8 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center">📞</span>
               +91 93012 21630
             </a>
           </div>

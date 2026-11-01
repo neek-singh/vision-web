@@ -24,7 +24,7 @@ export default function Footer() {
   if (hideNav) return null;
 
   return (
-    <footer className="relative bg-white text-slate-600 py-16 mt-auto border-t border-slate-100 shadow-[0_-8px_30px_rgb(0,0,0,0.01)] overflow-hidden z-10">
+    <footer className="relative bg-white text-slate-950 py-16 mt-auto border-t border-slate-200 shadow-[0_-8px_30px_rgb(0,0,0,0.01)] overflow-hidden z-10">
       {/* 🌟 Glossy Top Highlight */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent opacity-60" />
 
@@ -54,18 +54,18 @@ export default function Footer() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl md:text-2xl font-black tracking-tight text-slate-900 leading-none">
+                  <span className="text-xl md:text-2xl font-normal tracking-tight text-slate-950 leading-none">
                     Vision<span className="text-blue-600">IT</span>
                   </span>
-                  <span className="text-[10px] font-bold text-slate-500 tracking-widest mt-1 uppercase">
+                  <span className="text-[10px] font-normal text-slate-900 tracking-widest mt-1 uppercase">
                     Computer Institute
                   </span>
                 </div>
               </Link>
-              <p className="mt-5 text-sm text-slate-600 max-w-sm leading-relaxed font-medium">
+              <p className="mt-5 text-sm text-slate-950 max-w-sm leading-relaxed font-normal">
                 Vision IT Computer Institute is a computer training institute in Pratappur, Surajpur (C.G.), running since 2025 as a franchise branch of Drishti Computer Education.
               </p>
-              <p className="mt-3 text-[11px] text-slate-400 font-medium">
+              <p className="mt-3 text-[11px] text-slate-600 font-normal">
                 Franchise Branch Code: DCE/25/041 | Business registration: Udyam (MSME), UDYAM-CG-27-0012250
               </p>
             </div>
@@ -110,19 +110,19 @@ export default function Footer() {
 
           {/* Column 2: Popular Courses */}
           <div className="col-span-1 md:col-span-4 lg:col-span-3">
-            <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Courses</h4>
+            <h4 className="text-[11px] font-normal text-slate-950 uppercase tracking-widest mb-5">Courses</h4>
             <ul className="space-y-3">
               <FooterLink href="/courses/bcc">Basic Computer Course (BCC)</FooterLink>
               <FooterLink href="/courses/dca">Diploma in Computer Applications (DCA)</FooterLink>
               <FooterLink href="/courses/adca">Advanced Diploma in Computer Applications (ADCA)</FooterLink>
               <FooterLink href="/courses/pgdca">Post Graduate Diploma (PGDCA)</FooterLink>
-              <FooterLink href="/courses" className="text-blue-600 hover:text-blue-500 font-semibold text-xs mt-1 inline-block">View All Courses</FooterLink>
+              <FooterLink href="/courses" className="text-blue-700 hover:text-blue-800 font-normal text-xs mt-1 inline-block">View All Courses</FooterLink>
             </ul>
           </div>
 
           {/* Column 3: Quick Links */}
           <div className="col-span-1 md:col-span-4 lg:col-span-2">
-            <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Quick Links</h4>
+            <h4 className="text-[11px] font-normal text-slate-950 uppercase tracking-widest mb-5">Quick Links</h4>
             <ul className="space-y-3">
               <FooterLink href="/about">About Us</FooterLink>
               <FooterLink href="/gallery">Institute Gallery</FooterLink>
@@ -135,8 +135,8 @@ export default function Footer() {
 
           {/* Column 4: Contact & Timings */}
           <div className="col-span-2 md:col-span-4 lg:col-span-3">
-            <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-5">Contact Us</h4>
-            <ul className="space-y-4 text-xs font-medium text-slate-600">
+            <h4 className="text-[11px] font-normal text-slate-950 uppercase tracking-widest mb-5">Contact Us</h4>
+            <ul className="space-y-4 text-xs font-normal text-slate-950">
               <li className="flex items-start gap-3 group">
                 <div className="mt-0.5 p-1.5 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -144,8 +144,8 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Email</span>
-                  <a href={`mailto:${contact.email}`} className="group-hover:text-blue-600 transition-colors break-all leading-relaxed">{contact.email}</a>
+                  <span className="text-[10px] text-slate-700 font-normal uppercase tracking-wider">Email</span>
+                  <a href={`mailto:${contact.email}`} className="text-slate-950 group-hover:text-blue-700 transition-colors break-all leading-relaxed font-normal">{contact.email}</a>
                 </div>
               </li>
 
@@ -156,10 +156,10 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Phone</span>
+                  <span className="text-[10px] text-slate-700 font-normal uppercase tracking-wider">Phone</span>
                   <div className="flex flex-col gap-0.5">
                     {contact.phones.map((p, idx) => (
-                      <a key={idx} href={`tel:${p.raw}`} className="group-hover:text-blue-600 transition-colors leading-relaxed">
+                      <a key={idx} href={`tel:${p.raw}`} className="text-slate-950 group-hover:text-blue-700 transition-colors leading-relaxed font-normal">
                         {p.display}
                       </a>
                     ))}
@@ -174,8 +174,8 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Hours</span>
-                  <span className="leading-relaxed">{contact.timing}</span>
+                  <span className="text-[10px] text-slate-700 font-normal uppercase tracking-wider">Hours</span>
+                  <span className="text-slate-950 leading-relaxed font-normal">{contact.timing}</span>
                 </div>
               </li>
 
@@ -186,8 +186,8 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Address</span>
-                  <span className="leading-relaxed">{contact.address}</span>
+                  <span className="text-[10px] text-slate-700 font-normal uppercase tracking-wider">Address</span>
+                  <span className="text-slate-950 leading-relaxed font-normal">{contact.address}</span>
                 </div>
               </li>
             </ul>
@@ -195,19 +195,19 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 md:mt-16 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold text-slate-400">
+        <div className="mt-12 md:mt-16 pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-normal text-slate-700">
           <p className="text-center md:text-left">
             &copy; {new Date().getFullYear()} Vision IT Computer Institute. All rights reserved.
           </p>
 
           <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-blue-600 transition-colors duration-300">
+            <Link href="/privacy" className="hover:text-blue-700 transition-colors duration-300">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-blue-500 transition-colors duration-300">
+            <Link href="/terms" className="hover:text-blue-700 transition-colors duration-300">
               Terms of Service
             </Link>
-            <Link href="/refund" className="hover:text-blue-500 transition-colors duration-300">
+            <Link href="/refund" className="hover:text-blue-700 transition-colors duration-300">
               Refund Policy
             </Link>
           </div>
@@ -229,7 +229,7 @@ function FooterLink({ href, children, className }: FooterLinkProps) {
     <li>
       <Link
         href={href}
-        className={`group inline-flex items-center text-xs font-semibold text-slate-600 hover:text-blue-600 transition-all duration-300 ${className || ""}`}
+        className={`group inline-flex items-center text-xs font-normal text-slate-950 hover:text-blue-700 transition-all duration-300 ${className || ""}`}
       >
         <span className="w-0 overflow-hidden text-blue-500 group-hover:w-3 transition-all duration-300 ease-out">
           ›

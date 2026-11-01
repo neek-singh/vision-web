@@ -82,17 +82,17 @@ export default function NotFound() {
             transform: `translate(${parallax.x}px, ${parallax.y}px)`,
           }}
         >
-          <h1 className="text-[8rem] md:text-[13rem] font-extrabold tracking-tighter bg-gradient-to-br from-white via-slate-200 to-slate-800 bg-clip-text text-transparent drop-shadow-2xl select-none">
+          <h1 className="text-[8rem] md:text-[13rem] font-normal tracking-tighter bg-gradient-to-br from-white via-slate-200 to-slate-800 bg-clip-text text-transparent drop-shadow-2xl select-none">
             404
           </h1>
         </div>
 
         {/* Message */}
         <div className={`mt-2 space-y-4 transition-all duration-1000 transform ${isMounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-normal text-white tracking-tight">
             Page not found
           </h2>
-          <p className="text-slate-400 text-lg leading-relaxed max-w-md mx-auto">
+          <p className="text-white text-lg leading-relaxed max-w-md mx-auto font-normal">
             The page you're looking for doesn't exist, has been moved, or is currently lost in deep space.
           </p>
         </div>
@@ -102,7 +102,7 @@ export default function NotFound() {
 
           <Link
             href="/"
-            className="group relative px-8 py-3.5 bg-blue-600 text-white font-medium rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+            className="group relative px-8 py-3.5 bg-blue-600 text-white font-normal rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950"
           >
             <span className="relative z-10 flex items-center justify-center gap-2">
               <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -115,7 +115,7 @@ export default function NotFound() {
 
           <Link
             href="/courses"
-            className="group px-8 py-3.5 bg-white/5 text-slate-300 border border-slate-700/50 hover:bg-white/10 hover:text-white hover:border-slate-500 rounded-full transition-all duration-300 backdrop-blur-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2 focus:ring-offset-slate-950"
+            className="group px-8 py-3.5 bg-white/5 text-white border border-slate-700/50 hover:bg-white/10 hover:text-white hover:border-slate-500 rounded-full transition-all duration-300 backdrop-blur-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2 focus:ring-offset-slate-950 font-normal"
           >
             <span className="flex items-center justify-center gap-2">
               View Courses
