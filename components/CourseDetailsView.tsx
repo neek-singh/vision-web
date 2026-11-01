@@ -53,8 +53,10 @@ export interface CourseData {
 }
 
 export default function CourseDetailsView({ course }: { course: CourseData }) {
-  const [expandedModule, setExpandedModule] = useState<number | null>(0);
+  const [expandedModules, setExpandedModules] = useState<number[]>([0, 1, 2, 3, 4, 5]);
   const [copied, setCopied] = useState(false);
+
+  const isSchoolTuition = course.courseId === "school-tuition";
 
   const handleShare = async () => {
     try {
@@ -79,7 +81,9 @@ export default function CourseDetailsView({ course }: { course: CourseData }) {
   };
 
   const toggleModule = (index: number) => {
-    setExpandedModule(expandedModule === index ? null : index);
+    setExpandedModules((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
   };
 
   const stats = [
@@ -101,16 +105,31 @@ export default function CourseDetailsView({ course }: { course: CourseData }) {
       desc: "Dedicated daily hands-on practice in our computer lab on every module.",
       icon: Laptop,
     },
-    {
-      title: "Resume & Interview Prep",
-      desc: "Guidance on resume building, interview practice, and workplace readiness.",
-      icon: Briefcase,
-    },
-    {
-      title: "Certificate by Drishti",
-      desc: "Course completion certificate issued by Drishti Computer Education.",
-      icon: ShieldCheck,
-    },
+    ...(isSchoolTuition
+      ? [
+          {
+            title: "School Curriculum Support",
+            desc: "Concept clarity and syllabus alignment with middle and high school curriculum.",
+            icon: BookOpen,
+          },
+          {
+            title: "Daily Lab Practice",
+            desc: "Dedicated computer hands-on practice, typing accuracy, and practical skills.",
+            icon: Laptop,
+          },
+        ]
+      : [
+          {
+            title: "Resume & Interview Prep",
+            desc: "Guidance on resume building, interview practice, and workplace readiness.",
+            icon: Briefcase,
+          },
+          {
+            title: "Certificate by Drishti",
+            desc: "Course completion certificate issued by Drishti Computer Education.",
+            icon: ShieldCheck,
+          },
+        ]),
   ];
 
   return (
@@ -235,7 +254,7 @@ export default function CourseDetailsView({ course }: { course: CourseData }) {
 
             <div className="space-y-3">
               {course.curriculum.map((mod, idx) => {
-                const isOpen = expandedModule === idx;
+                const isOpen = expandedModules.includes(idx);
                 return (
                   <div
                     key={idx}
@@ -309,22 +328,28 @@ export default function CourseDetailsView({ course }: { course: CourseData }) {
             </div>
           </section>
 
-          {/* Drishti Certificate Disclaimer (Note) */}
-          <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200/60 text-xs text-amber-950 leading-relaxed font-normal italic">
-            *Note: Certificate is issued by Drishti Computer Education. Vision IT is an authorized franchise partner (Branch Code DCE/25/041). Please check with the employer or institution where you plan to use it.
-          </div>
+          {/* Drishti Certificate Disclaimer (Omit for School Tuition until confirmed) */}
+          {!isSchoolTuition && (
+            <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200/60 text-xs text-amber-950 leading-relaxed font-normal italic">
+              *Note: Certificate is issued by Drishti Computer Education. Vision IT is an authorized franchise partner (Branch Code DCE/25/041). Please check with the employer or institution where you plan to use it.
+            </div>
+          )}
         </div>
 
         {/* Right Sticky Sidebar (Fees & Enrolment) */}
         <div className="lg:col-span-1 space-y-6">
           <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm sticky top-24 space-y-6">
             <div>
-              <span className="text-[10px] font-normal uppercase tracking-wider text-slate-700">Total Course Fee</span>
+              <span className="text-[10px] font-normal uppercase tracking-wider text-slate-700">
+                {isSchoolTuition ? "Monthly Tuition Fee" : "Total Course Fee"}
+              </span>
               <div className="text-3xl font-normal text-slate-950 mt-1">
                 {course.fee.total}
               </div>
               <p className="text-xs text-slate-600 mt-1 italic font-normal">
-                *Note: Includes Admission, Tuition & Exam fees
+                {isSchoolTuition
+                  ? "*Note: Monthly recurring fee, pay month-by-month"
+                  : "*Note: Includes Admission, Tuition & Exam fees"}
               </p>
             </div>
 
@@ -344,13 +369,15 @@ export default function CourseDetailsView({ course }: { course: CourseData }) {
               </div>
             </div>
 
-            {/* Installment Note */}
-            <div className="p-3 bg-blue-50/60 border border-blue-100 rounded-xl text-xs text-blue-950 font-normal italic">
-              *Note: Installment Option Available — For fee details and flexible installment plans, please call:{" "}
-              <a href="tel:+918103170595" className="not-italic text-blue-700 underline block mt-1">
-                +91 81031 70595
-              </a>
-            </div>
+            {/* Installment Note (Omit for School Tuition) */}
+            {!isSchoolTuition && (
+              <div className="p-3 bg-blue-50/60 border border-blue-100 rounded-xl text-xs text-blue-950 font-normal italic">
+                *Note: Installment Option Available — For fee details and flexible installment plans, please call:{" "}
+                <a href="tel:+918103170595" className="not-italic text-blue-700 underline block mt-1">
+                  +91 81031 70595
+                </a>
+              </div>
+            )}
 
             {/* Inclusions */}
             <div className="space-y-3 pt-2">
@@ -368,14 +395,24 @@ export default function CourseDetailsView({ course }: { course: CourseData }) {
                   <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                   <span>Study material</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Resume & interview preparation</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Certificate by Drishti Computer Education</span>
-                </li>
+                {!isSchoolTuition && (
+                  <>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                      <span>Resume & interview preparation</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                      <span>Certificate by Drishti Computer Education</span>
+                    </li>
+                  </>
+                )}
+                {isSchoolTuition && (
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>School curriculum syllabus coverage</span>
+                  </li>
+                )}
               </ul>
             </div>
 

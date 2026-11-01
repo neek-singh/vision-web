@@ -355,16 +355,6 @@ export default async function Home() {
                 Complete your training and receive an authorized certificate issued by Drishti Computer Education (Vision IT is a franchise branch).
               </p>
             </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/60">
-              <div className="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center font-normal text-sm mb-4">
-                06
-              </div>
-              <h3 className="text-base font-normal text-slate-950 mb-1">Wi-Fi & Digital PDF Material</h3>
-              <p className="text-xs sm:text-sm text-slate-950 leading-relaxed font-normal">
-                High-speed Wi-Fi available in the lab for practical exploration, with comprehensive study notes provided in digital PDF format.
-              </p>
-            </div>
           </div>
         </div>
       </section>

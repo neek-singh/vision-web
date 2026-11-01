@@ -206,7 +206,7 @@ export default function PrivacyPage() {
                     </svg>
                     <div>
                       <p className="text-sm font-normal text-slate-950">Location</p>
-                      <p className="text-slate-950 font-normal">2nd Floor, Above Shubham Gift Gallery, Near Block Office, Pratappur Road, Surajpur, Chhattisgarh - 497229</p>
+                      <p className="text-slate-950 font-normal">Shubham Gift Gallery, 2nd Floor, Kadampara Chowk, Pratappur, Surajpur (C.G.) - 497223</p>
                     </div>
                   </div>
                 </div>

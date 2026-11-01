@@ -112,7 +112,7 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
 
           {/* Description */}
           <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
-            The document information provided does not match the records of Vision IT Institute. Kripya Roll Number/Certificate ID aur Date of Birth verify karein.
+            The document information provided does not match our records. Please verify the Certificate ID and Date of Birth.
           </p>
 
           {/* Error Details Box */}
@@ -296,7 +296,7 @@ export default function VerificationPortal({ initialQuery }: { initialQuery?: st
           <div className="flex items-start gap-2.5 text-xs text-slate-950 leading-relaxed font-normal">
             <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5 text-blue-600" />
             <span>
-              Certificate Drishti Computer Education ke dwara jaari hota hai. Ye page Vision IT branch ke records dikhata hai.
+              Certificates are issued by Drishti Computer Education. This page shows records of Vision IT branch students.
             </span>
           </div>
         </div>
