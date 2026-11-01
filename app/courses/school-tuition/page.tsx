@@ -91,6 +91,41 @@ const schoolTuitionData: CourseData = {
 };
 
 export default function SchoolTuitionPage() {
-  return <CourseDetailsView course={schoolTuitionData} />;
+  const courseJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "School Students Computer Tuition (Class 6th – 11th)",
+    "description": "Monthly offline computer tuition for school students covering school curriculum, practical lab, typing, MS Office, and basic programming logic.",
+    "url": "https://www.visionitinstitute.com/courses/school-tuition",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "Vision IT Computer Institute",
+      "url": "https://www.visionitinstitute.com",
+    },
+    "timeRequired": "P1M",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "Offline",
+      "courseWorkload": "P1M",
+      "inLanguage": "hi",
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "599",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "category": "Paid",
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
+      <CourseDetailsView course={schoolTuitionData} />
+    </>
+  );
 }
 

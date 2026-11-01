@@ -104,5 +104,40 @@ const adcaData: CourseData = {
 };
 
 export default function AdcaCoursePage() {
-  return <CourseDetailsView course={adcaData} />;
+  const courseJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Advanced Diploma in Computer Applications (ADCA)",
+    "description": "12-month advanced diploma covering MS Office, DTP (Photoshop, CorelDRAW), C/C++ programming fundamentals, relational database management, and Tally accounting.",
+    "url": "https://www.visionitinstitute.com/courses/adca",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "Vision IT Computer Institute",
+      "url": "https://www.visionitinstitute.com",
+    },
+    "timeRequired": "P12M",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "Offline",
+      "courseWorkload": "P12M",
+      "inLanguage": "hi",
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "14999",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "category": "Paid",
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
+      <CourseDetailsView course={adcaData} />
+    </>
+  );
 }

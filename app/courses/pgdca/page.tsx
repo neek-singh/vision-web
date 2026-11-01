@@ -104,5 +104,40 @@ const pgdcaData: CourseData = {
 };
 
 export default function PgdcaCoursePage() {
-  return <CourseDetailsView course={pgdcaData} />;
+  const courseJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Post Graduate Diploma in Computer Applications (PGDCA)",
+    "description": "12-month post-graduate diploma for graduates covering C++ OOP, database design, web technologies, and computerized accounting.",
+    "url": "https://www.visionitinstitute.com/courses/pgdca",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "Vision IT Computer Institute",
+      "url": "https://www.visionitinstitute.com",
+    },
+    "timeRequired": "P12M",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "Offline",
+      "courseWorkload": "P12M",
+      "inLanguage": "hi",
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "16999",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "category": "Paid",
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
+      <CourseDetailsView course={pgdcaData} />
+    </>
+  );
 }

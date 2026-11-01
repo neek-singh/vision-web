@@ -99,6 +99,41 @@ const tallyData: CourseData = {
 };
 
 export default function TallyCoursePage() {
-  return <CourseDetailsView course={tallyData} />;
+  const courseJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Tally Prime with GST",
+    "description": "3-month intensive offline accounting course covering company creation, ledger posting, inventory management, voucher entries, GST billing, and balance sheet.",
+    "url": "https://www.visionitinstitute.com/courses/tally",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "Vision IT Computer Institute",
+      "url": "https://www.visionitinstitute.com",
+    },
+    "timeRequired": "P3M",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "Offline",
+      "courseWorkload": "P3M",
+      "inLanguage": "hi",
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "4499",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "category": "Paid",
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
+      <CourseDetailsView course={tallyData} />
+    </>
+  );
 }
 

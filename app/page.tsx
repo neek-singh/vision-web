@@ -54,8 +54,87 @@ export default async function Home() {
     })
     .slice(0, 3);
 
+  const educationalOrganizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": "https://www.visionitinstitute.com/#organization",
+    "name": "Vision IT Computer Institute",
+    "url": "https://www.visionitinstitute.com",
+    "telephone": "+918103170595",
+    "email": "info@visionitinstitute.com",
+    "foundingDate": "2025",
+    "openingHours": "Mo-Sa 08:00-18:00",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Shubham Gift Gallery, 2nd Floor, Kadampara Chowk",
+      "addressLocality": "Pratappur",
+      "addressRegion": "Chhattisgarh",
+      "postalCode": "497223",
+      "addressCountry": "IN",
+    },
+    "sameAs": [
+      "https://facebook.com/visionitinstitute",
+      "https://instagram.com/visionitinstitute",
+    ],
+  };
+
+  const faqPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which courses are available at Vision IT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BCC (3 months), DCA (12 months), ADCA (12 months), PGDCA (12 months), Tally Prime with GST (3 months), and School Students Computer Tuition (Class 6th–11th). All courses are conducted offline with hands-on computer lab training.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "What are the fees? Can I pay in installments?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BCC is ₹2,999, DCA is ₹13,999, ADCA is ₹14,999, PGDCA is ₹16,999, Tally Prime with GST is ₹4,499, and School Computer Tuition is ₹599/month. Diploma fees include admission, tuition, and exam fees with flexible installment options available.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "Who issues the certificate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Certificates are issued by Drishti Computer Education. Vision IT is an authorized franchise branch (Branch Code: DCE/25/041). Please verify with your prospective employer or academic institution where you plan to use it.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide job placement?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We do not make false guarantees of 100% placement. We actively assist students with resume building, interview preparation, and practical job readiness.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "What are the class and batch timings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Daily offline classes run Monday to Saturday across 4 batches: 9:00 AM – 11:00 AM, 11:00 AM – 1:00 PM, 2:00 PM – 4:00 PM, and 4:00 PM – 6:00 PM. Students can choose any batch that fits their schedule.",
+        },
+      },
+    ],
+  };
+
   return (
     <main className="flex-col w-full bg-gray-50 pb-20 overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(educationalOrganizationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd) }}
+      />
 
       {/* 1. Hero Section */}
       <section className="relative bg-white text-slate-900 rounded-b-[2rem] md:rounded-b-[3rem] lg:rounded-b-[5rem] overflow-hidden pt-28 md:pt-36 pb-20 md:pb-28 px-4 sm:px-6 lg:px-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-b border-slate-100">

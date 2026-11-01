@@ -104,5 +104,40 @@ const dcaData: CourseData = {
 };
 
 export default function DcaCoursePage() {
-  return <CourseDetailsView course={dcaData} />;
+  const courseJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Diploma in Computer Applications (DCA)",
+    "description": "12-month foundational diploma covering computer fundamentals, office automation, programming logic in C, relational databases, web design, and Tally accounting.",
+    "url": "https://www.visionitinstitute.com/courses/dca",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "Vision IT Computer Institute",
+      "url": "https://www.visionitinstitute.com",
+    },
+    "timeRequired": "P12M",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "Offline",
+      "courseWorkload": "P12M",
+      "inLanguage": "hi",
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "13999",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "category": "Paid",
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
+      <CourseDetailsView course={dcaData} />
+    </>
+  );
 }

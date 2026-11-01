@@ -99,5 +99,40 @@ const bccData: CourseData = {
 };
 
 export default function BccCoursePage() {
-  return <CourseDetailsView course={bccData} />;
+  const courseJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Basic Computer Course (BCC)",
+    "description": "3-month foundational computer certificate course covering Computer Fundamentals, Windows OS, Hindi & English Typing, MS Office, and Internet.",
+    "url": "https://www.visionitinstitute.com/courses/bcc",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "Vision IT Computer Institute",
+      "url": "https://www.visionitinstitute.com",
+    },
+    "timeRequired": "P3M",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "Offline",
+      "courseWorkload": "P3M",
+      "inLanguage": "hi",
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "2999",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "category": "Paid",
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
+      <CourseDetailsView course={bccData} />
+    </>
+  );
 }
