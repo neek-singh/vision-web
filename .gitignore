@@ -41,3 +41,10 @@ yarn-error.log*
 next-env.d.ts
 .gsd-graph/
 .mcp.json
+
+# Internal plans, agent notes, prompts & documentation
+*.md
+!README.md
+.agents/
+.planning/
+*.log
