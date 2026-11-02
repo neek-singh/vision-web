@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Roboto, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -8,15 +8,8 @@ import StructuredData from "@/components/StructuredData";
 import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 import LayoutWrapper from "@/components/LayoutWrapper";
 
-const roboto = Roboto({
-  weight: ['400', '500', '700'],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-roboto",
-});
-
 const poppins = Poppins({
-  weight: ['400', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   subsets: ["latin"],
   display: "swap",
   variable: "--font-poppins",
@@ -81,7 +74,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className={`${roboto.variable} ${poppins.variable} font-sans`}>
+      <body suppressHydrationWarning className={`${poppins.variable} font-sans`}>
         <GoogleTagManager gtmId="GTM-KNH8M4KH" />
         <GoogleAnalytics gaId="G-SNT7CK2VDP" />
         <StructuredData />
