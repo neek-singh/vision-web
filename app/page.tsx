@@ -154,7 +154,7 @@ export default async function Home() {
           </Link>
 
           {/* H1 Headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-slate-950 tracking-tight leading-tight mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-950 tracking-tight leading-tight mb-6">
             Computer Institute in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Pratappur, Surajpur</span>
           </h1>
 
