@@ -89,8 +89,8 @@ export default function Header() {
           </Link>
 
           {/* 💻 Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            <div className="flex items-center gap-8 pr-4">
+          <div className="hidden md:flex items-center gap-5 lg:gap-8">
+            <div className="flex items-center gap-5 lg:gap-8 pr-2">
               <NavLink href="/" isTransparent={isAboutPageTransparent}>Home</NavLink>
               <NavLink href="/courses" isTransparent={isAboutPageTransparent}>Courses</NavLink>
               <NavLink href="/about" isTransparent={isAboutPageTransparent}>About</NavLink>
@@ -98,27 +98,7 @@ export default function Header() {
               <NavLink href="/blog" isTransparent={isAboutPageTransparent}>Blog</NavLink>
               <NavLink href="/contact" isTransparent={isAboutPageTransparent}>Contact</NavLink>
               <NavLink href="/verify" isTransparent={isAboutPageTransparent}>Verify</NavLink>
-
-              {/* More Dropdown */}
-              <div className="relative group">
-                <button className={`group relative flex items-center gap-1 text-sm font-normal transition-colors py-2 ${
-                  isAboutPageTransparent
-                    ? "text-white hover:text-white"
-                    : "text-slate-950 hover:text-blue-700"
-                }`}>
-                  More
-                  <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                  <span className={`absolute bottom-0 left-0 w-0 h-0.5 rounded-full transition-all duration-300 ease-out group-hover:w-full ${
-                    isAboutPageTransparent ? "bg-white" : "bg-blue-600"
-                  }`} />
-                </button>
-                <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-slate-200 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 flex flex-col overflow-hidden py-2 z-50">
-                  <Link href="/learn" className="px-5 py-2.5 text-sm font-normal text-slate-950 hover:bg-slate-50 hover:text-blue-700 transition-colors flex items-center justify-between">
-                    Student Login
-                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
-                  </Link>
-                </div>
-              </div>
+              <NavLink href="/learn" isTransparent={isAboutPageTransparent}>Student Login</NavLink>
             </div>
 
             {/* 👤 Apply Now Button */}
