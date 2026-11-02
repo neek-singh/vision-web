@@ -54,10 +54,6 @@ export default async function BlogListingPage() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/3"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
-          <span className="inline-block mb-3 px-2.5 py-0.5 bg-blue-50 text-blue-700 rounded-full text-xs font-normal border border-blue-200">
-            📚 Insights & Updates
-          </span>
-
           <h1 className="text-xl md:text-2xl lg:text-3xl font-normal text-slate-950 mb-4 tracking-tight">
             Our <span className="text-blue-600">Blog</span>
           </h1>

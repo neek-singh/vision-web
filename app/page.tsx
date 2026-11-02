@@ -144,15 +144,6 @@ export default async function Home() {
         <div className="absolute top-48 -left-24 w-72 h-72 bg-indigo-400/30 rounded-full blur-[80px] pointer-events-none"></div>
 
         <div className="container mx-auto max-w-4xl text-center relative z-10">
-          {/* Animated Announcement Badge */}
-          <Link href="/inquiry" className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-blue-50 text-blue-700 font-semibold rounded-full text-xs sm:text-sm border border-blue-200/60 shadow-sm transition-transform hover:scale-105 hover:bg-blue-100/70">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
-            </span>
-            <OfferSlider />
-          </Link>
-
           {/* H1 Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-950 tracking-tight leading-tight mb-6">
             Computer Institute in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Pratappur, Surajpur</span>

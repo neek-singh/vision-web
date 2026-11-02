@@ -31,9 +31,6 @@ export default async function VerifyPage({
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-10 pt-16 sm:pt-20">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 font-normal rounded-full text-xs border border-blue-200/50 mb-3">
-            Official Records
-          </span>
           <h1 className="text-3xl md:text-4xl font-normal text-slate-950 mb-3 tracking-tight">
             Verify Student Record
           </h1>

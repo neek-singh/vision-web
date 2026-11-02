@@ -98,9 +98,6 @@ export default function CoursesPage() {
       {/* Header Banner */}
       <section className="bg-white border-b border-slate-200/80 pt-28 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 font-normal rounded-full text-xs mb-4 border border-blue-200/50">
-            Offline Training • Pratappur
-          </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal text-slate-950 tracking-tight mb-4">
             Computer Courses in Pratappur
           </h1>

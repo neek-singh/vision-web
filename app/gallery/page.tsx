@@ -49,15 +49,6 @@ export default async function GalleryPage() {
         <div className="absolute top-32 -left-24 w-[300px] h-[300px] bg-indigo-100/40 rounded-full blur-[80px] pointer-events-none" />
 
         <div className="container mx-auto px-6 lg:px-8 text-center relative z-10">
-
-          {/* Top Pill Badge */}
-          <div className="inline-flex items-center gap-2 mb-3.5 px-2.5 py-0.5 bg-blue-50 text-blue-700 font-normal rounded-full text-xs border border-blue-200/60 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" /><circle cx="12" cy="13" r="3" />
-            </svg>
-            Our Moments
-          </div>
-
           <h1 className="text-xl md:text-2xl lg:text-3xl font-normal text-slate-950 tracking-tight mb-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
             Campus <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Gallery</span>
           </h1>
