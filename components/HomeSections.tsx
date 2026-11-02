@@ -32,7 +32,7 @@ export function FAQSection() {
   const faqs = [
     {
       q: "Which courses are available at Vision IT?",
-      a: "BCC (3 months), DCA (12 months), ADCA (12 months), MDCA (16 months), PGDCA (12 months), Tally Prime with GST (3 months), and School Students Computer Tuition (Class 6th–11th). All courses are conducted offline with hands-on computer lab training.",
+      a: "BCC (3 months), DCA (12 months), ADCA (12 months), MDCA (18 months), PGDCA (12 months), Tally Prime with GST (3 months), and School Students Computer Tuition (Class 6th–11th). All courses are conducted offline with hands-on computer lab training.",
     },
     {
       q: "What are the fees? Can I pay in installments?",

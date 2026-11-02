@@ -3,13 +3,13 @@ import CourseDetailsView, { CourseData } from "@/components/CourseDetailsView";
 
 export const metadata: Metadata = {
   title: "MDCA Course in Pratappur | Master Diploma in Computer Applications",
-  description: "MDCA course at Vision IT Pratappur: 16 months comprehensive master diploma, offline lab, 70% practical. MS Office, DTP, Tally Prime with GST, C/C++, Web Design, SQL. Fee ₹15,999.",
+  description: "MDCA course at Vision IT Pratappur: 18 months comprehensive master diploma, offline lab, 70% practical. MS Office, DTP, Tally Prime with GST, C/C++, Web Design, SQL. Fee ₹15,999.",
   alternates: {
     canonical: "/courses/mdca",
   },
   openGraph: {
     title: "MDCA Course in Pratappur | Master Diploma in Computer Applications",
-    description: "MDCA course at Vision IT Pratappur: 16 months comprehensive master diploma, offline lab, 70% practical. MS Office, DTP, Tally Prime with GST, C/C++, Web Design, SQL. Fee ₹15,999.",
+    description: "MDCA course at Vision IT Pratappur: 18 months comprehensive master diploma, offline lab, 70% practical. MS Office, DTP, Tally Prime with GST, C/C++, Web Design, SQL. Fee ₹15,999.",
     url: "/courses/mdca",
   },
 };
@@ -17,13 +17,13 @@ export const metadata: Metadata = {
 const mdcaData: CourseData = {
   courseId: "mdca",
   title: "Master Diploma in Computer Applications (MDCA)",
-  badge: "Master Diploma • 16 Months",
-  duration: "16 Months",
+  badge: "Master Diploma • 18 Months",
+  duration: "18 Months",
   level: "Master Diploma",
   mode: "Offline Lab",
   language: "Hindi",
   eligibility: "Minimum 12th Pass",
-  about: "MDCA is an extensive 16-month master diploma program designed to provide complete mastery across office automation, desktop publishing (DTP), business accounting with Tally Prime and GST, programming fundamentals in C/C++, database systems with SQL, modern web design, and workplace AI productivity.",
+  about: "MDCA is an extensive 18-month master diploma program designed to provide complete mastery across office automation, desktop publishing (DTP), business accounting with Tally Prime and GST, programming fundamentals in C/C++, database systems with SQL, modern web design, and workplace AI productivity.",
   fee: {
     total: "₹15,999",
     admission: "₹2,000",
@@ -113,18 +113,18 @@ export default function MdcaCoursePage() {
     "@context": "https://schema.org",
     "@type": "Course",
     "name": "Master Diploma in Computer Applications (MDCA)",
-    "description": "16-month comprehensive master diploma covering MS Office, DTP (Photoshop, CorelDRAW), Tally Prime with GST, C/C++ programming, SQL databases, web design, and bilingual typing at Vision IT Pratappur.",
+    "description": "18-month comprehensive master diploma covering MS Office, DTP (Photoshop, CorelDRAW), Tally Prime with GST, C/C++ programming, SQL databases, web design, and bilingual typing at Vision IT Pratappur.",
     "url": "https://www.visionitinstitute.com/courses/mdca",
     "provider": {
       "@type": "EducationalOrganization",
       "name": "Vision IT Computer Institute",
       "url": "https://www.visionitinstitute.com",
     },
-    "timeRequired": "P16M",
+    "timeRequired": "P18M",
     "hasCourseInstance": {
       "@type": "CourseInstance",
       "courseMode": "Offline",
-      "courseWorkload": "P16M",
+      "courseWorkload": "P18M",
       "inLanguage": "hi",
     },
     "offers": {

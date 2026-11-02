@@ -5,13 +5,13 @@ import { CheckCircle2, PhoneCall, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Computer Courses in Pratappur: BCC, DCA, ADCA, MDCA, PGDCA, Tally & School Tuition",
-  description: "Explore 7 computer courses at Vision IT Pratappur: BCC (3 months), DCA, ADCA (12 months), MDCA (16 months), PGDCA (12 months), Tally Prime with GST, and School Tuition (Class 6-11). Offline classes, 70% practical.",
+  description: "Explore 7 computer courses at Vision IT Pratappur: BCC (3 months), DCA, ADCA (12 months), MDCA (18 months), PGDCA (12 months), Tally Prime with GST, and School Tuition (Class 6-11). Offline classes, 70% practical.",
   alternates: {
     canonical: "/courses",
   },
   openGraph: {
     title: "Computer Courses in Pratappur: BCC, DCA, ADCA, MDCA, PGDCA, Tally & School Tuition",
-    description: "Explore 7 computer courses at Vision IT Pratappur: BCC (3 months), DCA, ADCA (12 months), MDCA (16 months), PGDCA (12 months), Tally Prime with GST, and School Tuition (Class 6-11). Offline classes, 70% practical.",
+    description: "Explore 7 computer courses at Vision IT Pratappur: BCC (3 months), DCA, ADCA (12 months), MDCA (18 months), PGDCA (12 months), Tally Prime with GST, and School Tuition (Class 6-11). Offline classes, 70% practical.",
     url: "https://www.visionitinstitute.com/courses",
     type: "website",
   },
@@ -57,8 +57,8 @@ export default function CoursesPage() {
     },
     {
       title: "Master Diploma in Computer Applications (MDCA)",
-      badge: "16 Months • Master Diploma",
-      duration: "16 Months",
+      badge: "18 Months • Master Diploma",
+      duration: "18 Months",
       mode: "Offline Lab",
       price: "₹15,999",
       eligibility: "Minimum 12th Pass",

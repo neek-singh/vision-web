@@ -87,7 +87,7 @@ export default async function Home() {
         "name": "Which courses are available at Vision IT?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "BCC (3 months), DCA (12 months), ADCA (12 months), MDCA (16 months), PGDCA (12 months), Tally Prime with GST (3 months), and School Students Computer Tuition (Class 6th–11th). All courses are conducted offline with hands-on computer lab training.",
+          "text": "BCC (3 months), DCA (12 months), ADCA (12 months), MDCA (18 months), PGDCA (12 months), Tally Prime with GST (3 months), and School Students Computer Tuition (Class 6th–11th). All courses are conducted offline with hands-on computer lab training.",
         },
       },
       {
@@ -243,7 +243,7 @@ export default async function Home() {
           <CourseCard
             title="Master Diploma in Computer Applications (MDCA)"
             badge="Master Diploma"
-            duration="16 Months"
+            duration="18 Months"
             mode="Offline"
             price="₹15,999"
             imageSrc="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&auto=format&fit=crop"
