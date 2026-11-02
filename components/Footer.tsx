@@ -110,7 +110,7 @@ export default function Footer() {
 
           {/* Column 2: Popular Courses */}
           <div className="col-span-1 md:col-span-4 lg:col-span-3">
-            <h4 className="text-[11px] font-normal text-slate-950 uppercase tracking-widest mb-5">Courses</h4>
+            <p className="text-[11px] font-normal text-slate-950 uppercase tracking-widest mb-5">Courses</p>
             <ul className="space-y-3">
               <FooterLink href="/courses/bcc">Basic Computer Course (BCC)</FooterLink>
               <FooterLink href="/courses/dca">Diploma in Computer Applications (DCA)</FooterLink>
@@ -124,7 +124,7 @@ export default function Footer() {
 
           {/* Column 3: Quick Links */}
           <div className="col-span-1 md:col-span-4 lg:col-span-2">
-            <h4 className="text-[11px] font-normal text-slate-950 uppercase tracking-widest mb-5">Quick Links</h4>
+            <p className="text-[11px] font-normal text-slate-950 uppercase tracking-widest mb-5">Quick Links</p>
             <ul className="space-y-3">
               <FooterLink href="/about">About Us</FooterLink>
               <FooterLink href="/gallery">Institute Gallery</FooterLink>
@@ -137,7 +137,7 @@ export default function Footer() {
 
           {/* Column 4: Contact & Timings */}
           <div className="col-span-2 md:col-span-4 lg:col-span-3">
-            <h4 className="text-[11px] font-normal text-slate-950 uppercase tracking-widest mb-5">Contact Us</h4>
+            <p className="text-[11px] font-normal text-slate-950 uppercase tracking-widest mb-5">Contact Us</p>
             <ul className="space-y-4 text-xs font-normal text-slate-950">
               <li className="flex items-start gap-3 group">
                 <div className="mt-0.5 p-1.5 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm shrink-0">

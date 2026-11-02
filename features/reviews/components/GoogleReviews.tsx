@@ -79,9 +79,9 @@ export default function GoogleReviews() {
             <div>
               <div className="flex items-center gap-1">
                 <span className="font-extrabold text-slate-900 text-lg">5.0</span>
-                <div className="flex text-amber-400 text-sm">★★★★★</div>
+                <div className="flex text-amber-500 text-sm">★★★★★</div>
               </div>
-              <p className="text-[11px] text-slate-500 font-semibold uppercase tracking-wider">
+              <p className="text-[11px] text-slate-600 font-semibold uppercase tracking-wider">
                 4+ Reviews on Maps
               </p>
             </div>
@@ -102,14 +102,14 @@ export default function GoogleReviews() {
                     {review.name[0]}
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-900 leading-tight">
+                    <p className="text-xs font-bold text-slate-900 leading-tight">
                       {review.name}
-                    </h4>
+                    </p>
                   </div>
                 </div>
 
                 {/* Stars */}
-                <div className="flex text-amber-400 text-xs tracking-wider">
+                <div className="flex text-amber-500 text-xs tracking-wider">
                   {"★".repeat(review.rating)}
                 </div>
 
@@ -119,7 +119,7 @@ export default function GoogleReviews() {
                 </p>
               </div>
 
-              <div className="border-t border-slate-100/80 pt-3 mt-4 flex items-center justify-end text-[10px] text-slate-400">
+              <div className="border-t border-slate-100/80 pt-3 mt-4 flex items-center justify-end text-[10px] text-slate-600">
                 <span className="font-semibold uppercase tracking-wider">Maps Review</span>
               </div>
             </Card>

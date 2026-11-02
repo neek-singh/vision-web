@@ -235,9 +235,9 @@ export default async function BlogPostPage(
                     </span>
                   </div>
 
-                  <h4 className="font-normal text-slate-950 group-hover:text-blue-700 transition-colors text-sm sm:text-base leading-snug mb-2 line-clamp-2">
+                  <h3 className="font-normal text-slate-950 group-hover:text-blue-700 transition-colors text-sm sm:text-base leading-snug mb-2 line-clamp-2">
                     {item.title}
-                  </h4>
+                  </h3>
 
                   <p className="text-slate-950 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-4 font-normal">
                     {item.excerpt}

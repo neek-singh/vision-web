@@ -381,7 +381,7 @@ export default function CourseDetailsView({ course }: { course: CourseData }) {
 
             {/* Inclusions */}
             <div className="space-y-3 pt-2">
-              <h4 className="text-[10px] font-normal uppercase tracking-wider text-slate-700">Course Includes</h4>
+              <p className="text-[10px] font-normal uppercase tracking-wider text-slate-700">Course Includes</p>
               <ul className="space-y-2 text-xs font-normal text-slate-950">
                 <li className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
