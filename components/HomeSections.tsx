@@ -32,11 +32,11 @@ export function FAQSection() {
   const faqs = [
     {
       q: "Which courses are available at Vision IT?",
-      a: "BCC (3 months), DCA (12 months), ADCA (12 months), PGDCA (12 months), Tally Prime with GST (3 months), and School Students Computer Tuition (Class 6th–11th). All courses are conducted offline with hands-on computer lab training.",
+      a: "BCC (3 months), DCA (12 months), ADCA (12 months), MDCA (16 months), PGDCA (12 months), Tally Prime with GST (3 months), and School Students Computer Tuition (Class 6th–11th). All courses are conducted offline with hands-on computer lab training.",
     },
     {
       q: "What are the fees? Can I pay in installments?",
-      a: "BCC is ₹2,999, DCA is ₹13,999, ADCA is ₹14,999, PGDCA is ₹16,999, Tally Prime with GST is ₹4,499, and School Computer Tuition is ₹599/month. Diploma fees include admission, tuition, and exam fees with flexible installment options available.",
+      a: "BCC is ₹2,999, DCA is ₹13,999, ADCA is ₹14,999, MDCA is ₹15,999, PGDCA is ₹16,999, Tally Prime with GST is ₹4,499, and School Computer Tuition is ₹599/month. Diploma fees include admission, tuition, and exam fees with flexible installment options available.",
     },
     {
       q: "Who issues the certificate?",

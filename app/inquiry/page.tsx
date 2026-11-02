@@ -7,13 +7,13 @@ import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Apply for Course Admission",
-  description: "Apply for BCC, DCA, ADCA, PGDCA, Tally Prime with GST, and School Computer Tuition at Vision IT Computer Institute, Pratappur.",
+  description: "Apply for BCC, DCA, ADCA, MDCA, PGDCA, Tally Prime with GST, and School Computer Tuition at Vision IT Computer Institute, Pratappur.",
   alternates: {
     canonical: "/inquiry",
   },
   openGraph: {
     title: "Apply for Course Admission",
-    description: "Apply for BCC, DCA, ADCA, PGDCA, Tally Prime with GST, and School Computer Tuition at Vision IT Computer Institute, Pratappur.",
+    description: "Apply for BCC, DCA, ADCA, MDCA, PGDCA, Tally Prime with GST, and School Computer Tuition at Vision IT Computer Institute, Pratappur.",
     url: "/inquiry",
   },
 };

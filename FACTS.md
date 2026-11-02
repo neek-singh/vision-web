@@ -8,6 +8,7 @@
   - BCC (3 months, Rs 2,999) [Admission: ₹500, Tuition: ₹2,000, Exam: ₹499]
   - DCA (12 months, Rs 13,999) [Admission: ₹2,000, Tuition: ₹10,999, Exam: ₹1,000]
   - ADCA (12 months, Rs 14,999) [Admission: ₹2,000, Tuition: ₹11,999, Exam: ₹1,000]
+  - MDCA (16 months, Rs 15,999) [Admission: ₹2,000, Tuition: ₹12,999, Exam: ₹1,000]
   - PGDCA (12 months, Rs 16,999) [Admission: ₹2,000, Tuition: ₹13,999, Exam: ₹1,000]
   - Tally Prime with GST (3 months, Rs 4,499)
   - School Computer Tuition Class 6-11 (Rs 599/month)

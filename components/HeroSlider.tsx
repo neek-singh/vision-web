@@ -46,6 +46,14 @@ const SLIDES: Slide[] = [
     applyLabel: "Apply",
   },
   {
+    course: "MDCA",
+    description: "16-month master diploma covering MS Office, DTP, Tally Prime with GST, C/C++, SQL databases, and web design.",
+    detailsHref: "/courses/mdca",
+    applyHref: "/inquiry?courseId=mdca",
+    detailsLabel: "Details",
+    applyLabel: "Apply",
+  },
+  {
     course: "PGDCA",
     description: "12-month postgraduate program covering C++, DBMS, SQL, Web Publishing, and AI automation.",
     detailsHref: "/courses/pgdca",

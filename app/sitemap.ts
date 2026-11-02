@@ -14,6 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/courses/bcc',
     '/courses/dca',
     '/courses/adca',
+    '/courses/mdca',
     '/courses/pgdca',
     '/courses/tally',
     '/courses/school-tuition',

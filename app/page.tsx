@@ -18,13 +18,13 @@ export const metadata: Metadata = {
   title: {
     absolute: "Computer Institute in Pratappur | Vision IT",
   },
-  description: "Vision IT Computer Institute, Pratappur (Surajpur). Offline BCC, DCA, ADCA and PGDCA courses with 70% practical lab training. Call 8103170595.",
+  description: "Vision IT Computer Institute, Pratappur (Surajpur). Offline BCC, DCA, ADCA, MDCA and PGDCA courses with 70% practical lab training. Call 8103170595.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Computer Institute in Pratappur | Vision IT",
-    description: "Vision IT Computer Institute, Pratappur (Surajpur). Offline BCC, DCA, ADCA and PGDCA courses with 70% practical lab training. Call 8103170595.",
+    description: "Vision IT Computer Institute, Pratappur (Surajpur). Offline BCC, DCA, ADCA, MDCA and PGDCA courses with 70% practical lab training. Call 8103170595.",
     url: "https://www.visionitinstitute.com",
     type: "website",
   },
@@ -87,7 +87,7 @@ export default async function Home() {
         "name": "Which courses are available at Vision IT?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "BCC (3 months), DCA (12 months), ADCA (12 months), PGDCA (12 months), Tally Prime with GST (3 months), and School Students Computer Tuition (Class 6th–11th). All courses are conducted offline with hands-on computer lab training.",
+          "text": "BCC (3 months), DCA (12 months), ADCA (12 months), MDCA (16 months), PGDCA (12 months), Tally Prime with GST (3 months), and School Students Computer Tuition (Class 6th–11th). All courses are conducted offline with hands-on computer lab training.",
         },
       },
       {
@@ -95,7 +95,7 @@ export default async function Home() {
         "name": "What are the fees? Can I pay in installments?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "BCC is ₹2,999, DCA is ₹13,999, ADCA is ₹14,999, PGDCA is ₹16,999, Tally Prime with GST is ₹4,499, and School Computer Tuition is ₹599/month. Diploma fees include admission, tuition, and exam fees with flexible installment options available.",
+          "text": "BCC is ₹2,999, DCA is ₹13,999, ADCA is ₹14,999, MDCA is ₹15,999, PGDCA is ₹16,999, Tally Prime with GST is ₹4,499, and School Computer Tuition is ₹599/month. Diploma fees include admission, tuition, and exam fees with flexible installment options available.",
         },
       },
       {
@@ -236,9 +236,19 @@ export default async function Home() {
             duration="12 Months"
             mode="Offline"
             price="₹14,999"
-            imageSrc="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&auto=format&fit=crop"
+            imageSrc="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop"
             detailsHref="/courses/adca"
             applyHref="/inquiry?courseId=2fc69f17-e7a0-4bde-b995-8cbda1e2e55b"
+          />
+          <CourseCard
+            title="Master Diploma in Computer Applications (MDCA)"
+            badge="Master Diploma"
+            duration="16 Months"
+            mode="Offline"
+            price="₹15,999"
+            imageSrc="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&auto=format&fit=crop"
+            detailsHref="/courses/mdca"
+            applyHref="/inquiry?courseId=mdca"
           />
           <CourseCard
             title="Post Graduate Diploma in Computer Applications (PGDCA)"

@@ -148,6 +148,7 @@ export default function AdmissionForm({
     "197f7c89-e410-4768-8b49-567b4b4e3e9e", // Basic Computer Course (BCC)
     "38fdc235-f7b5-4628-9d72-41c9ff2eabd8", // Diploma In Computer Applications (DCA)
     "2fc69f17-e7a0-4bde-b995-8cbda1e2e55b", // Advanced Diploma in Computer Applications (ADCA)
+    "mdca", // Master Diploma in Computer Applications (MDCA)
     "f9004121-1274-4b57-8179-ccc8365864b9", // Post Graduate Diploma in Computer Applications (PGDCA)
     "tally-prime-gst",
     "school-tuition",
@@ -156,8 +157,9 @@ export default function AdmissionForm({
   const courseDisplayName = (title: string) => {
     const t = title.toLowerCase();
     if (t.includes("basic computer course") || t.includes("bcc")) return "Basic Computer Course (BCC)";
-    if (t.includes("diploma in computer applications") && !t.includes("advanced") && !t.includes("post")) return "Diploma in Computer Applications (DCA)";
+    if (t.includes("diploma in computer applications") && !t.includes("advanced") && !t.includes("post") && !t.includes("master")) return "Diploma in Computer Applications (DCA)";
     if (t.includes("advanced diploma")) return "Advanced Diploma in Computer Applications (ADCA)";
+    if (t.includes("master diploma") || t.includes("mdca")) return "Master Diploma in Computer Applications (MDCA)";
     if (t.includes("post graduate")) return "Post Graduate Diploma in Computer Applications (PGDCA)";
     if (t.includes("tally")) return "Tally Prime with GST (3 Months)";
     if (t.includes("school")) return "School Computer Tuition (Class 6th–11th)";
@@ -165,6 +167,7 @@ export default function AdmissionForm({
   };
 
   const extraCourses: Course[] = [
+    { id: "mdca", title: "Master Diploma in Computer Applications (MDCA)" },
     { id: "tally-prime-gst", title: "Tally Prime with GST (3 Months)" },
     { id: "school-tuition", title: "School Computer Tuition (Class 6th–11th)" },
   ];
@@ -173,12 +176,14 @@ export default function AdmissionForm({
     { id: "197f7c89-e410-4768-8b49-567b4b4e3e9e", title: "Basic Computer Course (BCC)" },
     { id: "38fdc235-f7b5-4628-9d72-41c9ff2eabd8", title: "Diploma in Computer Applications (DCA)" },
     { id: "2fc69f17-e7a0-4bde-b995-8cbda1e2e55b", title: "Advanced Diploma in Computer Applications (ADCA)" },
+    { id: "mdca", title: "Master Diploma in Computer Applications (MDCA)" },
     { id: "f9004121-1274-4b57-8179-ccc8365864b9", title: "Post Graduate Diploma in Computer Applications (PGDCA)" },
-    ...extraCourses,
+    { id: "tally-prime-gst", title: "Tally Prime with GST (3 Months)" },
+    { id: "school-tuition", title: "School Computer Tuition (Class 6th–11th)" },
   ];
 
   const mappedCourses = courses
-    .filter((c) => coreCourseIds.includes(c.id) || ["bcc", "dca", "adca", "pgdca", "tally", "school"].includes(c.id.toLowerCase()))
+    .filter((c) => coreCourseIds.includes(c.id) || ["bcc", "dca", "adca", "mdca", "pgdca", "tally", "school"].includes(c.id.toLowerCase()))
     .map((c) => ({
       id: c.id,
       title: courseDisplayName(c.title),

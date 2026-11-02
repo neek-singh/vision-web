@@ -115,6 +115,7 @@ export default function Footer() {
               <FooterLink href="/courses/bcc">Basic Computer Course (BCC)</FooterLink>
               <FooterLink href="/courses/dca">Diploma in Computer Applications (DCA)</FooterLink>
               <FooterLink href="/courses/adca">Advanced Diploma in Computer Applications (ADCA)</FooterLink>
+              <FooterLink href="/courses/mdca">Master Diploma in Computer Applications (MDCA)</FooterLink>
               <FooterLink href="/courses/pgdca">Post Graduate Diploma (PGDCA)</FooterLink>
               <FooterLink href="/courses/tally">Tally Prime with GST</FooterLink>
               <FooterLink href="/courses/school-tuition">School Computer Tuition</FooterLink>

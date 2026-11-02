@@ -4,14 +4,14 @@ import CourseCard from "@/components/CourseCard";
 import { CheckCircle2, PhoneCall, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Computer Courses in Pratappur: BCC, DCA, ADCA, PGDCA, Tally & School Tuition",
-  description: "Explore 6 computer courses at Vision IT Pratappur: BCC (3 months), DCA, ADCA, PGDCA (12 months), Tally Prime with GST, and School Tuition (Class 6-11). Offline classes, 70% practical.",
+  title: "Computer Courses in Pratappur: BCC, DCA, ADCA, MDCA, PGDCA, Tally & School Tuition",
+  description: "Explore 7 computer courses at Vision IT Pratappur: BCC (3 months), DCA, ADCA (12 months), MDCA (16 months), PGDCA (12 months), Tally Prime with GST, and School Tuition (Class 6-11). Offline classes, 70% practical.",
   alternates: {
     canonical: "/courses",
   },
   openGraph: {
-    title: "Computer Courses in Pratappur: BCC, DCA, ADCA, PGDCA, Tally & School Tuition",
-    description: "Explore 6 computer courses at Vision IT Pratappur: BCC (3 months), DCA, ADCA, PGDCA (12 months), Tally Prime with GST, and School Tuition (Class 6-11). Offline classes, 70% practical.",
+    title: "Computer Courses in Pratappur: BCC, DCA, ADCA, MDCA, PGDCA, Tally & School Tuition",
+    description: "Explore 7 computer courses at Vision IT Pratappur: BCC (3 months), DCA, ADCA (12 months), MDCA (16 months), PGDCA (12 months), Tally Prime with GST, and School Tuition (Class 6-11). Offline classes, 70% practical.",
     url: "https://www.visionitinstitute.com/courses",
     type: "website",
   },
@@ -54,6 +54,18 @@ export default function CoursesPage() {
       detailsHref: "/courses/adca",
       applyHref: "/inquiry?courseId=2fc69f17-e7a0-4bde-b995-8cbda1e2e55b",
       description: "Advanced MS Office, DTP (Photoshop, CorelDRAW, PageMaker), C/C++ basics, web static pages, Tally Prime with GST, and typing."
+    },
+    {
+      title: "Master Diploma in Computer Applications (MDCA)",
+      badge: "16 Months • Master Diploma",
+      duration: "16 Months",
+      mode: "Offline Lab",
+      price: "₹15,999",
+      eligibility: "Minimum 12th Pass",
+      imageSrc: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&auto=format&fit=crop",
+      detailsHref: "/courses/mdca",
+      applyHref: "/inquiry?courseId=mdca",
+      description: "Extensive master diploma covering complete MS Office, DTP (Photoshop, CorelDRAW, PageMaker), Tally Prime with GST, C/C++ programming, SQL databases, and web design."
     },
     {
       title: "Post Graduate Diploma in Computer Applications (PGDCA)",
