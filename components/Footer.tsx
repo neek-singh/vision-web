@@ -11,7 +11,7 @@ const contact = {
     { display: "+91 81031 70595", raw: "+918103170595" },
     { display: "+91 93012 21630", raw: "+919301221630" },
   ],
-  timing: "Mon - Sat: 8 AM - 6 PM (Batches: 9-11 AM, 11-1 PM, 2-4 PM, 4-6 PM)",
+  timing: "Mon - Sat: 8 AM - 6 PM",
   address: "Shubham Gift Gallery, 2nd Floor, Kadampara Chowk, Pratappur, Surajpur (C.G.) - 497223",
 };
 
