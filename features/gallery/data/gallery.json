@@ -1,1 +1,27 @@
-[]
+[
+  {
+    "id": "1",
+    "title": "Computer Lab & Workstations - Vision IT Pratappur",
+    "image_url": "/gallery/vision-it-pratappur-lab-1.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Hands-on Practical Training Lab",
+    "image_url": "/gallery/vision-it-pratappur-lab-2.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Classroom & Theory Lecture Area",
+    "image_url": "/gallery/vision-it-pratappur-classroom-1.jpg"
+  },
+  {
+    "id": "4",
+    "title": "Vision IT Institute Entrance & Kadampara Chowk Signboard",
+    "image_url": "/gallery/vision-it-pratappur-center-1.jpg"
+  },
+  {
+    "id": "5",
+    "title": "Institute Center & Student Reception",
+    "image_url": "/gallery/vision-it-pratappur-center-2.jpg"
+  }
+]
