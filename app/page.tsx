@@ -216,7 +216,7 @@ export default async function Home() {
             duration="3 Months"
             mode="Offline"
             price="₹2,999"
-            imageSrc="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop"
+            imageSrc="/courses/bcc.png"
             detailsHref="/courses/bcc"
             applyHref="/inquiry?courseId=197f7c89-e410-4768-8b49-567b4b4e3e9e"
           />
@@ -226,7 +226,7 @@ export default async function Home() {
             duration="12 Months"
             mode="Offline"
             price="₹13,999"
-            imageSrc="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600&auto=format&fit=crop"
+            imageSrc="/courses/dca.png"
             detailsHref="/courses/dca"
             applyHref="/inquiry?courseId=38fdc235-f7b5-4628-9d72-41c9ff2eabd8"
           />
@@ -236,7 +236,7 @@ export default async function Home() {
             duration="12 Months"
             mode="Offline"
             price="₹14,999"
-            imageSrc="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop"
+            imageSrc="/courses/adca.png"
             detailsHref="/courses/adca"
             applyHref="/inquiry?courseId=2fc69f17-e7a0-4bde-b995-8cbda1e2e55b"
           />
@@ -246,7 +246,7 @@ export default async function Home() {
             duration="18 Months"
             mode="Offline"
             price="₹15,999"
-            imageSrc="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&auto=format&fit=crop"
+            imageSrc="/courses/mdca.png"
             detailsHref="/courses/mdca"
             applyHref="/inquiry?courseId=mdca"
           />
@@ -256,7 +256,7 @@ export default async function Home() {
             duration="12 Months"
             mode="Offline"
             price="₹16,999"
-            imageSrc="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600&auto=format&fit=crop"
+            imageSrc="/courses/pgdca.png"
             detailsHref="/courses/pgdca"
             applyHref="/inquiry?courseId=f9004121-1274-4b57-8179-ccc8365864b9"
           />
@@ -266,7 +266,7 @@ export default async function Home() {
             duration="3 Months"
             mode="Offline"
             price="₹4,499"
-            imageSrc="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600&auto=format&fit=crop"
+            imageSrc="/courses/tally.png"
             detailsHref="/courses/tally"
             applyHref="/inquiry?courseId=tally-prime-gst"
           />
@@ -276,7 +276,7 @@ export default async function Home() {
             duration="Monthly"
             mode="Offline"
             price="₹599 / mo"
-            imageSrc="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=600&auto=format&fit=crop"
+            imageSrc="/courses/sct.png"
             detailsHref="/courses/school-tuition"
             applyHref="/inquiry?courseId=school-tuition"
           />

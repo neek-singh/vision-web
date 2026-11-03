@@ -26,7 +26,7 @@ export default function CoursesPage() {
       mode: "Offline Lab",
       price: "₹2,999",
       eligibility: "Minimum 8th Pass",
-      imageSrc: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop",
+      imageSrc: "/courses/bcc.png",
       detailsHref: "/courses/bcc",
       applyHref: "/inquiry?courseId=197f7c89-e410-4768-8b49-567b4b4e3e9e",
       description: "Computer fundamentals, Windows, English/Hindi typing, MS Word, Excel, PowerPoint, internet and basic AI tools."
@@ -38,7 +38,7 @@ export default function CoursesPage() {
       mode: "Offline Lab",
       price: "₹13,999",
       eligibility: "Minimum 12th Pass",
-      imageSrc: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600&auto=format&fit=crop",
+      imageSrc: "/courses/dca.png",
       detailsHref: "/courses/dca",
       applyHref: "/inquiry?courseId=38fdc235-f7b5-4628-9d72-41c9ff2eabd8",
       description: "MS Office, C language programming, DBMS database, HTML/CSS web page, Tally Prime accounting, GST billing, and internet safety."
@@ -50,7 +50,7 @@ export default function CoursesPage() {
       mode: "Offline Lab",
       price: "₹14,999",
       eligibility: "Minimum 10th / 12th Pass",
-      imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop",
+      imageSrc: "/courses/adca.png",
       detailsHref: "/courses/adca",
       applyHref: "/inquiry?courseId=2fc69f17-e7a0-4bde-b995-8cbda1e2e55b",
       description: "Advanced MS Office, DTP (Photoshop, CorelDRAW, PageMaker), C/C++ basics, web static pages, Tally Prime with GST, and typing."
@@ -62,7 +62,7 @@ export default function CoursesPage() {
       mode: "Offline Lab",
       price: "₹15,999",
       eligibility: "Minimum 12th Pass",
-      imageSrc: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&auto=format&fit=crop",
+      imageSrc: "/courses/mdca.png",
       detailsHref: "/courses/mdca",
       applyHref: "/inquiry?courseId=mdca",
       description: "Extensive master diploma covering complete MS Office, DTP (Photoshop, CorelDRAW, PageMaker), Tally Prime with GST, C/C++ programming, SQL databases, and web design."
@@ -74,7 +74,7 @@ export default function CoursesPage() {
       mode: "Offline Lab",
       price: "₹16,999",
       eligibility: "Graduation (Any Stream)",
-      imageSrc: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600&auto=format&fit=crop",
+      imageSrc: "/courses/pgdca.png",
       detailsHref: "/courses/pgdca",
       applyHref: "/inquiry?courseId=f9004121-1274-4b57-8179-ccc8365864b9",
       description: "Advanced computing, C++ object oriented programming, database architecture, HTML/CSS web design, Tally Prime, and cybersecurity basics."
@@ -86,7 +86,7 @@ export default function CoursesPage() {
       mode: "Offline Lab",
       price: "₹4,499",
       eligibility: "10th / 12th Pass",
-      imageSrc: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600&auto=format&fit=crop",
+      imageSrc: "/courses/tally.png",
       detailsHref: "/courses/tally",
       applyHref: "/inquiry?courseId=tally-prime-gst",
       description: "Hands-on accounting in Tally Prime, company setup, ledger creation, day-to-day vouchers, inventory management, and GST tax invoice billing."
@@ -98,7 +98,7 @@ export default function CoursesPage() {
       mode: "Offline Lab",
       price: "₹599 / mo",
       eligibility: "Class 6th to 11th Students",
-      imageSrc: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=600&auto=format&fit=crop",
+      imageSrc: "/courses/sct.png",
       detailsHref: "/courses/school-tuition",
       applyHref: "/inquiry?courseId=school-tuition",
       description: "School syllabus support, typing skills, MS Office, homework guidance, computer basics, and practical lab training."
